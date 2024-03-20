@@ -6,23 +6,16 @@ const Schema = mongoose.Schema
 const { ObjectId } = Schema.Types
 const emailValidator = validate({ validator: 'isEmail' })
 
-const Generos = ['Masculino','Femenino','Otro']
+const Sectores = ['Docente','Directivo','Secretaria','OfAlumnos','Coordinacion', 'DOE', 'Cooperadora','Jefe']
 
 
 const userSchema = new Schema({
-    email: {        type: String,    required: true,    unique: true,    lowercase: true,    trim: true,    validate: emailValidator,},
-    dni:{           type: Number, required:true ,  unique: true },
+  email: {        type: String,    required: true,    unique: true,    lowercase: true,    trim: true,    validate: emailValidator,},
   password: {     type: String, required: true, select: false },
   role: {         type: ObjectId, ref: 'Role', required: true },
   nombre: {       type: String, required: true, lowercase: true, trim: true },
   apellido: {     type: String, required: true, lowercase: true, trim: true },
-  tel: {          type: String , required: true , trim: true },
-  nick: {         type: String , unique: true, required: true, trim: true},
-  localidad: {    type: ObjectId, ref: 'Pais' },
-  nacimiento: {   type: Date},
-  edad: {         type: Number , trim: true },
-  genero: {       type: String , enum: Generos },
-  especialidad: { type: ObjectId, ref: 'Especialidades', required: false},
+  area: { type: String, enum: Sectores , required: false},
   descripcion: {  type: String , trim: true },
   isActive: {           type: Boolean, default: true }
 })
