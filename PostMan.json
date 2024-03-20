@@ -1,0 +1,800 @@
+{
+	"info": {
+		"_postman_id": "9429e5b3-6551-45cd-aed3-d235ee96b191",
+		"name": "Express",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "15802954",
+		"_collection_link": "https://planetary-station-444943.postman.co/workspace/Team-Workspace~07ef96d4-7b8f-43cf-804a-82eb79c1e2c6/collection/15802954-9429e5b3-6551-45cd-aed3-d235ee96b191?action=share&source=collection_link&creator=15802954"
+	},
+	"item": [
+		{
+			"name": "localidaes",
+			"item": [
+				{
+					"name": "getAll",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:4000/localidades",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"localidades"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "add",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "[\r\n   {\r\n    \"pais\": \"Argentina\",\r\n    \"provincia\": \"Catamarca\",\r\n    \"pref\": \"+54 383\",\r\n    \"localidades\": [\r\n      { \"name\": \"San Fernando del Valle de Catamarca\" },\r\n      { \"name\": \"Santa María\" },\r\n      { \"name\": \"Andalgalá\" }\r\n    ]\r\n  },\r\n  {\r\n    \"pais\": \"Argentina\",\r\n    \"provincia\": \"Chaco\",\r\n    \"pref\": \"+54 362\",\r\n    \"localidades\": [\r\n      { \"name\": \"Resistencia\" },\r\n      { \"name\": \"Barranqueras\" },\r\n      { \"name\": \"Presidencia Roque Sáenz Peña\" }\r\n    ]\r\n  },\r\n  {\r\n    \"pais\": \"Argentina\",\r\n    \"provincia\": \"Chubut\",\r\n    \"pref\": \"+54 2965\",\r\n    \"localidades\": [\r\n      { \"name\": \"Rawson\" },\r\n      { \"name\": \"Comodoro Rivadavia\" },\r\n      { \"name\": \"Trelew\" }\r\n    ]\r\n  },\r\n  {\r\n    \"pais\": \"Argentina\",\r\n    \"provincia\": \"Córdoba\",\r\n    \"pref\": \"+54 351\",\r\n    \"localidades\": [\r\n      { \"name\": \"Córdoba Capital\" },\r\n      { \"name\": \"Villa María\" },\r\n      { \"name\": \"Río Cuarto\" }\r\n    ]\r\n  },\r\n  {\r\n    \"pais\": \"Argentina\",\r\n    \"provincia\": \"Corrientes\",\r\n    \"pref\": \"+54 379\",\r\n    \"localidades\": [\r\n      { \"name\": \"Corrientes Capital\" },\r\n      { \"name\": \"Goya\" },\r\n      { \"name\": \"Mercedes\" }\r\n    ]\r\n  },\r\n  {\r\n    \"pais\": \"Argentina\",\r\n    \"provincia\": \"Entre Ríos\",\r\n    \"pref\": \"+54 343\",\r\n    \"localidades\": [\r\n      { \"name\": \"Paraná\" },\r\n      { \"name\": \"Concordia\" },\r\n      { \"name\": \"Gualeguaychú\" }\r\n    ]\r\n  },\r\n  {\r\n    \"pais\": \"Argentina\",\r\n    \"provincia\": \"Formosa\",\r\n    \"pref\": \"+54 370\",\r\n    \"localidades\": [\r\n      { \"name\": \"Formosa Capital\" },\r\n      { \"name\": \"Clorinda\" },\r\n      { \"name\": \"Pirané\" }\r\n    ]\r\n  },\r\n  {\r\n    \"pais\": \"Argentina\",\r\n    \"provincia\": \"Jujuy\",\r\n    \"pref\": \"+54 388\",\r\n    \"localidades\": [\r\n      { \"name\": \"San Salvador de Jujuy\" },\r\n      { \"name\": \"Palpalá\" },\r\n      { \"name\": \"Libertador General San Martín\" }\r\n    ]\r\n  },\r\n  {\r\n    \"pais\": \"Argentina\",\r\n    \"provincia\": \"La Pampa\",\r\n    \"pref\": \"+54 295\",\r\n    \"localidades\": [\r\n      { \"name\": \"Santa Rosa\" },\r\n      { \"name\": \"General Pico\" },\r\n      { \"name\": \"Toay\" }\r\n    ]\r\n  },\r\n  {\r\n    \"pais\": \"Argentina\",\r\n    \"provincia\": \"La Rioja\",\r\n    \"pref\": \"+54 380\",\r\n    \"localidades\": [\r\n      { \"name\": \"La Rioja Capital\" },\r\n      { \"name\": \"Chilecito\" },\r\n      { \"name\": \"Arauco\" }\r\n    ]\r\n  },\r\n  {\r\n    \"pais\": \"Argentina\",\r\n    \"provincia\": \"Mendoza\",\r\n    \"pref\": \"+54 261\",\r\n    \"localidades\": [\r\n      { \"name\": \"Mendoza Capital\" },\r\n      { \"name\": \"San Rafael\" },\r\n      { \"name\": \"Godoy Cruz\" }\r\n    ]\r\n  },\r\n  {\r\n    \"pais\": \"Argentina\",\r\n    \"provincia\": \"Misiones\",\r\n    \"pref\": \"+54 376\",\r\n    \"localidades\": [\r\n      { \"name\": \"Posadas\" },\r\n      { \"name\": \"Puerto Iguazú\" },\r\n      { \"name\": \"Eldorado\" }\r\n    ]\r\n  },\r\n  {\r\n    \"pais\": \"Argentina\",\r\n    \"provincia\": \"Neuquén\",\r\n    \"pref\": \"+54 299\",\r\n    \"localidades\": [\r\n      { \"name\": \"Neuquén Capital\" },\r\n      { \"name\": \"Cutral-Có\" },\r\n      { \"name\": \"Plottier\" }\r\n    ]\r\n  },\r\n  {\r\n    \"pais\": \"Argentina\",\r\n    \"provincia\": \"Río Negro\",\r\n    \"pref\": \"+54 294\",\r\n    \"localidades\": [\r\n      { \"name\": \"Viedma\" },\r\n      { \"name\": \"General Roca\" },\r\n      { \"name\": \"Cipolletti\" }\r\n    ]\r\n  },\r\n  {\r\n    \"pais\": \"Argentina\",\r\n    \"provincia\": \"Salta\",\r\n    \"pref\": \"+54 387\",\r\n    \"localidades\": [\r\n      { \"name\": \"Salta Capital\" },\r\n      { \"name\": \"San Ramón de la Nueva Orán\" },\r\n      { \"name\": \"Tartagal\" }\r\n    ]\r\n  },\r\n  {\r\n    \"pais\": \"Argentina\",\r\n    \"provincia\": \"San Juan\",\r\n    \"pref\": \"+54 264\",\r\n    \"localidades\": [\r\n      { \"name\": \"San Juan Capital\" },\r\n      { \"name\": \"Rawson\" },\r\n      { \"name\": \"Pocito\" }\r\n    ]\r\n  },\r\n  {\r\n    \"pais\": \"Argentina\",\r\n    \"provincia\": \"San Luis\",\r\n    \"pref\": \"+54 266\",\r\n    \"localidades\": [\r\n      { \"name\": \"San Luis Capital\" },\r\n      { \"name\": \"Villa Mercedes\" },\r\n      { \"name\": \"Merlo\" }\r\n    ]\r\n  },\r\n  {\r\n    \"pais\": \"Argentina\",\r\n    \"provincia\": \"Santa Cruz\",\r\n    \"pref\": \"+54 2966\",\r\n    \"localidades\": [\r\n      { \"name\": \"Río Gallegos\" },\r\n      { \"name\": \"Caleta Olivia\" },\r\n      { \"name\": \"Puerto Deseado\" }\r\n    ]\r\n  },\r\n  {\r\n    \"pais\": \"Argentina\",\r\n    \"provincia\": \"Santa Fe\",\r\n    \"pref\": \"+54 342\",\r\n    \"localidades\": [\r\n      { \"name\": \"Santa Fe Capital\" },\r\n      { \"name\": \"Rosario\" },\r\n      { \"name\": \"Venado Tuerto\" }\r\n    ]\r\n  },\r\n  {\r\n    \"pais\": \"Argentina\",\r\n    \"provincia\": \"Santiago del Estero\",\r\n    \"pref\": \"+54 385\",\r\n    \"localidades\": [\r\n      { \"name\": \"Santiagodel Estero Capital\" },\r\n      { \"name\": \"La Banda\" },\r\n      { \"name\": \"Termas de Río Hondo\" }\r\n    ]\r\n  },\r\n  {\r\n    \"pais\": \"Argentina\",\r\n    \"provincia\": \"Tierra del Fuego\",\r\n    \"pref\": \"+54 2901\",\r\n    \"localidades\": [\r\n      { \"name\": \"Ushuaia\" },\r\n      { \"name\": \"Río Grande\" },\r\n      { \"name\": \"Tolhuin\" }\r\n    ]\r\n  },\r\n  {\r\n    \"pais\": \"Argentina\",\r\n    \"provincia\": \"Tucumán\",\r\n    \"pref\": \"+54 381\",\r\n    \"localidades\": [\r\n      { \"name\": \"San Miguel de Tucumán\" },\r\n      { \"name\": \"Yerba Buena\" },\r\n      { \"name\": \"Tafí Viejo\" }\r\n    ]\r\n  }\r\n]",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:4000/localidades",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"localidades"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Login",
+			"item": [
+				{
+					"name": "Login",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"nick\":\"marcelo\",\r\n    \"password\":\"marcelo123\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:4000/login",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"login"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Usuarios",
+			"item": [
+				{
+					"name": "getAllUser",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:4000/user/all",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"user",
+								"all"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getAllPacientes",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "localhost:4000/user/pacientes",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"user",
+								"pacientes"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getUser",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:4000/user/1003",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"user",
+								"1003"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "addUserPaciente",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"aaa@gmail.com\",\r\n    \"dni\": 54345675,\r\n    \"password\": \"aaa123\",\r\n    \"role\": \"paciente\",\r\n    \"nombre\": \"aaaa\",\r\n    \"apellido\": \"gimenez\",\r\n    \"tel\": \"4444-4444\",\r\n    \"pref\": \"65542970f75bb300963aa5b4\",\r\n    \"nick\": \"aaaa\",\r\n    \"localidad\": \"65542970f75bb300963aa5b4\",\r\n    \"nacimiento\": \"1992-08-27\",\r\n    \"edad\": 30,\r\n    \"genero\": \"Femenino\",\r\n    \"isActive\": true,\r\n    \"cobertura\": \"655427b2aeb067ee179de7c3\",\r\n    \"numeroAfiliado\": 345678,\r\n    \"saldo\": -230\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:4000/user/register",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"user",
+								"register"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "add Roll",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Medico\",\r\n\r\n    \"dni\": 23456789,\r\n    \"email\":  \"sofia@gmail.com\",\r\n    \"matricula\": 222222,\r\n    \"password\": \"sofia123\",\r\n    \"role\": \"6548579505f9e135e874a422\" ,\r\n    \"nombre\": \"Sofia\",\r\n    \"apellido\": \"Martinez\",\r\n    \"tel\": \"4444-4444\",\r\n    \"pref\": \"+54\" ,\r\n    \"nick\": \"sofia\",\r\n    \"localidad\": \"BsAs\",\r\n    \"sanatorio\": \"Cordoba\",\r\n    \"nacimiento\": \"1992-08-27\",\r\n    \"edad\": 30,\r\n    \"genero\": \"Femenino\",\r\n    \"isActive\": true \r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:4000/user/role",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"user",
+								"role"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "editPaciente",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"url": {
+							"raw": "localhost:4000/user/655438ed52116da01de0470f",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"user",
+								"655438ed52116da01de0470f"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "activateUser",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"isActive\" : true\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:4000/user/activate/655438ed52116da01de0470f",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"user",
+								"activate",
+								"655438ed52116da01de0470f"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "editHistoriaClinica&Antecedentes",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"antecedentes\": [\r\n        {\r\n            \"area\": \"Alergista\",\r\n            \"año\": 1990,\r\n            \"info\": \"Alergia a los roedores\"\r\n        }\r\n    ],\r\n    \"HistoriaClinica\": [\r\n        {\r\n            \"profesional\": 222222,\r\n            \"fecha\": \"2023-10-10T00:00:00.000Z\",\r\n            \"especialidad\": \"cardiologia\",\r\n            \"descripcion\": \"pee pee massss pepeee\"\r\n        }\r\n    ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:4000/user/historia/655438ed52116da01de0470f",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"user",
+								"historia",
+								"655438ed52116da01de0470f"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Coberturas",
+			"item": [
+				{
+					"name": "getAll",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:4000/coberturas",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"coberturas"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Add",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "[\r\n        { \"value\": \"obsba\", \"label\": \"Obra Social de Buenos Aires\" },\r\n        { \"value\": \"osde\", \"label\": \"OSDE\" },\r\n        { \"value\": \"medicus\", \"label\": \"Medicus\" },\r\n        { \"value\": \"galeno\", \"label\": \"Galeno\" },\r\n        { \"value\": \"cobertura-salud\", \"label\": \"Cobertura Salud\" },\r\n        { \"value\": \"sancor-salud\", \"label\": \"Sancor Salud\" },\r\n        { \"value\": \"accord-salud\", \"label\": \"Accord Salud\" },\r\n        { \"value\": \"federada-salud\", \"label\": \"Federada Salud\" },\r\n        { \"value\": \"swiss-medical-pyme\", \"label\": \"Swiss Medical PYME\" },\r\n        { \"value\": \"omint\", \"label\": \"Omint\" },\r\n        { \"value\": \"berkley\", \"label\": \"Berkley\" },\r\n        { \"value\": \"provincia-salud\", \"label\": \"Provincia Salud\" },\r\n        { \"value\": \"apres-salud\", \"label\": \"APRES Salud\" },\r\n        { \"value\": \"mapfre\", \"label\": \"MAPFRE\" },\r\n        { \"value\": \"cobertura-total\", \"label\": \"Cobertura Total\" },\r\n        { \"value\": \"swiss-medical-familia\", \"label\": \"Swiss Medical Familia\" },\r\n        { \"value\": \"boreal-salud\", \"label\": \"Boreal Salud\" },\r\n        { \"value\": \"avalian-salud\", \"label\": \"Availan Salud\" },\r\n        { \"value\": \"prevencion-salud\", \"label\": \"Prevención Salud\" },\r\n        { \"value\": \"assurant\", \"label\": \"Assurant Salud\" }\r\n  \r\n]\r\n\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:4000/coberturas",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"coberturas"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Especialidades",
+			"item": [
+				{
+					"name": "getAll",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:4000/especialidades",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"especialidades"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "add",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{ \"value\": \"geriatria\", \"label\": \"Cardiología\" }\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:4000/especialidades",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"especialidades"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Agendas",
+			"item": [
+				{
+					"name": "addAgenda",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"matricula\": \"655405aa99f57801ba690f1c\",\r\n  \"disponibilidad\": {\r\n    \"id_dias\": [\"655405aa99f578888a690f1c\", \"654445aa99f578888a690f1c\", \"655405aa99f509888a690f1c\"]\r\n  }\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:4000/medico/agenda",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"medico",
+								"agenda"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "addDia",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"fecha\": \"2023-11-15\",\r\n  \"descripcion\": \"Descripción del día\",\r\n  \"type\": \"success\",\r\n  \"citas\": {\r\n    \"id\": [\"655405aa99f578888a690f1c\", \"654445aa99f578888a690f1c\", \"655405aa99f509888a690f1c\"]\r\n  }\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:4000/medico/dia",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"medico",
+								"dia"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "addTurno",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"hora\": \"2023-11-15T10:00:00Z\",\r\n  \"consultorio\": 111,\r\n  \"paciente\": \"655405aa99f57801ba690f1c\",\r\n  \"type\": \"success\"\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:4000/medico/agenda/turno",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"medico",
+								"agenda",
+								"turno"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getAllAgenda",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:4000/medico/agenda/",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"medico",
+								"agenda",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getAgendaMedica",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:4000/medico/agenda/444444",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"medico",
+								"agenda",
+								"444444"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getTurnos",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:4000/medico/agenda/turnos",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"medico",
+								"agenda",
+								"turnos"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getDias",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:4000/medico/agenda/dias",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"medico",
+								"agenda",
+								"dias"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getTurnoById",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:4000/medico/agenda/IdTurno/100",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"medico",
+								"agenda",
+								"IdTurno",
+								"100"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "editAgenda",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"disponibilidad\": {\r\n        \"id_dias\": [\r\n            \"655581e03e1f7465c2de7709\",\r\n            \"65558847bca9e710eb42280b\"\r\n        ]\r\n  }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:4000/medico/agenda/655a97412481936d8e37b69a",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"medico",
+								"agenda",
+								"655a97412481936d8e37b69a"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "editDia",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"descripcion\": \"Descripción del día\",\r\n  \"type\": \"success\",\r\n  \"citas\": {\r\n    \"id\": [\"655405aa99f578888a690f1c\"]\r\n  }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:4000/medico/agenda/dia/1000",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"medico",
+								"agenda",
+								"dia",
+								"1000"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "editTurno",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"hora\": \"2023-11-15T10:00:00Z\",\r\n  \"consultorio\": 111,\r\n  \"paciente\": \"655405aa99f57801ba690f1c\",\r\n  \"type\": \"success\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:4000/medico/agenda/turno/100",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"medico",
+								"agenda",
+								"turno",
+								"100"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Medico",
+			"item": [
+				{
+					"name": "getMedico",
+					"request": {
+						"method": "GET",
+						"header": []
+					},
+					"response": []
+				},
+				{
+					"name": "getAllMedicos",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "localhost:4000/user/medicos",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"user",
+								"medicos"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "editMedico",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"password\": \"pepe123\",\r\n    \"nombre\": \"pepe\",\r\n    \"apellido\": \"sanchez\",\r\n    \"tel\": \"4444-4444\",\r\n    \"pref\": \"6553f455cfee25290408f066\" ,\r\n    \"localidad\": \"6553f455cfee25290408f065\",\r\n    \"sanatorio\": \"6553f455cfee25290408f06c\",\r\n    \"nacimiento\": \"1992-08-27\",\r\n    \"edad\": 30,\r\n    \"genero\": \"Masculino\",\r\n    \"especialidad\": \"6553fc20b6a3877befbd5e73\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:4000/medico/444444",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"medico",
+								"444444"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "addUserMedico",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\":  \"pepe@gmail.com\",\r\n    \"matricula\": 999999,\r\n    \"dni\": 34523552,\r\n    \"password\": \"pepe123\",\r\n    \"role\": \"medico\",\r\n    \"nombre\": \"pepe\",\r\n    \"apellido\": \"sanchez\",\r\n    \"tel\": \"4444-4444\",\r\n    \"pref\": \"6553f455cfee25290408f066\" ,\r\n    \"nick\": \"pepe\",\r\n    \"localidad\": \"6553f455cfee25290408f065\",    \r\n    \"sanatorio\": \"6553f455cfee25290408f06c\",\r\n    \"nacimiento\": \"1992-08-27\",\r\n    \"edad\": 30,\r\n    \"genero\": \"Masculino\",\r\n    \"especialidad\": \"6553fc20b6a3877befbd5e73\",\r\n    \"isActive\": true \r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:4000/medico/register",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"medico",
+								"register"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"auth": {
+		"type": "bearer",
+		"bearer": [
+			{
+				"key": "token",
+				"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NTVhOTc0MTI0ODE5MzZkOGUzN2I2OWEiLCJyb2xlIjoiYWRtaW4iLCJpYXQiOjE3MDEzMDIyNDMsImlzcyI6ImtleS1wdWJsaWNhIiwic3ViIjoiNjU1YTk3NDEyNDgxOTM2ZDhlMzdiNjlhIn0.z9FkGetIBBa2thFXHoiKORgVTtUMbWp5WznTURgKbdc",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	]
+}

@@ -1,0 +1,4 @@
+
+
+
+*  unifique en el Schema User los datos comunes de paciente y personal
