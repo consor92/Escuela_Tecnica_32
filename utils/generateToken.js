@@ -17,8 +17,8 @@ async function generateUserToken(req, user) {
     role: role.name,
     email: user.email,
     nick: user.nick,
-    name: (user.nombre + " " + user.apellido),
-    matricula: user.matricula
+    name: user.nombre + ' ' + user.apellido,
+    matricula: user.matricula,
   }
 
   /* eslint-disable-next-line no-undef */
@@ -37,7 +37,6 @@ async function generateUserToken(req, user) {
   // })
 
   return { token, user: userResponse }
-
 }
 
 module.exports = generateUserToken

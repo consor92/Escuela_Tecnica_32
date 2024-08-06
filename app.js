@@ -6,11 +6,10 @@ const cors = require('cors')
 const authRoute = require('./routes/auth')
 const userRoute = require('./routes/user')
 
-
 const authentication = require('./middlewares/authentication')
 const authorization = require('./middlewares/authorization')
 
-const app = express() 
+const app = express()
 
 app.use(logger('dev'))
 app.use(cors())
@@ -26,8 +25,7 @@ app.get('/favicon.ico', (req, res) => res.status(204))
 //app.use('/', statusRouter)
 
 // ----------  DATOS GRAL. USUARIO  ----------
-app.use('/'                       , authRoute) // localhost:4000/login 
-app.use('/user' ,  authentication , userRoute) // localhost:4000/user                                                  -- GET   (muestras los datos del usuario)
-
+app.use('/', authRoute) // localhost:4000/login
+app.use('/user', authentication, userRoute) // localhost:4000/user                                                  -- GET   (muestras los datos del usuario)
 
 module.exports = app

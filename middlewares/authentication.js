@@ -1,10 +1,10 @@
 const jwt = require('jsonwebtoken')
 const createError = require('http-errors')
- const fs = require('fs')
- const path = require('path')
+const fs = require('fs')
+const path = require('path')
 
 /* eslint-disable-next-line no-undef */
- const publicKey = fs.readFileSync(path.join(__dirname, `../keys/public.pub`))
+const publicKey = fs.readFileSync(path.join(__dirname, `../keys/public.pub`))
 
 function getToken(req, next) {
   const TOKEN_REGEX = /^\s*Bearer\s+(\S+)/g
@@ -18,8 +18,6 @@ function getToken(req, next) {
   return token
 }
 
-
-
 function authentication(req, res, next) {
   if (!req.headers.authorization) {
     console.error('Missing authorization header')
@@ -30,10 +28,10 @@ function authentication(req, res, next) {
 
   try {
     // Unsecure alternative
-      req.user = jwt.verify(token, 'key-publica', {
-        issuer: 'key-publica',
-      })
-    
+    req.user = jwt.verify(token, 'key-publica', {
+      issuer: 'key-publica',
+    })
+
     // Correct alternative
     /*
      req.user = jwt.verify(token, publicKey, {

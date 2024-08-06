@@ -2,25 +2,27 @@
 /* eslint-disable no-undef */
 
 // Module dependencies.
-const app = require( '../app')
+const app = require('../app')
 const debug = require('debug')('base-api-express-generator:server')
 const http = require('http')
 const figlet = require('figlet')
 const mongoose = require('mongoose')
 const pkg = require('../package.json')
+const chalk = require('chalk'); // Importa chalk para colorear la salida en la consola
+const os = require('os'); // Importa os para obtener información del sistema operativo
 
 const env_path = process.env.NODE_ENV ? `.env.${process.env.NODE_ENV}` : '.env'
 require('dotenv').config({ path: env_path })
 
 // Get port from environment and store in Express.
-const port = process.env.PORT || 5000
+const port = process.env.PORT 
 app.set('port', port)
 
 // Create HTTP server.
 const server = http.createServer(app)
 
-const db_url = process.env.MONGO_URL || 'mongodb://127.0.0.1:27017/'
-const db_name = process.env.MONGO_DB || 'et32'
+const db_url = process.env.MONGO_URL 
+const db_name = process.env.MONGO_DB 
 
 // MongoDB database initialization
 initDatabase()
@@ -28,7 +30,7 @@ initDatabase()
   .catch((err) => console.log(err))
 
 async function initDatabase() {
-  await mongoose.connect(db_url + db_name)
+  await mongoose.connect(db_url + db_name , { useNewUrlParser: true, useUnifiedTopology: true } )
 }
 
 // Listen on provided port, on all network interfaces.
@@ -38,24 +40,65 @@ server.on('listening', onListening)
 
 // Event listener for HTTP server "error" event.
 function onError(error) {
-  if (error.syscall !== 'listen') {
-    throw error
-  }
-
-  const bind = typeof port === 'string' ? 'Pipe ' + port : 'Port ' + port
-
-  // handle specific listen errors with friendly messages
+  // ===    !==   comparacion estricta (tipo y dato)
   switch (error.code) {
-    case 'EACCES':
-      console.error(bind + ' requires elevated privileges')
-      process.exit(1)
-      break
-    case 'EADDRINUSE':
-      console.error(bind + ' is already in use')
-      process.exit(1)
-      break
-    default:
-      throw error
+    case 'EACCES': // Error de permisos
+      // Este error ocurre cuando el proceso no tiene los permisos necesarios para acceder al puerto o pipe
+      console.error(bind + ' requires elevated privileges');
+      process.exit(1); // Salimos del proceso con un código de error
+      break;
+
+    case 'EADDRINUSE': // Error de dirección en uso
+      // Este error ocurre cuando el puerto o pipe ya está en uso por otro proceso
+      console.error(bind + ' is already in use');
+      process.exit(1); // Salimos del proceso con un código de error
+      break;
+
+    case 'ECONNREFUSED': // Error de conexión rechazada
+      // Este error ocurre cuando la conexión es rechazada por el servidor
+      // Ejemplo: Intentar conectar a un servidor que no está escuchando en el puerto especificado
+      console.error('Connection refused to ' + bind);
+      process.exit(1); // Salimos del proceso con un código de error
+      break;
+
+    case 'ECONNRESET': // Error de conexión reiniciada
+      // Este error ocurre cuando la conexión es inesperadamente cerrada por el servidor
+      // Ejemplo: El servidor cierra la conexión antes de que el cliente termine la solicitud
+      console.error('Connection reset by peer ' + bind);
+      process.exit(1); // Salimos del proceso con un código de error
+      break;
+
+    case 'ENOTFOUND': // Error de dirección no encontrada
+      // Este error ocurre cuando no se puede resolver el nombre de dominio a una dirección IP
+      // Ejemplo: Intentar conectar a un dominio que no existe
+      console.error('DNS lookup failed for ' + bind);
+      process.exit(1); // Salimos del proceso con un código de error
+      break;
+
+    case 'ETIMEDOUT': // Error de tiempo de espera agotado
+      // Este error ocurre cuando la conexión al servidor tarda demasiado y expira
+      // Ejemplo: Intentar conectar a un servidor que está tardando en responder
+      console.error('Connection timed out to ' + bind);
+      process.exit(1); // Salimos del proceso con un código de error
+      break;
+
+    case 'EHOSTUNREACH': // Error de host inalcanzable
+      // Este error ocurre cuando no se puede alcanzar el host especificado
+      // Ejemplo: Intentar conectar a un servidor en una red diferente que no es accesible
+      console.error('No route to host for ' + bind);
+      process.exit(1); // Salimos del proceso con un código de error
+      break;
+
+    case 'ENETUNREACH': // Error de red inalcanzable
+      // Este error ocurre cuando no se puede alcanzar la red especificada
+      // Ejemplo: Intentar conectar a un servidor cuando no hay conexión a Internet
+      console.error('Network is unreachable for ' + bind);
+      process.exit(1); // Salimos del proceso con un código de error
+      break;
+
+    default: // Error no manejado
+      // Si el error no es uno de los casos manejados, lo lanzamos
+      throw error;
   }
 }
 
@@ -71,10 +114,48 @@ function printTitle() {
   process.stdout.write('\n')
   process.stdout.write(`${figlet.textSync(`Base API`, { font: 'Ogre' })}\n`)
   process.stdout.write('\n')
-  process.stdout.write(
-    `Version: ${pkg.version}, Environment: ${process.env.NODE_ENV || 'default'}\n`,
-  )
-  if (process.env !== 'production') {
-    process.stdout.write(`Listening on port ${port}\n`)
+  process.stdout.write(chalk.bold(`Name: `) + chalk.green(`${pkg.name}\n`));
+  process.stdout.write(chalk.bold(`Version: `) + chalk.green(`${pkg.version}\n`));
+  process.stdout.write(chalk.bold(`Description: `) + chalk.green(`${pkg.description}\n`));
+  process.stdout.write(chalk.bold(`Author: `) + chalk.green(`${pkg.author}\n`));
+  process.stdout.write(chalk.bold(`Environment: `) + chalk.green(`${process.env.NODE_ENV || 'default'}\n`));
+
+  // Mostrar la dirección IP local
+  const ip = getLocalIP();
+  process.stdout.write(chalk.bold(`Local IP: `) + chalk.green(`${ip}\t`));
+
+  if (process.env.NODE_ENV !== 'production') {
+    process.stdout.write(chalk.bold(`Listening on port: `) + chalk.green(`${process.env.PORT || 3000}\n`));
   }
+
+  // Mostrar algunas variables del archivo .env
+  process.stdout.write(chalk.bold(`Tipe DB: `) + chalk.green(`${process.env.DATABASE_TYPE || 'Not set'}\n`));
+  process.stdout.write(chalk.bold(`User: `) + chalk.green(`${process.env.DATABASE_USER || 'Not set'}\n`));
+  process.stdout.write(chalk.bold(`Pass: `) + chalk.green(`${process.env.DATABASE_PASS || 'Not set'}\n`));
+  process.stdout.write(chalk.bold(`Database: `) + chalk.green(`${process.env.DATABASE_DB || 'Not set'}\n`));
+  process.stdout.write(chalk.bold(`Database URL: `) + chalk.green(`${process.env.DATABASE_URL || 'Not set'}\n`));
+
+  process.stdout.write(chalk.bold(`API Key (publ): `) + chalk.green(`${process.env.API_KEY_PUBLIC || 'Not set'}\n`));
+  process.stdout.write(chalk.bold(`API Key (priv): `) + chalk.green(`${process.env.API_KEY_PRIVATE || 'Not set'}\n`));
+
+  process.stdout.write(chalk.bold(`Scripts:\n`));
+  for (const script in pkg.scripts) {
+      process.stdout.write(chalk.green(`  ${script}: ${pkg.scripts[script]}\n`));
+  }
+
+  process.stdout.write('\n');
+  process.stdout.write(chalk.yellow(chalk.bold(`Servicio a la escucha`)   + chalk.green(`${process.env.PORT }\n`) ));
+}
+
+// Función para obtener la IP local
+function getLocalIP() {
+  const interfaces = os.networkInterfaces();
+  for (let iface in interfaces) {
+      for (let alias of interfaces[iface]) {
+          if (alias.family === 'IPv4' && !alias.internal) {
+              return alias.address;
+          }
+      }
+  }
+  return 'IP no disponible' // Retorna este mensaje si no se encuentra la IP
 }
