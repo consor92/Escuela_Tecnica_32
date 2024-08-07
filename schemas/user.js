@@ -1,7 +1,6 @@
 const mongoose = require('mongoose');
 const validate = require('mongoose-validator');
 const bcrypt = require('bcrypt');
-const { Request } = require('express');
 
 // Definición del esquema
 const Schema = mongoose.Schema;
@@ -11,11 +10,15 @@ const { ObjectId } = Schema.Types;
 const emailValidator = validate({ validator: 'isEmail' });
 const ipValidator = validate({ validator: 'isIP' });
 const usernameValidator = validate({ validator: 'isAlphanumeric' });
-
+//const lengthValidator = validate({  validator: 'isLength',  arguments: [8, 16],  message: 'La contraseña debe tener entre 8 y 16 caracteres.'});
+const lowercaseValidator = validate({  validator: function (v) {return /[a-z]/.test(v);}, message: 'La contraseña debe contener al menos una letra minúscula.'});
+const uppercaseValidator = validate({ validator: function (v) {return /[A-Z]/.test(v);  },
+  message: 'La contraseña debe contener al menos una letra mayúscula.'});
+const numberValidator = validate({ validator: function (v) { return /\d/.test(v);},  message: 'La contraseña debe contener al menos un número.'});
 
 
 // Turnos posibles
-const Turnos = ['Mañana', 'Tarde', 'Noche'];
+const Turnos = ['Mañana', 'Tarde', 'Vespertino'];
 
 const userSchema = new Schema({
   email: {
@@ -33,50 +36,50 @@ const userSchema = new Schema({
     trim: true,
     validate: usernameValidator,
   },
-  password: { 
-    type: String, 
-    required: true, 
+  password: {
+    type: String,
+    required: true,
     select: false,
-    validate: {
-      validator: function(v) {
-        return /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[A-Za-z\d]{8,16}$/.test(v);
-      },
-      message: props => 'La contraseña debe tener entre 8 y 16 caracteres, al menos una mayúscula, una minúscula y un número.'
-    }
+    validate: [
+      //lengthValidator, //no responde el validador
+      lowercaseValidator,
+      uppercaseValidator,
+      numberValidator
+    ]
   },
   roles: [{ type: ObjectId, ref: 'Role', required: true }],
-  nombre: { 
-    type: String, 
-    required: true, 
-    lowercase: true, 
+  nombre: {
+    type: String,
+    required: true,
+    lowercase: true,
     trim: true,
     validate: {
-      validator: function(v) {
+      validator: function (v) {
         return /^[a-zA-Z\s]+$/.test(v);
       },
       message: props => 'El nombre debe ser texto.'
     }
   },
-  apellido: { 
-    type: String, 
-    required: true, 
-    lowercase: true, 
+  apellido: {
+    type: String,
+    required: true,
+    lowercase: true,
     trim: true,
     validate: {
-      validator: function(v) {
+      validator: function (v) {
         return /^[a-zA-Z\s]+$/.test(v);
       },
       message: props => 'El apellido debe ser texto.'
     }
   },
-  descripcion: { 
-    type: String, 
+  descripcion: {
+    type: String,
     trim: true,
     maxlength: [300, 'La descripción no puede tener más de 300 caracteres.']
   },
   isActive: { type: Boolean, default: true },
   turnos: { type: [String], enum: Turnos, required: true },
-  ip: { 
+  ip: {
     type: String,
     validate: ipValidator,
     required: false
@@ -89,7 +92,7 @@ const userSchema = new Schema({
 userSchema.pre('save', async function (next) {
   if (!this.isModified('password')) return next();
   try {
-    const salt = await bcrypt.genSalt(12); // Incrementar el factor de costo para mayor seguridad
+    const salt = await bcrypt.genSalt(10); // Incrementar el factor de costo para mayor seguridad
     this.password = await bcrypt.hash(this.password, salt);
     return next();
   } catch (err) {
@@ -102,7 +105,9 @@ userSchema.methods.checkPassword = async function (potentialPassword) {
   if (!potentialPassword) {
     return Promise.reject(new Error('Password is required'));
   }
-  const isMatch = await bcrypt.compare(potentialPassword, this.password);
+
+  const isMatch = await bcrypt.compare( potentialPassword , this.password);
+  console.log(isMatch)
   return { isOk: isMatch, isLocked: !this.isActive };
 };
 

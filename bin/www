@@ -21,8 +21,9 @@ app.set('port', port)
 // Create HTTP server.
 const server = http.createServer(app)
 
-const db_url = process.env.MONGO_URL 
-const db_name = process.env.MONGO_DB 
+const db_url = process.env.DATABASE_URL 
+const db_name = process.env.DATABASE_DB 
+const db_Auth_url = process.env.DATABASE_URL_AUTH_ENABLED
 
 // MongoDB database initialization
 initDatabase()
@@ -118,13 +119,13 @@ function printTitle() {
   process.stdout.write(chalk.bold(`Version: `) + chalk.green(`${pkg.version}\n`));
   process.stdout.write(chalk.bold(`Description: `) + chalk.green(`${pkg.description}\n`));
   process.stdout.write(chalk.bold(`Author: `) + chalk.green(`${pkg.author}\n`));
-  process.stdout.write(chalk.bold(`Environment: `) + chalk.green(`${process.env.NODE_ENV || 'default'}\n`));
+  process.stdout.write(chalk.bold(`Environment: `) + chalk.green(`${process.env.ENV}\n`));
 
   // Mostrar la dirección IP local
   const ip = getLocalIP();
   process.stdout.write(chalk.bold(`Local IP: `) + chalk.green(`${ip}\t`));
 
-  if (process.env.NODE_ENV !== 'production') {
+  if (process.env.ENV !== 'production') {
     process.stdout.write(chalk.bold(`Listening on port: `) + chalk.green(`${process.env.PORT || 3000}\n`));
   }
 

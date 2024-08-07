@@ -30,8 +30,7 @@ const arrayDescriptionValidator = [
 const novedadesSchema = new Schema({
   titulo: {
     type: String,
-    required: true,
-    trim: true
+    required: true
   },
   descripcion: {
     type: [String],
@@ -79,8 +78,7 @@ const novedadesSchema = new Schema({
     }
   },
   tags:[{
-    titulo: String,
-    trim: true
+    titulo: String
   }]
 }, { 
   timestamps: true // Agrega createdAt y updatedAt automáticamente

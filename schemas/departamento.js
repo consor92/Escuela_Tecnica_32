@@ -1,6 +1,5 @@
-const mongoose = require('mongoose')
-const { Schema } = mongoose
-const { ObjectId } = Schema.Types
+const mongoose = require('mongoose');
+const { Schema } = mongoose;
 
 const departamentoSchema = new Schema({
   name: { 
@@ -11,22 +10,22 @@ const departamentoSchema = new Schema({
     unique: true 
   },
   coordinador: { 
-    type: ObjectId, 
+    type: Schema.Types.ObjectId, 
     ref: 'User', 
     required: true, 
-    unique: true 
+    unique: true
   },
   isActive: { 
     type: Boolean, 
-    default: true // Por defecto, un departamento está activo 
+    default: true 
   }
-}, { 
-  timestamps: true // Agrega createdAt y updatedAt automáticamente
-})
+}, {
+  timestamps: true
+});
 
-const Departamento = mongoose.model('Departamento', departamentoSchema)
+const Departamento = mongoose.model('Departamento', departamentoSchema);
 
-module.exports = Departamento
+module.exports = Departamento;
 
 
 /**

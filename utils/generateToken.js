@@ -16,10 +16,9 @@ async function generateUserToken(req, user) {
     _id: user._id,
     role: role.name,
     email: user.email,
-    nick: user.nick,
-    name: user.nombre + ' ' + user.apellido,
-    matricula: user.matricula,
-  }
+    nick: user.username,
+    name: user.nombre + ' ' + user.apellido
+   }
 
   /* eslint-disable-next-line no-undef */
   // const privateKey = fs.readFileSync(path.join(__dirname, `../keys/base-api-express-generator.pem`))
