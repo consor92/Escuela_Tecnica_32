@@ -21,7 +21,7 @@ const directivosSchema = new Schema({
   cargo: { type: String, enum: Cargos, required: true, unique: true }, // Un cargo por usuario
   isActive: { type: Boolean, default: true }, // Campo para indicar si el directivo está activo
   createdAt: { type: Date, default: Date.now }, // Marca de tiempo para la creación
-  updatedAt: { type: Date, default: Date.now } // Marca de tiempo para la última actualización
+  updatedAt: { type: Date } // Marca de tiempo para la última actualización
 }, { timestamps: true }) // Agrega timestamps automáticos
 
 // Pre-validación para asegurar que un usuario no tenga más de un cargo

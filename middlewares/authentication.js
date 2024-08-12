@@ -1,9 +1,11 @@
+#!/usr/bin/env node
+/* eslint-disable no-undef */
+
 const jwt = require('jsonwebtoken')
 const createError = require('http-errors')
 //const fs = require('fs')
 //const path = require('path')
 
-/* eslint-disable-next-line no-undef */
 //const publicKey = fs.readFileSync(path.join(__dirname, `../keys/public.pub`))
 
 function getToken(req, next) {
@@ -28,8 +30,8 @@ function authentication(req, res, next) {
 
   try {
     // Unsecure alternative
-    req.user = jwt.verify(token, 'key-publica', {
-      issuer: 'key-publica',
+    req.user = jwt.verify(token,  process.env.API_KEY_PUBLIC, {
+      issuer: process.env.API_KEY_PRIVATE,
     })
 
     // Correct alternative
@@ -43,7 +45,6 @@ function authentication(req, res, next) {
       console.error('Error authenticating malformed JWT')
       return next(new createError.Unauthorized())
     }
-
     console.info(`User ${req.user._id} authenticated`)
 
     next(null)

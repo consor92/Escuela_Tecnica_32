@@ -7,12 +7,11 @@ const generateUserToken = require('../utils/generateToken')
 
 const router = new Router()
 
-router.post('/login', createUserToken) 
-router.patch('/' , createUser)
-router.patch('/:role' , createRoles)
+router.post('/login', createUserToken)
+router.patch('/', createUser)
+router.patch('/:role', createRoles)
 
 async function createUserToken(req, res, next) {
-  console.log(`Creando un nuevo TOKEN ${req.body.username}`)
 
   if (!req.body.email) {
     if (!req.body.username) {
@@ -25,6 +24,8 @@ async function createUserToken(req, res, next) {
     console.error('Password: VACIO')
     return res.status(400).end()
   }
+
+
 
   try {
     const user = await User.findOne({ username: req.body.username }, '+password')
@@ -48,7 +49,7 @@ async function createUserToken(req, res, next) {
       console.error('Usuario:  DATOS ERRONEOS')
       return res.status(401).end()
     }
-
+    console.log(`Creando un nuevo TOKEN ${req.body.username}`)
     const response = await generateUserToken(req, user)
 
     res.status(201).json(response)
@@ -62,22 +63,28 @@ async function createUser(req, res, next) {
 
   try {
     let roleQuery = {
-      name: user.role,
+      name: { $in: user.role },
     }
 
-    const role = await Role.findOne(roleQuery)
-
-    if (!role) {
+    const role = await Role.find(roleQuery)
+    if (!role.length) {
       res.status(404).send('Role not found')
     }
 
+    const roleIds = role.map(role => role._id)
+    console.log(roleIds)
     const passEncrypted = await bcrypt.hash(user.password, 10)
-    console.log('createUser: ', { ...user, password: passEncrypted, role: role._id })
-    const userCreated = await User.create({ ...user, password: passEncrypted, role: role._id })
-
+    const userCreated = await User.create({ ...user, password: passEncrypted, roles: roleIds });
 
     res.send(userCreated)
   } catch (err) {
+    if (err.name === 'ValidationError') {
+      const validationErrors = Object.values(err.errors).map(e => e.message)
+      return res.status(400).json({ errors: validationErrors })
+    }
+    if (err.code && err.code === 11000) {
+      return res.status(400).json({ error: 'Email ya está en uso' })
+    }
     next(err)
   }
 }
@@ -87,7 +94,7 @@ async function createRoles(req, res, next) {
   try {
 
     console.log('Role create: ', rol)
-    const roleCreated = await Role.create( rol )
+    const roleCreated = await Role.create(rol)
 
     res.status(201).send(roleCreated)
   } catch (err) {

@@ -88,7 +88,7 @@ const userSchema = new Schema({
   timestamps: true // Agrega createdAt y updatedAt
 });
 
-// Pre-hook para encriptar la contraseña antes de guardar
+/* Pre-hook para encriptar la contraseña antes de guardar
 userSchema.pre('save', async function (next) {
   if (!this.isModified('password')) return next();
   try {
@@ -99,6 +99,7 @@ userSchema.pre('save', async function (next) {
     return next(err);
   }
 });
+*/
 
 // Método para verificar la contraseña
 userSchema.methods.checkPassword = async function (potentialPassword) {

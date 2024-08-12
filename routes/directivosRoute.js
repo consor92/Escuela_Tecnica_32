@@ -3,16 +3,23 @@ const router = express.Router()
 
 const Directivos = require('../schemas/directivos') // Asegúrate de que la ruta al esquema sea correcta
 
-router.get('/', async (req, res, next) => {
+router.get('/', getAll)
+router.get('/:id', getId)
+router.post('/', insertDirectivos)
+router.put('/:id', sustituirDirectivos)
+router.patch('/:id', editDirectivos)
+router.delete('/:id', deleteDirectivos)
+
+async function getAll(req,res,next){
     try {
         const directivos = await Directivos.find({ isActive: true })
         res.json(directivos)
     } catch (err) {
         next(err)
     }
-})
+}
 
-router.get('/:id', async (req, res, next) => {
+async function getId(req,res,next){
     try {
         const directivo = await Directivos.findOne({ _id: req.params.id, isActive: true })
         if (!directivo) {
@@ -22,9 +29,9 @@ router.get('/:id', async (req, res, next) => {
     } catch (err) {
         next(err)
     }
-})
+}
 
-router.post('/', async (req, res, next) => {
+async function insertDirectivos(req,res,next){
     try {
         if (!req.isAdmin()) {
             return res.status(401).send('Unauthorized')
@@ -41,9 +48,9 @@ router.post('/', async (req, res, next) => {
     } catch (err) {
         next(err)
     }
-})
+}
 
-router.put('/:id', async (req, res, next) => {
+async function sustituirDirectivos(req,res,next){
     try {
         if (!req.isAdmin()) {
             return res.status(401).send('Unauthorized')
@@ -66,9 +73,9 @@ router.put('/:id', async (req, res, next) => {
     } catch (err) {
         next(err)
     }
-})
+}
 
-router.patch('/:id', async (req, res, next) => {
+async function editDirectivos(req,res,next){
     try {
         if (!req.isAdmin()) {
             return res.status(401).send('Unauthorized')
@@ -91,9 +98,9 @@ router.patch('/:id', async (req, res, next) => {
     } catch (err) {
         next(err)
     }
-})
+}
 
-router.delete('/:id', async (req, res, next) => {
+async function deleteDirectivos(req,res,next){
     try {
         if (!req.isAdmin()) {
             return res.status(401).send('Unauthorized')
@@ -111,7 +118,7 @@ router.delete('/:id', async (req, res, next) => {
     } catch (err) {
         next(err)
     }
-})
+}
 
 module.exports = router
 
