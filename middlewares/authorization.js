@@ -1,28 +1,31 @@
 function authorization(req, res, next) {
+  function hasRole(role) {
+    return req.user && req.user.role && req.user.role.some(r => r.toString() === role.toString());
+  }
+
   req.isAdmin = function isAdmin() {
-    return req.user && req.user.role === 'admin';
+    return hasRole('admin');
   };
 
   req.isRegente = function isRegente() {
-    return req.user && req.user.role === 'regente';
+    return hasRole('regente');
   };
 
   req.isOfAlumnos = function isOfAlumnos() {
-    return req.user && req.user.role === 'ofAlumnos';
+    return hasRole('ofAlumnos');
   };
 
   req.isDocente = function isDocente() {
-    return req.user && req.user.role === 'docente';
+    return hasRole('docente');
   };
 
   req.isRector = function isRector() {
-    return req.user && req.user.role === 'rector';
+    return hasRole('rector');
   };
 
   req.isCoordinador = function isCoordinador() {
-    return req.user && req.user.role === 'coordinador';
+    return hasRole('coordinador');
   };
-
   next();
 }
 

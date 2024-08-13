@@ -27,13 +27,11 @@ function authentication(req, res, next) {
   }
 
   const token = getToken(req, next)
-
   try {
     // Unsecure alternative
     req.user = jwt.verify(token,  process.env.API_KEY_PUBLIC, {
       issuer: process.env.API_KEY_PRIVATE,
     })
-
     // Correct alternative
     /*
      req.user = jwt.verify(token, publicKey, {

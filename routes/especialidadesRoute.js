@@ -9,6 +9,7 @@ router.post('/', createEspecialidad)
 router.put('/:id', updateEspecialidad)
 router.patch('/:id', patchEspecialidad)
 router.delete('/:id', deactivateEspecialidad)
+router.delete('/active/:id', activateEspecialidad)
 
 async function getAllEspecialidades(req, res, next) {
     try {
@@ -115,6 +116,26 @@ async function deactivateEspecialidad(req, res, next) {
             return res.status(404).json({ message: 'Especialidad no encontrada' })
         }
         res.json({ message: 'Especialidad desactivada correctamente' })
+    } catch (err) {
+        next(err)
+    }
+}
+
+async function activateEspecialidad(req, res, next) {
+    try {
+        if (!req.isAdmin()) {
+            return res.status(401).send('No autorizado')
+        }
+
+        const especialidad = await Especialidades.findOneAndUpdate(
+            { _id: req.params.id },
+            { isActive: true },
+            { new: true }
+        )
+        if (!especialidad) {
+            return res.status(404).json({ message: 'Especialidad no encontrada' })
+        }
+        res.json({ message: 'Especialidad activada correctamente' })
     } catch (err) {
         next(err)
     }

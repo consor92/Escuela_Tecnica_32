@@ -8,6 +8,13 @@ const urlValidator = validate({
   message: 'La URL {VALUE} no es válida.'
 })
 
+const urlArrayValidator = [
+  validate({
+    validator: 'isURL',
+    message: 'La URL {VALUE} no es válida.'
+  })
+];
+
 // Definición de ciclos y turnos
 const Ciclo = ['Basico', 'Superior']
 const Turnos = ['Manana', 'Tarde', 'Vespertino']
@@ -65,7 +72,7 @@ const especialidadesSchema = new Schema({
     type: [String], 
     validate: {
       validator: function(v) {
-        return v.every(url => urlValidator.validate(url));
+        return v.every(url => urlArrayValidator[0].validator(url));
       },
       message: 'Una o más URLs de fotos no son válidas.'
     }
