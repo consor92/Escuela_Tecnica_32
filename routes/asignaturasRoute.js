@@ -8,7 +8,7 @@ const Especialidades = require('../schemas/especialidades'); // Importar el esqu
 router.get('/', getAll);
 router.get('/:id', getId);
 router.get('/especialidad/:especialidadName', getByEspecialidad); // Actualizado para recibir nombre de la especialidad
-router.get('/especialidad/:especialidadName/año/:año', getByEspecialidadYPorAño); // Actualizado para recibir especialidad y año
+router.get('/especialidad/:especialidadName/anio/:anio', getByEspecialidadYPorAño); // Actualizado para recibir especialidad y año
 router.post('/', insertAsignatura);
 router.put('/:id', sustituirAsignatura);
 router.patch('/:id', editAsignatura);
@@ -56,6 +56,10 @@ async function getByEspecialidad(req, res, next) {
 // Obtener asignaturas por nombre de especialidad y año
 async function getByEspecialidadYPorAño(req, res, next) {
     try {
+
+        //console.log( await Especialidades.find({}) )
+
+
         const especialidad = await Especialidades.findOne({ name: req.params.especialidadName.toLowerCase(), isActive: true });
         if (!especialidad) {
             return res.status(404).json({ message: 'Especialidad no encontrada' });
@@ -63,7 +67,7 @@ async function getByEspecialidadYPorAño(req, res, next) {
 
         const asignaturas = await Asignaturas.find({ 
             especialidad: especialidad._id, 
-            año: req.params.año, 
+            año: req.params.anio, 
             isActive: true 
         }).populate('especialidad');
 
