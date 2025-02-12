@@ -84,6 +84,17 @@ const novedadesSchema = new Schema({
   timestamps: true // Agrega createdAt y updatedAt automáticamente
 })
 
+
+novedadesSchema.index({ titulo: 1 });
+novedadesSchema.index({ departamento: 1 });
+novedadesSchema.index({ tags: 1 });
+
+
+novedadesSchema.pre('save', function (next) {
+  console.log('Guardando novedad:', this.titulo);
+  next();
+});
+
 const Novedades = mongoose.model('Novedades', novedadesSchema)
 
 module.exports = Novedades
