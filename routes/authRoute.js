@@ -25,8 +25,6 @@ async function createUserToken(req, res, next) {
     return res.status(400).end()
   }
 
-
-
   try {
     const user = await User.findOne({ username: req.body.username }, '+password')
 
@@ -50,6 +48,7 @@ async function createUserToken(req, res, next) {
       return res.status(401).end()
     }
     console.log(`Creando un nuevo TOKEN ${req.body.username}`)
+    console.log(user)
     const response = await generateUserToken(req, user)
 
     res.status(201).json(response)

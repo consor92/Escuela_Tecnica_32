@@ -67,7 +67,7 @@ const userSchema = new Schema({
     trim: true,
     validate: {
       validator: function (v) {
-        return /^[a-zA-Z\s]+$/.test(v);
+        return /^[a-zA-ZáéíóúÁÉÍÓÚñÑ\s]+$/.test(v);
       },
       message: props => 'El apellido debe ser texto.'
     }

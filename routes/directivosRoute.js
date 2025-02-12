@@ -1,5 +1,6 @@
 const express = require('express')
 const router = express.Router()
+const mongoose = require('mongoose');
 
 const Directivos = require('../schemas/directivos') // Asegúrate de que la ruta al esquema sea correcta
 
@@ -21,8 +22,12 @@ async function getAll(req,res,next){
 
 async function getId(req,res,next){
     try {
+        if (!mongoose.Types.ObjectId.isValid(req.params.id)) {
+            return res.status(400).json({ message: 'ID no válido' });
+        }
+
         const directivo = await Directivos.findOne({ _id: req.params.id, isActive: true })
-        if (!directivo) {
+        if (!directivo ) {
             return res.status(404).json({ message: 'Directivo no encontrado' })
         }
         res.json(directivo)
