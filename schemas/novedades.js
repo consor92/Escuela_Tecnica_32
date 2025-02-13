@@ -10,36 +10,31 @@ const urlValidator = validate({
   message: 'Debe ser una URL válida'
 })
 
-// Validador para Array de URLs
-const arrayUrlValidator = [
-  validate({
-    validator: 'isURL',
-    message: 'Debe ser una URL válida'
-  })
-]
-
-// Validador para Array de Descripciones
-const arrayDescriptionValidator = [
-  validate({
-    validator: 'isLength',
-    arguments: [1, 1000], // Limita el tamaño máximo si es necesario
-    message: 'La descripción no puede estar vacía y debe ser menor de 1000 caracteres'
-  })
-]
 
 const novedadesSchema = new Schema({
   titulo: {
     type: String,
-    required: true
+    required: true,
+    trim: true
   },
   descripcion: {
     type: [String],
     required: true,
-    validate: arrayDescriptionValidator // Validación de descripciones
+    validate: {
+      validator: function (arr) {
+        return arr.every(desc => typeof desc === 'string' && desc.length > 0 && desc.length <= 1000);
+      },
+      message: 'Cada descripción debe ser un string de entre 1 y 1000 caracteres.'
+    }
   },
   fotos: {
     type: [String],
-    validate: arrayUrlValidator // Validación de URLs para fotos
+    validate: {
+      validator: function (arr) {
+        return arr.every(url => require('validator').isURL(url));
+      },
+      message: 'Cada foto debe ser una URL válida.'
+    }
   },
   foto_portada: {
     type: String,
@@ -53,15 +48,20 @@ const novedadesSchema = new Schema({
   fechaFin: {
     type: Date,
     default: Date.now, // Valor por defecto: la fecha y hora actuales
-    require: false
+    required: false
   },
   url: {
     type: [String],
-    validate: arrayUrlValidator // Validación de URLs
+    validate: {
+      validator: function (arr) {
+        return arr.every(url => require('validator').isURL(url));
+      },
+      message: 'Cada URL debe ser válida.'
+    }
   },
   departamento: {
     type: Schema.Types.ObjectId,
-    ref: 'Departamento',
+    ref: 'Departamento', 
     required: true
   },
   isActive: {
@@ -72,13 +72,14 @@ const novedadesSchema = new Schema({
     type: Schema.Types.ObjectId,
     ref: 'User',
     required: true,
-    populate: {
-      path: 'autor',
-      select: 'role' // Selecciona el rol del usuario
-    }
+    //populate: {
+    //  path: 'autor',
+    //  select: 'role' // Selecciona el rol del usuario
+    //}
   },
   tags:[{
-    titulo: String
+    type: String,
+    trim: true
   }]
 }, { 
   timestamps: true // Agrega createdAt y updatedAt automáticamente
@@ -88,7 +89,14 @@ const novedadesSchema = new Schema({
 novedadesSchema.index({ titulo: 1 });
 novedadesSchema.index({ departamento: 1 });
 novedadesSchema.index({ tags: 1 });
+novedadesSchema.index({ isActive: 1 });
 
+
+novedadesSchema.pre(/^find/, function (next) {
+  //this.populate({ path: 'autor', select: 'role' });
+  
+  next();
+});
 
 novedadesSchema.pre('save', function (next) {
   console.log('Guardando novedad:', this.titulo);

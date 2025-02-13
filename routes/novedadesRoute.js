@@ -19,10 +19,21 @@ router.patch('/:id', patchNovedad)
 
 // Eliminar (desactivar) una novedad
 router.delete('/:id', deactivateNovedad)
+router.delete('/active/:id', activateNovedad)
+
 
 async function getAllNovedades(req, res, next) {
     try {
         const novedades = await Novedades.find({ isActive: true })
+        .populate({
+            path: 'departamento',
+            select: '-_id name',
+            strictPopulate: false
+        })
+            .populate({
+                path: 'autor',
+                select: '-_id nombre apellido role' // Excluye _id, muestra otros campos
+            });
         res.json(novedades)
     } catch (err) {
         next(err)
@@ -125,6 +136,26 @@ async function deactivateNovedad(req, res, next) {
             return res.status(404).json({ message: 'Novedad no encontrada' })
         }
         res.json({ message: 'Novedad desactivada exitosamente' })
+    } catch (err) {
+        next(err)
+    }
+}
+
+async function activateNovedad(req, res, next) {
+    try {
+        if (!req.isAdmin()) {
+            return res.status(401).send('No autorizado')
+        }
+
+        const novedad = await Novedades.findOneAndUpdate(
+            { _id: req.params.id },
+            { isActive: true },
+            { new: true }
+        )
+        if (!novedad) {
+            return res.status(404).json({ message: 'Novedad no encontrada' })
+        }
+        res.json({ message: 'Novedad reActivada exitosamente' })
     } catch (err) {
         next(err)
     }
