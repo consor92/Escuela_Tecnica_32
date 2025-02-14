@@ -1,0 +1,108 @@
+#!/usr/bin/env node
+/* eslint-disable no-undef */
+
+// Module dependencies.
+const app = require('../src/App')
+const debug = require('debug')('base-api-express-generator:server')
+const http = require('http')
+const figlet = require('figlet')
+const pkg = require('../package.json')
+
+
+app.set('port', 3001)
+
+// Create HTTP server.
+const server = http.createServer(app)
+
+// Listen on provided port, on all network interfaces.
+server.listen(3001, printTitle())
+server.on('error', onError)
+server.on('listening', onListening)
+
+function onError(error) {
+  // ===    !==   comparacion estricta (tipo y dato)
+  const addr = server.address();
+  let bind;
+
+  // Verifica si el servidor está escuchando
+  if (addr) {
+    bind = typeof addr === 'string' ? 'pipe ' + addr : 'port ' + addr.port;
+  } else {
+    // Si no hay dirección (el servidor no está escuchando)
+    bind = 'unknown address';
+  }
+
+  switch (error.code) {
+    case 'EACCES': // Error de permisos
+      // Este error ocurre cuando el proceso no tiene los permisos necesarios para acceder al puerto o pipe
+      console.error(bind + ' requires elevated privileges');
+      process.exit(1); // Salimos del proceso con un código de error
+      break;
+
+    case 'EADDRINUSE': // Error de dirección en uso
+      // Este error ocurre cuando el puerto o pipe ya está en uso por otro proceso
+      console.error(bind + ' is already in use');
+      process.exit(1); // Salimos del proceso con un código de error
+      break;
+
+    case 'ECONNREFUSED': // Error de conexión rechazada
+      // Este error ocurre cuando la conexión es rechazada por el servidor
+      // Ejemplo: Intentar conectar a un servidor que no está escuchando en el puerto especificado
+      console.error('Connection refused to ' + bind);
+      process.exit(1); // Salimos del proceso con un código de error
+      break;
+
+    case 'ECONNRESET': // Error de conexión reiniciada
+      // Este error ocurre cuando la conexión es inesperadamente cerrada por el servidor
+      // Ejemplo: El servidor cierra la conexión antes de que el cliente termine la solicitud
+      console.error('Connection reset by peer ' + bind);
+      process.exit(1); // Salimos del proceso con un código de error
+      break;
+
+    case 'ENOTFOUND': // Error de dirección no encontrada
+      // Este error ocurre cuando no se puede resolver el nombre de dominio a una dirección IP
+      // Ejemplo: Intentar conectar a un dominio que no existe
+      console.error('DNS lookup failed for ' + bind);
+      process.exit(1); // Salimos del proceso con un código de error
+      break;
+
+    case 'ETIMEDOUT': // Error de tiempo de espera agotado
+      // Este error ocurre cuando la conexión al servidor tarda demasiado y expira
+      // Ejemplo: Intentar conectar a un servidor que está tardando en responder
+      console.error('Connection timed out to ' + bind);
+      process.exit(1); // Salimos del proceso con un código de error
+      break;
+
+    case 'EHOSTUNREACH': // Error de host inalcanzable
+      // Este error ocurre cuando no se puede alcanzar el host especificado
+      // Ejemplo: Intentar conectar a un servidor en una red diferente que no es accesible
+      console.error('No route to host for ' + bind);
+      process.exit(1); // Salimos del proceso con un código de error
+      break;
+
+    case 'ENETUNREACH': // Error de red inalcanzable
+      // Este error ocurre cuando no se puede alcanzar la red especificada
+      // Ejemplo: Intentar conectar a un servidor cuando no hay conexión a Internet
+      console.error('Network is unreachable for ' + bind);
+      process.exit(1); // Salimos del proceso con un código de error
+      break;
+
+    default: // Error no manejado
+      // Si el error no es uno de los casos manejados, lo lanzamos
+      throw error;
+  }
+}
+
+// Event listener for HTTP server "listening" event.
+function onListening() {
+  const addr = server.address()
+  const bind = typeof addr === 'string' ? 'pipe ' + addr : 'port ' + addr.port
+  debug('Listening on ' + bind)
+}
+
+// Prints the app title and more specifications
+function printTitle() {
+  process.stdout.write('\n')
+  process.stdout.write(`${figlet.textSync(`Base API`, { font: 'Ogre' })}\n`)
+  process.stdout.write('\n')
+}
