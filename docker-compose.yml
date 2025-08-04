@@ -1,0 +1,127 @@
+services:
+  mongo:
+    image: mongo:6
+    container_name: mongo32
+    ports:
+      - "27017:27017"
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: administrador
+      MONGO_INITDB_ROOT_PASSWORD: Esdrujula2022
+    volumes:
+      - mongo_data:/data/db
+    restart: unless-stopped
+
+  mongo-express:
+    image: mongo-express
+    container_name: mongo_express
+    ports:
+      - "8081:8081"
+    environment:
+      ME_CONFIG_MONGODB_ENABLE_ADMIN: true
+      ME_CONFIG_MONGODB_ADMINUSERNAME: administrador
+      ME_CONFIG_MONGODB_ADMINPASSWORD: Esdrujula2022
+      ME_CONFIG_MONGODB_SERVER: mongo
+      ME_CONFIG_SITE_BASEURL: /mongo
+    depends_on:
+      - mongo
+    restart: unless-stopped
+
+  mysql:
+    image: mariadb:10.6.22
+    container_name: mysql_db
+    environment:
+      MYSQL_ROOT_PASSWORD: rootpass
+      MYSQL_DATABASE: encuentroTecnologico
+      MYSQL_USER: administrador
+      MYSQL_PASSWORD: Esdrujula2022
+    ports:
+      - "3306:3306"
+    volumes:
+      - mysql_data:/var/lib/mysql
+    restart: unless-stopped
+
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    container_name: phpmyadmin
+    environment:
+      PMA_HOST: mysql
+      PMA_USER: root
+      PMA_PASSWORD: rootpass
+    ports:
+      - "8082:80"
+    depends_on:
+      - mysql
+    restart: unless-stopped
+
+  api:
+    build:
+      context: ./API
+      dockerfile: Dockerfile
+    container_name: backend_api
+    ports:
+      - "5000:5000"
+    env_file:
+      - ./API/.env
+    depends_on:
+      - mongo
+    restart: unless-stopped
+
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    container_name: nextjs_frontend
+    ports:
+      - "3000:3000"
+    depends_on:
+      - api
+    restart: unless-stopped
+
+  backadmin:
+    build:
+      context: ./BackAdmin
+      dockerfile: Dockerfile
+    container_name: react_backadmin
+    ports:
+      - "5173:5173"
+    stdin_open: true
+    tty: true  
+    volumes:
+      - ./BackAdmin:/app       # Monta el código para hot reload
+      - /app/node_modules      # Evita que se sobreescriba node_modules    
+    depends_on:
+      - mongo
+    restart: unless-stopped
+    
+  php:
+    build:
+      context: ./php
+      dockerfile: Dockerfile
+    container_name: php56_app
+    ports:
+      - "8080:8080"
+    depends_on:
+      - mysql
+    volumes:
+      - ./php/php.ini:/usr/local/etc/php/php.ini
+    restart: unless-stopped
+
+  nginx:
+    image: nginx:latest
+    container_name: nginx_proxy
+    ports:
+      - "80:80"
+    volumes:
+      - ./nginx/default.conf:/etc/nginx/conf.d/default.conf
+    depends_on:
+      - frontend
+      - backadmin
+      - api
+      - phpmyadmin
+      - mongo-express
+      - php
+    restart: unless-stopped
+
+volumes:
+  mongo_data:
+  mysql_data:
