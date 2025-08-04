@@ -1,0 +1,405 @@
+
+
+.container {
+  display: flex;
+  flex-direction: column;
+  width: 100vw;
+  height: 40vh;
+  background-image: url('../../Assets/Images/bg_inscripciones.png');
+  justify-content: center;
+  align-items: center;
+  color: white;
+  position: relative;
+  padding-bottom: 40px;
+}
+
+.container::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: var(--background--black);
+  opacity: 0.98;
+}
+
+.container p {
+    z-index: 1;
+    font-size: 20px;
+    text-align: center;
+    color: var(--font-color--white);
+    line-height: 150%;
+    letter-spacing: 0.13rem;
+}
+
+
+
+/* COMENTADO CODIGO QUE SERA REEMPLAZADO */
+
+/* .container {
+  font-family: 'PT Sans', sans-serif;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+  gap: 20px;
+  grid-auto-flow: row;
+  justify-content: center;
+  grid-template-areas:
+    "News News News3"
+    "News News News3"
+    "News2 News2 News3";
+  padding: 10vh 13vw 10vh 13vw;
+  width: 100vw;
+  height: 100vh;
+  background-image: url('../../Assets/Images/News.png');
+  background-color: var(--background--black);
+  background-blend-mode: multiply;
+  opacity: 1;
+} */
+
+/* .parent {
+  font-family: 'PT Sans', sans-serif;
+  display: flex;
+  flex-grow: 1;
+  flex-wrap: wrap;
+  justify-content: center;
+  padding: 10vh 13vw 10vh 13vw;
+  width: 100vw;
+  height: 100vh;
+  background-image: url('../../Assets/Images/bg_page_automotores.jpg');
+  background-color: var(--background--black);
+  background-blend-mode: multiply;
+  opacity: 0.99;
+}
+
+.News {
+  grid-area: News;
+  position: relative;
+  display: flex;
+  align-items: flex-start;
+  height: 100%;
+  transform: scale(1.00);
+  transition: all 0.7s ease;
+}
+
+.News img {
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
+}
+
+.News h2 {
+  position: absolute;
+  background-color: var(--background--grayTranslucent);
+  color: var(--font-color--white);
+  display: inline-block;
+  max-width: 90%;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+  font-size: var(--font-size--extraLarge);
+  width: 100%;
+  padding-left: 12px;
+  bottom: 30px;
+  border-radius: 5px;
+}
+
+.News h3 {
+  position: absolute;
+  color: var(--font-color--white);
+  background-color: var(--background--redIntense);
+  display: inline-block;
+  max-width: 90%;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+  text-align: right;
+  padding: 3px;
+  font-size: var(--font-size--mediun);
+  left: 12px;
+  bottom: 65px;
+  border-radius: 5px;
+}
+
+.News h4 {
+  position: absolute;
+  color: var(--font-color--white);
+  background-color: var(--background--grayTranslucent);
+  display: inline-block;
+  max-width: 90%;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+  padding: 3px;
+  font-size: var(--font-size--small);
+  left: 12px;
+  bottom: 8px;
+  width: 100%;
+}
+
+
+.News2 {
+  position: relative;
+  grid-area: News2;
+  display: grid;
+  gap: 10px;
+  grid-template-areas:
+    "News2 News2";
+  transform: scale(1.00);
+}
+
+.News2Child {
+  position: relative;
+  transform: scale(1.00);
+  transition: all 0.7s ease;
+
+}
+
+
+.News2Child img {
+  object-fit: cover;
+  width: 100%;
+  height: 70%;
+}
+
+.News2Child h2 {
+  position: absolute;
+  background-color: var(--background--grayTranslucent);
+  color: var(--font-color--white);
+  display: inline-block;
+  max-width: 90%;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+  text-align: right;
+  font-size: 25px;
+  bottom: 36%;
+  left: 1px;
+  padding: 3px;
+  font-size: 22px;
+  bottom: 9px;
+  padding-left: 8px;
+
+}
+
+.News2 h3 {
+  position: absolute;
+  color: var(--font-color--white);
+  background-color: var(--background--redIntense);
+  display: inline-block;
+  max-width: 90%;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+  text-align: right;
+  padding: 1px;
+  font-size: var(--font-size--mediun);
+  padding: 2px;
+  font-size: 13px;
+  left: 11px;
+  bottom: 40px;
+  transition: transform 0.1s ease-in-out;
+}
+
+.News2 h4 {
+  position: absolute;
+  color: var(--font-color--white);
+  background-color: var(--background--grayTranslucent);
+  display: inline-block;
+  max-width: 90%;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+  text-align: right;
+  padding: 3px;
+  font-size: var(--font-size--small);
+  left: 1px;
+  padding: 3px;
+  font-size: 10px;
+  bottom: 0px;
+  padding-left: 8px;
+  border-bottom: 1px solid var(--background--redIntense);
+  border-left: 1px solid var(--background--redIntense);
+  padding-right: px;
+}
+
+.News3 {
+  position: relative;
+  max-width: 100%;
+  width: 100%;
+  grid-area: News3;
+  display: grid;
+  grid-template-columns: repeat(1fr);
+  grid-template-rows: repeat(3, 1fr);
+  gap: 10px 10px;
+}
+
+.News3Child {
+  position: relative;
+  transform: scale(1.00);
+  transition: all 0.7s ease;
+}
+
+.News3Child img {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+}
+
+.News3Child h2 {
+  position: absolute;
+  color: var(--font-color--white);
+  background-color: var(--background--grayTranslucent);
+  display: inline-block;
+  max-width: 90%;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+  text-align: right;
+  font-size: 22px;
+  left: 8px;
+  bottom: 13px;
+}
+
+.News3 h3 {
+  position: absolute;
+  color: var(--font-color--white);
+  background-color: var(--background--redIntense);
+  display: inline-block;
+  max-width: 90%;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+  text-align: right;
+  padding: 2px;
+  font-size: 13px;
+  left: 8px;
+  bottom: 40px;
+}
+
+.News3 h4 {
+  position: absolute;
+  color: var(--font-color--white);
+  background-color: var(--background--grayTranslucent);
+  display: inline-block;
+  max-width: 90%;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+  text-align: right;
+  padding: 3px;
+  font-size: 10px;
+  bottom: 0px;
+  padding-left: 8px;
+
+}
+
+.News:hover,
+.News2Child:hover,
+.News3Child:hover {
+  filter: saturate(1.2);
+  transform: scale(1.02);
+  transition: all 0.1s ease-in-out;
+}
+
+.News img:hover,
+.News2Child img:hover,
+.News3Child img:hover {
+  filter: none;
+}
+
+.containerButtongrid {
+  display: grid;
+  grid-template-areas:
+    "prevButton newsButton nextButton";
+  position: relative;
+  width: fit-content;
+  height: fit-content;
+  left: 85%;
+  gap: 5px;
+  top: 10px;
+  font-size: 20px;
+}
+
+
+.prevButton {
+  all: unset;
+  width: 20px;
+  font-size: 20px;
+  grid-area: prevButton;
+  color: var(--font-color--white);
+
+
+}
+
+.newsButton {
+  all: unset;
+  font-size: 25px;
+  bottom: 50px;
+  padding-bottom: 5px;
+  grid-area: newsButton;
+  color: var(--font-color--white);
+}
+
+
+.nextButton {
+  all: unset;
+  grid-area: nextButton;
+  font-size: 20px;
+  color: var(--font-color--white);
+
+}
+
+.newsButton:hover,
+.nextButton:hover,
+.prevButton:hover {
+  color: var(--background--redIntense);
+
+}
+
+
+@media only screen and (max-width: 768px) {
+  .container {
+    padding: 10vh 13vw 10vh 13vw;
+    grid-template-columns: 1fr;
+    height: 10vh;
+    grid-template-rows: auto auto auto;
+    gap: 5px;
+    padding-left: 2.5%;
+    padding-right: 2.5%;
+    grid-auto-flow: row;
+    grid-template-areas:
+      "News"
+      "News2"
+      "News3";
+    height: 100vh;
+  }
+
+
+  .News2Child img {
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+  }
+
+  .News2,
+  .News {
+    height: 40vh;
+  }
+
+  .News3 {
+    height: 66vh;
+    padding: 0vw 1vw 0vw 1vw;
+    display: none;
+  }
+
+  .News3 img {
+    height: 100%;
+  }
+
+  .containerButtongrid {
+    left: 30%;
+  }
+
+} */

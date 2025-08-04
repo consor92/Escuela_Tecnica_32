@@ -1,0 +1,193 @@
+.container {
+    display: flex;
+    flex-direction: row;
+    height: 80px;
+    position: fixed;
+    z-index: 999;
+    width: 100%;
+}
+
+.container__EscuelaTecnica {
+    width: 350px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    background-color: var(--background--blue);
+    color: var(--font-color--white);
+    font-weight: bold;
+    text-align: center;
+}
+
+.escuelaTecnica_Img {
+    background-image: url('../../Assets/Images/logoET32.png');
+    background-size: contain;
+    background-position: center;
+    width: 60px;
+    height: 60px;
+    margin-left: 15px;
+    margin-right: 15px;
+}
+
+.escuelaTecnica_info {
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+    /* margin-left: 0; */
+}
+
+.escuelaTecnica_info h2 {
+    font-size: var(--font-size--large);
+    margin-bottom: 10px;
+}
+
+.escuelaTecnica_info h3 {
+    font-size: var(--font-size--small);
+    font-weight: 200;
+}
+
+
+.container__navBar {
+    display: flex;
+    flex-direction: column;
+    width: calc(100% - 350px);
+}
+
+.container__navBarTop {
+    display: flex;
+    justify-content: flex-end;
+    background-color: var(--background--black);
+    height: 30px;
+}
+
+.container__navBarTop nav {
+    display: flex;
+    margin-right: 20px;
+}
+
+.container__navBarTop a {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    color: var(--font-color--white);
+    margin: auto 25px;
+   
+    font-size: var(--font-size--medium);
+    font-weight: 400;
+}
+
+.container__navBarBottom {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--background--white);
+    height: 50px;
+}
+
+.container__navBarBottom button {
+    cursor: pointer;
+    background: transparent;
+    border: none;
+    color: var(--font-color--black);
+    margin: auto 50px;
+    font-size: var(--font-size--regular);
+    font-weight: bold;
+}
+
+.container__navBarBottom button:hover,
+.container__navBarTop button:hover {
+    color: var(--font-color--redIntense);
+}
+
+
+.container__sideBar {
+    display: none;
+}
+
+@media only screen and (max-width:768px) {
+    .container__sideBar {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 100px;
+        height: 80px;
+        background-color: var(--background--grey);
+        border: none;
+        font-size: var(--font-size--extraLarge);
+    }
+
+    .icon-HiMenu {
+        width: 50px;
+        height: 50px;
+    }
+
+    .container__navBar {
+        width: 0;
+        height: 0;
+    }
+
+    .container__navBarClosed {
+        display: none;
+    }
+
+    .container__navBarOpen {
+        top: 81px;
+        right: 0px;
+        position: absolute;
+        width: 100%;
+        height: 100vh;
+    }
+
+    .container__navBarTop {
+        flex-direction: column;
+        justify-content: center;
+        height: 40vh;
+        opacity: 0.95;
+    }
+
+    .container__navBarTop nav {
+        flex-direction: column;
+        margin-left: 20px;
+    }
+
+    .container__navBarTop button {
+        font-size: var(--font-size--regular);
+        margin: 20px 0 20px 0;
+    }
+
+    .container__navBarBottom {
+        justify-content: flex-start;
+        align-items: center;
+        height: 50vh;
+        opacity: 0.9;
+    }
+
+    .container__navBarBottom nav {
+        display: flex;
+        flex-direction: column;
+        align-items: baseline;
+        margin-left: 20px;
+    }
+
+    .container__navBarBottom button {
+        /* width: 100vw; */
+        margin: 25px 0 25px;
+        font-size: var(--font-size--large);
+    }
+
+    .container__EscuelaTecnica {
+        width: 100%;
+    }
+}
+
+@media only screen and (max-width:576px) {
+
+    .container__navBarTop a,
+    .container__navBarBottom a {
+        margin: 25px 0 10px 0;
+        ;
+    }
+
+    .container__navBarBottom nav {
+        margin-bottom: 40px;
+    }
+}

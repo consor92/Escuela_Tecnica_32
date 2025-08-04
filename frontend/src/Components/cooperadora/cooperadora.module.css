@@ -1,0 +1,208 @@
+.container {
+    width: 100%;
+    background-image: url('../../Assets/Images/bg_disciplines.png');
+    background-size: cover;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 35px;
+    padding-bottom: 50px;
+}
+
+.container::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: var(--background--black);
+    opacity: 0.9;
+}
+
+.title {
+    display: flex;
+    margin: 5% auto;
+    margin-bottom: 0;
+    font-weight: 00;
+    letter-spacing: 2px;
+    font-size: var(--font-size--big);
+    color: var(--background--white);
+    z-index: 1;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+}
+
+.title span {
+    display: flex;
+    border-bottom: solid 3px var(--background--redIntense);
+    margin-top: .5%;
+    width: 10%;
+}
+
+.text {
+    position: relative;
+    z-index: 9;
+    width: 75%;
+    font-size: var(--font-size--large);
+    letter-spacing: var(--font-spacing-medium);
+    color: var(--font-color--grey);
+    margin-bottom: 2%;
+}
+
+.btnMoreInfo {
+    position: relative;
+    z-index: 9;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.btnMoreInfo button {
+    padding: 0 10px;
+    height: 40px;
+    color: var(--background--grey);
+    font-size: var(--font-size--large);
+    font-weight: 800;
+    border-radius: 10px;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    transition: all .6s ease;
+}
+
+.btnMoreInfo button:hover {
+    height: 40px;
+    color: var(--background--white);
+    border-radius: 10px;
+    font-size: var(--font-size--large);
+    font-weight: 800;
+    border: none;
+    background-color: var(--background--redIntense);
+    transition: all .8s ease;
+}
+
+.container__msg {
+    width: 80%;
+    height: 50%;
+    display: flex;
+    flex-direction: row;
+    position: relative;
+    z-index: 9;
+}
+
+.msg {
+    width: 50%;
+    height: 379px;
+    background-color: var(--background--redIntense);
+    border: none;
+    border-radius: 20px 0 0 0;
+}
+
+.msg__title {
+    position: relative;
+    z-index: 9;
+    color: var(--font-color--white);
+    font-size: var(--font-size--extraLarge);
+    letter-spacing: var(--font-spacing-regular);
+    font-weight: 800;
+    margin: 15%;
+    margin-left: 5%;
+    margin-bottom: 0;
+}
+
+.msg__info {
+    display: flex;
+    flex-direction: row;
+}
+
+.info__decoration {
+    position: relative;
+    font-size: 200px;
+    color: var(--font-color--white);
+    margin-left: 5%;
+}
+
+.info__text {
+    font-size: 14px;
+    width: 70%;
+    margin-top: 5%;
+    margin-left: 5%;
+    position: relative;
+    font-weight: 100;
+    letter-spacing: var(--font-spacing-medium);
+    z-index: 9;
+    color: var(--font-color--white);
+}
+
+
+.images {
+    width: 50%;
+    height: 100%;
+}
+
+.images div {
+    border-radius: 0 0 20px 0 !important;
+}
+
+.image {
+    background-image: url('https://cdn.wallpapersafari.com/95/49/RBudz6.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    height: 379px;
+}
+
+@media only screen and (max-width:768px) {
+
+    .msg {
+        height: 260px;
+    }
+
+    .msg__title {
+        margin-top: 15px;
+    }
+
+    .image {
+        height: 300px;
+    }
+
+    .title {
+        margin-top: 40px;
+        font-size: 22px;
+    }
+
+    .title span {
+        margin-top: 10px;
+        width: 50%;
+    }
+
+    .text {
+        display: none;
+        /* position: relative;
+        z-index: 9;
+        width: 75%;
+        font-size: 16px;
+        text-align: start;
+        color: var(--font-color--grey);
+        margin-bottom: 2%; */
+    }
+
+    .container__msg {
+        flex-direction: column;
+    }
+
+    .msg {
+        width: 100%;
+    }
+
+    .images {
+        width: 100%;
+    }
+
+
+
+}
