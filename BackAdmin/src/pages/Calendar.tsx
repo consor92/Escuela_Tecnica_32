@@ -37,20 +37,9 @@ const Calendar: React.FC = () => {
     // Initialize with some events
     setEvents([
       {
-        id: "1",
-        title: "Event Conf.",
-        start: new Date().toISOString().split("T")[0],
-        extendedProps: { calendar: "Danger" },
-      },
-      {
-        id: "2",
-        title: "Meeting",
-        start: new Date(Date.now() + 86400000).toISOString().split("T")[0],
-        extendedProps: { calendar: "Success" },
-      },
-      {
         id: "3",
         title: "Workshop",
+		description: "",
         start: new Date(Date.now() + 172800000).toISOString().split("T")[0],
         end: new Date(Date.now() + 259200000).toISOString().split("T")[0],
         extendedProps: { calendar: "Primary" },
