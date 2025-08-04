@@ -1,0 +1,32 @@
+services:
+  api:
+    volumes:
+      - ./API:/app
+      - /app/node_modules
+    environment:
+      NODE_ENV: development
+      PORT: 4000
+      MONGO_URI: mongodb://administrador:Esdrujula2022@mongo:27017/paginaInstitucional?authSource=admin
+    command: npm run dev  # Usa nodemon o similar en tu package.json
+
+  frontend:
+    volumes:
+      - ./frontend:/app
+      - /app/node_modules
+    environment:
+      NODE_ENV: development
+      PORT: 3000
+      NEXT_PUBLIC_API_URL: http://localhost/api
+    command: npm run dev
+
+  backadmin:
+    volumes:
+      - ./BackAdmin:/app
+      - /app/node_modules
+    environment:
+      NODE_ENV: development
+      PORT: 5173
+      VITE_API_URL: http://localhost/api
+    command: npm run dev
+
+
