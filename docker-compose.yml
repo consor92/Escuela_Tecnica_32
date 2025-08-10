@@ -76,22 +76,6 @@ services:
     depends_on:
       - api
     restart: unless-stopped
-
-  backadmin:
-    build:
-      context: ./BackAdmin
-      dockerfile: Dockerfile
-    container_name: react_backadmin
-    ports:
-      - "5173:5173"
-    stdin_open: true
-    tty: true  
-    volumes:
-      - ./BackAdmin:/app       # Monta el código para hot reload
-      - /app/node_modules      # Evita que se sobreescriba node_modules    
-    depends_on:
-      - mongo
-    restart: unless-stopped
     
   php:
     build:
@@ -115,7 +99,6 @@ services:
       - ./nginx/default.conf:/etc/nginx/conf.d/default.conf
     depends_on:
       - frontend
-      - backadmin
       - api
       - phpmyadmin
       - mongo-express
