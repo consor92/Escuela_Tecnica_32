@@ -1,0 +1,42 @@
+[
+  {
+    "date": "2025-08-10",
+    "title": "Acto escolar",
+    "description": "Acto por el Día del Maestro"
+  },
+  {
+    "date": "2025-08-15",
+    "title": "Reunión de padres",
+    "description": "Reunión informativa en el SUM"
+  },
+  {
+    "date": "2025-09-02",
+    "title": "Entrega de boletines",
+    "description": "Entrega de boletines trimestrales"
+  },
+  {
+    "date": "2025-09-21",
+    "title": "Día del Estudiante",
+    "description": "Festejo en el patio central"
+  },
+  {
+    "date": "2025-08-21",
+    "title": "Jornada de capacitación docente",
+    "description": "Capacitación obligatoria para todo el personal docente."
+  },
+  {
+    "date": "2025-08-28",
+    "title": "Visita educativa",
+    "description": "Salida educativa al museo de ciencias naturales."
+  },
+  {
+    "date": "2025-08-30",
+    "title": "Taller de orientación vocacional",
+    "description": "Taller para alumnos de 6to año."
+  },
+  {
+    "date": "2025-09-10",
+    "title": "Charla sobre seguridad vial",
+    "description": "Charla a cargo de la policía de tránsito."
+  }
+]
