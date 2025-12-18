@@ -1,0 +1,21 @@
+:root {
+    --background--blue: #191D62;
+    --background--black: #171715;
+    --background--redIntense: #F90334;
+    --background--white: #F9F9F9;
+    --background--grayTranslucent:#1f1e1e41;
+    --background--grey: #9D9D9D;
+    --font-color--black: var(--background--black);
+    --font-color--redIntense: var(--background--redIntense);
+    --font-color--white: var(--background--white);
+    --font-color--grey:var(--background--grey);
+    --font-size--small: 12px;
+    --font-size--medium: 14px;
+    --font-size--regular: 18px;
+    --font-size--large: 22px;
+    --font-size--extraLarge: 30px;
+    --font-size--big:46px;
+    --font-spacing-small:1px;
+    --font-spacing-medium:1.5px;
+    --font-spacing-regular:2px;
+}

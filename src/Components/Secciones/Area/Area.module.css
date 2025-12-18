@@ -1,0 +1,192 @@
+.container {
+  display: flex;
+  height: 77vh;
+  width: 100%;
+  position: relative;
+  z-index: 9;
+}
+
+.containerImage {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  width: 60%;
+}
+
+.img1 {
+  height: 50%;
+  width: auto;
+  background-image: url("../../../Assets/Images/infra3.png");
+}
+
+.img2 {
+  height: 50%;
+  width: auto;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-image: url("../../../Assets/Images/infra4.png");
+}
+
+.area {
+  display: flex;
+  flex-direction: row;
+  background-color: var(--background--black);
+  width: 90%;
+}
+
+.areaTitle {
+  display: flex;
+  width: 10%;
+  transform: rotate(-90deg);
+  height: 10%;
+  align-self: center;
+  align-items: center;
+  justify-content: center;
+
+}
+
+.areaTitle>h2 {
+  color: var(--background--redIntense);
+  font-size: 27px;
+  white-space: nowrap;
+}
+
+.areaText {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 20px;
+  width: 90%;
+}
+
+.areaText p {
+  font-weight: 100;
+  margin-inline: auto;
+  font-size: 16px;
+  color: var(--background--white);
+  line-height: 30px;
+}
+
+.areaText h3 {
+  width: 100%;
+  position: relative;
+  margin: 30px 0 25px 0;
+  font-size: var(--font-size--large);
+  color: var(--background--white);
+}
+
+.areaText h3::after {
+  content: '';
+  position: absolute;
+  bottom: -8px;
+  left: 0%;
+  /* transform: translateX(-50%); */
+  width: 80px;
+  /* Largo del borde */
+  border-bottom: 5px solid var(--background--redIntense);
+}
+
+.areaName {
+  width: 100%;
+  padding: 0 0 0 15px;
+}
+
+.areaButton {
+  height: 100%;
+  display: flex;
+  justify-content: end;
+  align-items: end;
+  width: 100%;
+}
+
+.areaButton button {
+  height: 40px;
+  width: 100px;
+  color: var(--background--grey);
+  font-size: var(--font-size--regular);
+  font-weight: 800;
+  border-radius: 10px;
+  border: none;
+  cursor: pointer;
+  background-color: transparent;
+  transition: all .6s ease;
+}
+
+.areaButton button:hover {
+  height: 40px;
+  color: var(--background--white);
+  border-radius: 10px;
+  font-size: var(--font-size--regular);
+  font-weight: 800;
+  border: none;
+  background-color: var(--background--redIntense);
+  transition: all .8s ease;
+}
+
+
+
+@media only screen and (max-width: 768px) {
+  .container {
+    height: 85vh;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .containerImage {
+    height: 70%;
+    width: auto;
+  }
+
+  .areaText h3 {
+    display: none;
+  }
+
+  .areaText p {
+    font-size: 12px;
+  }
+
+
+  .img1 {
+    height: 100%;
+    background-position: center;
+    background-size: cover;
+  }
+
+  .img2 {
+    display: none;
+  }
+
+  .area {
+    width: auto;
+    height: 130%;
+  }
+
+  .areaTitle>h2 {
+    font-size: 18px;
+    margin-top: 10px;
+  }
+
+  .lineText {
+    display: none;
+  }
+
+  .areaName {
+    display: none;
+  }
+
+  .areaButton button {
+    font-size: 14px;
+    height: 30px;
+    width: 90px;
+  }
+
+
+  .areaButton button:hover {
+    font-size: 14px;
+    height: 30px;
+    width: 90px;
+  }
+
+
+}
