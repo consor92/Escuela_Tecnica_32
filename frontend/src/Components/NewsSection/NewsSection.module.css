@@ -4,13 +4,13 @@
   display: flex;
   flex-direction: column;
   width: 100vw;
-  height: 40vh;
-  background-image: url('../../Assets/Images/bg_inscripciones.png');
+  /* dejar que el contenido marque la altura para que las cards estén dentro de la franja oscura */
+  min-height: 40vh;
   justify-content: center;
   align-items: center;
   color: white;
   position: relative;
-  padding-bottom: 40px;
+  padding: 40px 0 60px 0;
 }
 
 .container::after {
@@ -20,386 +20,311 @@
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: var(--background--black);
-  opacity: 0.98;
+  /* overlay usando rgba para mayor control y mejor compatibilidad */
+  background: rgba(0,0,0,0.78);
+  z-index: 0; /* capa de fondo */
 }
 
-.container p {
-    z-index: 1;
-    font-size: 20px;
-    text-align: center;
-    color: var(--font-color--white);
-    line-height: 150%;
-    letter-spacing: 0.13rem;
+/* restaurar imagen de fondo en la franja oscura (home) */
+.container {
+  background-image: url('../../Assets/Images/bg_inscripciones.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
 }
 
+.container > .inner {
+  position: relative;
+  z-index: 1; /* asegurar que el contenido quede sobre el overlay */
+  width: 100%;
+  max-width: 1200px;
+  padding: 0 4vw;
+  box-sizing: border-box;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
 
+.container p,
+.sectionTitle,
+.lead {
+  z-index: 1;
+}
+
+.lead {
+  font-size: 16px;
+  text-align: center;
+  color: var(--font-color--white);
+  line-height: 150%;
+  letter-spacing: 0.13rem;
+  margin-bottom: 12px;
+}
 
 /* COMENTADO CODIGO QUE SERA REEMPLAZADO */
+/* Nuevo estilo para mosaico de cards y modal */
 
-/* .container {
-  font-family: 'PT Sans', sans-serif;
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  grid-template-rows: repeat(3, 1fr);
-  gap: 20px;
-  grid-auto-flow: row;
-  justify-content: center;
-  grid-template-areas:
-    "News News News3"
-    "News News News3"
-    "News2 News2 News3";
-  padding: 10vh 13vw 10vh 13vw;
-  width: 100vw;
-  height: 100vh;
-  background-image: url('../../Assets/Images/News.png');
-  background-color: var(--background--black);
-  background-blend-mode: multiply;
-  opacity: 1;
-} */
-
-/* .parent {
-  font-family: 'PT Sans', sans-serif;
-  display: flex;
-  flex-grow: 1;
-  flex-wrap: wrap;
-  justify-content: center;
-  padding: 10vh 13vw 10vh 13vw;
-  width: 100vw;
-  height: 100vh;
-  background-image: url('../../Assets/Images/bg_page_automotores.jpg');
-  background-color: var(--background--black);
-  background-blend-mode: multiply;
-  opacity: 0.99;
-}
-
-.News {
-  grid-area: News;
-  position: relative;
-  display: flex;
-  align-items: flex-start;
-  height: 100%;
-  transform: scale(1.00);
-  transition: all 0.7s ease;
-}
-
-.News img {
-  object-fit: cover;
-  width: 100%;
-  height: 100%;
-}
-
-.News h2 {
-  position: absolute;
-  background-color: var(--background--grayTranslucent);
-  color: var(--font-color--white);
-  display: inline-block;
-  max-width: 90%;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-  overflow: hidden;
+.sectionTitle {
+  z-index: 1;
+  margin: 20px 0 6px 0;
   font-size: var(--font-size--extraLarge);
-  width: 100%;
-  padding-left: 12px;
-  bottom: 30px;
-  border-radius: 5px;
-}
-
-.News h3 {
-  position: absolute;
   color: var(--font-color--white);
-  background-color: var(--background--redIntense);
-  display: inline-block;
-  max-width: 90%;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-  overflow: hidden;
-  text-align: right;
-  padding: 3px;
-  font-size: var(--font-size--mediun);
-  left: 12px;
-  bottom: 65px;
-  border-radius: 5px;
+  text-transform: uppercase;
 }
 
-.News h4 {
-  position: absolute;
+.lead {
+  z-index: 1;
+  margin: 0 0 20px 0;
+  font-size: 16px;
   color: var(--font-color--white);
-  background-color: var(--background--grayTranslucent);
-  display: inline-block;
-  max-width: 90%;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-  overflow: hidden;
-  padding: 3px;
-  font-size: var(--font-size--small);
-  left: 12px;
-  bottom: 8px;
-  width: 100%;
 }
 
+.cardsContainer {
+  width: 100%;
+  padding: 10px 0 20px 0;
+  box-sizing: border-box;
+  z-index: 1;
+}
 
-.News2 {
-  position: relative;
-  grid-area: News2;
+.cardsGrid {
   display: grid;
-  gap: 10px;
-  grid-template-areas:
-    "News2 News2";
-  transform: scale(1.00);
+  grid-template-columns: repeat(4, 1fr);
+  gap: 18px;
+  align-items: stretch;
 }
 
-.News2Child {
+.card {
+  /* contraste fuerte: fondo gris oscuro claro sobre el negro de la franja */
+  background-color: #15181b; /* oscuro pero distinguible del fondo */
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 8px 30px rgba(0,0,0,0.6), 0 1px 0 rgba(255,255,255,0.02) inset;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+  border: 1px solid rgba(255,255,255,0.04);
   position: relative;
-  transform: scale(1.00);
-  transition: all 0.7s ease;
-
 }
 
+.card:focus,
+.card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 14px 30px rgba(0,0,0,0.6);
+  outline: none;
+}
 
-.News2Child img {
-  object-fit: cover;
+.cardImage {
+  position: relative;
   width: 100%;
-  height: 70%;
+  height: 180px;
+  background: #222;
+  z-index: 1;
 }
 
-.News2Child h2 {
-  position: absolute;
-  background-color: var(--background--grayTranslucent);
-  color: var(--font-color--white);
-  display: inline-block;
-  max-width: 90%;
-  text-overflow: ellipsis;
-  white-space: nowrap;
+.cardBody {
+  padding: 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  z-index: 1;
+}
+
+.card {
+  /* cards claras con sombra sutil */
+  background-color: #f8fafc; /* muy claro */
+  border-radius: 10px;
   overflow: hidden;
-  text-align: right;
-  font-size: 25px;
-  bottom: 36%;
-  left: 1px;
-  padding: 3px;
-  font-size: 22px;
-  bottom: 9px;
-  padding-left: 8px;
-
-}
-
-.News2 h3 {
-  position: absolute;
-  color: var(--font-color--white);
-  background-color: var(--background--redIntense);
-  display: inline-block;
-  max-width: 90%;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-  overflow: hidden;
-  text-align: right;
-  padding: 1px;
-  font-size: var(--font-size--mediun);
-  padding: 2px;
-  font-size: 13px;
-  left: 11px;
-  bottom: 40px;
-  transition: transform 0.1s ease-in-out;
-}
-
-.News2 h4 {
-  position: absolute;
-  color: var(--font-color--white);
-  background-color: var(--background--grayTranslucent);
-  display: inline-block;
-  max-width: 90%;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-  overflow: hidden;
-  text-align: right;
-  padding: 3px;
-  font-size: var(--font-size--small);
-  left: 1px;
-  padding: 3px;
-  font-size: 10px;
-  bottom: 0px;
-  padding-left: 8px;
-  border-bottom: 1px solid var(--background--redIntense);
-  border-left: 1px solid var(--background--redIntense);
-  padding-right: px;
-}
-
-.News3 {
+  box-shadow: 0 6px 18px rgba(2,6,23,0.08);
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.15s ease, box-shadow 0.15s ease, border-color 160ms ease;
+  border: 1px solid rgba(2,6,23,0.06);
   position: relative;
-  max-width: 100%;
-  width: 100%;
-  grid-area: News3;
-  display: grid;
-  grid-template-columns: repeat(1fr);
-  grid-template-rows: repeat(3, 1fr);
-  gap: 10px 10px;
 }
 
-.News3Child {
-  position: relative;
-  transform: scale(1.00);
-  transition: all 0.7s ease;
-}
-
-.News3Child img {
+.card::after {
+  content: "";
   position: absolute;
-  width: 100%;
-  height: 100%;
+  inset: 0;
+  background: transparent;
+  transition: background 180ms ease, transform 180ms ease;
+  z-index: 0;
 }
 
-.News3Child h2 {
-  position: absolute;
-  color: var(--font-color--white);
-  background-color: var(--background--grayTranslucent);
-  display: inline-block;
-  max-width: 90%;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-  overflow: hidden;
-  text-align: right;
-  font-size: 22px;
-  left: 8px;
-  bottom: 13px;
+.card:hover::after {
+  background: rgba(220, 40, 40, 0.08); /* tono rojo suave */
 }
 
-.News3 h3 {
-  position: absolute;
-  color: var(--font-color--white);
-  background-color: var(--background--redIntense);
-  display: inline-block;
-  max-width: 90%;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-  overflow: hidden;
-  text-align: right;
-  padding: 2px;
-  font-size: 13px;
-  left: 8px;
-  bottom: 40px;
+.card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 18px 40px rgba(0,0,0,0.65);
+  border-color: var(--background--redIntense);
 }
 
-.News3 h4 {
-  position: absolute;
-  color: var(--font-color--white);
-  background-color: var(--background--grayTranslucent);
-  display: inline-block;
-  max-width: 90%;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-  overflow: hidden;
-  text-align: right;
-  padding: 3px;
-  font-size: 10px;
-  bottom: 0px;
-  padding-left: 8px;
-
+.card:hover .cardTitle {
+  color: var(--background--redIntense, #dc2828);
 }
 
-.News:hover,
-.News2Child:hover,
-.News3Child:hover {
-  filter: saturate(1.2);
-  transform: scale(1.02);
-  transition: all 0.1s ease-in-out;
+/* Modal content layout: image + text side-by-side on wide screens */
+.modalContent {
+  display: flex;
+  gap: 20px;
+  padding: 18px;
+  box-sizing: border-box;
 }
 
-.News img:hover,
-.News2Child img:hover,
-.News3Child img:hover {
-  filter: none;
+.modalContent .modalImage {
+  width: 50%;
+  min-height: 360px;
 }
 
-.containerButtongrid {
-  display: grid;
-  grid-template-areas:
-    "prevButton newsButton nextButton";
-  position: relative;
-  width: fit-content;
-  height: fit-content;
-  left: 85%;
-  gap: 5px;
-  top: 10px;
-  font-size: 20px;
+.modalContent .modalBody {
+  width: 50%;
+  padding: 0;
 }
 
-
-.prevButton {
-  all: unset;
-  width: 20px;
-  font-size: 20px;
-  grid-area: prevButton;
-  color: var(--font-color--white);
-
-
+.modalDesc {
+  margin-bottom: 12px;
+  font-weight: 600;
 }
-
-.newsButton {
-  all: unset;
-  font-size: 25px;
-  bottom: 50px;
-  padding-bottom: 5px;
-  grid-area: newsButton;
-  color: var(--font-color--white);
-}
-
-
-.nextButton {
-  all: unset;
-  grid-area: nextButton;
-  font-size: 20px;
-  color: var(--font-color--white);
-
-}
-
-.newsButton:hover,
-.nextButton:hover,
-.prevButton:hover {
-  color: var(--background--redIntense);
-
-}
-
 
 @media only screen and (max-width: 768px) {
-  .container {
-    padding: 10vh 13vw 10vh 13vw;
-    grid-template-columns: 1fr;
-    height: 10vh;
-    grid-template-rows: auto auto auto;
-    gap: 5px;
-    padding-left: 2.5%;
-    padding-right: 2.5%;
-    grid-auto-flow: row;
-    grid-template-areas:
-      "News"
-      "News2"
-      "News3";
-    height: 100vh;
-  }
+  .modalContent { flex-direction: column; }
+  .modalContent .modalImage { width: 100%; min-height: 220px; }
+  .modalContent .modalBody { width: 100%; }
+}
 
+.cardTitle {
+  color: #071124; /* texto oscuro sobre card clara */
+  font-size: var(--font-size--regular);
+  margin: 0;
+}
 
-  .News2Child img {
-    object-fit: cover;
-    width: 100%;
-    height: 100%;
-  }
+.cardDesc {
+  color: rgba(7,17,36,0.75);
+  font-size: 14px;
+  line-height: 1.35;
+  margin: 0;
+}
 
-  .News2,
-  .News {
-    height: 40vh;
-  }
+/* Modal */
+.modalOverlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.85); /* más opaco para resaltar el modal */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+  padding: 24px;
+}
 
-  .News3 {
-    height: 66vh;
-    padding: 0vw 1vw 0vw 1vw;
-    display: none;
-  }
+.modal {
+  width: 100%;
+  max-width: 1000px;
+  max-height: 90vh;
+  background: #ffffff; /* modal claro para contraste */
+  border-radius: 10px;
+  overflow: auto;
+  box-shadow: 0 30px 80px rgba(2,6,23,0.25);
+  border: 1px solid rgba(2,6,23,0.06);
+}
 
-  .News3 img {
-    height: 100%;
-  }
+.modalHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px 18px;
+  border-bottom: 1px solid rgba(2,6,23,0.04);
+}
 
-  .containerButtongrid {
-    left: 30%;
-  }
+.modalHeader h3 {
+  margin: 0;
+  color: #071124;
+}
 
-} */
+.modalClose {
+  all: unset;
+  cursor: pointer;
+  font-size: 28px;
+  color: #071124;
+  padding: 6px 10px;
+  border-radius: 6px;
+}
+
+.modalImage {
+  position: relative;
+  width: 100%;
+  height: 360px;
+  background: #f3f4f6;
+}
+
+.modalBody {
+  padding: 18px;
+  color: #071124;
+  line-height: 1.6;
+}
+
+.carouselStrip {
+  display: flex;
+  gap: 10px;
+  margin-top: 14px;
+}
+
+.carouselItem {
+  position: relative;
+  width: calc((100% - 30px) / 4);
+  height: 80px;
+  border-radius: 6px;
+  overflow: hidden;
+  border: 1px solid rgba(2,6,23,0.04);
+  box-shadow: 0 6px 18px rgba(0,0,0,0.12);
+}
+
+@media only screen and (max-width: 1024px) {
+  .cardsGrid { grid-template-columns: repeat(3, 1fr); }
+}
+
+@media only screen and (max-width: 768px) {
+  .cardsGrid { grid-template-columns: repeat(2, 1fr); }
+  .cardImage { height: 140px; }
+  .modalImage { height: 220px; }
+}
+
+@media only screen and (max-width: 480px) {
+  .cardsGrid { grid-template-columns: 1fr; }
+  .cardsContainer { padding-left: 4vw; padding-right: 4vw; }
+}
+
+.footerActions {
+  display:flex;
+  justify-content:center;
+  margin-top: 8px;
+}
+
+.viewMore {
+  display:inline-block;
+  padding: 10px 18px;
+  background: var(--background--redIntense);
+  color: var(--font-color--white);
+  border-radius: 6px;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+/* variante para que la sección ocupe toda la pantalla en la página de novedades */
+.containerFull {
+  min-height: 100vh;
+  display: flex;
+  /* centrar la página de novedades vertical y horizontalmente */
+  align-items: center;
+  justify-content: center;
+  /* dejar que el contenido marque la altura pero centrado */
+}
+
+.containerFull::after{
+  /* ligeramente más oscuro pero aún translúcido en /novedades */
+  background: rgba(0,0,0,0.7);
+}

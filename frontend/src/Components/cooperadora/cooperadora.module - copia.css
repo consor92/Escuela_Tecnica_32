@@ -21,7 +21,7 @@
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(0,0,0,0.8);
+    background: rgba(0,0,0,0.56);
     pointer-events: none;
     z-index: 2;
 }
@@ -103,22 +103,24 @@
 
 .msg {
     width: 50%;
-    height: 379px;
-    background-color: var(--background--redIntense);
-    border: none;
-    border-radius: 20px 0 0 0;
+    min-height: 320px;
+    background-color: rgba(255,255,255,0.06);
+    border: 1px solid rgba(255,255,255,0.06);
+    border-radius: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
 }
 
 .msg__title {
     position: relative;
-    z-index: 11;
-    color: var(--font-color--white);
-    font-size: var(--font-size--extraLarge);
+    z-index: 13;
+    color: #ffffff;
+    font-size: calc(var(--font-size--extraLarge) - 2px);
     letter-spacing: var(--font-spacing-regular);
     font-weight: 800;
-    margin: 15%;
-    margin-left: 5%;
-    margin-bottom: 0;
+    margin: 18% 10% 0 8%;
 }
 
 .msg__info {
@@ -134,15 +136,16 @@
 }
 
 .info__text {
-    font-size: 14px;
+    font-size: 15px;
     width: 70%;
-    margin-top: 5%;
+    margin-top: 4%;
     margin-left: 5%;
     position: relative;
-    font-weight: 100;
-    letter-spacing: var(--font-spacing-medium);
-    z-index: 9;
-    color: var(--font-color--white);
+    font-weight: 300;
+    letter-spacing: 0.01em;
+    z-index: 13;
+    color: #ffffff;
+    line-height: 1.5;
 }
 
 /* Cooperadora intro text styles: ensure all text is white and above overlays */
@@ -156,12 +159,12 @@
 
 .coopIntro > .row { display:flex; gap:22px; align-items:flex-start; }
 
-.coopIntro .col { background: rgba(56, 56, 56, 0.6); padding: 18px; border-radius: 12px; }
+.coopIntro .col { background: rgba(0,0,0,0.45); padding: 18px; border-radius: 12px; }
 
 .coopIntro h2 { margin: 0 0 10px 0; color: #ffffff; font-size: 1.2rem; }
 .coopIntro p { color: #ffffff; margin: 8px 0; font-size: 0.99rem; }
 .coopIntro .lead { font-weight:700; margin-bottom:6px; color: #ffffff }
-.coopIntro .block { background: rgba(56, 56, 56, 0.6); padding: 14px; border-radius: 10px; margin-top: 14px; }
+.coopIntro .block { background: rgba(0,0,0,0.45); padding: 14px; border-radius: 10px; margin-top: 14px; }
 .coopIntro .block h3 { margin:0 0 8px 0; color: #ffffff; }
 .coopIntro .small { color: #ffffff; }
 .coopIntro ol { padding-left: 1.2rem; margin: 6px 0; color: #ffffff }

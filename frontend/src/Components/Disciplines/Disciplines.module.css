@@ -299,19 +299,28 @@
   line-height: 30px;
 }
 
-.discipline__photo__one,
-.discipline__photo__two {
+.discipline_computacion {
+  height: 530px;
+  width: 100%;
+  background-size: cover;
+  background-position: center;
+  background-image: url('../../Assets/Images/computacion.png');
+}
+
+.discipline_automotores {
   height: 530px;
   width: 100%;
   background-repeat: no-repeat;
   background-size: cover;
-  background-image: url('../../Assets/Images/mecanicaPage1.jpg');
+  background-image: url('../../Assets/Images/automotores.png');
 }
 
-.discipline__photo__two {
+.discipline_mecanica {
+  height: 530px;
+  width: 100%;
   background-size: cover;
   background-position: center;
-  background-image: url('../../Assets/Images/mecanicaPage2.jpg');
+  background-image: url('../../Assets/Images/mecanica.png');
 }
 
 .containerPage__discipline__workshopStuden {
@@ -493,18 +502,14 @@
   }
 
 
-  .discipline__photo__one,
   .discipline__photo__two {
     height: 400px;
     width: 100%;
     margin: 0 auto;
     background-image: url('../../Assets/Images/mecanicaPage1.jpg');
+    background-color: red;
     background-size: cover;
     background-repeat: no-repeat;
-  }
-
-  .discipline__photo__two {
-    background-image: url('../../Assets/Images/mecanicaPage2.jpg');
   }
 
   .container_discipline {

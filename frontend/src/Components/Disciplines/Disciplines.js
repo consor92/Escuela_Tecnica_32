@@ -9,19 +9,30 @@ import { BsFillCircleFill } from "react-icons/bs";
 import { useRouter } from 'next/router';
 import 'react-alice-carousel/lib/alice-carousel.css';
 
-const url1 = 'https://cdn.wallpapersafari.com/95/49/RBudz6.jpg'
-const url2 = 'https://cutewallpaper.org/28/cool-africa-wallpaper/1306022341.jpg'
-const url3 = 'https://raw.githubusercontent.com/imagezzzz/blog_background/main/42.jpg'
-const url4 = 'https://www.cbc.ca/kids/images/wild_and_wonderful_asian_animals_header_1140.jpg'
-const url5 = 'https://e1.pxfuel.com/desktop-wallpaper/389/672/desktop-wallpaper-nosey-giraffe-long-neck.jpg'
 
-const items = [
-  <div key={1} className={Style.discipline__photo__two} style={{ backgroundImage: `url(${url1})` }}></div>,
-  <div key={2} className={Style.discipline__photo__two} style={{ backgroundImage: `url(${url2})` }}></div>,
-  <div key={3} className={Style.discipline__photo__two} style={{ backgroundImage: `url(${url3})` }}></div>,
-  <div key={4} className={Style.discipline__photo__two} style={{ backgroundImage: `url(${url4})` }}></div>,
-  <div key={5} className={Style.discipline__photo__two} style={{ backgroundImage: `url(${url5})` }}></div>,
-];
+
+const urls = {
+  "mecanica": {
+    url1: '/images/mecanica_1.jpeg',
+    url2: '/images/mecanica_2.jpeg',
+    url3: '/images/mecanica_3.jpeg',
+    url4: '/images/mecanica_4.jpeg',
+    url5: '/images/mecanica_5.jpeg'
+  },
+  "computacion": {
+    url1: '/images/computacion_1.jpeg',
+    url2: '/images/computacion_2.png',
+    url3: '/images/computacion_3.png',
+    url4: '/images/computacion_4.jpeg',
+    url5: '/images/computacion_5.jpeg',
+  },
+  "automotores": {
+    url1: '/images/automotores_1.jpeg',
+    url2: '/images/automotores_2.jpeg',
+    url3: '/images/automotores_3.png',
+    url4: '/images/automotores_4.jpeg'
+  }
+}
 
 const allDisciplines = [
   { id: 'computacion', label: 'Computación' },
@@ -30,11 +41,32 @@ const allDisciplines = [
 ];
 
 const Disciplines = ({ props, showAs }) => {
-
+  console.log('props', props.id)
   const [showText, setShowText] = useState('')
   const [valueSelect, setValueSelect] = useState('')
   const router = useRouter();
 
+  // Capturar el parámetro de la URL (nombre de la disciplina)
+  const { id: disciplineName } = router.query;
+
+  // Crear dinámicamente el array de items basado en la disciplina seleccionada
+  const currentDisciplineUrls = urls[disciplineName] || {};
+  console.log('CURRENT DISCIPLINE', currentDisciplineUrls)
+  const items = Object.values(currentDisciplineUrls).map((imageUrl, index) => (
+    <div 
+      key={index + 1} 
+      className={Style.discipline__photo__two} 
+      style={{ 
+        backgroundImage: `url(${imageUrl})`,
+        backgroundSize: 'cover',
+        backgroundPosition: 'center',
+        width: '100%',
+        height: '500px',
+        minHeight: '400px'
+      }}
+    ></div>
+  ));
+  console.log('ITEMS', items)
   const handleMouseEnter = (text) => {
     setShowText(text)
   }
@@ -42,7 +74,7 @@ const Disciplines = ({ props, showAs }) => {
 
   const handleMouseLeave = () => {
     setShowText('')
-  } 
+  }
 
   const handleChangeDiscipline = (e) => {
     const selectDiscipline = e.target.value
@@ -73,7 +105,6 @@ const Disciplines = ({ props, showAs }) => {
     return (
 
       <div className={Style.containerPage}>
-
         <div className={Style[`containerPage__${props.id}`]}>
           <h2 className={Style.containerPage_subtitle}>Mira otra especialidades</h2>
           <select className={Style.containerPage__title} onChange={handleChangeDiscipline} value={valueSelect}>
@@ -86,6 +117,10 @@ const Disciplines = ({ props, showAs }) => {
           </select>
         </div>
 
+
+            <div  className={Style.discipline__photo__two}></div>
+       
+       
         <section className={Style.containerPage__discipline__info}>
           <h2> <IoChevronForwardSharp style={{ color: 'var(--font-color--redIntense)', height: '25', width: '25' }} />Titulo Oficial Tecnico {props.title} (6 años)</h2>
           <h3>Resolución Nº ${props.resolucion}/SSGECP/2012 - Ministerio de educacion</h3>
@@ -99,7 +134,7 @@ const Disciplines = ({ props, showAs }) => {
 
         <section className={Style.containerPage__discipline__photo}>
           <Fade left duration={3000}>
-            <div className={Style.discipline__photo__one}></div>
+            <div className={Style[`discipline_${props.id}`]}></div>
           </Fade>
         </section>
 
@@ -138,7 +173,7 @@ const Disciplines = ({ props, showAs }) => {
           <p>{props.text_practice_part1}</p>
         </section>
 
-        <section className={Style.containerPage__discipline__workshopStuden}>
+        {/* <section className={Style.containerPage__discipline__workshopStuden}>
           <h2>Trabajos de nuestros alumnos  <span className={Style.discipline__workshopStuden__line}></span> </h2>
           <div className={Style.container_discipline}>
             <Zoom duration={3000}>
@@ -147,7 +182,7 @@ const Disciplines = ({ props, showAs }) => {
               )}
             </Zoom>
           </div>
-        </section>
+        </section> */}
 
         <section className={Style.containerPage__discipline__study}>
           <h2> Plan de estudio <span className={Style.discipline__study__line}></span></h2>
@@ -157,11 +192,11 @@ const Disciplines = ({ props, showAs }) => {
                 return (
                   <div key={key} className={Style.study__infoSubject__info}>
                     <h2>{item.year}</h2>
-                    <Image
+                    {<Image
                       src={`${item.imageUrl}`}
                       className={Style.study__infoSubject__image}
                       width={318}
-                      height={200}></Image>
+                      height={200}></Image>}
                     {
                       item.subjectName?.map((subject, key) => {
                         return (

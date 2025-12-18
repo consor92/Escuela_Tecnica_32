@@ -9,7 +9,7 @@ export default function News() {
     <div>
       <h1>Noticia {id}</h1>
       <h2>{titulo}</h2>
-      <p>{contenido}</p>
+      <div dangerouslySetInnerHTML={{ __html: contenido }} />
     </div>
   );
 }
