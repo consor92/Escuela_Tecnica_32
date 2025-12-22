@@ -1,18 +1,6 @@
 [
   {
     "id": 1,
-    "titulo": "Licitación Buffet 2025 (Ciclo 2026)",
-    "descripcion": "Se abre el proceso de licitación para la concesión del Buffet de la Escuela Técnica N°32 D.E.14 para el próximo ciclo lectivo.",
-    "link": "",
-    "imagen_principal": "/images/Licitacion2025.jpg",
-    "fecha": "2025-11-28",
-    "contenido": "<p>Se informa a la comunidad que se encuentra abierto el llamado a licitación para la concesión del Buffet de la Escuela Técnica N°32 D.E.14. El proceso iniciado en 2025 tendrá vigencia para la prestación del servicio durante el año 2026.</p><p>Los interesados en participar del pliego deben acercarse a la institución para obtener más información sobre las bases y condiciones.</p>",
-    "carrusel": [
-      "/images/Licitacion2025.jpg"
-    ]
-  },
-  {
-    "id": 2,
     "titulo": "Inscripción de 2° a 6° año - Ciclo Lectivo 2026",
     "descripcion": "Se encuentra abierto el proceso de inscripción para alumnos de segundo a sexto año para el próximo ciclo escolar.",
     "link": "",
@@ -24,7 +12,7 @@
     ]
   },
   {
-    "id": 3,
+    "id": 2,
     "titulo": "ESCUELA TÉCNICA Nº32 - Ingreso 2026",
     "descripcion": "Inscripciones abiertas para las especialidades de Técnico en Automotores, Computación y Mecánica.",
     "link": "",
@@ -36,7 +24,7 @@
     ]
   },
   {
-    "id": 4,
+    "id": 3,
     "titulo": "Expo 32: Técnico por un Día",
     "descripcion": "Jornada de puertas abiertas para que las familias conozcan nuestra propuesta educativa y los talleres de cerca.",
     "link": "",
@@ -48,7 +36,7 @@
     ]
   },
   {
-    "id": 5,
+    "id": 4,
     "titulo": "Feria de Ciencias - Proyecto APER",
     "descripcion": "Orgullo institucional: nuestros alumnos y docentes avanzan a la siguiente instancia de la Feria de Ciencias.",
     "link": "",

@@ -35,7 +35,7 @@ export default function NewsCards() {
 
   const openModal = (n) => {
     setSelected(n);
-    setModalImage(n.imagen_principal);
+    setModalImage(null); // Asegurar que la imagen ampliada no se active al abrir el modal
   };
 
   const closeModal = () => {
@@ -47,15 +47,58 @@ export default function NewsCards() {
     <section className={styles.container} aria-labelledby="novedades-title">
       <div className={styles.inner}>
         <h2 id="novedades-title" className={styles.sectionTitle}>Novedades</h2>
-        
+        <p className={styles.lead}>Últimas noticias y novedades de la escuela. Haz click en cualquier card para ver más detalle.</p>
 
         <div className={styles.cardsContainer}>
           <div className={styles.cardsGrid}>
             {News.map((n) => (
               <article key={n.id} className={styles.card} onClick={() => openModal(n)} tabIndex={0} onKeyDown={(e)=>{ if(e.key==='Enter') openModal(n)}}>
-                <div className={styles.cardImage}>
-                  <Image src={n.imagen_principal} alt={n.titulo} layout="fill" objectFit="cover" />
+                <div
+                  className={styles.cardImage}
+                  onClick={(e) => {
+                    e.stopPropagation(); // Evitar abrir el modal
+                    setModalImage(n.imagen_principal); // Ampliar imagen
+                  }}
+                  style={{ cursor: 'zoom-in' }}
+                >
+                  <Image
+                    src={n.imagen_principal}
+                    alt={n.titulo}
+                    layout="fill"
+                    objectFit="cover"
+                  />
                 </div>
+
+                {modalImage && (
+                  <div
+                    className={styles.modalImageFullScreen}
+                    onClick={() => setModalImage(null)}
+                    style={{
+                      position: 'fixed',
+                      top: 0,
+                      left: 0,
+                      width: '100vw',
+                      height: '100vh',
+                      backgroundColor: 'rgba(0, 0, 0, 0.9)',
+                      display: 'flex',
+                      justifyContent: 'center',
+                      alignItems: 'center',
+                      zIndex: 1000,
+                    }}
+                  >
+                    <img
+                      src={modalImage}
+                      alt="Imagen ampliada"
+                      style={{
+                        maxWidth: '90%',
+                        maxHeight: '90%',
+                        objectFit: 'contain',
+                        cursor: 'zoom-out',
+                      }}
+                    />
+                  </div>
+                )}
+
                 <div className={styles.cardBody}>
                   <h3 className={styles.cardTitle}>{n.titulo}</h3>
                   <p className={styles.cardDesc}>{n.descripcion}</p>
@@ -80,9 +123,52 @@ export default function NewsCards() {
               <button className={styles.modalClose} onClick={closeModal} aria-label="Cerrar">×</button>
             </header>
             <div className={styles.modalContent}>
-              <div className={styles.modalImage}>
-                <Image src={modalImage || selected.imagen_principal} alt={selected.titulo} layout="fill" objectFit="cover" />
+              <div
+                className={styles.modalImage}
+                onClick={(e) => {
+                  e.stopPropagation(); // Evitar cerrar el modal
+                  setModalImage(selected.imagen_principal); // Ampliar imagen
+                }}
+                style={{ cursor: 'zoom-in' }}
+              >
+                <Image
+                  src={selected.imagen_principal}
+                  alt={selected.titulo}
+                  layout="fill"
+                  objectFit="cover"
+                />
               </div>
+
+              {modalImage && (
+                <div
+                  className={styles.modalImageFullScreen}
+                  onClick={() => setModalImage(null)}
+                  style={{
+                    position: 'fixed',
+                    top: 0,
+                    left: 0,
+                    width: '100vw',
+                    height: '100vh',
+                    backgroundColor: 'rgba(0, 0, 0, 0.9)',
+                    display: 'flex',
+                    justifyContent: 'center',
+                    alignItems: 'center',
+                    zIndex: 1000,
+                  }}
+                >
+                  <img
+                    src={modalImage}
+                    alt="Imagen ampliada"
+                    style={{
+                      maxWidth: '90%',
+                      maxHeight: '90%',
+                      objectFit: 'contain',
+                      cursor: 'zoom-out',
+                    }}
+                  />
+                </div>
+              )}
+
               <div className={styles.modalBody}>
                   <p className={styles.modalDesc}>{selected.descripcion}</p>
                   {selected.fecha && (

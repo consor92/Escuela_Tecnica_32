@@ -151,3 +151,20 @@
 
 
 }
+
+/* Footer styles */
+
+.footer {
+  padding: 20px;
+  background-color: #f8f9fa;
+  text-align: center;
+}
+
+.link {
+  color: #007bff;
+  text-decoration: none;
+}
+
+.link:hover {
+  text-decoration: underline;
+}

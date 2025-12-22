@@ -39,8 +39,19 @@ export default function NewsSection() {
           <div className={styles.cardsGrid}>
             {News.map((n) => (
               <article key={n.id} className={styles.card} onClick={() => openModal(n)} tabIndex={0} onKeyDown={(e)=>{ if(e.key==='Enter') openModal(n)}}>
-                <div className={styles.cardImage}>
-                  <Image src={n.imagen_principal} alt={n.titulo} layout="fill" objectFit="cover" />
+                <div
+                  className={styles.cardImage}
+                  onClick={(e) => {
+                    e.stopPropagation(); // Prevent modal from closing
+                    setModalImage(n.imagen_principal);
+                  }}
+                >
+                  <Image
+                    src={n.imagen_principal}
+                    alt={n.titulo}
+                    layout="fill"
+                    objectFit="cover"
+                  />
                 </div>
                 <div className={styles.cardBody}>
                   <h3 className={styles.cardTitle}>{n.titulo}</h3>
@@ -87,6 +98,12 @@ export default function NewsSection() {
               </div>
             </div>
           </div>
+        </div>
+      )}
+
+      {modalImage && (
+        <div className={styles.modalImageFullScreen} onClick={closeModal}>
+          <img src={modalImage} alt="Imagen ampliada" />
         </div>
       )}
     </section>

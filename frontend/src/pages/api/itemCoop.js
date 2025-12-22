@@ -1,5 +1,5 @@
 const itemCoop = [
-    {
+ /*    {
         id: 1,
         title: 'COOPERAR EN COMUNIDAD',
         text: 'El proyecto "Adaptadores Inclusivos" fue uno de los ganadores de la edición 2023. Con un premio de $800.000 y fondos propios, se invirtió un total de $1.053.213 en 2 impresoras 3D, 10 PLA y un escáner.',
@@ -40,7 +40,7 @@ const itemCoop = [
         title: 'HERRAMIENTAS PARA TALLERES',
         text: 'Continuamos invirtiendo en el aprendizaje de nuestros alumnos: estamos adquiriendo nuevas herramientas para que puedan ser utilizadas en los diferentes talleres de la institución.',
         url: 'https://cdn.pixabay.com/photo/2014/09/05/18/32/old-books-436498_1280.jpg',
-    },
+    }, */
     {
         id: 8,
         title: 'CUADERNOS DE COMUNICACIONES',
@@ -50,7 +50,7 @@ const itemCoop = [
     {
         id: 9,
         title: 'LICITACIÓN DE LIBRERÍA',
-        text: 'Llamado a licitación para la concesión de librería. Pliego: $5000 (Retiro 25/01). Visitas: 30/01 al 03/02. Apertura: 13/02 a las 9hs en Teodoro García 3899. Consultas: COOPERADORA.TECNICA32DE14@BUE.EDU.AR',
+        text: 'Llamado a licitación para la concesión de librería. Pliego: $5000 (Retiro 25/01). Visitas: 30/01 al 03/02. Apertura: 13/02 a las 9hs en Teodoro García 3899. Consultas: cooperadora.tecnica32de14@bue.edu.ar.AR',
         url: 'https://cdn.pixabay.com/photo/2014/09/05/18/32/old-books-436498_1280.jpg',
     },
     {

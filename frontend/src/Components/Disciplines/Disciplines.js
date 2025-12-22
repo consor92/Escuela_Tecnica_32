@@ -40,12 +40,24 @@ const allDisciplines = [
   { id: 'mecanica', label: 'Mecánica' },
 ];
 
+const educationalImages = {
+  basicCycle: [
+    '/images/educational_1ro.jpeg', // 1° Año
+    '/images/educational_2do.jpeg', // 2° Año
+    '/images/educational_3ro.jpeg', // 3° Año
+  ],
+  specialties: {
+    mecanica: '/images/mecanica_plan.jpeg', // 4° Año - Mecánica
+    automotores: '/images/automotores_plan.jpeg', // 5° Año - Automotores
+    computacion: '/images/computacion_plan.jpeg', // 6° Año - Computación
+  },
+};
+
 const Disciplines = ({ props, showAs }) => {
-  console.log('props', props.id)
   const [showText, setShowText] = useState('')
   const [valueSelect, setValueSelect] = useState('')
   const router = useRouter();
-
+console.log('PROPS DISCIPLINE', props)
   // Capturar el parámetro de la URL (nombre de la disciplina)
   const { id: disciplineName } = router.query;
 
@@ -118,7 +130,7 @@ const Disciplines = ({ props, showAs }) => {
         </div>
 
 
-            <div  className={Style.discipline__photo__two}></div>
+            <div  className={Style[`fotoPortada_${props.id}`]}></div>
        
        
         <section className={Style.containerPage__discipline__info}>
@@ -184,28 +196,23 @@ const Disciplines = ({ props, showAs }) => {
           </div>
         </section> */}
 
-        <section className={Style.containerPage__discipline__study}>
+        <section className={Style.containerPage__discipline__study} style={{ paddingBottom: '0', marginBottom: '0' }}>
           <h2> Plan de estudio <span className={Style.discipline__study__line}></span></h2>
-          <div className={Style.discipline__study__infoSubject}>
+          <div className={Style.discipline__study__infoSubject} style={{ padding: '20px', marginBottom: '0' }}>
             {
               props.subjectPerYear?.map((item, key) => {
                 return (
-                  <div key={key} className={Style.study__infoSubject__info}>
+                  <div key={key} className={Style.study__infoSubject__info} style={{ marginBottom: '10px' , height: '600px'}}>
                     <h2>{item.year}</h2>
-                    {<Image
-                      src={`${item.imageUrl}`}
-                      className={Style.study__infoSubject__image}
-                      width={318}
-                      height={200}></Image>}
                     {
                       item.subjectName?.map((subject, key) => {
                         return (
                           <h3 key={key}><BsFillCircleFill style={{ color: 'var(--font-color--redIntense)', height: '7', width: '7' }} />&nbsp;&nbsp;{subject.name}</h3>
-                        )
+                        );
                       })
                     }
                   </div>
-                )
+                );
               })
             }
           </div>

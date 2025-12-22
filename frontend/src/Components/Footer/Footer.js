@@ -1,5 +1,6 @@
 import React from 'react'
 import Style from './Footer.module.css'
+import Link from 'next/link';
 
 
 export const Footer = () => {
@@ -16,7 +17,7 @@ export const Footer = () => {
           <div className={Style.containerIconText}>
             <div className={`${Style.icon} ${Style.icon1}`}></div>
             <p className={Style.textSecondary}>
-              Teodoro García 3899, C1427ECG CABA
+              Dirección: <Link href="https://www.google.com/maps?q=Teodoro+Garc%C3%ADa+3899,+C1427ECG+CABA" target="_blank" className={Style.link}>Teodoro García 3899, C1427ECG CABA</Link>
             </p>
           </div>
           <div className={Style.containerIconText}>
@@ -34,7 +35,7 @@ export const Footer = () => {
           <div className={Style.containerIconText}>
             <div className={`${Style.icon} ${Style.icon4}`}></div>
             <p className={Style.textSecondary}>
-              4551-9121 4555-4026/4034
+              Teléfono: <a href="tel:+541145519121" className={Style.link}>4551-9121</a>, <a href="tel:+541145554026" className={Style.link}>4555-4026</a>, <a href="tel:+541145554034" className={Style.link}>4555-4034</a>
             </p>
           </div>
 

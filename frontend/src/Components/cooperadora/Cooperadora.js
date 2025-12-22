@@ -18,7 +18,7 @@ const itemsText = itemCoop.map(item => (
       {item?.title}
     </h2>
     <div className={Style.msg__info}>
-      <p className={Style.info__decoration}>“</p>
+      {/* <p className={Style.info__decoration}>“</p> */}
       <p className={Style.info__text}>{item.text}</p>
     </div>
   </>
@@ -31,12 +31,12 @@ const Cooperadora = () => {
 }
   return (
     <div id='cooperadora' className={Style.container}>
-      <h1 className={Style.title}>Asociacion Cooperadora Tecnica N°32<span></span></h1>
+      <h1 className={Style.title}>Asociacion Cooperadora<span></span></h1>
       <div className={Style.coopIntro}>
         <div className={Style.row}>
           <div className={Style.col + ' ' + Style.textCenter}>
             <img
-              src="https://escuelatecnica32de14.edu.ar/assets/images/coope/logo_coope.png"
+              src="/images/logo_coope.png"
               alt="Logo Cooperadora"
               width={220}
               height={220}

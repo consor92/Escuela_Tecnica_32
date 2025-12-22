@@ -23,8 +23,17 @@ export default function AllNews(){
     return ()=> window.removeEventListener('keydown', onKey)
   },[])
 
-  const openModal = (n) => { setSelected(n); setModalImage(n.imagen_principal) }
-  const closeModal = () => { setSelected(null); setModalImage(null) }
+  const openModal = (n) => {
+    if (!modalImage) { // Ensure modalImage is not set to prevent conflicts
+      setSelected(n);
+      setModalImage(null); // Reset modalImage to avoid unintended expansion
+    }
+  };
+
+  const closeModal = () => {
+    setSelected(null);
+    setModalImage(null);
+  }
 
   return (
     <>
@@ -36,9 +45,22 @@ export default function AllNews(){
           <div className={styles.cardsContainer}>
             <div className={styles.cardsGrid}>
               {News.map(n => (
-                <article key={n.id} className={styles.card} onClick={() => openModal(n)} tabIndex={0} onKeyDown={(e)=>{ if(e.key==='Enter') openModal(n)}}>
+                <article
+                  key={n.id}
+                  className={styles.card}
+                  onClick={() => openModal(n)}
+                  tabIndex={0}
+                  onKeyDown={(e) => {
+                    if (e.key === 'Enter') openModal(n);
+                  }}
+                >
                   <div className={styles.cardImage}>
-                    <Image src={n.imagen_principal} alt={n.titulo} layout="fill" objectFit="cover" />
+                    <Image
+                      src={n.imagen_principal}
+                      alt={n.titulo}
+                      layout="fill"
+                      objectFit="cover"
+                    />
                   </div>
                   <div className={styles.cardBody}>
                     <h3 className={styles.cardTitle}>{n.titulo}</h3>
@@ -57,9 +79,54 @@ export default function AllNews(){
                   <button className={styles.modalClose} onClick={closeModal} aria-label="Cerrar">×</button>
                 </header>
                 <div className={styles.modalContent}>
-                  <div className={styles.modalImage}>
-                    <Image src={modalImage || selected.imagen_principal} alt={selected.titulo} layout="fill" objectFit="cover" />
+                  <div
+                    className={styles.modalImage}
+                    onClick={(e) => {
+                      e.stopPropagation(); // Prevent modal close
+                      if (!modalImage) {
+                        setModalImage(selected.imagen_principal); // Expand image only if not already expanded
+                      }
+                    }}
+                    style={{ cursor: modalImage ? 'zoom-out' : 'zoom-in' }}
+                  >
+                    <Image
+                      src={modalImage || selected.imagen_principal}
+                      alt={selected.titulo}
+                      layout="fill"
+                      objectFit="cover"
+                    />
                   </div>
+
+                  {modalImage && (
+                    <div
+                      className={styles.modalImageFullScreen}
+                      onClick={() => setModalImage(null)}
+                      style={{
+                        position: 'fixed',
+                        top: 0,
+                        left: 0,
+                        width: '100vw',
+                        height: '100vh',
+                        backgroundColor: 'rgba(0, 0, 0, 0.9)',
+                        display: 'flex',
+                        justifyContent: 'center',
+                        alignItems: 'center',
+                        zIndex: 1000,
+                      }}
+                    >
+                      <img
+                        src={modalImage}
+                        alt="Imagen ampliada"
+                        style={{
+                          maxWidth: '90%',
+                          maxHeight: '90%',
+                          objectFit: 'contain',
+                          cursor: 'zoom-out',
+                        }}
+                      />
+                    </div>
+                  )}
+
                   <div className={styles.modalBody}>
                     <p className={styles.modalDesc}>{selected.descripcion}</p>
                     {selected.fecha && (

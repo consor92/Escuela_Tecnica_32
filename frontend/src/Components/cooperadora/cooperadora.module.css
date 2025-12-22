@@ -187,14 +187,18 @@
 
 @media only screen and (max-width:768px) {
 
-    .msg {
+/*     .msg {
         height: 260px;
-    }
+    } */
 
     .msg__title {
         margin-top: 15px;
+        font-size: 25px;
     }
-
+    .info__text {
+        width: auto;
+        max-width: max-content;
+    }   
     .image {
         height: 300px;
     }
@@ -232,6 +236,8 @@
         width: 100%;
     }
 
-
+    .coopIntro > .row {
+        flex-direction: column;
+    }
 
 }

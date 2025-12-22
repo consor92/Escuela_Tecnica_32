@@ -1,5 +1,3 @@
-
-
 .container {
   display: flex;
   flex-direction: column;
@@ -178,6 +176,28 @@
 .modalContent .modalImage {
   width: 50%;
   min-height: 360px;
+  cursor: pointer;
+  transition: transform 0.3s ease-in-out;
+  position: relative;
+}
+
+.modalContent .modalImage::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 32px;
+  height: 32px;
+  background: url('/images/magnifying-glass-icon.png') no-repeat center center;
+  background-size: contain;
+  opacity: 0.8;
+  pointer-events: none;
+}
+
+.modalContent .modalImage:active {
+  transform: scale(1.2);
+  z-index: 10;
 }
 
 .modalContent .modalBody {
@@ -327,4 +347,43 @@
 .containerFull::after{
   /* ligeramente más oscuro pero aún translúcido en /novedades */
   background: rgba(0,0,0,0.7);
+}
+
+/* Add magnifying glass icon and full-screen image view */
+.modalContent .modalImage {
+  position: relative;
+  cursor: zoom-in;
+}
+
+.modalContent .modalImage::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 32px;
+  height: 32px;
+  background: url('/images/magnifying-glass-icon.png') no-repeat center center;
+  background-size: contain;
+  opacity: 0.8;
+  pointer-events: none;
+}
+
+.modalImageFullScreen {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.9);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.modalImageFullScreen img {
+  max-width: 90%;
+  max-height: 90%;
+  object-fit: contain;
 }

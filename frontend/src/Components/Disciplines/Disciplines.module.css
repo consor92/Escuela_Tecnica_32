@@ -310,6 +310,7 @@
 .discipline_automotores {
   height: 530px;
   width: 100%;
+
   background-repeat: no-repeat;
   background-size: cover;
   background-image: url('../../Assets/Images/automotores.png');
@@ -502,11 +503,31 @@
   }
 
 
-  .discipline__photo__two {
+  .fotoPortada_automotores {
     height: 400px;
     width: 100%;
     margin: 0 auto;
-    background-image: url('../../Assets/Images/mecanicaPage1.jpg');
+    background-image: url('../../../public/images/automotores_3.png');
+    background-color: red;
+    background-size: cover;
+    background-repeat: no-repeat;
+  }
+
+  .fotoPortada_mecanica{
+    height: 400px;
+    width: 100%;
+    margin: 0 auto;
+    background-image: url('../../../public/images/mecanica_3.jpeg');
+    background-color: red;
+    background-size: cover;
+    background-repeat: no-repeat;
+  }
+
+    .fotoPortada_computacion {
+    height: 400px;
+    width: 100%;
+    margin: 0 auto;
+    background-image: url('../../../public/images/computacion_2.png');
     background-color: red;
     background-size: cover;
     background-repeat: no-repeat;
@@ -589,6 +610,8 @@
     font-size: 13px;
     padding: 11px 20px;
   }
-
+  .discipline_automotores {
+    background-position-x: center;
+    }
 
 }
