@@ -1,0 +1,1 @@
+export { default as ViewCustom } from './viewCustom/ViewCustom'
