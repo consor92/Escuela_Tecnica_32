@@ -20,21 +20,22 @@ export default function Home({ item }) {
         title={'Escuela Tecnica 32 DE14 "Gral Jose de San Martin"'}
         favicon='/logoet32.ico'
         page="home"
-      ></Layout>
-      <div style={{ position: 'fixed', top: 20, right: 20, zIndex: 10000 }}>
-        <TestCalendarModal />
-      </div>
-      {/* <HomeIndex /> */}
-      <HomeContainer />
-      <NewsCards />
-      <NewsContainer/>
-      <Disciplines
-        props={item}
-        showAs='allDisciplines' />
-      <Inscripciones />
-      <Section />
-      <Cooperadora />
-      <Footer />
+      >
+        <div style={{ position: 'fixed', top: 20, right: 20, zIndex: 10000 }}>
+          <TestCalendarModal />
+        </div>
+        {/* <HomeIndex /> */}
+        {/* <NewsCards /> */}
+        <HomeContainer />
+        <NewsContainer />
+        <Disciplines
+          props={item}
+          showAs='allDisciplines' />
+        <Inscripciones />
+        <Section />
+        <Cooperadora />
+        <Footer />
+      </Layout>
     </>
   )
 }

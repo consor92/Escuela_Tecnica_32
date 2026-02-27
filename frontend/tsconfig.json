@@ -32,12 +32,13 @@
   },
   "include": [
     "next-env.d.ts",
+    "**/*.d.ts",
     "**/*.ts",
     "**/*.tsx",
     "**/*.js",
     "**/*.jsx",
     ".next/types/**/*.ts"
-  ],
+, "src/pages/news/[id].tsx"  ],
   "exclude": [
     "node_modules"
   ]

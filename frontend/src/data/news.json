@@ -6,7 +6,7 @@
     "link": "",
     "imagen_principal": "/images/inscripcion2026.jpg",
     "fecha": "2025-11-20",
-    "contenido": "<p>La Escuela Técnica N°32 informa que ya se encuentran disponibles las pautas para la inscripción de alumnos de 2° a 6° año para el ciclo lectivo 2026.</p><p>Es importante que las familias completen la documentación requerida en los plazos establecidos para asegurar la continuidad pedagógica de los estudiantes.</p>",
+    "contenido": "La Escuela Técnica N°32 informa que ya se encuentran disponibles las pautas para la inscripción de alumnos de 2° a 6° año para el ciclo lectivo 2026. Es importante que las familias completen la documentación requerida en los plazos establecidos para asegurar la continuidad pedagógica de los estudiantes.",
     "carrusel": [
       "/images/inscripcion2026.jpg"
     ]
@@ -18,7 +18,7 @@
     "link": "",
     "imagen_principal": "/images/automotores.jpg",
     "fecha": "2025-10-15",
-    "contenido": "<p>La Escuela Técnica 32 &quot;General José de San Martín&quot; abre sus puertas para el ciclo lectivo 2026. Contamos con las especialidades de:</p><ul><li>Técnico en Automotores</li><li>Técnico en Computación</li><li>Técnico Mecánico</li></ul><p>Te esperamos en nuestra sede: <strong>Teodoro García 3899, C.A.B.A.</strong></p><p>Para más información o consultas, podés escribirnos al correo: <strong>alumnos.et32@bue.edu.ar</strong></p>",
+    "contenido": "<p>La Escuela Técnica 32 \"General José de San Martín\" abre sus puertas para el ciclo lectivo 2026.</p><p>Contamos con las especialidades de:</p><ul><li><a href=\"/discipline/automotores\">Técnico en Automotores</a></li><li><a href=\"/discipline/computacion\">Técnico en Computación</a></li><li><a href=\"/discipline/mecanica\">Técnico Mecánico</a></li></ul><p>Te esperamos en nuestra sede: Teodoro García 3899, C.A.B.A.</p><p>Para más información o consultas, podés escribirnos al correo: <strong>alumnos.et32@bue.edu.ar</strong></p>",
     "carrusel": [
       "/images/automotores.jpg"
     ]
@@ -30,7 +30,7 @@
     "link": "",
     "imagen_principal": "/images/tecnicoxundia.jpg",
     "fecha": "2025-08-30",
-    "contenido": "<p>El próximo <strong>sábado 6 de septiembre, de 9:00 hs a 13:00 hs</strong>, se llevará a cabo en nuestra Escuela N°32 la jornada de puertas abiertas <strong>&quot;Técnico x un día&quot;</strong>.</p><p>Durante esta jornada, las escuelas abrirán sus puertas con muestras, recorridos y actividades pensadas para que las familias conozcan de cerca la propuesta educativa, conversen con docentes y estudiantes, y obtengan toda la información necesaria para decidir sobre la continuidad en la escuela secundaria.</p>",
+    "contenido": "El próximo sábado 6 de septiembre, de 9:00 hs a 13:00 hs, se llevará a cabo en nuestra Escuela N°32 la jornada de puertas abiertas ;Técnico x un día;.Durante esta jornada, las escuelas abrirán sus puertas con muestras, recorridos y actividades pensadas para que las familias conozcan de cerca la propuesta educativa, conversen con docentes y estudiantes, y obtengan toda la información necesaria para decidir sobre la continuidad en la escuela secundaria.",
     "carrusel": [
       "/images/tecnicoxundia.jpg"
     ]
@@ -42,7 +42,7 @@
     "link": "",
     "imagen_principal": "/images/feria.jpg",
     "fecha": "2025-08-30",
-    "contenido": "<p>Con mucho orgullo les contamos que los profesores y alumnos que representaron a nuestra escuela en la <strong>Feria de Ciencias</strong> con el <strong>Proyecto APER</strong> han pasado a la siguiente instancia. Fue un momento muy emotivo el que se vivió durante la entrega de las distintas menciones.</p><p>Felicitamos a los protagonistas de este gran logro por su esfuerzo y dedicación:</p><ul><li><strong>Alumnos:</strong> Sabela Ludmila, Torres Borda Maria, Mansilla Camila, Coria David, Manuelo Kevin y Bitkowsky Astor.</li><li><strong>Docentes:</strong> Prof. Martin Celico, Prof. Jonatan Gordillo y Prof. Vanesa Freccia.</li></ul><p>¡Un verdadero orgullo para nuestra comunidad educativa!</p>",
+    "contenido": "Con mucho orgullo les contamos que los profesores y alumnos que representaron a nuestra escuela en la yFeria de Ciencias con el Proyecto APER han pasado a la siguiente instancia. Fue un momento muy emotivo el que se vivió durante la entrega de las distintas menciones.Felicitamos a los protagonistas de este gran logro por su esfuerzo y dedicación:<ul><li>Alumnos: Sabela Ludmila, Torres Borda Maria, Mansilla Camila, Coria David, Manuelo Kevin y Bitkowsky Astor.</li><li>Docentes: Prof. Martin Celico, Prof. Jonatan Gordillo y Prof. Vanesa Freccia.</li></ul>¡Un verdadero orgullo para nuestra comunidad educativa!",
     "carrusel": [
       "/images/feria.jpg"
     ]

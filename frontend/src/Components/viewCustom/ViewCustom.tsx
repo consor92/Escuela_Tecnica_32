@@ -3,12 +3,13 @@ import { Container } from '@mui/system'
 import styles from './ViewCustom.module.css'
 
 interface Props {
-	image: string
+	image?: string
 	children?: React.ReactNode
 	bgColor?: 'blue' | 'red' | 'black' | 'white'
+	fullHeight?: boolean
 }
 
-const ViewCustom = ({ image, children, bgColor = 'blue' }: Props) => {
+const ViewCustom = ({ image, children, bgColor = 'blue', fullHeight = true }: Props) => {
 	const overlayMap: Record<NonNullable<Props['bgColor']>, string> = {
 		blue: '#191D62',
 		red: '#F90334',
@@ -26,7 +27,10 @@ const ViewCustom = ({ image, children, bgColor = 'blue' }: Props) => {
 					backgroundImage: `url(${image})`,
 					backgroundRepeat: 'no-repeat',
 					backgroundPosition: 'center',
-					height: '100vh',
+					backgroundSize: 'cover',
+					backgroundColor: overlayColor,
+					height: fullHeight ? '100vh' : 'auto',
+					minHeight: fullHeight ? '100vh' : 'calc(100vh - 80px)',
 					width: '100vw',
 					padding: '0px',
 					margin: '0px',
