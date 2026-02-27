@@ -1,5 +1,6 @@
 
 import Layout from '@/Components/Layout/Layout'
+import { CardCustomBottomDrawer } from '@/Containers/News/components'
 import newsData from '@/data/news.json'
 import useScreen from '@/Hooks/useScreen'
 import { Box, Container, Typography } from '@mui/material'
@@ -59,7 +60,7 @@ export default function NewsDetail({ news }: { news: any }) {
 
         <Container maxWidth={false} sx={{ backgroundColor: '#171715', minHeight: '100vh', width: '100%', p: 0, m: 0, pb: 6 }}>
 
-          <Box sx={{ display: 'flex', justifyContent: 'center', pt:6}}>
+          <Box sx={{ display: 'flex', justifyContent: 'center', pt: 6 }}>
             {/* Contiene la descripcion de la noticia mapeando y ajustando estilos que provienen del .json*/}
             <Box
               sx={{
@@ -86,14 +87,16 @@ export default function NewsDetail({ news }: { news: any }) {
                 src={news.imagen_principal}
                 alt={news.titulo}
                 sx={{
-                  width: width < 768 ? 'auto' : '800px',
+                  width: width < 768 ? '400px' : '800px',
                   height: '550px',
                   objectFit: 'cover',
                 }}
               />
             </Fade>
           </Box>
-
+          <Box sx={{mt:12}}>
+            <CardCustomBottomDrawer news={newsData} currentNews={news.id} />
+          </Box>
         </Container>
       </Layout>
     </>
