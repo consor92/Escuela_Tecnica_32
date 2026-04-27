@@ -5,8 +5,8 @@ import HomeIndex from '@/Components/HomeIndex/HomeIndex'
 import Disciplines from '@/Components/Disciplines/Disciplines'
 import Section from '@/Components/Secciones/Section.jsx'
 import { getDisciplineItem } from '@/Service/DisciplineItem'
-import Inscripciones from '../Components/Inscripciones/Inscripciones'
-import Cooperadora from '../Components/Cooperadora/Cooperadora'
+import Inscripciones from '../Components/Inscripciones/Inscripciones.js'
+import Cooperadora from '../Components/Cooperadora/Cooperadora.js'
 import { Footer } from '@/Components/Footer/Footer'
 import TestCalendarModal from '../Components/TestCalendarModal';
 
