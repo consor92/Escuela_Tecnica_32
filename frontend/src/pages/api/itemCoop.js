@@ -1,34 +1,46 @@
-const itemCoop=[
+const itemCoop = [
     {
         id: 1,
-        title:'Horarios 2023',
-        text:'Desde el mes de Abril, la cooperadora atiende los martes y jueves de 07:30 hs a 14:00 hs',
-        url:'https://cdn.wallpapersafari.com/95/49/RBudz6.jpg',
+        title: 'COOPERAR EN COMUNIDAD',
+        text: 'El proyecto "Adaptadores Inclusivos" fue uno de los ganadores de la edición 2023. Con un premio de $800.000 y fondos propios, se invirtió un total de $1.053.213 en 2 impresoras 3D, 10 PLA y un escáner.',
+        url: '/images/feria.jpg',
+        fecha: '2023-05-15'
     },
     {
         id: 2,
-        title:'Voucher de Libreria',
-        text:'Ya estan disponibles los Vouchers para los productos de libreria, pueden retirarlos los dias Lunes, Miercoles y Viernes de 07:30hs a 14:00hs',
-        url:'https://cutewallpaper.org/28/cool-africa-wallpaper/1306022341.jpg',
+        title: 'NUEVO DISPENSER DE AGUA',
+        text: '¡Gracias a los socios, ya contamos con un dispenser de agua fría y caliente para los alumnos! Agradecemos a los profes Bianchi, Carmona, Dorado y Gandini por la instalación.',
+        url: '/images/infra1.png',
+        fecha: '2023-06-10'
     },
     {
         id: 3,
-        title:'Nuevos materiales',
-        text:'La cooperadora se complace en informar a la comunidad que se ha realizado la adquisición de nuevo material para las clases de educación física',
-        url:'https://raw.githubusercontent.com/imagezzzz/blog_background/main/42.jpg',
+        title: 'ARTÍCULOS DE LIBRERÍA',
+        text: 'La Cooperadora adquirió materiales de librería para la Jornada del Centro de Estudiantes del 17/05/2023. ¡Esperamos que todos los chicos hayan disfrutado de este día especial!',
+        url: '/images/infra2.png',
+        fecha: '2023-05-17'
     },
     {
         id: 4,
-        title:'Mejoras en Seguridad',
-        text:'La cooperadora se complace en anunciar que, gracias a la valiosa colaboración de nuestra comunidad, se han adquirido elementos de protección para los ocho tornos del taller de mecánica.',
-        url:'https://www.cbc.ca/kids/images/wild_and_wonderful_asian_animals_header_1140.jpg',
+        title: 'MATERIAL PARA EDUCACIÓN FÍSICA',
+        text: 'Los profesores de Educación Física agradecen a la cooperadora por el nuevo material comprado. ¡Gracias a este aporte, los chicos ya cuentan con nuevos elementos para usar en sus clases!',
+        url: '/images/infra3.png',
+        fecha: '2023-07-20'
     },
     {
         id: 5,
-        title:'Herramientas para Talleres',
-        text:'La cooperadora se encuentra en proceso de adquisición de nuevas herramientas para ser utilizadas por los alumnos en los talleres. Esto permitirá brindar a los estudiantes los recursos necesarios para mejorar su experiencia y aprendizaje en el entorno de taller.',
-        url:'https://e1.pxfuel.com/desktop-wallpaper/389/672/desktop-wallpaper-nosey-giraffe-long-neck.jpg',
+        title: 'SEGURIDAD EN MECÁNICA',
+        text: 'Gracias a los socios, compramos elementos de protección para ocho tornos del taller de mecánica. Agradecemos también a los profesores que colaborarán con la colocación de los mismos.',
+        url: '/images/mecanica.png',
+        fecha: '2023-08-05'
     },
+    {
+        id: 6,
+        title: 'HERRAMIENTAS PARA TALLERES',
+        text: 'Continuamos invirtiendo en el aprendizaje de nuestros alumnos: estamos adquiriendo nuevas herramientas para que puedan ser utilizadas en los diferentes talleres de la institución.',
+        url: '/images/automotores.png',
+        fecha: '2023-09-12'
+    }
 ]
 
 export default itemCoop

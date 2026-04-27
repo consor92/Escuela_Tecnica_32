@@ -16,7 +16,9 @@
 .img1 {
   height: 50%;
   width: auto;
-  background-image: url("../../../Assets/Images/infra3.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
 }
 
 .img2 {
@@ -24,13 +26,15 @@
   width: auto;
   background-repeat: no-repeat;
   background-size: cover;
-  background-image: url("../../../Assets/Images/infra4.png");
+  background-position: center;
 }
 
 .area {
   display: flex;
   flex-direction: row;
   background-color: var(--background--black);
+  background-image: radial-gradient(rgba(255, 255, 255, 0.1) 1px, transparent 1px);
+  background-size: 30px 30px;
   width: 90%;
 }
 
@@ -149,6 +153,7 @@
 
   .img1 {
     height: 100%;
+    background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
   }

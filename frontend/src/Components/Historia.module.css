@@ -1,0 +1,225 @@
+/* Contenedor de la página completa de Historia */
+.fullPageContainer {
+  padding-top: 80px; /* Altura del NavBar */
+  background-color: #000; /* Negro puro */
+  background-image: radial-gradient(rgba(255, 255, 255, 0.08) 1px, transparent 1px);
+  background-size: 35px 35px;
+  background-attachment: fixed;
+  color: #f0f0f0;
+  min-height: 100vh;
+  overflow-x: hidden;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  position: relative;
+}
+
+.headerHero {
+  height: 50vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('/images/bg_disciplines.png');
+  background-size: cover;
+  background-position: center;
+  padding: 0 10%;
+  position: relative;
+}
+
+/* Transición sutil hacia el negro */
+.headerHero::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 150px;
+  background: linear-gradient(to bottom, transparent, #000);
+}
+
+.mainTitle {
+  font-size: clamp(2.5rem, 6vw, 5rem);
+  font-weight: 900;
+  color: var(--font-color--white);
+  letter-spacing: 4px;
+  margin-bottom: 0.5rem;
+  text-shadow: 0 5px 15px rgba(0,0,0,0.5);
+}
+
+.titleDivider {
+  height: 4px;
+  background-color: var(--background--redIntense);
+  margin-bottom: 1.5rem;
+  border-radius: 2px;
+}
+
+.mainIntro {
+  font-size: 1.3rem;
+  max-width: 800px;
+  line-height: 1.6;
+  opacity: 0.95;
+  text-shadow: 0 2px 10px rgba(0,0,0,0.5);
+}
+
+/* Timeline Container */
+.timelineContainer {
+  max-width: 1200px;
+  margin: 6rem auto;
+  padding: 0 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 8rem;
+  position: relative;
+  z-index: 2;
+}
+
+.timelineContainer::before {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background: linear-gradient(to bottom, 
+    transparent 0%, 
+    var(--background--redIntense) 10%, 
+    var(--background--blue) 90%, 
+    transparent 100%
+  );
+  transform: translateX(-50%);
+  opacity: 0.5;
+}
+
+/* History Block */
+.historyBlock {
+  display: flex;
+  align-items: center;
+  gap: 5rem;
+  width: 100%;
+}
+
+.blockLeft {
+  flex-direction: row;
+}
+
+.blockRight {
+  flex-direction: row-reverse;
+}
+
+/* Media and Badge */
+.blockImageWrapper {
+  flex: 1;
+  position: relative;
+  border-radius: 15px;
+  overflow: hidden;
+  box-shadow: 0 30px 60px rgba(0,0,0,0.8);
+  border: 1px solid rgba(255,255,255,0.05);
+}
+
+.blockImage {
+  width: 100%;
+  height: 400px;
+  background-size: cover;
+  background-position: center;
+  transition: transform 0.7s ease;
+  background-color: #000; /* Fondo negro por si la imagen tiene transparencia */
+  opacity: 1;
+}
+
+.historyBlock:hover .blockImage {
+  transform: scale(1.05);
+}
+
+.periodBadge {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  background-color: var(--background--redIntense);
+  color: white;
+  padding: 10px 20px;
+  font-weight: 800;
+  border-radius: 5px;
+  font-size: 1rem;
+  box-shadow: 0 5px 20px rgba(0,0,0,0.4);
+  z-index: 3;
+}
+
+/* Content */
+.blockContent {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.blockSubheadline {
+  color: var(--background--redIntense);
+  font-weight: 700;
+  font-size: 1rem;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  margin-bottom: 0.8rem;
+}
+
+.blockTitle {
+  font-size: 2.8rem;
+  color: var(--font-color--white);
+  margin-bottom: 1.5rem;
+  line-height: 1.1;
+}
+
+.blockDivider {
+  width: 60px;
+  height: 4px;
+  background-color: var(--background--blue);
+  margin-bottom: 2rem;
+}
+
+.blockText {
+  font-size: 1.15rem;
+  line-height: 1.9;
+  color: rgba(255,255,255,0.9);
+  margin-bottom: 2rem;
+}
+
+.keyFact {
+  background: rgba(0, 51, 102, 0.3);
+  border-left: 5px solid var(--background--blue);
+  padding: 1.5rem 2rem;
+  font-style: italic;
+  font-size: 1rem;
+  color: #fff;
+  border-radius: 0 15px 15px 0;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+}
+
+/* Footer */
+.historyFooter {
+  text-align: center;
+  padding: 8rem 10%;
+  background: linear-gradient(to top, #000, transparent);
+  color: rgba(255,255,255,0.4);
+  font-size: 1rem;
+}
+
+/* Responsive */
+@media (max-width: 992px) {
+  .timelineContainer::before {
+    left: 20px;
+    transform: none;
+  }
+  
+  .historyBlock {
+    flex-direction: column !important;
+    align-items: flex-start;
+    gap: 3rem;
+  }
+  
+  .blockImageWrapper {
+    width: 100%;
+  }
+
+  .blockContent {
+    padding-left: 2rem;
+  }
+}

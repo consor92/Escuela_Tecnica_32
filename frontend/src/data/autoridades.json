@@ -1,0 +1,46 @@
+{
+  "role": "Rectora",
+  "name": "Dra. María Pérez",
+  "image": "https://api.dicebear.com/7.x/avataaars/svg?seed=Maria",
+  "children": [
+    {
+      "role": "Vicerrector",
+      "name": "Prof. Juan Gómez",
+      "image": "https://api.dicebear.com/7.x/avataaars/svg?seed=Juan",
+      "children": [
+        {
+          "role": "Secretaría",
+          "name": "Lic. Ana Vallejos",
+          "image": "https://api.dicebear.com/7.x/avataaars/svg?seed=Ana",
+          "children": [{ "role": "Prosecretaría", "name": "Cdor. Luis Mora", "image": "https://api.dicebear.com/7.x/avataaars/svg?seed=Luis" }]
+        },
+        {
+          "role": "Regente Técnico",
+          "name": "Ing. Carlos Ruiz",
+          "image": "https://api.dicebear.com/7.x/avataaars/svg?seed=Carlos",
+          "children": [
+            { 
+              "role": "Jefatura de Taller",
+              "name": "Ing. César Luna",
+              "image": "https://api.dicebear.com/7.x/avataaars/svg?seed=Cesar",
+              "children": [{ "role": "Jefes de Secciones", "name": "Equipo Técnico", "image": "https://api.dicebear.com/7.x/avataaars/svg?seed=Secciones" }]
+            },
+            { "role": "Jefe de Laboratorio", "name": "Ing. Hugo Méndez", "image": "https://api.dicebear.com/7.x/avataaars/svg?seed=Hugo" }
+          ]
+        },
+        {
+          "role": "Regente Cultural",
+          "name": "Lic. Silvia Torres",
+          "image": "https://api.dicebear.com/7.x/avataaars/svg?seed=Silvia",
+          "children": [
+            { "role": "Jefe de ATTP", "name": "Lic. Roberto Paz", "image": "https://api.dicebear.com/7.x/avataaars/svg?seed=Roberto" },
+            { "role": "Coordinadores de áreas", "name": "Cuerpo Docente", "image": "https://api.dicebear.com/7.x/avataaars/svg?seed=Coordinadores" },
+            { "role": "Jefes de Preceptores", "name": "Sr. Jorge Rial", "image": "https://api.dicebear.com/7.x/avataaars/svg?seed=Preceptores" },
+            { "role": "Asesor Pedagógico", "name": "Lic. Marta Lynch", "image": "https://api.dicebear.com/7.x/avataaars/svg?seed=Marta" }
+          ]
+        },
+        { "role": "Sub-regente", "name": "Prof. Elena Solis", "image": "https://api.dicebear.com/7.x/avataaars/svg?seed=Elena" }
+      ]
+    }
+  ]
+}

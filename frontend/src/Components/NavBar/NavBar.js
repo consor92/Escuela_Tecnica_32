@@ -1,69 +1,85 @@
 import React, { useState } from 'react'
 import Style from './NavBar.module.css'
 import Link from 'next/link'
+import dynamic from 'next/dynamic';
 import { HiMenu } from 'react-icons/hi'
 import { useRouter } from 'next/router'
+import config from '../../data/config.json'
 
-const NavBar = ({ page }) => {
+const CalendarModalTrigger = dynamic(() => import('./CalendarModalTrigger'), { ssr: false });
+const NavBar = ({ page, isAlertVisible }) => {
+  const { sections } = config;
   const [sideBarOpen, setSideBarOpen] = useState(false)
   const router = new useRouter()
   const handleOpenSideBar = () => {
     setSideBarOpen(!sideBarOpen)
   }
 
+  const navTop = isAlertVisible ? '40px' : '0';
+
   const handleNavigateToAnchor = async (hash) => {
     setSideBarOpen(false)
 
     if (router.pathname !== '/') {
-      await router.push(`/#${hash}`)
+      await router.push(`/#${hash === 'novedades' ? 'novedades-title' : hash}`)
     } else {
-      // Si ya estás en /, simplemente hacé scroll
-      const element = document.getElementById(hash)
+      const targetId = hash === 'novedades' ? 'novedades-title' : hash;
+      const element = document.getElementById(targetId)
       if (element) {
-        element.scrollIntoView({ behavior: 'smooth' })
-      } else {
-        router.push(`/#${hash}`)
+        const elementRect = element.getBoundingClientRect();
+        const absoluteElementTop = elementRect.top + window.pageYOffset;
+        
+        let targetScrollPos;
+        if (hash === 'inscripciones') {
+          // Centrar en la ventana
+          const offset = (window.innerHeight - elementRect.height) / 2;
+          targetScrollPos = absoluteElementTop - offset;
+        } else {
+          // Justo al inicio (restando la altura del navbar, aprox 80px)
+          targetScrollPos = absoluteElementTop - 80;
+        }
+        
+        window.scrollTo({
+          top: targetScrollPos,
+          behavior: 'smooth'
+        });
       }
     }
   }
 
   return (
-    <div className={Style.container}>
+    <div className={Style.container} style={{ top: navTop }}>
       <Link href='/' className={Style.container__EscuelaTecnica}>
         <>
-          <div className={Style.escuelaTecnica_Img}></div>
+          <div className={Style.container__EscuelaTecnica_Img}>
+             <img src="/logoet32.ico" alt="Logo ET32" style={{ width: '65px', height: '65px', objectFit: 'contain', imageRendering: 'high-quality' }} />
+          </div>
           <div className={Style.escuelaTecnica_info}>
-            <h2>LA GLORIOSA 32</h2>
-            <h3>Gral Jose de San Martin ET32 DE14</h3>
+            <h2>E.T. N° 32</h2>
+            <h3>Gral José de San Martín ET32 DE14</h3>
           </div>
         </>
       </Link>
       <div className={`${Style.container__navBar} ${sideBarOpen ? Style.container__navBarOpen : Style.container__navBarClosed}`}>
         <div className={Style.container__navBarTop}>
           <nav>
-            <Link href='' onClick={handleOpenSideBar}>
-              CALENDARIO
-            </Link>
-            {/* <Link href='' onClick={handleOpenSideBar}>
-              NOTICIAS
-            </Link> */}
-            <Link href='' onClick={handleOpenSideBar} >
-              AUTORIDADES
-            </Link>
-            <Link href='' onClick={handleOpenSideBar}>
-              AULA VIRTUAL
-            </Link>
+            {sections.calendario && <CalendarModalTrigger handleOpenSideBar={handleOpenSideBar} />}
+            {sections.autoridades && <Link href="/autoridades" onClick={handleOpenSideBar}>AUTORIDADES</Link>}
+            {sections.alumnos && <Link href="/alumnos" onClick={handleOpenSideBar}>ALUMNOS</Link>}
+            {sections.profesores && <Link href="/profesores" onClick={handleOpenSideBar}>PROFESORES</Link>}
+            {sections.emergencia && <Link href="/emergencia" onClick={handleOpenSideBar} className={Style.emergenciaLink}>PROTOCOLOS DE EMERGENCIAS</Link>}
           </nav>
         </div>
         <div className={Style.container__navBarBottom}>
           <nav>
-            <button onClick={() => handleNavigateToAnchor('disciplines')}>ESPECIALIDADES</button>
-            <button onClick={() => handleNavigateToAnchor('inscripciones')}>INSCRIPCIONES</button>
-            <button onClick={() => handleNavigateToAnchor('sections')}>INFRAESTRUCTURA</button>
-            <button onClick={() => handleNavigateToAnchor('cooperadora')}>COOPERADORA</button>
-
+            {sections.novedades && <button onClick={() => handleNavigateToAnchor('novedades')}>NOVEDADES</button>}
+            {sections.especialidades && <button onClick={() => handleNavigateToAnchor('disciplines')}>ESPECIALIDADES</button>}
+            {sections.inscripciones && <button onClick={() => handleNavigateToAnchor('inscripciones')}>INSCRIPCIONES</button>}
+            {sections.infraestructura && <button onClick={() => handleNavigateToAnchor('sections')}>INFRAESTRUCTURA</button>}
+            {sections.cooperadora && <button onClick={() => handleNavigateToAnchor('cooperadora')}>COOPERADORA</button>}
+            {sections.contacto && <button onClick={() => handleNavigateToAnchor('contacto')}>CONTACTO</button>}
+            {sections.historia && <Link href="/historia" onClick={handleOpenSideBar} className={Style.historyLink}>HISTORIA</Link>}
           </nav>
-
         </div>
       </div>
       <button onClick={handleOpenSideBar} className={Style.container__sideBar}>

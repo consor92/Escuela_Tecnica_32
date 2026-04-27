@@ -1,14 +1,13 @@
 .container {
     width: 100%;
     height: 100vh;
-    background-image: url('../../Assets/Images/bg__HomeIndex.png');
+    background-image: url('/images/bg__HomeIndex.png');
     background-size: cover;
     position: relative;
     display: flex;
     justify-content: center;
     align-items: center;
 }
-
 
 .container::after {
     content: "";
@@ -17,137 +16,164 @@
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: var(--background--blue);
-    opacity: 0.9;
+    background: linear-gradient(to bottom, 
+        rgba(0, 0, 0, 0.55) 0%, 
+        rgba(0, 0, 0, 0.55) 2%, 
+        rgba(25, 29, 98, 0.65) 15%, 
+        rgba(25, 29, 98, 0.65) 100%);
+    opacity: 1;
 }
-
 
 .container__msg {
     width: 80%;
-    height: 40%;
+    max-width: 1000px;
+    height: auto;
+    min-height: 400px;
     display: flex;
     flex-direction: row;
     position: relative;
     z-index: 9;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
 }
-
 
 .images {
     width: 40%;
-    height: 100%;
     background-size: cover;
+    background-position: center;
     position: relative;
     display: flex;
     justify-content: center;
     align-items: center;
-    background-image: url('../../Assets/Images/mapa.png');
+    background-image: url('/images/mapa.png');
 }
 
 .msg {
     width: 60%;
-    height: 100%;
-    background-size: cover;
-    display: flex;
-    justify-content: space-evenly;
-    align-items: center;
     background-color: var(--background--black);
-    flex-direction: column;
-}
-
-.containerIconText {
-    width: 100%;
-    padding: 0 25px;
     display: flex;
-    align-content: center;
+    flex-direction: column;
+    justify-content: center;
+    padding: 40px;
+    gap: 20px;
+}
+
+.contactGrid {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.contactItem {
+    display: flex;
     align-items: center;
+    gap: 12px;
 }
-
-.icon {
-    width: 25px;
-    height: 25px;
-    background-size: contain;
-    background-repeat: no-repeat;
-    background-position: center;
-}
-
-.icon1 {
-    background-image: url('../../Assets/Images/ubicacion.png');
-}
-
-.icon2 {
-    background-image: url('../../Assets/Images/transportColectivo.png');
-}
-
-.icon3 {
-    background-image: url('../../Assets/Images/transportTren.png');
-}
-
-.icon4 {
-    background-image: url('../../Assets/Images/telefono.png');
-}
-
-
-
-
-
-
 
 .textSecondary {
-    width: 100%;
-    z-index: 1;
-    font-size: 15px;
-    color: var(--font-color--white);
-    letter-spacing: 0.13rem;
-    padding-left: 10px;
+    color: white;
+    font-size: 14px;
+    margin: 0;
+    line-height: 1.2;
 }
 
-.text {
-    width: 100%;
-    z-index: 1;
-    padding-left: 10px;
-    font-weight: 600;
-    font-size: 25px;
-    color: var(--font-color--white);
+.textSecondary strong {
+    color: var(--background--redIntense);
+    text-transform: uppercase;
+    font-size: 11px;
+    letter-spacing: 1px;
+    margin-right: 5px;
 }
 
+.reactIcon {
+    font-size: 18px;
+    color: var(--background--redIntense);
+    flex-shrink: 0;
+}
 
+.socialSection {
+    margin-top: 10px;
+    padding-top: 15px;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
 
-@media only screen and (max-width:768px) {
+.containerSocial {
+    display: flex;
+    gap: 25px;
+    margin-top: 15px;
+    padding-left: 30px;
+}
 
+.socialLink {
+    color: white;
+    font-size: 28px;
+    transition: transform 0.2s, color 0.2s;
+}
+
+.socialLink:hover {
+    transform: scale(1.2);
+    color: var(--background--redIntense);
+}
+
+.link, .emailBtn {
+    color: white;
+    text-decoration: none;
+    transition: color 0.2s;
+    background: none;
+    border: none;
+    padding: 0;
+    font-family: inherit;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+.link:hover, .emailBtn:hover {
+    color: var(--background--redIntense);
+}
+
+.mapOverlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(25, 29, 98, 0.6);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-weight: bold;
+    opacity: 0;
+    transition: opacity 0.3s;
+    text-align: center;
+    padding: 20px;
+    backdrop-filter: blur(2px);
+}
+
+.images:hover .mapOverlay {
+    opacity: 1;
+}
+
+@media only screen and (max-width: 768px) {
     .container {
-        width: 100%;
-        height: 100vh;
+        height: auto;
         padding: 50px 0;
     }
-
     .container__msg {
         flex-direction: column;
-        height: 100%;
+        width: 90%;
     }
-
-    .text {
-        font-size: 20px;
-    }
-
-    .textSecondary {
-        font-size: 15px;
-    }
-
     .images {
-        border-radius: 20px 0 0 0;
-        background: url(/_next/static/media/mapa.d5ccd38c.png);
         width: 100%;
-        height: 40%;
-        background-position: center;
-        background-size: cover;
-        background-repeat: no-repeat;
+        height: 200px;
     }
-
     .msg {
         width: 100%;
-        height: 60%;
-        border-radius: 0 0 20px 0;
+        padding: 30px;
     }
-
-
+    .containerSocial {
+        padding-left: 0;
+        justify-content: center;
+    }
 }

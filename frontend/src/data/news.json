@@ -1,0 +1,62 @@
+[
+  {
+    "id": 5,
+    "titulo": "Promoción Acompañada 2026: Inscripciones Abiertas",
+    "fecha": "2026-04-27",
+    "imagen_principal": "/images/qr_promocion_2026.png",
+    "descripcion": "Inscripciones del 27/04 al 01/05 inclusive. Accedé al formulario de inscripción aquí.",
+    "contenido": "<h3>Inscripciones 2026</h3><p>Se informa que del <b>27 de abril al 1 de mayo inclusive</b> se encuentran abiertas las inscripciones para el programa de Promoción Acompañada 2026.</p><h4>¿Cómo inscribirse?</h4><p>La inscripción se realiza de forma virtual a través del siguiente formulario de Google o escaneando el código QR de la imagen:</p><p><a href='https://docs.google.com/forms/d/e/1FAIpQLSeKweMMWvIbbHF3P2GzhqAwCDwX1RVFOr20db44c824EX5dmg/viewform' target='_blank' rel='noopener noreferrer' style='color: #F90334; font-weight: bold;'>IR AL FORMULARIO DE INSCRIPCIÓN</a></p><p>Recordá que la inscripción es obligatoria para poder participar del programa.</p>",
+    "link": "https://docs.google.com/forms/d/e/1FAIpQLSeKweMMWvIbbHF3P2GzhqAwCDwX1RVFOr20db44c824EX5dmg/viewform",
+    "carrusel": [
+      "/images/qr_promocion_2026.png"
+    ]
+  },
+  {
+    "id": 1,
+    "titulo": "Inscripción de 2° a 6° año - Ciclo Lectivo 2026",
+    "descripcion": "Se encuentra abierto el proceso de inscripción para alumnos de segundo a sexto año para el próximo ciclo escolar.",
+    "link": "",
+    "imagen_principal": "/images/inscripcion2026.jpg",
+    "fecha": "2025-11-20",
+    "contenido": "<p>La Escuela Técnica N°32 informa que ya se encuentran disponibles las pautas para la inscripción de alumnos de 2° a 6° año para el ciclo lectivo 2026.</p><p>Es importante que las familias completen la documentación requerida en los plazos establecidos para asegurar la continuidad pedagógica de los estudiantes.</p>",
+    "carrusel": [
+      "/images/inscripcion2026.jpg"
+    ]
+  },
+  {
+    "id": 2,
+    "titulo": "ESCUELA TÉCNICA Nº32 - Ingreso 2026",
+    "descripcion": "Inscripciones abiertas para las especialidades de Técnico en Automotores, Computación y Mecánica.",
+    "link": "",
+    "imagen_principal": "/images/automotores.jpg",
+    "fecha": "2025-10-15",
+    "contenido": "<p>La Escuela Técnica 32 &quot;General José de San Martín&quot; abre sus puertas para el ciclo lectivo 2026. Contamos con las especialidades de:</p><ul><li>Técnico en Automotores</li><li>Técnico en Computación</li><li>Técnico Mecánico</li></ul><p>Te esperamos en nuestra sede: <strong>Teodoro García 3899, C.A.B.A.</strong></p><p>Para más información o consultas, podés escribirnos al correo: <strong>alumnos.et32@bue.edu.ar</strong></p>",
+    "carrusel": [
+      "/images/automotores.jpg"
+    ]
+  },
+  {
+    "id": 3,
+    "titulo": "Expo 32: Técnico por un Día",
+    "descripcion": "Jornada de puertas abiertas para que las familias conozcan nuestra propuesta educativa y los talleres de cerca.",
+    "link": "",
+    "imagen_principal": "/images/tecnicoxundia.jpg",
+    "fecha": "2025-08-30",
+    "contenido": "<p>El próximo <strong>sábado 6 de septiembre, de 9:00 hs a 13:00 hs</strong>, se llevará a cabo en nuestra Escuela N°32 la jornada de puertas abiertas <strong>&quot;Técnico x un día&quot;</strong>.</p><p>Durante esta jornada, las escuelas abrirán sus puertas con muestras, recorridos y actividades pensadas para que las familias conozcan de cerca la propuesta educativa, conversen con docentes y estudiantes, y obtengan toda la información necesaria para decidir sobre la continuidad en la escuela secundaria.</p>",
+    "carrusel": [
+      "/images/tecnicoxundia.jpg"
+    ]
+  },
+  {
+    "id": 4,
+    "titulo": "Feria de Ciencias - Proyecto APER",
+    "descripcion": "Orgullo institucional: nuestros alumnos y docentes avanzan a la siguiente instancia de la Feria de Ciencias.",
+    "link": "",
+    "imagen_principal": "/images/feria.jpg",
+    "fecha": "2025-08-30",
+    "contenido": "<p>Con mucho orgullo les contamos que los profesores y alumnos que representaron a nuestra escuela en la <strong>Feria de Ciencias</strong> con el <strong>Proyecto APER</strong> han pasado a la siguiente instancia. Fue un momento muy emotivo el que se vivió durante la entrega de las distintas menciones.</p><p>Felicitamos a los protagonistas de este gran logro por su esfuerzo y dedicación:</p><ul><li><strong>Alumnos:</strong> Sabela Ludmila, Torres Borda Maria, Mansilla Camila, Coria David, Manuelo Kevin y Bitkowsky Astor.</li><li><strong>Docentes:</strong> Prof. Martin Celico, Prof. Jonatan Gordillo y Prof. Vanesa Freccia.</li></ul><p>¡Un verdadero orgullo para nuestra comunidad educativa!</p>",
+    "carrusel": [
+      "/images/feria.jpg"
+    ]
+  }
+]

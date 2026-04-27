@@ -3,25 +3,33 @@ import Style from './cooperadora.module.css'
 import AliceCarousel from 'react-alice-carousel'
 import 'react-alice-carousel/lib/alice-carousel.css';
 import itemCoop from '@/pages/api/itemCoop';
+import Image from 'next/image'
 
 const itemsImg = itemCoop.map(item => (
   <div
-    key={item.index}
-    className={Style.image}
-    style={{ backgroundImage: `url(${item.url})` }}
-  ></div>
+    key={item.id}
+    className={Style.imageContainer}
+  >
+    <Image
+      src={item.url}
+      alt={item.title}
+      fill
+      className={Style.carouselImage}
+      sizes="(max-width: 768px) 100vw, 50vw"
+    />
+  </div>
 ));
 
 const itemsText = itemCoop.map(item => (
-  <>
-    <h2 key={item.index} className={Style.msg__title}>
+  <div key={item.id} className={Style.textFadeContainer}>
+    <h2 className={Style.msg__title}>
       {item?.title}
     </h2>
+    <span className={Style.msg__date}>{item.fecha}</span>
     <div className={Style.msg__info}>
-      <p className={Style.info__decoration}>“</p>
       <p className={Style.info__text}>{item.text}</p>
     </div>
-  </>
+  </div>
 ))
 
 
@@ -31,12 +39,68 @@ const Cooperadora = () => {
 }
   return (
     <div id='cooperadora' className={Style.container}>
-      <h1 className={Style.title}>Cooperadora Tecnica 32<span></span></h1>
-      <p className={Style.text}>
-        Estamos para ayudar y acompañar a tus hijos, colaborando con necesidades y materiales. Los esperamos para escuchar sus inquietudes y propuestas.</p>
-      <a className={Style.btnMoreInfo} href='../../Assets/instructivoDocente.pdf' target='_blank'>
-        <button>INFORMACION</button>
-      </a>
+      <h1 className={Style.title}>Asociacion Cooperadora<span></span></h1>
+      <div className={Style.coopIntro}>
+        <div className={Style.row}>
+          <div className={Style.col + ' ' + Style.textCenter}>
+            <Image
+              src="/images/logo_coope.png"
+              alt="Logo Cooperadora"
+              width={220}
+              height={220}
+              className={Style.logoBig}
+            />
+          </div>
+
+          <div className={Style.col}>
+            <h2 className={Style.headTitle}>Asociación Cooperadora Técnica N°32</h2>
+
+            <p><strong>Queridas Familias:</strong></p>
+
+            <p>Somos la Asociación Cooperadora de la escuela y les damos la bienvenida a la comunidad de la Técnica N°32.</p>
+
+            <p>Nuestra misión es ayudar en la escuela y acompañar a sus hijos en sus trayectos escolares.</p>
+
+            <p>Año tras año, la Asociación Cooperadora colabora con la compra y entrega de herramientas, materiales, repuestos, insumos y máquinas que ayudan al buen funcionamiento de la escuela.</p>
+
+            <p>Por esta razón, Necesitamos de su colaboración para realizar esta misión, por lo que el pago de la cuota es indispensable para el normal desarrollo de las actividades educativas. Tambien necesitamos Madres y Padres que puedan integrar laComision Directiva y que colaboren con su tiempo en multiples actividades.</p>
+          </div>
+        </div>
+
+        <div className={Style.block}>
+          <h3>Valor de la Cuota</h3>
+          <p className={Style.small}>Cuota Anual: $100.000 (A partir de Marzo 2026) ó 2 Cuotas de $50.000 cada una (1er cuota: Marzo 2026 y 2da cuota: Mayo 2026).</p>
+        </div>
+
+        <div className={Style.block}>
+          <h3>Pago por Transferencia Bancaria</h3>
+          <p>Banco: Ciudad de Buenos Aires</p>
+
+          <p>CBU: 029000700000000321532</p>
+
+          <p>ALIAS: COOP.SAN.MARTIN</p>
+
+          <p>Titular: Asociación Cooperadora de la EMET N°2 D.E. 14</p>
+
+          <p>CUIT: 30-68178527-9</p>
+
+          <p className={Style.note}>Una vez efectuado el pago, deberá enviar al Email de la cooperadora (<a href="mailto:cooperadora.tecnica32de14@bue.edu.ar">cooperadora.tecnica32de14@bue.edu.ar</a>):</p>
+
+          <ol>
+            <li>El comprobante de transferencia (Banco, Mercado Pago, Billetera Virtual)</li>
+            <li>El detalle de los siguientes Datos del &quot;Socio&quot; (Que es el Padre, Madre o Tutor): Nombre, Apellido del Socio, DNI, Dirección, Teléfono Celular, Email, Nacionalidad</li>
+            <li>Datos del alumno: Nombre, Apellido, Año y División</li>
+          </ol>
+        </div>
+
+        <div className={Style.block}>
+          <h3>Pago en forma personal</h3>
+          <p>En la Cooperadora (Desde Marzo 2026: Martes de 8:00 a 12:00 hs).</p>
+
+          <p>Cambios de horarios e información general, visitar nuestro Instagram: <a href="https://www.instagram.com/cooperadoragralsanmartin" target="_blank" rel="noopener noreferrer">@cooperadoragralsanmartin</a></p>
+        </div>
+
+      </div>
       <div className={Style.container__msg}>
         <div className={Style.msg}>
           <AliceCarousel

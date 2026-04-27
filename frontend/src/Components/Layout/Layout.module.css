@@ -1,3 +1,35 @@
 .container{
     width: 100%;
 }
+
+.backToTopButton {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    background-color: var(--background--redIntense);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    font-size: 24px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+    transition: background-color 0.3s ease, transform 0.3s ease, opacity 0.3s ease, visibility 0.3s ease;
+    z-index: 9999;
+    opacity: 0;
+    visibility: hidden;
+}
+
+.backToTopButton.visible {
+    opacity: 1;
+    visibility: visible;
+}
+
+.backToTopButton:hover {
+    background-color: #b30000;
+    transform: translateY(-2px);
+}

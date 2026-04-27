@@ -1,14 +1,17 @@
 .container {
     width: 100%;
-    background-image: url('../../Assets/Images/bg_disciplines.png');
+    background-image: url('/images/bg_disciplines.png');
     background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
     position: relative;
+    z-index: 5; /* section sits above general page background */
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    gap: 35px;
-    padding-bottom: 50px;
+    gap: 28px;
+    padding: 100px 0;
 }
 
 .container::after {
@@ -18,19 +21,24 @@
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: var(--background--black);
-    opacity: 0.9;
+    background: linear-gradient(to bottom, 
+        var(--background--black) 0%, 
+        rgba(0,0,0,0.6) 20%, 
+        rgba(0,0,0,0.6) 80%, 
+        var(--background--black) 100%);
+    pointer-events: none;
+    z-index: 2;
 }
 
 .title {
     display: flex;
-    margin: 5% auto;
+    margin: 2% auto 0 auto;
     margin-bottom: 0;
-    font-weight: 00;
-    letter-spacing: 2px;
+    font-weight: 700;
+    letter-spacing: 1.6px;
     font-size: var(--font-size--big);
     color: var(--background--white);
-    z-index: 1;
+    z-index: 12;
     flex-direction: column;
     align-items: center;
     width: 100%;
@@ -45,12 +53,14 @@
 
 .text {
     position: relative;
-    z-index: 9;
-    width: 75%;
+    z-index: 12;
+    width: 72%;
+    max-width: 980px;
     font-size: var(--font-size--large);
     letter-spacing: var(--font-spacing-medium);
-    color: var(--font-color--grey);
-    margin-bottom: 2%;
+    color: #ffffff; /* readable over background */
+    margin: 6px 0 8px 0;
+    text-align: center;
 }
 
 .btnMoreInfo {
@@ -86,32 +96,49 @@
 }
 
 .container__msg {
-    width: 80%;
-    height: 50%;
+    width: 84%;
     display: flex;
-    flex-direction: row;
+    gap: 18px;
+    align-items: stretch;
     position: relative;
-    z-index: 9;
+    z-index: 12; /* ensure carousel/content sits above background */
+    margin-top: 8px;
 }
 
 .msg {
     width: 50%;
     height: 379px;
-    background-color: var(--background--redIntense);
-    border: none;
+    background: linear-gradient(135deg, rgba(191, 10, 48, 0.4), rgba(191, 10, 48, 0.1));
+    border: 1px solid rgba(255, 255, 255, 0.1);
     border-radius: 20px 0 0 0;
+    backdrop-filter: blur(5px);
+}
+
+.textFadeContainer {
+    animation: fadeIn 1.2s ease-in-out;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0.4; }
+    to { opacity: 1; }
+}
+
+.msg__date {
+    display: block;
+    color: #ffcccc;
+    font-size: 0.85rem;
+    margin: 5px 0 10px 5%;
+    font-style: italic;
 }
 
 .msg__title {
     position: relative;
-    z-index: 9;
+    z-index: 11;
     color: var(--font-color--white);
     font-size: var(--font-size--extraLarge);
     letter-spacing: var(--font-spacing-regular);
     font-weight: 800;
-    margin: 15%;
-    margin-left: 5%;
-    margin-bottom: 0;
+    margin: 10% 5% 0 5%;
 }
 
 .msg__info {
@@ -138,6 +165,28 @@
     color: var(--font-color--white);
 }
 
+/* Cooperadora intro text styles: ensure all text is white and above overlays */
+.coopIntro {
+    width: 84%;
+    max-width: 1100px;
+    margin-top: 6px;
+    z-index: 12;
+    display: block;
+}
+
+.coopIntro > .row { display:flex; gap:22px; align-items:flex-start; }
+
+.coopIntro .col { background: rgba(30, 30, 30, 0.85); padding: 18px; border-radius: 12px; }
+
+.coopIntro h2 { margin: 0 0 10px 0; color: #ffffff; font-size: 1.2rem; }
+.coopIntro p { color: #ffffff; margin: 8px 0; font-size: 0.99rem; }
+.coopIntro .lead { font-weight:700; margin-bottom:6px; color: #ffffff }
+.coopIntro .block { background: rgba(30, 30, 30, 0.85); padding: 14px; border-radius: 10px; margin-top: 14px; }
+.coopIntro .block h3 { margin:0 0 8px 0; color: #ffffff; }
+.coopIntro .small { color: #ffffff; }
+.coopIntro ol { padding-left: 1.2rem; margin: 6px 0; color: #ffffff }
+.coopIntro a { color: #ffd24d; text-decoration: underline; }
+
 
 .images {
     width: 50%;
@@ -148,24 +197,39 @@
     border-radius: 0 0 20px 0 !important;
 }
 
-.image {
-    background-image: url('https://cdn.wallpapersafari.com/95/49/RBudz6.jpg');
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: center;
+.imageContainer {
+    position: relative;
     height: 379px;
+    width: 100%;
+    overflow: hidden;
+}
+
+.carouselImage {
+    object-fit: cover;
+    border-radius: 0 0 20px 0;
+    opacity: 1 !important;
+}
+
+@media only screen and (max-width:768px) {
+    .imageContainer {
+        height: 300px;
+    }
 }
 
 @media only screen and (max-width:768px) {
 
-    .msg {
+/*     .msg {
         height: 260px;
-    }
+    } */
 
     .msg__title {
         margin-top: 15px;
+        font-size: 25px;
     }
-
+    .info__text {
+        width: auto;
+        max-width: max-content;
+    }   
     .image {
         height: 300px;
     }
@@ -203,6 +267,8 @@
         width: 100%;
     }
 
-
+    .coopIntro > .row {
+        flex-direction: column;
+    }
 
 }

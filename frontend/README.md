@@ -1,38 +1,78 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# ET 32 - Plataforma Institucional (v1.1.0)
 
-## Getting Started
+Este es el repositorio del frontend de la Escuela Técnica N° 32 "Gral. José de San Martín". La aplicación está construida con **Next.js** y está diseñada para ser desplegada mediante **Docker** de forma eficiente y persistente.
 
-First, run the development server:
+## 🚀 Funcionalidades Principales
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
+- **Gestión de Especialidades:** Páginas dinámicas para Automotores, Mecánica y Computación con detalles de planes de estudio y talleres.
+- **Organigrama Interactivo:** Visualización de la jerarquía de autoridades y personal docente.
+- **Calendario de Eventos y Exámenes:** Sistema de calendario interactivo para fechas importantes.
+- **Sección de Noticias y Novedades:** Feed dinámico de noticias con soporte para imágenes y categorías.
+- **Gestión de Emergencias:** Página dedicada con protocolos de seguridad y contactos de emergencia.
+- **Sistema de Inscripciones:** Información detallada para nuevos ingresantes y descarga de formularios.
+- **Banners de Alerta:** Sistema de notificaciones globales en la home para avisos urgentes.
+- **Cooperadora e Historia:** Espacios dedicados a la participación de padres y el legado institucional.
+
+## 📂 Estructura del Proyecto
+
+```text
+frontend/
+├── public/                 # Archivos estáticos (imágenes, PDFs)
+│   └── uploads/            # Carpeta persistente para archivos subidos en el servidor
+├── src/
+│   ├── Components/         # Componentes React reutilizables
+│   ├── data/               # Archivos JSON con información estática (autoridades, noticias, etc.)
+│   ├── pages/              # Rutas de la aplicación (Next.js Pages Router)
+│   └── styles/             # Estilos globales y variables CSS
+├── Dockerfile              # Configuración de la imagen de producción (Node 20-alpine)
+└── docker-compose.yml      # Configuración de servicios (Frontend + Nginx Proxy)
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## 🛠️ Desarrollo Local
 
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
+1. Instalar dependencias:
+   ```bash
+   npm install --legacy-peer-deps
+   ```
+2. Correr en modo desarrollo:
+   ```bash
+   npm run dev
+   ```
+3. Realizar un Build de prueba:
+   ```bash
+   npm run build
+   ```
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.js`.
+## 🐳 Despliegue con Docker (Producción)
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+El proyecto está configurado para correr detrás de un proxy inverso (**Nginx**) y mantener la persistencia de los archivos en la carpeta `public`.
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+### Pasos para desplegar:
 
-## Learn More
+1. **Mover el archivo Compose:**
+   Mover el archivo `frontend/docker-compose.yml` a la raíz del proyecto (un nivel arriba).
+2. **Subir cambios a Git:**
+   Asegurate de que los cambios en el `Dockerfile` y el `.gitignore` estén en el repo.
+3. **Pullear en el Servidor:**
+   ```bash
+   git pull origin main
+   ```
+4. **Levantar los Contenedores:**
+   ```bash
+   docker-compose up --build -d
+   ```
 
-To learn more about Next.js, take a look at the following resources:
+### 💾 Persistencia y Git Workflow
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- **Imágenes desde Local:** Si agregás imágenes en tu casa dentro de `public/`, hacé commit y push. Al hacer `git pull` en el server, se verán reflejadas automáticamente.
+- **Archivos subidos en el Server:** Los archivos que la app guarde en `public/uploads/` persistirán aunque se reinicie el contenedor, gracias al volumen configurado: `- ./frontend/public:/app/public`.
+- **Git Ignore:** La carpeta `public/uploads/` está ignorada por Git (excepto el archivo `.gitkeep`) para evitar conflictos al actualizar el código en el servidor.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+## ⚙️ Tecnologías Usadas
 
-## Deploy on Vercel
+- **Frontend:** Next.js (React), Framer Motion, React Icons.
+- **Despliegue:** Docker, Docker Compose, Nginx.
+- **Estilos:** CSS Modules y Variables Globales.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+---
+*Desarrollado para la Escuela Técnica N° 32.*
