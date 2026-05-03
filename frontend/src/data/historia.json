@@ -1,0 +1,81 @@
+{
+  "linea_de_tiempo": [
+    {
+      "id": "antecedentes_jesuitas",
+      "periodo": "1767 - 1800",
+      "titulo": "Tierras de la 'Chacrita'",
+      "subtitulo": "El legado de los Jesuitas",
+      "cuerpo": "Mucho antes de ser una institución educativa, estos terrenos formaban parte de la 'Chacrita de los Colegiales', propiedad de la Compañía de Jesús. Tras su expulsión en 1767, las tierras pasaron a manos del Estado, convirtiéndose en un refugio de verano para los alumnos del Real Colegio de San Carlos. Este pasado otorgó al barrio una identidad ligada al conocimiento y la reflexión desde sus cimientos.",
+      "layout": "izquierda"
+    },
+    {
+      "id": "predio_industrial",
+      "periodo": "1920 - 1940",
+      "titulo": "Aserraderos y Tango",
+      "subtitulo": "La Colmena y el auge barrial",
+      "cuerpo": "En las décadas previas a la fundación de la escuela, el solar tuvo un perfil industrial y social. Funcionó allí un importante aserradero a vapor propiedad de la familia Roncoroni. Pero no todo era trabajo: el predio también albergó a 'La Colmena', una famosa confitería y centro de baile donde el tango era el protagonista de las noches de Chacarita, marcando el pulso cultural de los vecinos.",
+      "dato_clave": "El predio original era un punto neurálgico que conectaba la producción maderera con la vida social del barrio.",
+      "layout": "derecha"
+    },
+    {
+      "id": "fundacion_peron",
+      "periodo": "22 de Agosto de 1950",
+      "titulo": "Nacimiento Institucional",
+      "subtitulo": "Escuela Fábrica de la Nación N° 131",
+      "cuerpo": "En el marco del 'Año Sanmartiniano', mediante el Decreto N° 17.151, el presidente Juan Domingo Perón fundó la institución bajo el nombre de 'Escuela Fábrica N° 131 - Gral. José de San Martín'. Fue una respuesta estratégica a la necesidad de industrialización del país, buscando que los jóvenes hijos de obreros accedieran a una formación técnica de excelencia y dignidad laboral.",
+      "dato_clave": "Su creación fue parte de un plan nacional para sustituir importaciones mediante la formación de técnicos calificados.",
+      "layout": "izquierda"
+    },
+    {
+      "id": "la_mistica",
+      "periodo": "1950 - 1960",
+      "titulo": "La Mística del Taller",
+      "subtitulo": "Aprender haciendo",
+      "cuerpo": "Los primeros años estuvieron marcados por un fuerte sentido de pertenencia. Los alumnos no solo estudiaban, sino que producían bienes reales. La escuela contaba con talleres de ajuste, herrería, fundición y carpintería. Se decía que de la 131 salían 'hombres de bien', formados bajo una disciplina técnica rigurosa pero con un profundo compromiso social y solidario.",
+      "layout": "derecha"
+    },
+    {
+      "id": "creacion_conet",
+      "periodo": "1959 - 1965",
+      "titulo": "La Era ENET N° 32",
+      "subtitulo": "Hacia la profesionalización técnica",
+      "cuerpo": "Con la creación del Consejo Nacional de Educación Técnica (CONET) en 1959, la escuela se integró al sistema nacional, pasando a denominarse ENET N° 32. Los planes de estudio se extendieron a 6 años para otorgar el título de Técnico Mecánico. Durante este periodo, la escuela se equipó con maquinaria de punta, convirtiéndose en un referente tecnológico para todo el Distrito Escolar 14.",
+      "dato_clave": "Fue en esta etapa donde se consolidó el prestigio de la escuela como 'La 32'.",
+      "layout": "izquierda"
+    },
+    {
+      "id": "transferencia_jurisdiccional",
+      "periodo": "1993 - 1994",
+      "titulo": "El Cambio de Jurisdicción",
+      "subtitulo": "De la Nación a la Ciudad",
+      "cuerpo": "En 1993, bajo la Ley de Transferencia de Servicios Educativos, la escuela dejó de depender del Gobierno Nacional para pasar a la órbita de la Ciudad de Buenos Aires. Fue un momento de transición institucional donde cambió su nombre temporalmente a EMET N° 2, para luego recuperar su identidad numérica histórica como la Escuela Técnica N° 32 D.E. 14.",
+      "layout": "derecha"
+    },
+    {
+      "id": "revolucion_digital",
+      "periodo": "1998 - 2005",
+      "titulo": "La Revolución de la Computación",
+      "subtitulo": "Nuevas especialidades para un nuevo siglo",
+      "cuerpo": "Entendiendo el cambio de paradigma global, la escuela incorporó la especialidad de Computación. Este hito permitió atraer a una nueva generación de estudiantes interesados en el software, las redes y la infraestructura digital, conviviendo en perfecta armonía con la histórica y robusta especialidad de Mecánica.",
+      "dato_clave": "La dualidad Mecánica-Computación define hoy el ADN innovador de la escuela.",
+      "layout": "izquierda"
+    },
+    {
+      "id": "aniversario_60",
+      "periodo": "2010",
+      "titulo": "60 Años de Historia",
+      "subtitulo": "Un legado inalterable",
+      "cuerpo": "En el año 2010, la comunidad educativa celebró su 60° Aniversario con la publicación de un documento histórico que recopiló testimonios de ex-alumnos, docentes y directivos. La escuela reafirmó su compromiso de ser un faro de educación pública en Chacarita, manteniendo vivos los valores sanmartinianos de esfuerzo, libertad y conocimiento.",
+      "layout": "derecha"
+    },
+    {
+      "id": "actualidad_futuro",
+      "periodo": "Presente y Futuro",
+      "titulo": "ET 32: Innovación Constante",
+      "subtitulo": "Formando a los técnicos del mañana",
+      "cuerpo": "Hoy, la ET 32 sigue creciendo con la incorporación de tecnologías como impresión 3D, robótica y laboratorios digitales. Se han actualizado los protocolos de emergencia, se han digitalizado las vías de contacto (DET y Alumnos) y se mantiene una gestión transparente a través de su Cooperadora, asegurando que cada estudiante tenga las herramientas necesarias para enfrentar los desafíos del siglo XXI.",
+      "dato_clave": "Nuestra historia no se detiene; se escribe día a día en cada aula y cada taller.",
+      "layout": "izquierda"
+    }
+  ]
+}

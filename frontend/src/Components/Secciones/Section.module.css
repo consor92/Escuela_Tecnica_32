@@ -14,7 +14,10 @@
   width: 100vw;
   height: 97vh;
   padding: 10vh 14vw 10vh 14vw;
-  background-image: url("../../Assets/Images/bg_disciplines.png");
+  background-image: url("/images/bg_disciplines.png");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
   position: relative;
   color: aliceblue;
 }
@@ -39,15 +42,22 @@
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: var(--background--blue);
-  opacity: 0.9;
+  background: linear-gradient(to bottom, 
+    rgba(0, 0, 0, 0.55) 0%, 
+    rgba(25, 29, 98, 0.25) 6%, 
+    rgba(25, 29, 98, 0.25) 94%, 
+    rgba(0, 0, 0, 0.55) 100%);
+  opacity: 1;
 }
 
 .parent {
   width: 100%;
   height: 100%;
   padding: 10vh 14vw 10vh 14vw;
-  background-image: url("../../Assets/Images/bg_disciplines.png");
+  background-image: url("/images/bg_disciplines.png");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
   position: relative;
 }
 
@@ -58,8 +68,12 @@
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: var(--background--blue);
-  opacity: 0.9;
+  background: linear-gradient(to bottom, 
+    rgba(0, 0, 0, 0.55) 0%, 
+    rgba(25, 29, 98, 0.25) 6%, 
+    rgba(25, 29, 98, 0.25) 94%, 
+    rgba(0, 0, 0, 0.55) 100%);
+  opacity: 1;
 }
 
 
@@ -84,6 +98,7 @@
   background-position: center;
   position: relative;
   z-index: 9;
+  filter: brightness(1.3);
 }
 
 .area1 {
@@ -118,6 +133,16 @@
   transition: all .5s ease;
 }
 
+.area1:hover,
+.area2:hover,
+.area3:hover,
+.area4:hover,
+.area5:hover,
+.area6:hover {
+  filter: brightness(1.5);
+  transition: filter .5s ease;
+}
+
 .area1:hover::after,
 .area2:hover::after,
 .area3:hover::after,
@@ -126,8 +151,8 @@
 .area6:hover::after {
   height: 100%;
   width: 100%;
-  background-color: var(--background--redIntense);
-  opacity: 0.6;
+  background: linear-gradient(to bottom, var(--background--redIntense) 0%, rgba(var(--background--redIntense-rgb, 191, 10, 48), 0.1) 100%);
+  opacity: 0.7;
   transition: all .5s ease;
 }
 
@@ -165,32 +190,32 @@
 
 .area1 {
   grid-area: area1;
-  background-image: url("../../Assets/Images/infra1.png");
+  background-image: url("/images/infra1.png");
 }
 
 .area2 {
   grid-area: area2;
-  background-image: url("../../Assets/Images/infra2.png");
+  background-image: url("/images/infra2.png");
 }
 
 .area3 {
   grid-area: area3;
-  background-image: url("../../Assets/Images/infra3.png");
+  background-image: url("/images/infra3.png");
 }
 
 .area4 {
   grid-area: area4;
-  background-image: url("../../Assets/Images/infra4.png");
+  background-image: url("/images/infra4.png");
 }
 
 .area5 {
   grid-area: area5;
-  background-image: url("../../Assets/Images/infra5.png");
+  background-image: url("/images/infra5.png");
 }
 
 .area6 {
   grid-area: area6;
-  background-image: url("../../Assets/Images/infra6.png");
+  background-image: url("/images/infra6.png");
   border-radius: 0px 0 20px 0;
 }
 

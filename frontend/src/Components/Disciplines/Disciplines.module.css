@@ -1,7 +1,8 @@
+/* --- SECCIÓN HOME (PÁGINA PRINCIPAL) --- */
 .container {
   width: 100%;
   height: 100vh;
-  background-image: url('../../Assets/Images/bg_disciplines.png');
+  background-image: url('/images/bg_disciplines.png');
   background-size: cover;
   position: relative;
   display: flex;
@@ -13,26 +14,24 @@
 .container::after {
   content: "";
   position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: var(--background--blue);
-  opacity: 0.9;
-}
+  top: 0; left: 0; width: 100%; height: 100%;
+  
+  /* Colores exactos para fundido traslúcido */
+  --negro-vecino-trans: rgba(0, 0, 0, 0.55);
+  --azul-central-trans: rgba(25, 29, 98, 0.35);
 
-.container__titleVertical {
-  transform: rotate(-90deg);
-  display: flex;
-  z-index: 1;
-  position: absolute;
-  left: -163px;
-  font-size: var(--font-size--medium);
-  font-weight: 100;
-  color: var(--background--white);
-  letter-spacing: var(--font-size--regular);
+  /* Fundido suave y traslúcido de punta a punta */
+  background: linear-gradient(to bottom, 
+    var(--negro-vecino-trans) 0%, 
+    var(--negro-vecino-trans) 2%, 
+    var(--azul-central-trans) 15%, 
+    var(--azul-central-trans) 85%, 
+    var(--negro-vecino-trans) 98%, 
+    var(--negro-vecino-trans) 100%);
+  
+  opacity: 1;
+  z-index: 0;
 }
-
 
 .container__mecanica,
 .container__computacion,
@@ -40,578 +39,248 @@
   width: 360px;
   height: 550px;
   z-index: 9;
-}
-
-.container__mecanica {
-  border-radius: 0 0 35px 0;
-  background-image: url('../../Assets/Images/bg_mecanica.png');
   position: relative;
-}
-
-.container__computacion {
-  background-image: url('../../Assets/Images/bg_computacion.png');
-  position: relative;
-}
-
-.container__automotores {
-  border-radius: 0 25px 0 25px;
-  background-image: url('../../Assets/Images/bg_automotores.png');
-  position: relative;
-}
-
-
-.container__mecanica h1,
-.container__computacion h1 {
+  overflow: hidden;
   display: flex;
   align-items: center;
   justify-content: center;
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  z-index: 1;
-  font-size: var(--font-size--big);
-  color: var(--font-color--white);
-  text-align: center;
+  cursor: pointer;
+  background-size: cover;
+  background-position: center;
 }
 
-.container__automotores h1 {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  z-index: 1;
-  font-size: 42px;
-  color: var(--font-color--white);
-  text-align: center;
-}
-
-
-.container__mecanica::after {
+.container__mecanica::before,
+.container__computacion::before,
+.container__automotores::before {
   content: '';
   position: absolute;
-  border-radius: 0 0 35px 0;
-  height: 0%;
-  width: 100%;
-  opacity: 0;
-  transition: all .5s ease;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.05);
+  z-index: 1;
 }
 
-
-.container__computacion::after {
-  content: '';
-  position: absolute;
-  height: 0%;
-  width: 100%;
-  opacity: 0;
-  transition: all .5s ease;
-}
-
+.container__mecanica::after,
+.container__computacion::after,
 .container__automotores::after {
   content: '';
   position: absolute;
-  border-radius: 35px 0 0 0;
-  height: 0%;
-  width: 100%;
+  top: 0; left: 0; width: 100%; height: 0%;
+  background: linear-gradient(to bottom, var(--background--redIntense) 0%, rgba(191, 10, 48, 0.1) 100%);
   opacity: 0;
-  transition: all .5s ease;
+  transition: all 0.5s ease;
+  z-index: 2;
 }
 
 .container__mecanica:hover::after,
 .container__computacion:hover::after,
-.container__automotores:hover::after {
-  background-color: var(--background--redIntense);
+.container__automotores:hover::after { height: 100%; opacity: 0.8; }
+
+.container__mecanica { border-radius: 0 0 35px 0; background-image: url('/images/bg_mecanica.png'); }
+.container__computacion { background-image: url('/images/bg_computacion.png'); }
+.container__automotores { border-radius: 35px 0 0 0; background-image: url('/images/bg_automotores.png'); }
+
+.container__mecanica h1,
+.container__computacion h1,
+.container__automotores h1 {
+  position: absolute;
+  width: 100%;
   height: 100%;
-  opacity: 0.6;
-  transition: all .5s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 3;
+  color: white;
+  font-size: 2.2rem;
+  font-weight: 800;
+  text-align: center;
+  text-transform: uppercase;
+  padding: 0 20px;
+  text-shadow: 0 4px 10px rgba(0,0,0,0.5);
+  margin: 0;
 }
 
-.container__automotores {
-  /* border-radius: 0 25px 0 25px; */
-  border-radius: 35px 0 0 0;
-}
-
-
+/* --- SECCIÓN PÁGINA INDIVIDUAL --- */
 .containerPage {
   width: 100%;
-  /* height: 100vh; */
-  background-color: var(--background--black);
+  min-height: 100vh;
+  background-color: #000;
+  background-image: radial-gradient(rgba(255, 255, 255, 0.1) 1px, transparent 1px);
+  background-size: 30px 30px;
+  background-attachment: fixed;
+  position: relative;
 }
 
-.containerPage_subtitle {
-  z-index: 1;
-  margin-left: 20px;
-  font-size: var(--font-size--regular);
-  color: var(--background--white);
-  font-weight: 400;
-}
+.headerSection { width: 100%; height: 50vh; position: relative; }
 
 .containerPage__computacion,
 .containerPage__mecanica,
 .containerPage__automotores {
-  width: 100%;
-  height: 50vh;
-  display: flex;
-  position: relative;
-  justify-content: flex-start;
-  align-items: flex-end;
-  background-color: var(--background--blue);
-  background-image: url('../../Assets/Images/bg_page_computacion.jpg');
-  background-size: cover;
-  background-position: center;
+  width: 100%; height: 100%;
+  display: flex; justify-content: flex-start; align-items: flex-end;
+  background-size: cover; background-position: center;
 }
-
-
-.containerPage__mecanica {
-  background-position: center top 875px;
-  background-image: url('../../Assets/Images/bg_page_mecanica.jpg');
-}
-
-.containerPage__automotores {
-  background-image: url('../../Assets/Images/bg_page_automotores.jpg');
-}
-
 
 .containerPage__computacion::after,
 .containerPage__mecanica::after,
 .containerPage__automotores::after {
-  content: '';
-  position: absolute;
-  top: 2px;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(to top, rgba(23, 23, 21, 1), rgba(23, 23, 21, 0));
+  content: ''; position: absolute; inset: 0;
+  background: linear-gradient(to bottom, transparent, rgba(0, 0, 0, 0.7) 70%, black 100%);
 }
 
-.containerPage__title {
-  font-size: var(--font-size--regular);
-  color: var(--font-color--redIntense);
-  z-index: 1;
-  margin-left: 10px;
-  padding-right: 5px;
-  background-color: transparent;
-  /* Hace el fondo transparente */
-  border: var(--background--black);
-  /* Opcional: quita el borde */
-  text-transform: uppercase
+.containerPage__computacion { background-image: url('/images/bg_page_computacion.jpg'); }
+.containerPage__mecanica { background-image: url('/images/bg_page_mecanica.jpg'); }
+.containerPage__automotores { background-image: url('/images/bg_page_automotores.jpg'); }
+
+.selectorContainer { position: relative; z-index: 10; margin-left: 5%; margin-bottom: 40px; display: flex; flex-direction: column; }
+.containerPage_subtitle { font-size: 1.1rem; color: #fff; font-weight: 400; }
+.containerPage__title { font-size: 1.5rem; color: var(--font-color--redIntense); background: transparent; border: none; font-weight: 800; text-transform: uppercase; cursor: pointer; outline: none; }
+
+.containerPage__discipline__info { padding: 80px 10% 20px; text-align: center; color: #fff; }
+
+.infoSection {
+  display: flex; align-items: center; justify-content: center;
+  padding: 60px 8%; gap: 80px; max-width: 1600px; margin: 0 auto;
 }
 
-.containerPage__title option {
-  font-size: var(--font-size--regular);
-  background-color: var(--background--black);
-  border: none;
-  text-transform: uppercase;
-  padding: 0 25px;
+.infoContent { flex: 1; color: #fff; }
+.infoContentCenter { width: 70%; margin: 0 auto; color: #fff; }
+.infoContent h2, .infoContentCenter h2 { font-size: 2.2rem; margin-bottom: 30px; display: flex; align-items: center; }
+
+.textWithLine {
+  padding: 20px 30px; background: rgba(255, 255, 255, 0.04);
+  border-left: 5px solid var(--background--redIntense); border-radius: 0 15px 15px 0;
+  margin-bottom: 20px;
 }
+.textWithLine p { font-size: 1.15rem; line-height: 1.8; color: #ddd; margin: 0; }
 
-/*CSS De componente de cada disciplina*/
+.fullWidthTextSection { padding: 80px 0; color: #fff; }
 
+.infoImageContainer { flex: 1.5; height: 600px; position: relative; }
+.imageWrapper { position: relative; width: 100%; height: 100%; }
 
-.containerPage__discipline__info,
-.containerPage__discipline__about,
-.containerPage__discipline__photo,
-.containerPage__discipline__future,
-.containerPage__discipline__practice,
+.dynamicPhoto {
+  width: 100%; height: 100%; background-size: cover; background-position: center;
+  border-radius: 50px 15px; box-shadow: 0 30px 60px rgba(0,0,0,0.8);
+  z-index: 2; position: relative; transition: background-image 1s ease-in-out;
+}
+.photoLeft { border-radius: 15px 50px; }
+
+.redCurve {
+  position: absolute; bottom: -20px; right: -20px; width: 150px; height: 150px;
+  border-bottom: 7px solid var(--background--redIntense); border-right: 7px solid var(--background--redIntense);
+  border-radius: 0 0 60px 0; pointer-events: none; z-index: 1;
+}
+.curveLeft { right: auto; left: -20px; border-right: none; border-left: 7px solid var(--background--redIntense); border-radius: 0 0 0 60px; }
+
+/* --- PLAN DE ESTUDIO (SIN SCROLL) --- */
 .containerPage__discipline__study {
-  position: relative;
+  width: 100%;
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  align-items: flex-start;
-  margin: 0 auto;
-  padding: 30px;
-  width: 60%;
-}
-
-.containerPage__discipline__study {
-  width: 100%;
-}
-
-.containerPage__discipline__info {
-  margin-top: 50px
-}
-
-.containerPage__discipline__info h2,
-.containerPage__discipline__about h2,
-.containerPage__discipline__future h2,
-.containerPage__discipline__practice h2,
-.containerPage__discipline__workshopStuden h2,
-.containerPage__discipline__study h2 {
-  display: flex;
   align-items: center;
-  color: var(--font-color--white);
-  font-size: var(--font-size--extraLarge);
-  font-weight: 700;
-  letter-spacing: var(--font-spacing-medium);
+  padding: 80px 5%;
+  color: #fff;
 }
 
 .containerPage__discipline__study h2 {
-  margin: 0 auto;
-}
-
-.containerPage__discipline__workshopStuden h2 {
-  font-size: var(--font-size--big);
+  font-size: 2.5rem;
   font-weight: 800;
-  justify-content: center;
-  padding: 20px 0;
   display: flex;
   flex-direction: column;
-}
-
-.discipline__workshopStuden__line {
-  border-bottom: solid 4px var(--font-color--redIntense);
-  padding-top: 10px;
-  width: 10%;
-}
-
-.containerPage__discipline__study h2 {
-  font-size: var(--font-size--big);
-  font-weight: 800;
-  justify-content: center;
-  padding: 20px 0;
-  display: flex;
-  flex-direction: column;
+  align-items: center;
+  margin-bottom: 60px;
+  text-transform: uppercase;
 }
 
 .discipline__study__line {
-  border-bottom: solid 4px var(--font-color--redIntense);
-  padding-top: 10px;
-  width: 40%;
+  border-bottom: solid 5px var(--background--redIntense);
+  margin-top: 15px;
+  width: 120px; /* Ancho de la línea decorativa */
 }
 
-.containerPage__discipline__info h3 {
-  padding: 10px 30px;
-  color: var(--font-color--white);
-  /* font-size: var(--font-size--regular); */
-  font-size: 16px;
-  font-weight: 100;
-  letter-spacing: var(--font-spacing-medium);
-}
-
-.containerPage__discipline__about>p,
-.containerPage__discipline__future>p,
-.containerPage__discipline__practice>p {
-  padding: 15px 0;
-  color: var(--font-color--white);
-  margin-left: 30px;
-  line-height: 30px;
-}
-
-.discipline_computacion {
-  height: 530px;
+.studyContainer {
+  display: flex;
+  flex-wrap: wrap; /* Para que no haya scroll horizontal */
+  justify-content: center;
+  gap: 30px;
   width: 100%;
-  background-size: cover;
-  background-position: center;
-  background-image: url('../../Assets/Images/computacion.png');
+  max-width: 1400px;
 }
 
-.discipline_automotores {
-  height: 530px;
-  width: 100%;
-
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-image: url('../../Assets/Images/automotores.png');
+.yearCard {
+  background: rgba(255, 255, 255, 0.07);
+  padding: 30px;
+  border-radius: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  width: 320px;
+  transition: transform 0.3s ease, background 0.3s ease;
 }
 
-.discipline_mecanica {
-  height: 530px;
-  width: 100%;
-  background-size: cover;
-  background-position: center;
-  background-image: url('../../Assets/Images/mecanica.png');
+.yearCard:hover {
+  transform: translateY(-10px);
+  background: rgba(255, 255, 255, 0.1);
 }
 
-.containerPage__discipline__workshopStuden {
-  padding: 60px 0;
+.yearHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+  padding-bottom: 15px;
+  margin-bottom: 20px;
 }
 
-.container_discipline {
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
-  grid-template-rows: 1fr 1fr;
-  gap: 0px 0px;
-  grid-template-areas:
-    ". . . . ."
-    ". . . . .";
-  justify-items: stretch;
-  padding: 30px 0;
+.yearLabel { color: #fff; font-size: 1.5rem; font-weight: 800; margin: 0; }
+.yearSubLabel { color: var(--background--redIntense); font-weight: 700; font-size: 0.8rem; text-transform: uppercase; }
+
+.subjectsList {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
 }
 
-.container_discipline img {
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  width: 100%;
-}
-
-.discipline__study__infoSubject {
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  grid-template-rows: 1fr 1fr;
-  gap: 40px;
-  grid-template-areas:
-    ". . ."
-    ". . .";
-  justify-items: stretch;
-  padding: 30px 0;
-  margin: 0 auto;
-}
-
-.study__infoSubject__info {
-  width: 350px;
-  height: 770px;
-  background-color: var(--background--white);
-  border-radius: 10px;
-}
-
-.study__infoSubject__info h2 {
-  border-radius: 10px 10px 0 0;
-  border: rgba(255, 255, 255, 0.3) solid 1px;
-  border-bottom: none;
-  padding: 10px;
-  background-color: var(--background--black);
-  font-weight: 200;
-  font-size: var(--font-size--extraLarge);
-}
-
-.study__infoSubject__info h3 {
+.subjectItem {
+  font-size: 0.95rem;
+  color: #eee;
   display: flex;
   align-items: center;
-  font-weight: 100;
-  padding: 8px 20px;
-  /* font-size: var(--font-size--regular); */
-  font-size: 13px;
+  cursor: pointer;
+  transition: color 0.2s;
+  line-height: 1.4;
 }
 
+.subjectItem:hover { color: var(--background--redIntense); }
+.bullet { color: var(--background--redIntense); margin-right: 12px; font-size: 0.5rem; flex-shrink: 0; }
 
-.study__infoSubject__info img {
-  background-size: cover;
-  background-repeat: no-repeat;
-  width: 100%;
-  margin-bottom: 15px;
+/* --- MODALES --- */
+.modalOverlay {
+  position: fixed; inset: 0; background: rgba(0, 0, 0, 0.9);
+  display: flex; justify-content: center; align-items: center; z-index: 9999; backdrop-filter: blur(15px);
+}
+.modalContent {
+  width: 90%; max-width: 700px; background: #eee; border-radius: 30px;
+  overflow: hidden; border: 2px solid var(--background--blue); box-shadow: 0 25px 60px rgba(0,0,0,0.5);
+}
+.modalHeader {
+  background: #ddd; padding: 30px 40px; border-bottom: 5px solid var(--background--blue);
+  display: flex; justify-content: space-between; align-items: center;
+}
+.modalHeader h3 { color: var(--background--blue); font-weight: 900; margin: 0; font-size: 1.8rem; }
+.modalClose { background: transparent; border: none; font-size: 3rem; color: var(--background--blue); cursor: pointer; line-height: 1; }
+.modalBody { padding: 40px; display: flex; flex-direction: column; gap: 25px; color: #222; }
+.scrollableDescription { max-height: 250px; overflow-y: auto; background: #e0e0e0; padding: 25px; border-radius: 20px; font-size: 1.1rem; line-height: 1.7; border: 1px solid #ccc; }
+.troncalBadge { background: var(--background--redIntense); color: #fff; padding: 6px 18px; border-radius: 25px; font-weight: 800; font-size: 0.75rem; margin-left: 15px; vertical-align: middle; }
+.tag { background: rgba(25, 29, 98, 0.1); color: var(--background--blue); padding: 12px 20px; border-radius: 25px; font-weight: 700; font-size: 0.9rem; border: 1px solid rgba(25, 29, 98, 0.15); }
+.downloadBtn { display: block; text-align: center; background: var(--background--blue); color: #fff; padding: 20px; border-radius: 15px; font-weight: 800; text-transform: uppercase; margin-top: 15px; text-decoration: none; transition: opacity 0.3s; }
+.downloadBtn:hover { opacity: 0.9; }
+
+@media (max-width: 1024px) {
+  .infoSection { flex-direction: column; gap: 50px; }
+  .infoImageContainer { width: 100%; height: 500px; flex: none; }
 }
 
-
-
-@media only screen and (max-width:768px) {
-
-
-  .container {
-    width: 100%;
-    height: 100vh;
-    background-image: url('../../Assets/Images/bg_disciplines.png');
-    position: relative;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    gap: 35px;
-    padding: 30px 0;
-  }
-
-
-  .container__titleVertical {
-    display: none;
-  }
-
-
-  .containerPage__title {
-    font-size: var(--font-size--regular);
-  }
-
-  .container__mecanica,
-  .container__computacion,
-  .container__automotores {
-    width: 330px;
-    height: 550px;
-    z-index: 9;
-  }
-
-  .container__mecanica h1,
-  .container__computacion h1,
-  .container__automotores h1 {
-    font-size: 32px;
-  }
-
-
-  .containerPage__discipline__info,
-  .containerPage__discipline__about,
-  .containerPage__discipline__photo,
-  .containerPage__discipline__future,
-  .containerPage__discipline__practice,
-  .containerPage__discipline__study {
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: flex-start;
-    margin: 0;
-    padding: 30px 0;
-    width: 100%;
-  }
-
-  .containerPage__discipline__info h2,
-  .containerPage__discipline__about h2,
-  .containerPage__discipline__future h2,
-  .containerPage__discipline__practice h2,
-  .containerPage__discipline__workshopStuden h2,
-  .containerPage__discipline__study h2 {
-    display: flex;
-    align-items: center;
-    flex-wrap: wrap;
-    color: var(--font-color--white);
-    font-size: var(--font-size--large);
-    font-weight: 600;
-    letter-spacing: var(--font-spacing-medium);
-    padding: 0 50px;
-    padding-right: 10px;
-  }
-
-  .containerPage__discipline__workshopStuden h2,
-  .containerPage__discipline__study h2 {
-    color: var(--font-color--white);
-    font-size: var(--font-size--extraLarge);
-    font-weight: 600;
-    letter-spacing: var(--font-spacing-medium);
-    padding: 0 30px;
-    padding-right: 10px;
-    text-align: center;
-  }
-
-
-  .containerPage__discipline__about>p,
-  .containerPage__discipline__future>p,
-  .containerPage__discipline__practice>p {
-    padding: 15px 0;
-    color: var(--font-color--white);
-    margin: 0 15px;
-    margin-left: 30px;
-    line-height: 40px;
-  }
-
-  .containerPage__discipline__info svg,
-  .containerPage__discipline__about svg,
-  .containerPage__discipline__future svg,
-  .containerPage__discipline__practice svg {
-    position: absolute;
-    top: 29px;
-    left: 25px;
-    display: flex;
-  }
-
-
-  .fotoPortada_automotores {
-    height: 400px;
-    width: 100%;
-    margin: 0 auto;
-    background-image: url('../../../public/images/automotores_3.png');
-    background-color: red;
-    background-size: cover;
-    background-repeat: no-repeat;
-  }
-
-  .fotoPortada_mecanica{
-    height: 400px;
-    width: 100%;
-    margin: 0 auto;
-    background-image: url('../../../public/images/mecanica_3.jpeg');
-    background-color: red;
-    background-size: cover;
-    background-repeat: no-repeat;
-  }
-
-    .fotoPortada_computacion {
-    height: 400px;
-    width: 100%;
-    margin: 0 auto;
-    background-image: url('../../../public/images/computacion_2.png');
-    background-color: red;
-    background-size: cover;
-    background-repeat: no-repeat;
-  }
-
-  .container_discipline {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    grid-template-rows: 1fr 1fr 1fr 1fr 1fr;
-    gap: 0px 0px;
-    grid-template-areas:
-      ". . "
-      ". . "
-      ". . "
-      ". . "
-      ". . ";
-    justify-items: stretch;
-    padding: 30px 0;
-  }
-
-
-  .container_discipline img {
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    width: 100%;
-    height: 200px;
-  }
-
-  .discipline__study__infoSubject {
-    display: grid;
-    grid-template-columns: 1fr;
-    grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr;
-    gap: 40px;
-    grid-template-areas:
-      ". "
-      ". "
-      ". "
-      ". "
-      ". "
-      ". ";
-    justify-items: stretch;
-    padding: 30px 0;
-    margin: 0 auto;
-  }
-
-
-  .containerPage__computacion,
-  .containerPage__mecanica,
-  .containerPage__automotores {
-    width: 100%;
-    height: 50vh;
-    margin-bottom: 25px;
-    display: flex;
-    position: relative;
-    justify-content: flex-end;
-    align-items: flex-start;
-    background-color: var(--background--blue);
-    background-image: url(/_next/static/media/bg_page_computacion.8dc41984.jpg);
-    background-position: center;
-    background-position-x: -1063px;
-    background-position-y: -707px;
-    background-repeat: no-repeat;
-    background-size: auto;
-    flex-direction: column;
-    flex-wrap: nowrap;
-  }
-
-  .containerPage__mecanica {
-    background-position-x: -917px;
-    background-position-y: -437px;
-    background-image: url('../../Assets/Images/bg_page_mecanica.jpg');
-  }
-
-  .containerPage__automotores {
-    background-image: url('../../Assets/Images/bg_page_automotores.jpg');
-  }
-
-  .study__infoSubject__info h3 {
-    font-size: 13px;
-    padding: 11px 20px;
-  }
-  .discipline_automotores {
-    background-position-x: center;
-    }
-
+@media (max-width: 768px) {
+  .container { height: auto; flex-direction: column; padding: 50px 0; gap: 25px; }
+  .container__mecanica, .container__computacion, .container__automotores { width: 90%; height: 450px; }
+  .yearCard { width: 100%; }
 }

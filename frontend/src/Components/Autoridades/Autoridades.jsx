@@ -1,74 +1,146 @@
 import React from 'react'
+import { motion } from 'framer-motion'
+import { FaLinkedinIn } from 'react-icons/fa'
 import styles from './Autoridades.module.css'
+import orgData from '@/data/autoridades.json'
 
-function Node({ name, role, photo, shift }){
-  const parts = String(name).split(' ')
-  const first = parts.shift()
-  const last = parts.join(' ')
+const AuthorityCard = ({ person, index }) => {
+  if (!person) return null;
+  const { name, role, image, attributes } = person
+  const shift = person.shift || person.attributes?.shift || "S/T"
+  const linkedin = person.socials?.linkedin || person.attributes?.socials?.linkedin
+
   return (
-    <div className={styles.node}>
-      <div className={styles.avatar} role="img" aria-label={name} style={{backgroundImage: `url(${photo || '/images/avatar-placeholder.png'})`}} />
-      <div className={styles.info}>
-        <div className={styles.name}><span className={styles.first}>{first}</span> <span className={styles.last}>{last}</span></div>
-        <div className={styles.role}>{role}</div>
-        {shift && <div className={styles.shift}>{shift}</div>}
+    <motion.div 
+      className={styles.card}
+      initial={{ opacity: 0, scale: 0.9 }}
+      animate={{ 
+        opacity: 1, scale: 1,
+        y: [0, -10, 0],
+        rotate: index % 2 === 0 ? [0.6, -0.6, 0.6] : [-0.6, 0.6, -0.6]
+      }}
+      transition={{ 
+        opacity: { duration: 0.8, delay: index * 0.05 },
+        y: { duration: 4 + (index % 3), repeat: Infinity, ease: "easeInOut" },
+        rotate: { duration: 6 + (index % 2), repeat: Infinity, ease: "easeInOut" }
+      }}
+      whileHover={{ scale: 1.05, rotate: 0, zIndex: 10, transition: { duration: 0.3 } }}
+    >
+      <div className={styles.roleBadge}>Turno {shift}</div>
+      <div className={styles.avatarWrapper}>
+        <img src={image || person.attributes?.image} alt={name} className={styles.avatar} />
       </div>
-    </div>
+      <div className={styles.cardInfo}>
+        <h4 className={styles.name}>{name}</h4>
+        <p className={styles.role}>{role}</p>
+        <div className={styles.socials}>
+          {linkedin && linkedin !== "#" ? (
+            <a href={linkedin} target="_blank" rel="noopener noreferrer" className={styles.socialIcon}>
+              <FaLinkedinIn />
+            </a>
+          ) : (
+            <div className={`${styles.socialIcon} ${styles.socialIconInactive}`}>
+              <FaLinkedinIn />
+            </div>
+          )}
+        </div>
+      </div>
+    </motion.div>
   )
 }
 
-export default function Autoridades(){
+const EnergyParticle = ({ delay, duration, pathD, colorType }) => {
+  const particleClass = colorType === 'red' ? styles.particleRed : colorType === 'blue' ? styles.particleBlue : styles.particleGray;
+  const auraClass = colorType === 'red' ? styles.auraRed : colorType === 'blue' ? styles.auraBlue : styles.auraGray;
+
   return (
-    <section className={styles.container} aria-labelledby="autoridades-title">
-      <div className={styles.inner}>
-        <h2 id="autoridades-title" className={styles.title}>Autoridades</h2>
+    <motion.circle r="4" className={particleClass}>
+      <animateMotion dur={`${duration}s`} repeatCount="indefinite" path={pathD} begin={`${delay}s`} />
+      <circle r="8" className={auraClass} />
+      <circle r="2" fill="white" filter="blur(1px)" />
+    </motion.circle>
+  )
+}
 
+const FullConnectorPath = () => {
+  // Red de caminos múltiples y entrelazados
+  const paths = [
+    "M 500,0 C 500,100 500,100 500,200", // Central inicial
+    "M 500,200 C 300,250 100,300 150,450", // Rama izquierda principal
+    "M 500,200 C 700,250 900,300 850,450", // Rama derecha principal
+    "M 500,200 C 500,350 500,350 500,450", // Rama central secundaria
+    "M 150,450 C 150,550 300,550 350,750", // Conexión interna izq
+    "M 150,450 C 50,550 50,600 150,750",   // Conexión externa izq
+    "M 850,450 C 850,550 700,550 650,750", // Conexión interna der
+    "M 850,450 C 950,550 950,600 850,750", // Conexión externa der
+    "M 500,450 C 400,600 600,600 500,750", // Bucle central
+    "M 350,750 C 350,900 450,900 500,1100", // Cierre izq
+    "M 650,750 C 650,900 550,900 500,1100", // Cierre der
+    "M 150,750 C 150,950 300,950 500,1100", // Cierre extremo izq
+    "M 850,750 C 850,950 700,950 500,1100"  // Cierre extremo der
+  ];
 
-        <div className={styles.tree}>
-          <div className={styles.level + ' ' + styles.levelTop}>
-            <Node name="Dra. María Pérez" role="Rectora" photo="/images/autoridades/rectora.jpg" shift="Mañana" />
-          </div>
+  return (
+    <svg viewBox="0 0 1000 1100" preserveAspectRatio="none" className={styles.mainSvgConnector}>
+      {paths.map((d, i) => (
+        <path 
+          key={i} 
+          d={d} 
+          className={styles.mainPath} 
+          strokeDasharray="4 12" 
+          opacity={0.25} 
+        />
+      ))}
+      {/* Lluvia de partículas por diferentes caminos */}
+      <EnergyParticle delay={0} duration={8} pathD={paths[1]} colorType="red" />
+      <EnergyParticle delay={2} duration={12} pathD={paths[2]} colorType="blue" />
+      <EnergyParticle delay={4} duration={10} pathD={paths[3]} colorType="gray" />
+      <EnergyParticle delay={1} duration={9} pathD={paths[4]} colorType="red" />
+      <EnergyParticle delay={5} duration={14} pathD={paths[6]} colorType="blue" />
+      <EnergyParticle delay={3} duration={11} pathD={paths[8]} colorType="gray" />
+      <EnergyParticle delay={6} duration={13} pathD={paths[9]} colorType="red" />
+      <EnergyParticle delay={0} duration={15} pathD={paths[12]} colorType="blue" />
+    </svg>
+  )
+}
 
-          <div className={styles.connectorVertical} />
+export default function Autoridades() {
+  const rectora = orgData
+  const vicerrector = orgData.children[0]
+  const nivel3 = vicerrector.children
+  const nivel4 = nivel3.flatMap(node => node.children || []).filter(Boolean)
 
-          <div className={styles.level}>
-            <Node name="Prof. Juan Gómez" role="Vicerrector" photo="/images/autoridades/vicerrector.jpg" shift="Tarde"/>
-          </div>
+  return (
+    <section className={styles.container}>
+      <header className={styles.header}>
+        <h2 className={styles.title}>Autoridades</h2>
+        <div className={styles.titleLine} />
+      </header>
 
-          <div className={styles.branch}>
-            <div className={styles.branchItem}>
-              <Node name="Ing. César Luna" role="Jefe de Taller" photo="/images/autoridades/jefe_taller.jpg" shift="Mañana / Tarde" />
-            </div>
+      <div className={styles.organicLayout}>
+        <FullConnectorPath />
+        
+        <div className={styles.cardRow}>
+          <AuthorityCard person={rectora} index={0} />
+        </div>
 
-            <div className={styles.branchItem}>
-              <Node name="Lic. Laura Díaz" role="Regente Técnico" photo="/images/autoridades/regente_manana.jpg" shift="Mañana" />
-              <div className={styles.subConnector} />
-              <div className={styles.subItem}>
-                <Node name="Téc. Marcos Silva" role="Jefe de Laboratorios" photo="/images/autoridades/jefe_lab.jpg" shift="Mañana / Tarde" />
-              </div>
-            </div>
+        <div className={styles.cardRow}>
+          <AuthorityCard person={vicerrector} index={1} />
+        </div>
 
-            <div className={styles.branchItem}>
-              <Node name="Prof. Carlos Rojas" role="Regente Cultural" photo="/images/autoridades/regente_tarde.jpg" shift="Tarde" />
-              <div className={styles.subConnector} />
-              <div className={styles.subItem}>
-                <Node name="Prof. Ana Morales" role="Jefe de Preceptores" photo="/images/autoridades/jefe_preceptores.jpg" shift="Mañana" />
-                <div className={styles.subItem}>
-                  <Node name="Prof. Sergio Ruiz" role="SubJefe de Preceptores" photo="/images/autoridades/subjefe_preceptores.jpg" shift="Tarde" />
-                </div>
-              </div>
-              <div className={styles.subItem}>
-                <Node name="Prof. Martín Vega" role="SubRegente (Vespertino)" photo="/images/autoridades/subregente_vesp.jpg" shift="Vespertino" />
-              </div>
-
-            </div>
-
-            <div className={styles.branchItem}>
-              <Node name="Prof. Laura Sánchez" role="Accesor Pedagógico - DOE" photo="/images/autoridades/accesor_doe.jpg" shift="Mañana" />
-            </div>
+        <div className={styles.cardRow} style={{ marginTop: '20px' }}>
+          <div style={{ display: 'flex', gap: '40px', justifyContent: 'center', width: '100%', flexWrap: 'wrap' }}>
+            {nivel3.map((p, i) => (
+              <AuthorityCard key={i} person={p} index={10 + i} />
+            ))}
           </div>
         </div>
 
+        <div className={styles.cardRow} style={{ marginTop: '40px' }}>
+           <div style={{ display: 'flex', gap: '30px', justifyContent: 'center', flexWrap: 'wrap', width: '100%' }}>
+            {nivel4.map((p, i) => <AuthorityCard key={i} person={p} index={20 + i} />)}
+           </div>
+        </div>
       </div>
     </section>
   )

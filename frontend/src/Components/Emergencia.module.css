@@ -1,0 +1,241 @@
+.container {
+    width: 100%;
+    min-height: 100vh;
+    background-color: #0f0f0f;
+    background-image: radial-gradient(rgba(255, 255, 255, 0.1) 1px, transparent 1px);
+    background-size: 30px 30px;
+    padding: 120px 5% 60px;
+    color: #f0f0f0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.title {
+    font-size: var(--font-size--big);
+    color: #fff;
+    margin-bottom: 50px;
+    text-align: center;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+.section {
+    width: 100%;
+    max-width: 1100px;
+    margin-bottom: 50px;
+}
+
+.sectionTitle {
+    font-size: var(--font-size--extraLarge);
+    color: #fff;
+    margin-bottom: 25px;
+    padding-bottom: 12px;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    border-left: 6px solid var(--background--redIntense);
+    padding-left: 20px;
+}
+
+.card {
+    background-color: #1a1a1a;
+    border-radius: 12px;
+    padding: 40px;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.6);
+}
+
+.description {
+    font-size: 1.1rem;
+    line-height: 1.7;
+    margin-bottom: 35px;
+    color: #ccc;
+}
+
+.evacuacionContentGrid {
+    display: grid;
+    grid-template-columns: 1fr 1.2fr;
+    gap: 50px;
+    align-items: center;
+}
+
+.subSectionTitle {
+    font-size: var(--font-size--large);
+    color: #fff;
+    margin-bottom: 20px;
+    font-weight: 700;
+}
+
+.list {
+    list-style: none;
+    padding: 0;
+}
+
+.listItem {
+    padding: 18px 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    display: flex;
+    align-items: flex-start;
+    gap: 18px;
+    line-height: 1.5;
+}
+
+.listItem:last-child {
+    border-bottom: none;
+}
+
+.planosGrid {
+    width: 100%;
+}
+
+.planoCard h4 {
+    margin-bottom: 15px;
+    color: #eee;
+    font-size: 1.2rem;
+    text-align: center;
+}
+
+.imageContainer {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 16/11;
+    border-radius: 8px;
+    overflow: hidden;
+    cursor: zoom-in;
+    border: 2px solid rgba(255, 255, 255, 0.1);
+    background: #000;
+}
+
+.imageOverlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    font-weight: bold;
+    color: #fff;
+}
+
+.imageContainer:hover .imageOverlay {
+    opacity: 1;
+}
+
+.planoReferencia {
+    margin-top: 15px;
+    font-size: 0.95rem;
+    color: #999;
+    text-align: center;
+    line-height: 1.4;
+}
+
+.queHacerGrid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    margin-top: 30px;
+}
+
+.actionCard {
+    background: rgba(249, 3, 52, 0.08);
+    padding: 25px;
+    border-radius: 10px;
+    border-left: 4px solid var(--background--redIntense);
+    border-bottom: none;
+    transition: background 0.3s ease;
+}
+
+.actionCard:hover {
+    background: rgba(249, 3, 52, 0.12);
+}
+
+.actionCard p {
+    color: #eee;
+    font-size: 1rem;
+}
+
+.emergencyContact {
+    margin-top: 50px;
+    text-align: center;
+    padding: 30px;
+    background: var(--background--redIntense);
+    border-radius: 10px;
+    box-shadow: 0 10px 30px rgba(249, 3, 52, 0.3);
+}
+
+.emergencyContact p {
+    font-weight: 800;
+    color: #fff;
+    font-size: 1.2rem;
+    letter-spacing: 1px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+}
+
+/* Pantalla Completa */
+.fullscreenOverlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.98);
+    z-index: 10001;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+.fullscreenImageContainer {
+    position: relative;
+    width: 95%;
+    height: 90%;
+}
+
+.closeFullscreen {
+    position: absolute;
+    top: 40px;
+    right: 40px;
+    background: #fff;
+    border: none;
+    color: #000;
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    font-size: 20px;
+    cursor: pointer;
+    z-index: 10002;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.2s ease;
+}
+
+.closeFullscreen:hover {
+    transform: scale(1.1);
+}
+
+@media (max-width: 1024px) {
+    .evacuacionContentGrid {
+        grid-template-columns: 1fr;
+        gap: 30px;
+    }
+    .queHacerGrid {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 600px) {
+    .title { font-size: 1.8rem; }
+    .card { padding: 25px; }
+    .emergencyContact p { font-size: 1rem; }
+}

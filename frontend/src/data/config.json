@@ -1,0 +1,45 @@
+{
+  "sections": {
+    "autoridades": false,
+    "alumnos": true,
+    "profesores": true,
+    "emergencia": true,
+    "novedades": true,
+    "especialidades": true,
+    "inscripciones": true,
+    "infraestructura": true,
+    "cooperadora": true,
+    "contacto": true,
+    "historia": true,
+    "calendario": true,
+    "instagram": false,
+    "proyectos_destacados": false
+  },
+  "contact": {
+    "address": "Teodoro García 3899, C1427ECG CABA",
+    "google_maps_url": "https://www.google.com/maps/search/?api=1&query=Teodoro+Garcia+3899+CABA+Argentina+Chacarita+Escuela+Tecnica+32",
+    "phones": [
+      "4551-9121"
+    ],
+    "emails": [
+      "alumnos.et32@gmail.com",
+      "det_32_de14@bue.edu.ar"
+    ],
+    "enable_contact_form": false,
+    "social": {
+      "instagram": "https://www.instagram.com/escuelatecnica32/"
+    },
+    "transport": {
+      "colectivos": "19-39-42-44-47-63-65-71-76-87-90-93-108-111-119-127-176",
+      "trenes_subtes": "Linea B Est. Lacroze, Ferrocarril Urquiza Est. Federico Lacroze"
+    }
+  },
+  "alerts": {
+    "active": true,
+    "start_date": "2026-04-27",
+    "end_date": "2026-05-01",
+
+    "message": "Inscripciones abiertas para Promocion Acompañada 2026",
+    "type": "info"
+  }
+}

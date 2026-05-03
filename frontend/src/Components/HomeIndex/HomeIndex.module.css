@@ -1,24 +1,30 @@
 .container {
     width: 100%;
     height: 100vh;
-    background-image: url('../../Assets/Images/bg__HomeIndex.png');
-    background-size: cover;
     position: relative;
     display: flex;
     justify-content: center;
     align-items: center;
+    overflow: hidden;
 }
 
-
-.container::after {
-    content: "";
+.backgroundImage {
+    object-fit: cover;
+    z-index: 0;
+}
+.overlay {
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: var(--background--blue);
-    opacity: 0.9;
+    background: linear-gradient(to bottom, 
+        rgba(25, 29, 98, 0.35) 0%, 
+        rgba(25, 29, 98, 0.35) 85%, 
+        rgba(0, 0, 0, 0.55) 98%, 
+        rgba(0, 0, 0, 0.55) 100%);
+    opacity: 1;
+    z-index: 1;
 }
 
 .container p {

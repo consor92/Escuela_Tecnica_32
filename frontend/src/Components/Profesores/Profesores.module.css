@@ -2,6 +2,8 @@
     width: 100%;
     min-height: 100vh;
     background-color: var(--background--black);
+    background-image: radial-gradient(rgba(255, 255, 255, 0.1) 1px, transparent 1px);
+    background-size: 30px 30px;
     padding-bottom: 60px;
 }
 
@@ -23,6 +25,37 @@
     font-size: var(--font-size--large);
     color: var(--font-color--grey);
     font-weight: 300;
+}
+
+/* Categorías / Filtros */
+.filterContainer {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    padding: 20px;
+    flex-wrap: wrap;
+}
+
+.filterBtn {
+    padding: 8px 20px;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: var(--font-color--white);
+    border-radius: 20px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-size: var(--font-size--medium);
+}
+
+.filterBtn:hover {
+    background: rgba(25, 29, 98, 0.4);
+    border-color: var(--background--blue);
+}
+
+.filterBtnActive {
+    background: var(--background--blue);
+    border-color: var(--background--blue);
+    color: white;
 }
 
 .featured {
@@ -55,7 +88,6 @@
     color: var(--font-color--redIntense);
 }
 
-/* Cambiado el color del carrusel al mismo gris de las cards */
 .carouselContent {
     flex: 1;
     display: flex;
@@ -92,7 +124,6 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
-    /* Cambiado el color del texto a blanco para mejor contraste */
     color: var(--font-color--white);
 }
 
@@ -158,29 +189,26 @@
     transform: scale(1.05);
 }
 
-/* Cambiado a masonry layout tipo Pinterest con columnas */
 .resourcesGrid {
     width: 90%;
     max-width: 1400px;
     margin: 0 auto;
     padding: 40px 20px;
-    column-count: 3;
-    column-gap: 30px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+    align-items: start;
 }
 
-/* Cards con cursor pointer y sin hover transform para evitar problemas con masonry */
 .resourceCard {
     background-color: #2a2a2a;
     border-radius: 12px;
     padding: 30px;
-    display: inline-block;
-    width: 100%;
-    margin-bottom: 30px;
     text-align: center;
     transition: box-shadow 0.3s ease, border-color 0.3s ease;
     border: 1px solid rgba(255, 255, 255, 0.1);
     cursor: pointer;
-    break-inside: avoid;
+    height: auto;
 }
 
 .resourceCard:hover {
@@ -188,25 +216,24 @@
     border-color: rgba(249, 3, 52, 0.5);
 }
 
-/* Diferentes tamaños de cards tipo Pinterest */
 .resourceCard.xsmall {
-    min-height: 200px;
+    min-height: 160px;
 }
 
 .resourceCard.small {
-    min-height: 280px;
+    min-height: 200px;
 }
 
 .resourceCard.medium {
-    min-height: 360px;
+    min-height: 240px;
 }
 
 .resourceCard.large {
-    min-height: 450px;
+    min-height: 280px;
 }
 
 .resourceCard.xlarge {
-    min-height: 550px;
+    min-height: 320px;
 }
 
 .cardIcon {
@@ -242,7 +269,7 @@
 .actionBtn {
     width: 100%;
     padding: 12px 24px;
-    background-color: var(--background--redIntense);
+    background-color: #b91c1c; /* Rojo menos intenso */
     color: var(--font-color--white);
     border: none;
     border-radius: 6px;
@@ -257,11 +284,10 @@
 }
 
 .actionBtn:hover {
-    background-color: #d10229;
+    background-color: #991b1b; /* Hover más oscuro */
     transform: scale(1.02);
 }
 
-/* Estilos para el modal */
 .modalOverlay {
     position: fixed;
     top: 0;
@@ -372,7 +398,7 @@
 
 @media only screen and (max-width: 1024px) {
     .resourcesGrid {
-        column-count: 2;
+        grid-template-columns: repeat(2, 1fr);
     }
 }
 
@@ -427,7 +453,7 @@
     }
 
     .resourcesGrid {
-        column-count: 1;
+        grid-template-columns: 1fr;
         width: 95%;
         gap: 20px;
         padding: 20px 10px;

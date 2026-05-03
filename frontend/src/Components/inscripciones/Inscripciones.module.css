@@ -2,13 +2,18 @@
   display: flex;
   flex-direction: column;
   width: 100vw;
-  height: 40vh;
-  background-image: url('../../Assets/Images/bg_inscripciones.png');
+  height: 50vh; /* Un poco más de altura para que se aprecie el movimiento */
+  background-image: url('/images/bg_inscripciones.png');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-attachment: fixed; /* Esto crea el efecto Parallax */
   justify-content: center;
   align-items: center;
   color: white;
   position: relative;
-  padding-bottom: 40px;
+  padding: 80px 0;
+  overflow: hidden;
 }
 
 .container::before {
@@ -18,8 +23,7 @@
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: var(--background--black);
-  opacity: 0.98;
+  background-color: rgba(0, 0, 0, 0.55);
 }
 
 .container__titleVertical {
@@ -34,9 +38,6 @@
   color: var(--background--white);
   letter-spacing: var(--font-size--medium);
 }
-
-
-
 
 .title {
   display: flex;
@@ -58,9 +59,7 @@
   width: 20%;
 }
 
-
 .content {
-
   height: 100%;
   width: 100%;
   display: flex;
@@ -73,11 +72,17 @@
 .content__image {
   width: 65%;
   height: 170px;
-  background-image: url('../../Assets/Images/inscripciones.png');
+  background-image: url('/images/inscripciones.png');
   background-repeat: no-repeat;
   background-size: contain;
   background-position: right;
   position: relative;
+  transition: filter 0.5s ease;
+  cursor: pointer;
+}
+
+.content__image:hover {
+  filter: brightness(1.3);
 }
 
 .content__image::after {
@@ -85,24 +90,18 @@
   top: 0;
   left: 0;
   position: absolute;
-  border-radius: 0 0 0 25px;
-  height: 0%;
   width: 100%;
+  height: 0%;
+  border-radius: 0 0 15px 0;
   transition: all .5s ease;
+  opacity: 0;
 }
 
 .content__image:hover::after {
-  content: '';
-  top: 0;
-  left: 0;
   height: 100%;
-  position: absolute;
-  border-radius: 0 0 15px 0;
-  opacity: .6;
-  background-color: var(--background--redIntense);
-  transition: all .5s ease;
+  background: linear-gradient(to bottom, var(--background--redIntense) 0%, rgba(var(--background--redIntense-rgb, 191, 10, 48), 0.1) 100%);
+  opacity: 0.7;
 }
-
 
 .content__image h2 {
   margin-top: 1.5%;
@@ -132,8 +131,6 @@
   justify-content: center;
 }
 
-
-
 @media only screen and (max-width:768px) {
   .title {
     margin: 20px auto;
@@ -159,7 +156,6 @@
     display: none;
   }
 
-
   .content__image {
     width: 330px;
     height: 140px;
@@ -176,5 +172,4 @@
     top: -60px;
     left: -8px;
   }
-
 }

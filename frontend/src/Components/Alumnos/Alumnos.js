@@ -2,337 +2,156 @@
 
 import { useState } from "react"
 import styles from "./Alumnos.module.css"
-import { AiOutlineLike, AiOutlineDislike, AiFillLike, AiFillDislike } from "react-icons/ai"
-import { FaFilePdf, FaLink, FaTimes } from "react-icons/fa"
+import { FaFilePdf, FaLink, FaTimes, FaRocket, FaBook, FaInfoCircle, FaLaptopCode, FaTools, FaCarSide, FaGithub, FaGoogleDrive, FaYoutube, FaCalendarAlt, FaGlobe } from "react-icons/fa"
+import Image from "next/image"
+import config from "../../data/config.json"
 
 const Alumnos = () => {
-    const [currentSlide, setCurrentSlide] = useState(0)
+    const { sections } = config;
     const [selectedResource, setSelectedResource] = useState(null)
+    const [fullscreenImage, setFullscreenImage] = useState(null)
+    const [filter, setFilter] = useState("Todos")
 
-    const [reactions, setReactions] = useState({
-        featured: [
-            { likes: 89, dislikes: 3, userLiked: false, userDisliked: false },
-            { likes: 124, dislikes: 2, userLiked: false, userDisliked: false },
-        ],
-        resources: [
-            { likes: 67, dislikes: 1, userLiked: false, userDisliked: false },
-            { likes: 45, dislikes: 8, userLiked: false, userDisliked: false },
-            { likes: 92, dislikes: 2, userLiked: false, userDisliked: false },
-            { likes: 78, dislikes: 5, userLiked: false, userDisliked: false },
-            { likes: 156, dislikes: 3, userLiked: false, userDisliked: false },
-            { likes: 54, dislikes: 12, userLiked: false, userDisliked: false },
-        ],
-    })
+    const categories = ["Todos", "Novedades"].filter(cat => {
+        if (cat === "Proyectos" && !sections.proyectos_destacados) return false;
+        return true;
+    });
 
-    const featuredContent = [
-        {
-            id: 1,
-            title: "Calendario de Exámenes",
-            description:
-                "Consulta las fechas de los próximos exámenes y trabajos prácticos. Recuerda prepararte con anticipación.",
-            image: "/exam-calendar-document.jpg",
-        },
-        {
-            id: 2,
-            title: "Guía de Estudio",
-            description: "Material de apoyo para las materias del ciclo actual. Incluye ejercicios y ejemplos prácticos.",
-            image: "/study-guide-book.jpg",
-        },
-    ]
+    const featuredProjects = [] // Vacío por ahora
 
     const resources = [
         {
             id: 1,
-            type: "pdf",
-            title: "Horarios de Clases",
-            description: "Descarga el horario actualizado de todas las materias y especialidades.",
-            fullContent:
-                "Descarga el horario actualizado de todas las materias y especialidades. Este documento incluye los horarios de clases teóricas, prácticas de taller, educación física y todas las actividades extracurriculares. Recuerda verificar cualquier cambio en la cartelera institucional.",
-            downloadUrl: '/instructivoDocente.pdf',
-            size: "xsmall",
-        },
-        {
-            id: 2,
-            type: "text",
-            title: "Normas de Convivencia",
-            description:
-                "Es importante respetar los horarios de entrada y salida. El uso del uniforme es obligatorio. Los celulares deben permanecer en modo silencioso durante las clases.",
-            fullContent:
-                "Es importante respetar los horarios de entrada y salida. El uso del uniforme es obligatorio. Los celulares deben permanecer en modo silencioso durante las clases. Se debe mantener el orden y la limpieza en todas las instalaciones. El respeto mutuo entre compañeros y docentes es fundamental. Las faltas de respeto serán sancionadas según el reglamento interno.",
-            size: "xlarge",
-        },
-        {
-            id: 3,
-            type: "pdf",
-            title: "Material de Matemática",
-            description: "Ejercicios resueltos y guías de práctica para preparar los exámenes.",
-            fullContent:
-                "Ejercicios resueltos y guías de práctica para preparar los exámenes. Este material incluye problemas de álgebra, geometría, trigonometría y cálculo, con explicaciones paso a paso y ejercicios adicionales para practicar.",
-            downloadUrl: "#",
-            size: "medium",
-        },
-        {
-            id: 4,
-            type: "pdf",
-            title: "Trabajos Prácticos",
-            description: "Consignas y fechas de entrega de los trabajos prácticos del trimestre.",
-            fullContent:
-                "Consignas y fechas de entrega de los trabajos prácticos del trimestre. Cada trabajo debe ser presentado en tiempo y forma. Se evaluará prolijidad, contenido y cumplimiento de las consignas. Las entregas tardías tendrán penalización en la nota final.",
-            downloadUrl: "#",
-            size: "small",
-        },
-        {
-            id: 5,
+            category: "Novedades",
             type: "link",
-            title: "Biblioteca Virtual",
-            description: "Accede a libros digitales, apuntes y recursos educativos online.",
-            fullContent:
-                "Accede a libros digitales, apuntes y recursos educativos online. La biblioteca virtual cuenta con más de 5000 títulos, videos educativos, simuladores interactivos y material multimedia para todas las materias. Disponible 24/7 con tu usuario institucional.",
-            visitUrl: "#",
-            size: "large",
-        },
-        {
-            id: 6,
-            type: "pdf",
-            title: "Reglamento Estudiantil",
-            description: "Conoce tus derechos y obligaciones como estudiante de la institución.",
-            fullContent:
-                "Conoce tus derechos y obligaciones como estudiante de la institución. Este documento detalla las normas de convivencia, sistema de evaluación, régimen de asistencia, derechos estudiantiles y procedimientos disciplinarios. Es importante que todos los estudiantes conozcan este reglamento.",
-            downloadUrl: "#",
+            title: "Inscripción Promoción Acompañada 2026",
+            description: "Inscripciones abiertas del 27/04 al 01/05 inclusive.",
+            fullContent: "Se informa que se encuentra abierta la inscripción para el programa de Promoción Acompañada 2026. El proceso se realiza exclusivamente de forma virtual a través del formulario oficial. Es requisito completar todos los datos solicitados dentro de las fechas establecidas.",
+            visitUrl: "https://docs.google.com/forms/d/e/1FAIpQLSeKweMMWvIbbHF3P2GzhqAwCDwX1RVFOr20db44c824EX5dmg/viewform",
             size: "medium",
-        },
+        }
     ]
 
-    const handleFeaturedLike = (e, index) => {
-        e.stopPropagation()
-        setReactions((prev) => {
-            const newFeatured = [...prev.featured]
-            if (newFeatured[index].userLiked) {
-                newFeatured[index].likes -= 1
-                newFeatured[index].userLiked = false
-            } else {
-                newFeatured[index].likes += 1
-                newFeatured[index].userLiked = true
-                if (newFeatured[index].userDisliked) {
-                    newFeatured[index].dislikes -= 1
-                    newFeatured[index].userDisliked = false
-                }
-            }
-            return { ...prev, featured: newFeatured }
-        })
-    }
+    const filteredResources = filter === "Todos" 
+        ? resources 
+        : resources.filter(r => r.category === filter)
 
-    const handleFeaturedDislike = (e, index) => {
-        e.stopPropagation()
-        setReactions((prev) => {
-            const newFeatured = [...prev.featured]
-            if (newFeatured[index].userDisliked) {
-                newFeatured[index].dislikes -= 1
-                newFeatured[index].userDisliked = false
-            } else {
-                newFeatured[index].dislikes += 1
-                newFeatured[index].userDisliked = true
-                if (newFeatured[index].userLiked) {
-                    newFeatured[index].likes -= 1
-                    newFeatured[index].userLiked = false
-                }
-            }
-            return { ...prev, featured: newFeatured }
-        })
-    }
-
-    const handleResourceLike = (e, index) => {
-        e.stopPropagation()
-        setReactions((prev) => {
-            const newResources = [...prev.resources]
-            if (newResources[index].userLiked) {
-                newResources[index].likes -= 1
-                newResources[index].userLiked = false
-            } else {
-                newResources[index].likes += 1
-                newResources[index].userLiked = true
-                if (newResources[index].userDisliked) {
-                    newResources[index].dislikes -= 1
-                    newResources[index].userDisliked = false
-                }
-            }
-            return { ...prev, resources: newResources }
-        })
-    }
-
-    const handleResourceDislike = (e, index) => {
-        e.stopPropagation()
-        setReactions((prev) => {
-            const newResources = [...prev.resources]
-            if (newResources[index].userDisliked) {
-                newResources[index].dislikes -= 1
-                newResources[index].userDisliked = false
-            } else {
-                newResources[index].dislikes += 1
-                newResources[index].userDisliked = true
-                if (newResources[index].userLiked) {
-                    newResources[index].likes -= 1
-                    newResources[index].userLiked = false
-                }
-            }
-            return { ...prev, resources: newResources }
-        })
-    }
-
-    const nextSlide = () => {
-        setCurrentSlide((prev) => (prev + 1) % featuredContent.length)
-    }
-
-    const prevSlide = () => {
-        setCurrentSlide((prev) => (prev - 1 + featuredContent.length) % featuredContent.length)
-    }
-
-    const openModal = (resource, index) => {
-        setSelectedResource({ ...resource, index })
+    const openModal = (resource) => {
+        setSelectedResource(resource)
     }
 
     const closeModal = () => {
         setSelectedResource(null)
+        setFullscreenImage(null)
     }
 
-    const handleDownload = (downloadUrl) => {
-        window.open(downloadUrl, '_blank')
+    const handleDownload = (url) => {
+        window.open(url, '_blank')
+    }
+
+    const getIcon = (type, category) => {
+        if (category === "Proyectos") return <FaRocket size={50} />
+        if (category === "Material de Estudio") return <FaBook size={50} />
+        if (type === "pdf") return <FaFilePdf size={50} />
+        if (type === "link") return <FaLink size={50} />
+        return <FaInfoCircle size={50} />
     }
 
     return (
         <div className={styles.container}>
             <div className={styles.hero}>
-                <h1>Contenido para Alumnos</h1>
-                <p>Material de estudio, horarios y recursos para tu aprendizaje.</p>
+                <h1>Espacio del Alumno</h1>
+                <p>Información relevante, trámites y novedades para los estudiantes.</p>
             </div>
 
-            {/* <div className={styles.featured}>
-                <div className={styles.carousel}>
-                    <button className={styles.carouselBtn} onClick={prevSlide}>
-                        ‹
-                    </button>
-
-                    <div className={styles.carouselContent}>
-                        <div className={styles.carouselImage}>
-                            <div
-                                className={styles.documentPreview}
-                                style={{ backgroundImage: `url(${featuredContent[currentSlide].image})` }}
-                            />
-                        </div>
-                        <div className={styles.carouselInfo}>
-                            <h2>{featuredContent[currentSlide].title}</h2>
-                            <p>{featuredContent[currentSlide].description}</p>
-                            <div className={styles.reactions}>
-                                <button
-                                    className={`${styles.like} ${reactions.featured[currentSlide].userLiked ? styles.active : ""}`}
-                                    onClick={(e) => handleFeaturedLike(e, currentSlide)}
-                                >
-                                    {reactions.featured[currentSlide].userLiked ? <AiFillLike /> : <AiOutlineLike />}
-                                    {reactions.featured[currentSlide].likes}
-                                </button>
-                                <button
-                                    className={`${styles.dislike} ${reactions.featured[currentSlide].userDisliked ? styles.active : ""}`}
-                                    onClick={(e) => handleFeaturedDislike(e, currentSlide)}
-                                >
-                                    {reactions.featured[currentSlide].userDisliked ? <AiFillDislike /> : <AiOutlineDislike />}
-                                    {reactions.featured[currentSlide].dislikes}
-                                </button>
+            {sections.proyectos_destacados && featuredProjects.length > 0 && (
+                <section className={styles.projectsSection}>
+                    <h2>Proyectos Destacados</h2>
+                    <div className={styles.projectsContainer}>
+                        {featuredProjects.map(project => (
+                            <div 
+                                key={project.id} 
+                                className={styles.projectCard}
+                                onClick={() => openModal(project)}
+                            >
+                                <div className={styles.projectHeader}>
+                                    <div className={styles.projectBadges}>
+                                        <span className={styles.projectTag}>{project.area}</span>
+                                        <span className={styles.projectYearBadge}>{project.year}</span>
+                                    </div>
+                                    {project.icon}
+                                </div>
+                                <h4>{project.title}</h4>
+                                <p>{project.copete}</p>
+                                <span style={{color: '#38bdf8', fontSize: '12px', fontWeight: 'bold', letterSpacing: '1px'}}>DESCUBRIR MÁS...</span>
                             </div>
-                        </div>
+                        ))}
                     </div>
+                </section>
+            )}
 
-                    <button className={styles.carouselBtn} onClick={nextSlide}>
-                        ›
+            <div className={styles.filterContainer}>
+                {categories.map(cat => (
+                    <button 
+                        key={cat}
+                        className={`${styles.filterBtn} ${filter === cat ? styles.filterBtnActive : ""}`}
+                        onClick={() => setFilter(cat)}
+                    >
+                        {cat}
                     </button>
-                </div>
-            </div> */}
+                ))}
+            </div>
 
             <div className={styles.resourcesGrid}>
-                {resources.map((resource, index) => (
+                {filteredResources.map((resource) => (
                     <div
                         key={resource.id}
                         className={`${styles.resourceCard} ${styles[resource.size]}`}
-                        onClick={() => openModal(resource, index)}
+                        onClick={() => openModal(resource)}
                     >
                         <div className={styles.cardIcon}>
-                            {resource.type === "pdf" ? (
-                                <FaFilePdf size={50} />
-                            ) : resource.type === "link" ? (
-                                <FaLink size={50} />
-                            ) : (
-                                <div className={styles.textIcon}>Aa</div>
-                            )}
+                            {getIcon(resource.type, resource.category)}
                         </div>
                         <h3>{resource.title}</h3>
                         <p>{resource.description}</p>
-                        {/* <div className={styles.reactions}>
-                            <button
-                                className={`${styles.like} ${reactions.resources[index].userLiked ? styles.active : ""}`}
-                                onClick={(e) => handleResourceLike(e, index)}
-                            >
-                                {reactions.resources[index].userLiked ? <AiFillLike /> : <AiOutlineLike />}
-                                {reactions.resources[index].likes}
-                            </button>
-                            <button
-                                className={`${styles.dislike} ${reactions.resources[index].userDisliked ? styles.active : ""}`}
-                                onClick={(e) => handleResourceDislike(e, index)}
-                            >
-                                {reactions.resources[index].userDisliked ? <AiFillDislike /> : <AiOutlineDislike />}
-                                {reactions.resources[index].dislikes}
-                            </button>
-                        </div> */}
+                        <div className={styles.actionBtn}>
+                            Ver más
+                        </div>
                     </div>
                 ))}
             </div>
 
             {selectedResource && (
                 <div className={styles.modalOverlay} onClick={closeModal}>
-                    <div className={styles.modalContent} onClick={(e) => e.stopPropagation()}>
+                    <div className={`${styles.modalContent} ${selectedResource.category === "Proyectos" ? styles.projectModal : ""}`} onClick={(e) => e.stopPropagation()}>
                         <button className={styles.closeBtn} onClick={closeModal}>
                             <FaTimes />
                         </button>
-
+                        
                         <div className={styles.modalIcon}>
-                            {selectedResource.type === "pdf" ? (
-                                <FaFilePdf size={60} />
-                            ) : selectedResource.type === "link" ? (
-                                <FaLink size={60} />
-                            ) : (
-                                <div className={styles.textIcon}>Aa</div>
-                            )}
+                            {getIcon(selectedResource.type, selectedResource.category)}
                         </div>
-
                         <h2>{selectedResource.title}</h2>
-                        <p className={styles.modalDescription}>{selectedResource.fullContent}</p>
-
-                        {/* <div className={styles.modalReactions}>
-                            <button
-                                className={`${styles.like} ${reactions.resources[selectedResource.index].userLiked ? styles.active : ""}`}
-                                onClick={(e) => handleResourceLike(e, selectedResource.index)}
-                            >
-                                {reactions.resources[selectedResource.index].userLiked ? <AiFillLike /> : <AiOutlineLike />}
-                                {reactions.resources[selectedResource.index].likes}
-                            </button>
-                            <button
-                                className={`${styles.dislike} ${reactions.resources[selectedResource.index].userDisliked ? styles.active : ""}`}
-                                onClick={(e) => handleResourceDislike(e, selectedResource.index)}
-                            >
-                                {reactions.resources[selectedResource.index].userDisliked ? <AiFillDislike /> : <AiOutlineDislike />}
-                                {reactions.resources[selectedResource.index].dislikes}
-                            </button>
-                        </div> */}
+                        <div className={styles.modalDescription}>
+                            <p>{selectedResource.fullContent}</p>
+                        </div>
 
                         {selectedResource.downloadUrl && (
                             <button
-                                onClick={() => handleDownload(selectedResource.downloadUrl)}
                                 className={styles.actionBtn}
+                                onClick={() => handleDownload(selectedResource.downloadUrl)}
                             >
-                                Mas info
+                                Descargar Archivo
                             </button>
                         )}
                         {selectedResource.visitUrl && (
-                            <a href={selectedResource.visitUrl} className={styles.actionBtn}>
-                                Mas info
+                            <a
+                                href={selectedResource.visitUrl}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className={styles.actionBtn}
+                            >
+                                Ir al Formulario
                             </a>
                         )}
                     </div>

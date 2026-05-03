@@ -3,25 +3,33 @@ import Style from './cooperadora.module.css'
 import AliceCarousel from 'react-alice-carousel'
 import 'react-alice-carousel/lib/alice-carousel.css';
 import itemCoop from '@/pages/api/itemCoop';
+import Image from 'next/image'
 
 const itemsImg = itemCoop.map(item => (
   <div
-    key={item.index}
-    className={Style.image}
-    style={{ backgroundImage: `url(${item.url})` }}
-  ></div>
+    key={item.id}
+    className={Style.imageContainer}
+  >
+    <Image
+      src={item.url}
+      alt={item.title}
+      fill
+      className={Style.carouselImage}
+      sizes="(max-width: 768px) 100vw, 50vw"
+    />
+  </div>
 ));
 
 const itemsText = itemCoop.map(item => (
-  <>
-    <h2 key={item.index} className={Style.msg__title}>
+  <div key={item.id} className={Style.textFadeContainer}>
+    <h2 className={Style.msg__title}>
       {item?.title}
     </h2>
+    <span className={Style.msg__date}>{item.fecha}</span>
     <div className={Style.msg__info}>
-      {/* <p className={Style.info__decoration}>“</p> */}
       <p className={Style.info__text}>{item.text}</p>
     </div>
-  </>
+  </div>
 ))
 
 
@@ -35,7 +43,7 @@ const Cooperadora = () => {
       <div className={Style.coopIntro}>
         <div className={Style.row}>
           <div className={Style.col + ' ' + Style.textCenter}>
-            <img
+            <Image
               src="/images/logo_coope.png"
               alt="Logo Cooperadora"
               width={220}
@@ -80,7 +88,7 @@ const Cooperadora = () => {
 
           <ol>
             <li>El comprobante de transferencia (Banco, Mercado Pago, Billetera Virtual)</li>
-            <li>El detalle de los siguientes Datos del "Socio" (Que es el Padre, Madre o Tutor): Nombre, Apellido del Socio, DNI, Dirección, Teléfono Celular, Email, Nacionalidad</li>
+            <li>El detalle de los siguientes Datos del &quot;Socio&quot; (Que es el Padre, Madre o Tutor): Nombre, Apellido del Socio, DNI, Dirección, Teléfono Celular, Email, Nacionalidad</li>
             <li>Datos del alumno: Nombre, Apellido, Año y División</li>
           </ol>
         </div>

@@ -1,5 +1,17 @@
 [
   {
+    "id": 5,
+    "titulo": "Promoción Acompañada 2026: Inscripciones Abiertas",
+    "fecha": "2026-04-27",
+    "imagen_principal": "/images/qr_promocion_2026.png",
+    "descripcion": "Inscripciones del 27/04 al 01/05 inclusive. Accedé al formulario de inscripción aquí.",
+    "contenido": "<h3>Inscripciones 2026</h3><p>Se informa que del <b>27 de abril al 1 de mayo inclusive</b> se encuentran abiertas las inscripciones para el programa de Promoción Acompañada 2026.</p><h4>¿Cómo inscribirse?</h4><p>La inscripción se realiza de forma virtual a través del siguiente formulario de Google o escaneando el código QR de la imagen:</p><p><a href='https://docs.google.com/forms/d/e/1FAIpQLSeKweMMWvIbbHF3P2GzhqAwCDwX1RVFOr20db44c824EX5dmg/viewform' target='_blank' rel='noopener noreferrer' style='color: #F90334; font-weight: bold;'>IR AL FORMULARIO DE INSCRIPCIÓN</a></p><p>Recordá que la inscripción es obligatoria para poder participar del programa.</p>",
+    "link": "https://docs.google.com/forms/d/e/1FAIpQLSeKweMMWvIbbHF3P2GzhqAwCDwX1RVFOr20db44c824EX5dmg/viewform",
+    "carrusel": [
+      "/images/qr_promocion_2026.png"
+    ]
+  },
+  {
     "id": 1,
     "titulo": "Inscripción de 2° a 6° año - Ciclo Lectivo 2026",
     "descripcion": "Se encuentra abierto el proceso de inscripción para alumnos de segundo a sexto año para el próximo ciclo escolar.",

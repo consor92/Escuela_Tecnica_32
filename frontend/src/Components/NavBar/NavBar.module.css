@@ -6,20 +6,25 @@
     z-index: 999;
     width: 100%;
 }
-
 .container__EscuelaTecnica {
-    width: 350px;
+    width: 400px;
     display: flex;
-    justify-content: flex-start;
+    justify-content: center;
     align-items: center;
+    gap: 15px;
+    padding: 10px;
     background-color: var(--background--blue);
     color: var(--font-color--white);
-    font-weight: bold;
-    text-align: center;
+}
+
+.container__EscuelaTecnica_Img {
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .escuelaTecnica_Img {
-    background-image: url('../../Assets/Images/logoET32.png');
+    background-image: url('/images/logoET32.png');
     background-size: contain;
     background-position: center;
     width: 60px;
@@ -73,6 +78,23 @@
    
     font-size: var(--font-size--medium);
     font-weight: 400;
+    transition: color 0.3s ease;
+}
+
+.container__navBarTop a:hover {
+    color: var(--background--redIntense) !important;
+}
+
+/* Estilo intermitente para Emergencia */
+.emergenciaLink {
+    animation: flashBackground 2s infinite;
+    padding: 2px 8px;
+    border-radius: 4px;
+}
+
+@keyframes flashBackground {
+    0%, 100% { background-color: transparent; }
+    50% { background-color: #666; } /* Gris más claro para que se note bien */
 }
 
 .container__navBarBottom {
@@ -88,7 +110,7 @@
     background: transparent;
     border: none;
     color: var(--font-color--black);
-    margin: auto 50px;
+    margin: auto 30px;
     font-size: var(--font-size--regular);
     font-weight: bold;
 }
@@ -98,6 +120,16 @@
     color: var(--font-color--redIntense);
 }
 
+.historyLink {
+    background-color: var(--background--redIntense);
+    color: white !important;
+    padding: 5px 15px;
+    border-radius: 5px;
+    font-weight: bold;
+    text-decoration: none;
+    margin-left: 20px;
+    font-size: var(--font-size--regular);
+}
 
 .container__sideBar {
     display: none;

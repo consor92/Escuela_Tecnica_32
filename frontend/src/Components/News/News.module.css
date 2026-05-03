@@ -12,7 +12,7 @@
       padding: 10vh 13vw 10vh 13vw;
       width: 100vw;
       height: 100vh;
-      background-image: url('../../Assets/Images/bg_page_automotores.jpg');
+      background-image: url('/images/bg_page_automotores.jpg');
       background-color: var(--background--black);
       background-blend-mode: multiply;
       opacity: 0.99;

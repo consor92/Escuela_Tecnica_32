@@ -2,6 +2,8 @@
     width: 100%;
     min-height: 100vh;
     background-color: var(--background--black);
+    background-image: radial-gradient(rgba(255, 255, 255, 0.1) 1px, transparent 1px);
+    background-size: 30px 30px;
     padding-bottom: 60px;
 }
 
@@ -25,188 +27,163 @@
     font-weight: 300;
 }
 
-.featured {
-    width: 100%;
-    padding: 40px 20px;
-    display: flex;
-    justify-content: center;
-}
-
-.carousel {
+/* Subsección Proyectos */
+.projectsSection {
     width: 90%;
-    max-width: 1200px;
-    display: flex;
-    align-items: center;
-    gap: 20px;
-}
-
-.carouselBtn {
-    background: transparent;
-    border: none;
-    color: var(--font-color--white);
-    font-size: 60px;
-    cursor: pointer;
+    max-width: 1400px;
+    margin: 40px auto;
     padding: 20px;
-    transition: color 0.3s ease;
-    user-select: none;
 }
 
-.carouselBtn:hover {
-    color: var(--font-color--redIntense);
-}
-
-/* Cambiado el color del carrusel al mismo gris de las cards */
-.carouselContent {
-    flex: 1;
-    display: flex;
-    background-color: #2a2a2a;
-    border-radius: 15px;
-    overflow: hidden;
-    min-height: 350px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-}
-
-.carouselImage {
-    flex: 0 0 40%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 40px;
-}
-
-.documentPreview {
-    width: 100%;
-    max-width: 280px;
-    height: 380px;
-    background-color: var(--background--white);
-    border-radius: 8px;
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
-    background-size: cover;
-    background-position: center;
-}
-
-.carouselInfo {
-    flex: 1;
-    padding: 40px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
+.projectsSection h2 {
     color: var(--font-color--white);
-}
-
-.carouselInfo h2 {
     font-size: var(--font-size--extraLarge);
     margin-bottom: 20px;
-    font-weight: 700;
+    text-align: left;
+    border-left: 5px solid var(--background--blue);
+    padding-left: 15px;
 }
 
-.carouselInfo p {
-    font-size: var(--font-size--regular);
-    line-height: 1.6;
-    margin-bottom: 25px;
-    color: var(--font-color--grey);
+.projectsContainer {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 25px;
+    padding: 10px 0 30px 0;
 }
 
-.reactions {
+.projectCard {
+    background: linear-gradient(145deg, #2a2a2a, #1f1f1f);
+    border-radius: 20px;
+    padding: 25px;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    transition: all 0.3s ease;
+    cursor: pointer;
     display: flex;
-    gap: 20px;
-    align-items: center;
+    flex-direction: column;
+    justify-content: space-between;
 }
 
-/* Botones de like/dislike interactivos con efectos hover y active */
-.like,
-.dislike {
+.projectCard:hover {
+    transform: translateY(-10px);
+    border-color: var(--background--blue);
+    box-shadow: 0 15px 35px rgba(25, 29, 98, 0.4);
+}
+
+.projectHeader {
     display: flex;
-    align-items: center;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 15px;
+}
+
+.projectBadges {
+    display: flex;
+    flex-direction: column;
     gap: 8px;
-    font-size: var(--font-size--regular);
-    font-weight: 600;
-    background: transparent;
-    border: none;
+    align-items: flex-start;
+}
+
+.projectTag {
+    background: var(--background--blue);
+    color: white;
+    padding: 4px 12px;
+    border-radius: 10px;
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+}
+
+.projectYearBadge {
+    background: rgba(255, 255, 255, 0.1);
+    color: #38bdf8;
+    padding: 4px 12px;
+    border-radius: 10px;
+    font-size: 11px;
+    font-weight: 700;
+    border: 1px solid rgba(56, 189, 248, 0.3);
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.projectCard h4 {
+    color: white;
+    font-size: 1.2rem;
+    margin-bottom: 10px;
+}
+
+.projectCard p {
+    color: var(--font-color--grey);
+    font-size: 14px;
+    line-height: 1.5;
+    margin-bottom: 20px;
+}
+
+/* Categorías / Filtros */
+.filterContainer {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    padding: 20px;
+    flex-wrap: wrap;
+}
+
+.filterBtn {
+    padding: 8px 20px;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: var(--font-color--white);
+    border-radius: 20px;
     cursor: pointer;
     transition: all 0.3s ease;
-    padding: 8px 12px;
-    border-radius: 6px;
+    font-size: var(--font-size--medium);
 }
 
-.like {
-    color: #4ade80;
+.filterBtn:hover {
+    background: rgba(25, 29, 98, 0.4);
+    border-color: var(--background--blue);
 }
 
-.like:hover {
-    background-color: rgba(74, 222, 128, 0.1);
-    transform: scale(1.1);
+.filterBtnActive {
+    background: var(--background--blue);
+    border-color: var(--background--blue);
+    color: white;
 }
 
-.like.active {
-    background-color: rgba(74, 222, 128, 0.2);
-    transform: scale(1.05);
-}
-
-.dislike {
-    color: #f87171;
-}
-
-.dislike:hover {
-    background-color: rgba(248, 113, 113, 0.1);
-    transform: scale(1.1);
-}
-
-.dislike.active {
-    background-color: rgba(248, 113, 113, 0.2);
-    transform: scale(1.05);
-}
-
-/* Masonry layout tipo Pinterest con columnas */
 .resourcesGrid {
     width: 90%;
     max-width: 1400px;
     margin: 0 auto;
     padding: 40px 20px;
-    column-count: 3;
-    column-gap: 30px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+    align-items: start;
 }
 
 .resourceCard {
     background-color: #2a2a2a;
     border-radius: 12px;
     padding: 30px;
-    display: inline-block;
-    width: 100%;
-    margin-bottom: 30px;
     text-align: center;
     transition: box-shadow 0.3s ease, border-color 0.3s ease;
     border: 1px solid rgba(255, 255, 255, 0.1);
     cursor: pointer;
-    break-inside: avoid;
+    height: auto;
 }
 
 .resourceCard:hover {
-    box-shadow: 0 10px 30px rgba(249, 3, 52, 0.3);
-    border-color: rgba(249, 3, 52, 0.5);
+    box-shadow: 0 10px 30px rgba(25, 29, 98, 0.3);
+    border-color: rgba(25, 29, 98, 0.5);
 }
 
-/* Tamaños más variados para efecto Pinterest exagerado */
-.resourceCard.xsmall {
-    min-height: 200px;
-}
-
-.resourceCard.small {
-    min-height: 280px;
-}
-
-.resourceCard.medium {
-    min-height: 360px;
-}
-
-.resourceCard.large {
-    min-height: 450px;
-}
-
-.resourceCard.xlarge {
-    min-height: 550px;
-}
+/* Alturas Pinterest ajustadas */
+.resourceCard.xsmall { min-height: 160px; }
+.resourceCard.small { min-height: 200px; }
+.resourceCard.medium { min-height: 240px; }
+.resourceCard.large { min-height: 280px; }
+.resourceCard.xlarge { min-height: 320px; }
 
 .cardIcon {
     width: 80px;
@@ -215,12 +192,6 @@
     align-items: center;
     justify-content: center;
     margin: 0 auto 20px;
-    color: var(--font-color--redIntense);
-}
-
-.textIcon {
-    font-size: 50px;
-    font-weight: 700;
     color: var(--font-color--redIntense);
 }
 
@@ -241,7 +212,7 @@
 .actionBtn {
     width: 100%;
     padding: 12px 24px;
-    background-color: var(--background--redIntense);
+    background-color: #b91c1c;
     color: var(--font-color--white);
     border: none;
     border-radius: 6px;
@@ -256,7 +227,7 @@
 }
 
 .actionBtn:hover {
-    background-color: #d10229;
+    background-color: #991b1b;
     transform: scale(1.02);
 }
 
@@ -276,13 +247,8 @@
 }
 
 @keyframes fadeIn {
-    from {
-        opacity: 0;
-    }
-
-    to {
-        opacity: 1;
-    }
+    from { opacity: 0; }
+    to { opacity: 1; }
 }
 
 .modalContent {
@@ -294,21 +260,14 @@
     max-height: 80vh;
     overflow-y: auto;
     position: relative;
-    border: 1px solid rgba(249, 3, 52, 0.3);
+    border: 1px solid rgba(255, 255, 255, 0.1);
     box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
     animation: slideUp 0.3s ease;
 }
 
 @keyframes slideUp {
-    from {
-        transform: translateY(50px);
-        opacity: 0;
-    }
-
-    to {
-        transform: translateY(0);
-        opacity: 1;
-    }
+    from { transform: translateY(50px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
 }
 
 .closeBtn {
@@ -321,10 +280,6 @@
     font-size: 24px;
     cursor: pointer;
     transition: color 0.3s ease;
-    padding: 5px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
 }
 
 .closeBtn:hover {
@@ -357,91 +312,163 @@
     text-align: left;
 }
 
-.modalReactions {
+/* Estilos Proyecto Modal */
+.projectModal {
+    max-width: 850px;
+    padding: 0;
+    overflow: hidden;
+}
+
+.projectModalBody {
     display: flex;
-    gap: 30px;
+    flex-direction: column;
+    height: 100%;
+}
+
+.projectModalHeader {
+    padding: 40px 40px 20px;
+    background: rgba(25, 29, 98, 0.1);
+}
+
+.projectModalMeta {
+    display: flex;
+    gap: 12px;
+    margin-bottom: 15px;
+    align-items: center;
+}
+
+.projectCopete {
+    color: #38bdf8; /* Azul más brillante y legible */
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin-top: 10px;
+    line-height: 1.4;
+}
+
+.projectImages {
+    display: flex;
+    gap: 15px;
+    padding: 0 40px;
+    margin: 20px 0;
+    overflow-x: auto;
+}
+
+.projectImageWrapper {
+    flex: 0 0 300px;
+    height: 200px;
+    position: relative;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+    cursor: zoom-in;
+    overflow: hidden;
+}
+
+.imageOverlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(25, 29, 98, 0.4);
+    display: flex;
     align-items: center;
     justify-content: center;
-    margin-bottom: 30px;
-    padding: 20px;
-    background-color: rgba(0, 0, 0, 0.3);
-    border-radius: 10px;
+    color: white;
+    font-weight: 700;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    backdrop-filter: blur(2px);
+    pointer-events: none;
+}
+
+.projectImageWrapper:hover .imageOverlay {
+    opacity: 1;
+}
+
+/* Pantalla Completa */
+.fullscreenOverlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.95);
+    z-index: 10001;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    animation: fadeIn 0.3s ease;
+}
+
+.fullscreenImageContainer {
+    position: relative;
+    width: 90%;
+    height: 80%;
+}
+
+.closeFullscreen {
+    position: absolute;
+    top: 30px;
+    right: 30px;
+    background: transparent;
+    border: none;
+    color: white;
+    font-size: 30px;
+    cursor: pointer;
+    z-index: 10002;
+    transition: transform 0.3s ease;
+}
+
+.closeFullscreen:hover {
+    transform: scale(1.2);
+    color: var(--background--redIntense);
+}
+
+.projectDescriptionScroll {
+    padding: 0 40px 20px;
+}
+
+.projectDescriptionScroll p {
+    color: var(--font-color--grey);
+    line-height: 1.8;
+    white-space: pre-line;
+}
+
+.projectLinks {
+    display: flex;
+    gap: 15px;
+    padding: 20px 40px 40px;
+    background: rgba(0,0,0,0.2);
+    flex-wrap: wrap;
+}
+
+.projectLinks a {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 20px;
+    border-radius: 8px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.linkGithub { background: #333; color: white; }
+.linkDrive { background: #1a73e8; color: white; }
+.linkYoutube { background: #ff0000; color: white; }
+.linkWeb { background: #0ea5e9; color: white; }
+
+.linkGithub:hover, .linkDrive:hover, .linkYoutube:hover, .linkWeb:hover {
+    transform: translateY(-3px);
+    filter: brightness(1.2);
 }
 
 @media only screen and (max-width: 1024px) {
-    .resourcesGrid {
-        column-count: 2;
-    }
+    .resourcesGrid { grid-template-columns: repeat(2, 1fr); }
 }
 
 @media only screen and (max-width: 768px) {
-    .hero {
-        padding: 100px 20px 40px;
+    .resourcesGrid { 
+        grid-template-columns: 1fr; 
+        width: 95%; 
+        gap: 20px; 
+        padding: 20px 10px; 
     }
-
-    .hero h1 {
-        font-size: var(--font-size--extraLarge);
-    }
-
-    .hero p {
-        font-size: var(--font-size--regular);
-    }
-
-    .carousel {
-        width: 95%;
-        flex-direction: column;
-    }
-
-    .carouselBtn {
-        font-size: 40px;
-        padding: 10px;
-    }
-
-    .carouselContent {
-        flex-direction: column;
-        min-height: auto;
-    }
-
-    .carouselImage {
-        flex: 0 0 auto;
-        padding: 30px 20px 20px;
-    }
-
-    .documentPreview {
-        max-width: 200px;
-        height: 280px;
-    }
-
-    .carouselInfo {
-        padding: 20px;
-    }
-
-    .carouselInfo h2 {
-        font-size: var(--font-size--large);
-    }
-
-    .carouselInfo p {
-        font-size: var(--font-size--medium);
-    }
-
-    .resourcesGrid {
-        column-count: 1;
-        width: 95%;
-        gap: 20px;
-        padding: 20px 10px;
-    }
-
-    .modalContent {
-        padding: 30px 20px;
-        max-height: 90vh;
-    }
-
-    .modalIcon {
-        width: 80px;
-        height: 80px;
-    }
-
-    .modalContent h2 {
-        font-size: var(--font-size--large);
+    .hero h1 { 
+        font-size: var(--font-size--extraLarge); 
     }
 }
