@@ -8,7 +8,7 @@ export default async function handler(req, res) {
     { path: path.join(process.cwd(), 'public', 'images'), prefix: '/images/' }
   ];
 
-  const metadataPath = path.join(process.cwd(), 'src', 'data', 'file_metadata.json');
+  const metadataPath = path.join(process.cwd(), 'data', 'file_metadata.json');
 
   if (req.method === 'GET') {
     try {
@@ -69,6 +69,12 @@ export default async function handler(req, res) {
     try {
       const { url } = req.query;
       if (!url) return res.status(400).json({ message: 'URL requerida' });
+
+      // Ensure the url is safe and starts with one of the allowed prefixes
+      const allowedPrefixes = ['/uploads/', '/docs/', '/images/'];
+      if (!allowedPrefixes.some(p => url.startsWith(p))) {
+          return res.status(400).json({ message: 'URL no permitida' });
+      }
 
       const filePath = path.join(process.cwd(), 'public', url);
       await fs.unlink(filePath);
