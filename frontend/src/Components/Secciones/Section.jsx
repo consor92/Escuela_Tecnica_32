@@ -1,11 +1,18 @@
 import styles from "./Section.module.css";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Area from "./Area/Area";
-import itemSeccions from "@/pages/api/itemSeccions";
 
 export default function Seccions() {
   const [area, setArea] = useState(0);
   const [showText, setShowText] = useState('')
+  const [itemSeccions, setItemSeccions] = useState([]);
+
+  useEffect(() => {
+    fetch('/api/itemSeccions')
+      .then(res => res.json())
+      .then(data => setItemSeccions(data))
+      .catch(err => console.error('Error fetching itemSeccions:', err));
+  }, []);
 
   const handleMouseEnter = (text) => {
     setShowText(text)
@@ -24,10 +31,7 @@ export default function Seccions() {
   if (area === 0) {
     componentToShow = (
       <div className={styles.container} id="sections">
-
-        {
-
-          itemSeccions?.map((item, index) =>
+        {itemSeccions?.map((item, index) =>
             <div key={index} className={styles[`area${item.id}`]} onClick={() => setArea(item.id)}
               onMouseEnter={() => handleMouseEnter(`${item.title}`)}
               onMouseLeave={() => handleMouseLeave()}
@@ -41,13 +45,12 @@ export default function Seccions() {
   } else {
     componentToShow = (
       <div className={styles.parent} onClick={handleClick}>
-        <Area areaNum={area} className={styles.area} setArea={setArea} />
+        <Area areaNum={area} className={styles.area} setArea={setArea} itemSeccions={itemSeccions} />
       </div>
     );
   }
 
   return (<div>
-    {/* <h2 className={styles.container__titleVertical}>INFRRAESTRUCTURA</h2> */}
     {componentToShow}
   </div>);
 }

@@ -1,16 +1,26 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import Style from './NavBar.module.css'
 import Link from 'next/link'
+import Image from 'next/image'
 import dynamic from 'next/dynamic';
 import { HiMenu } from 'react-icons/hi'
 import { useRouter } from 'next/router'
-import config from '../../data/config.json'
 
 const CalendarModalTrigger = dynamic(() => import('./CalendarModalTrigger'), { ssr: false });
 const NavBar = ({ page, isAlertVisible }) => {
-  const { sections } = config;
+  const [config, setConfig] = useState(null);
   const [sideBarOpen, setSideBarOpen] = useState(false)
   const router = new useRouter()
+
+  useEffect(() => {
+    fetch('/api/configData')
+      .then(res => res.json())
+      .then(data => setConfig(data))
+      .catch(err => console.error('Error fetching config:', err));
+  }, []);
+
+  const sections = config?.sections || {};
+
   const handleOpenSideBar = () => {
     setSideBarOpen(!sideBarOpen)
   }
@@ -52,7 +62,15 @@ const NavBar = ({ page, isAlertVisible }) => {
       <Link href='/' className={Style.container__EscuelaTecnica}>
         <>
           <div className={Style.container__EscuelaTecnica_Img}>
-             <img src="/logoet32.ico" alt="Logo ET32" style={{ width: '65px', height: '65px', objectFit: 'contain', imageRendering: 'high-quality' }} />
+             <Image 
+                src="/images/logoET32.png" 
+                alt="Logo ET32" 
+                width={90} 
+                height={90} 
+                priority
+                style={{ objectFit: 'contain' }}
+                className={Style.logoMain}
+             />
           </div>
           <div className={Style.escuelaTecnica_info}>
             <h2>E.T. N° 32</h2>

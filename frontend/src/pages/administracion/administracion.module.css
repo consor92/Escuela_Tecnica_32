@@ -1,0 +1,339 @@
+.dashboardContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.dashboardGrid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 1.5rem;
+}
+
+.statCard {
+    background-color: var(--admin-card-bg);
+    padding: 1.5rem;
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    gap: 1.2rem;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+    border: 1px solid var(--admin-border);
+    transition: all 0.3s ease;
+    text-decoration: none;
+}
+
+.statCard:hover {
+    transform: translateY(-5px);
+    border-color: var(--admin-accent);
+}
+
+.statIcon {
+    width: 55px;
+    height: 55px;
+    border-radius: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 1.5rem;
+}
+
+.statInfo h3 {
+    font-size: 1.8rem;
+    margin: 0;
+    color: var(--admin-text);
+    font-weight: 800;
+}
+
+.statInfo p {
+    margin: 0;
+    color: var(--admin-text-light);
+    font-size: 0.85rem;
+    font-weight: 600;
+}
+
+.mainGrid {
+    display: grid;
+    grid-template-columns: 1.5fr 1fr;
+    gap: 2rem;
+}
+
+.contentCard {
+    background-color: var(--admin-card-bg);
+    border-radius: 24px;
+    border: 1px solid var(--admin-border);
+    padding: 2rem;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+}
+
+.cardHeader {
+    display: flex;
+    align-items: center;
+    margin-bottom: 2rem;
+    border-bottom: 1px solid var(--admin-border);
+    padding-bottom: 1rem;
+}
+
+.cardHeader h3 {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    color: var(--admin-text);
+    margin: 0;
+    font-size: 1.2rem;
+}
+
+/* ACTIVIDAD */
+.activityList {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.activityItem {
+    display: flex;
+    gap: 1.2rem;
+}
+
+.activityDot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    margin-top: 5px;
+    flex-shrink: 0;
+}
+
+.activityDot.news { background-color: #3b82f6; }
+.activityDot.doc { background-color: #10b981; }
+.activityDot.system { background-color: #ef4444; }
+.activityDot.media { background-color: #8b5cf6; }
+
+.activityText p {
+    margin: 0;
+    font-weight: 700;
+    color: var(--admin-text);
+    font-size: 0.95rem;
+}
+
+.activityText span {
+    font-size: 0.8rem;
+    color: var(--admin-text-light);
+}
+
+/* HEALTH CHECK */
+.healthList {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.healthItem {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.95rem;
+    color: var(--admin-text);
+}
+
+.online { color: #10b981; font-weight: 800; }
+
+.storageBar {
+    flex: 0.6;
+    height: 8px;
+    background-color: var(--admin-bg);
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.storageFill {
+    height: 100%;
+    background-color: var(--admin-accent);
+}
+
+.tableCard {
+    background-color: var(--admin-card-bg);
+    border-radius: 20px;
+    border: 1px solid var(--admin-border);
+    overflow: hidden;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+    margin-top: 1rem;
+}
+
+.table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.table th {
+    text-align: left;
+    padding: 1.2rem;
+    background-color: var(--admin-bg);
+    color: var(--admin-text-light);
+    font-size: 0.8rem;
+    text-transform: uppercase;
+}
+
+.table td {
+    padding: 1.2rem;
+    border-bottom: 1px solid var(--admin-border);
+    color: var(--admin-text);
+}
+
+.roleBadge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 0.7rem;
+    font-weight: 900;
+    text-transform: uppercase;
+}
+
+.resetBtn {
+    background-color: var(--admin-bg);
+    border: 1px solid var(--admin-border);
+    color: var(--admin-accent);
+    padding: 0.5rem 1rem;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 0.75rem;
+    font-weight: 800;
+    transition: all 0.2s;
+}
+
+.resetBtn:hover {
+    background-color: var(--admin-accent);
+    color: white;
+}
+
+.welcomeSection h2 {
+    color: var(--admin-text);
+    margin-bottom: 1.5rem;
+    font-weight: 800;
+}
+
+.quickActions {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+.actionBtn, .actionBtnOut {
+    padding: 0.8rem 1.5rem;
+    border-radius: 12px;
+    font-weight: 700;
+    text-decoration: none;
+    transition: all 0.3s;
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+}
+
+.actionBtn {
+    background-color: var(--admin-bg);
+    color: var(--admin-text);
+    border: 1px solid var(--admin-border);
+}
+
+.actionBtn:hover {
+    background-color: var(--admin-accent);
+    color: white;
+}
+
+.actionBtnOut {
+    background-color: var(--background--redIntense);
+    color: white;
+}
+
+@media (max-width: 1100px) {
+    .mainGrid { grid-template-columns: 1fr; }
+}
+
+.internalTabs {
+    display: flex;
+    gap: 1rem;
+    border-bottom: 2px solid var(--admin-border);
+    padding-bottom: 0.5rem;
+    margin-bottom: 2rem;
+}
+
+.internalTabs button {
+    background: none;
+    border: none;
+    padding: 0.8rem 1.5rem;
+    cursor: pointer;
+    font-weight: 700;
+    color: var(--admin-text-light);
+    border-radius: 12px 12px 0 0;
+}
+
+.activeTab {
+    color: var(--admin-accent) !important;
+    border-bottom: 4px solid var(--admin-accent) !important;
+    background-color: var(--admin-card-bg) !important;
+}
+
+/* MODALES */
+.modalOverlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.7);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 9999;
+    backdrop-filter: blur(5px);
+}
+
+.modalContent {
+    background: var(--admin-card-bg);
+    padding: 2.5rem;
+    border-radius: 24px;
+    width: 400px;
+    color: var(--admin-text);
+    border: 1px solid var(--admin-border);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+}
+
+.modalContent header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+}
+
+.modalContent header h3 { margin: 0; font-size: 1.4rem; color: var(--admin-accent); }
+
+.modalContent header button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: var(--admin-text-light);
+    font-size: 1.5rem;
+}
+
+.modalBody {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.formGroup {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.formGroup label {
+    font-weight: 700;
+    font-size: 0.9rem;
+    color: var(--admin-text-light);
+}
+
+.formGroup p {
+    margin: 0;
+    font-size: 1rem;
+    color: var(--admin-text);
+}

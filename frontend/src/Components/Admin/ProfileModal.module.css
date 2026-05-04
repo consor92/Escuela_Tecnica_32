@@ -1,0 +1,85 @@
+.modalOverlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.6);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 2000;
+}
+
+.modalContent {
+    background: var(--admin-card-bg);
+    padding: 2rem;
+    border-radius: 20px;
+    width: 350px;
+    color: var(--admin-text);
+    border: 1px solid var(--admin-border);
+}
+
+.modalContent header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.5rem;
+}
+
+.modalContent header button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: var(--admin-text-light);
+}
+
+.body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+}
+
+.avatarLarge {
+    width: 80px;
+    height: 80px;
+    background: var(--admin-accent);
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2rem;
+    font-weight: 800;
+}
+
+.roleBadge {
+    background: var(--admin-bg);
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: 800;
+    color: var(--admin-accent);
+}
+
+.infoSection {
+    margin: 1.5rem 0;
+    font-size: 0.9rem;
+    color: var(--admin-text-light);
+    text-align: center;
+}
+
+.changePassBtn, .logoutBtn {
+    width: 100%;
+    padding: 0.8rem;
+    border-radius: 10px;
+    border: none;
+    cursor: pointer;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    margin-top: 0.5rem;
+}
+
+.changePassBtn { background: var(--admin-bg); color: var(--admin-text); border: 1px solid var(--admin-border); }
+.logoutBtn { background: #ef4444; color: white; }

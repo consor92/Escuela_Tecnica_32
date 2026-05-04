@@ -1,0 +1,119 @@
+{
+  "categories": [
+    "Todos",
+    "Administrativo",
+    "Pedagógico",
+    "Recursos"
+  ],
+  "resources": [
+    {
+      "id": 15,
+      "category": "Recursos",
+      "type": "pdf",
+      "title": "Instructivo DDJJ",
+      "description": "",
+      "fullContent": "",
+      "size": "medium",
+      "downloadUrl": "/docs/profesor_recurso_instructivo_de_ddjj_en_l_nea_bl3nc.pdf"
+    },
+    {
+      "id": 1,
+      "category": "Pedagógico",
+      "type": "link",
+      "title": "75° aniversario de la Escuela.",
+      "description": "Invitación al acto conmemorativo por el 75° aniversario de la Escuela.",
+      "fullContent": "La Escuela Técnica N°32 'Gral. José de San Martín' invita a acompañarnos en esta fecha tan especial para nosotros. El acto se realizará el día 24 de Octubre a las 10:00 hs. en Teodoro García 3899, CABA.",
+      "size": "medium",
+      "visitUrl": "https://drive.google.com/drive/folders/1h5MSOztesNWRMOncHc_5pShqH8-4VJ9R"
+    },
+    {
+      "id": 2,
+      "category": "Administrativo",
+      "type": "text",
+      "title": "Justificación de Inasistencias",
+      "description": "Procedimiento para presentar certificados en secretaría.",
+      "fullContent": "Se recuerda al personal que las justificaciones por inasistencia deben presentarse en la secretaría dentro de las 48 horas hábiles. Es imperativo adjuntar el certificado médico correspondiente.",
+      "size": "small"
+    },
+    {
+      "id": 3,
+      "category": "Administrativo",
+      "type": "pdf",
+      "title": "Protocolo de Emergencia",
+      "description": "Instructivo actualizado sobre procedimientos de evacuación.",
+      "fullContent": "Incluye rutas de evacuación, puntos de encuentro y responsables de cada sector. Es obligatorio conocer este protocolo.",
+      "downloadUrl": "/docs/Plan_evacuacion.pdf",
+      "size": "medium"
+    },
+    {
+      "id": 4,
+      "category": "Administrativo",
+      "type": "pdf",
+      "title": "Reglamento Escolar",
+      "description": "Consulte la versión actualizada del reglamento institucional.",
+      "fullContent": "Contiene normativas vigentes, derechos y obligaciones del personal docente, horarios, licencias y procedimientos administrativos.",
+      "downloadUrl": "",
+      "size": "small"
+    },
+    {
+      "id": 5,
+      "category": "Recursos",
+      "type": "link",
+      "title": "Clasificación Docente",
+      "description": "Portal oficial de clasificación docente del GCBA.",
+      "fullContent": "Consulte su puntaje, listados y trámites relacionados al área de recursos humanos del Gobierno de la Ciudad.",
+      "visitUrl": "https://clasificaciondocente.buenosaires.gob.ar/",
+      "size": "small"
+    },
+    {
+      "id": 6,
+      "category": "Administrativo",
+      "type": "link",
+      "title": "Recibos de Sueldo",
+      "description": "Acceso al portal BA desde adentro.",
+      "fullContent": "Visualice y descargue sus recibos de haberes y gestione documentación laboral oficial.",
+      "visitUrl": "https://equipoba.buenosaires.gob.ar/",
+      "size": "xsmall"
+    },
+    {
+      "id": 7,
+      "category": "Recursos",
+      "type": "link",
+      "title": "MIA - Gestión Docente",
+      "description": "Sistema de Mi Información Administrativa del GCBA.",
+      "fullContent": "Permite gestionar datos personales, licencias, designaciones y novedades docentes de forma digital.",
+      "visitUrl": "https://mia.dguiaf-gcba.gov.ar/",
+      "size": "large"
+    },
+    {
+      "id": 8,
+      "category": "Recursos",
+      "type": "link",
+      "title": "Calculadora Salarial",
+      "description": "Simulador de salario docente de referencia.",
+      "fullContent": "Herramienta interactiva para estimar ingresos según antigüedad, cargo y horas cátedra.",
+      "visitUrl": "https://juanwinograd.github.io/CalculadoraSalarial/",
+      "size": "small"
+    },
+    {
+      "id": 13,
+      "category": "Recursos",
+      "type": "link",
+      "title": "Recursos Educativos",
+      "description": "Material didáctico digital y herramientas online.",
+      "fullContent": "Videos educativos, presentaciones interactivas y ejercicios descargables para enriquecer sus clases.",
+      "visitUrl": "#",
+      "size": "medium"
+    },
+    {
+      "id": 14,
+      "category": "Pedagógico",
+      "type": "link",
+      "title": "Recursos ESI",
+      "description": "Materiales relacionados con la Educación Sexual Integral.",
+      "fullContent": "Repositorio con guías y documentos para el abordaje de la ESI en el aula.",
+      "visitUrl": "https://drive.google.com/drive/folders/1xTNiz9NFnydfC4MkCTcQNtCw_tJLF23o?usp=sharing",
+      "size": "small"
+    }
+  ]
+}

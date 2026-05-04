@@ -1,0 +1,60 @@
+{
+  "categories": [
+    "Todos",
+    "Novedades",
+    "Trámites"
+  ],
+  "resources": [
+    {
+      "id": 1,
+      "category": "Novedades",
+      "type": "link",
+      "title": "Inscripción Promoción Acompañada 2026",
+      "description": "Inscripciones abiertas del 27/04 al 01/05 inclusive.",
+      "fullContent": "Se informa que se encuentra abierta la inscripción para el programa de Promoción Acompañada 2026. El proceso se realiza exclusivamente de forma virtual a través del formulario oficial. Es requisito completar todos los datos solicitados dentro de las fechas establecidas.",
+      "visitUrl": "https://docs.google.com/forms/d/e/1FAIpQLSeKweMMWvIbbHF3P2GzhqAwCDwX1RVFOr20db44c824EX5dmg/viewform",
+      "size": "medium"
+    }
+  ],
+  "projects": [
+    {
+      "id": 1,
+      "title": "Acuaponia Sustentable 2.0",
+      "area": "Computación y Biotecnología",
+      "year": "2026",
+      "fecha": "2026-03-15",
+      "copete": "Implementación de sensores IoT para el monitoreo en tiempo real de ecosistemas cerrados que combinan piscicultura y cultivos hidropónicos.ddd",
+      "fullContent": "Este proyecto busca optimizar la eficiencia del uso del agua en un 90% en comparación con la agricultura tradicional. Se diseñó una placa controladora basada en ESP32 que mide niveles de pH, amoníaco, nitritos y temperatura del agua. Los datos se envían a una base de datos en Firebase y se visualizan en un dashboard desarrollado en React. Durante las pruebas de campo, se logró estabilizar el crecimiento de lechugas y el desarrollo de tilapias con una mínima intervención humana, automatizando los ciclos de alimentación y oxigenación mediante actuadores programados en C++.logró estabilizar el crecimiento de lechugas y el desarrollo de tilapias con una mínima intervención humana, automatizando los ciclos de alimentación y oxigenación mediante actuadores programados en C++.logró estabilizar el crecimiento de lechugas y el desarrollo de tilapias con una mínima intervención humana, automatizando los ciclos de alimentación y oxigenación mediante actuadores programados en C++.logró estabilizar el crecimiento de lechugas y el desarrollo de tilapias con una mínima intervención humana, automatizando los ciclos de alimentación y oxigenación mediante actuadores programados en C++.",
+      "images": [
+        "/uploads/proyecto_0hr2a.webp",
+        "/uploads/proyecto_wat9o.webp",
+        "/uploads/proyecto_wzv5c.webp",
+        "/uploads/proyecto_m2i6v.webp"
+      ],
+      "links": {
+        "github": "https://github.com/ejemplo/acuaponia-iot",
+        "drive": "https://drive.google.com/ejemplo/documentacion",
+        "video": "https://youtube.com/ejemplo/demo-acuaponia",
+        "pdf": "https://localhost:3000/files/informe_final_acuaponia.pdf"
+      },
+      "participants": {
+        "teachers": [
+          "Olaso",
+          "Consorti"
+        ],
+        "students": [
+          {
+            "name": "Julian Rossi",
+            "year": "5",
+            "division": "2"
+          },
+          {
+            "name": "Martina Lopez",
+            "year": "6",
+            "division": "1"
+          }
+        ]
+      }
+    }
+  ]
+}

@@ -1,0 +1,59 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.header h2 { margin: 0; font-weight: 800; color: var(--admin-text); }
+.header p { margin: 0.2rem 0 0; color: var(--admin-text-light); }
+
+.exportBtn {
+    background-color: var(--admin-bg);
+    color: var(--admin-text);
+    border: 1px solid var(--admin-border);
+    padding: 0.8rem 1.5rem;
+    border-radius: 12px;
+    font-weight: 800;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.tableCard {
+    background-color: var(--admin-card-bg);
+    border-radius: 20px;
+    border: 1px solid var(--admin-border);
+    overflow: hidden;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+}
+
+.table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.table th {
+    text-align: left;
+    padding: 1.2rem;
+    background-color: var(--admin-bg);
+    color: var(--admin-text-light);
+    font-size: 0.8rem;
+    text-transform: uppercase;
+}
+
+.table td {
+    padding: 1.2rem;
+    border-bottom: 1px solid var(--admin-border);
+    color: var(--admin-text);
+    font-size: 0.9rem;
+}
+
+.date { font-weight: 700; color: var(--admin-accent); }
+.ip { font-family: monospace; color: var(--admin-text-light); }

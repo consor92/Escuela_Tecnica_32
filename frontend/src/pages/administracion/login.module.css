@@ -1,0 +1,142 @@
+.loginPage {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #0a0c21;
+    background-image: 
+        radial-gradient(at 0% 0%, rgba(25, 29, 98, 0.5) 0px, transparent 50%),
+        radial-gradient(at 100% 100%, rgba(249, 3, 52, 0.2) 0px, transparent 50%);
+    font-family: 'Inter', sans-serif;
+    padding: 2rem;
+}
+
+.loginCard {
+    background-color: #141736;
+    width: 100%;
+    max-width: 450px;
+    padding: 3.5rem;
+    border-radius: 32px;
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    text-align: center;
+}
+
+.loginHeader img {
+    width: 70px;
+    margin-bottom: 1.5rem;
+    filter: drop-shadow(0 0 15px rgba(249, 3, 52, 0.3));
+}
+
+.loginHeader h1 {
+    color: white;
+    font-size: 1.8rem;
+    font-weight: 800;
+    margin-bottom: 0.5rem;
+}
+
+.loginHeader p {
+    color: #94a3b8;
+    font-size: 0.95rem;
+    margin-bottom: 2.5rem;
+}
+
+.loginForm {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    text-align: left;
+}
+
+.inputGroup label {
+    display: block;
+    color: #cbd5e1;
+    font-size: 0.85rem;
+    font-weight: 700;
+    margin-bottom: 0.6rem;
+}
+
+.inputWrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.inputWrapper svg {
+    position: absolute;
+    left: 1.2rem;
+    color: #64748b;
+}
+
+.inputWrapper input {
+    width: 100%;
+    background-color: #0a0c21;
+    border: 1px solid #2d346b;
+    padding: 1rem 1.2rem 1rem 3.2rem;
+    border-radius: 14px;
+    color: white;
+    font-size: 1rem;
+    outline: none;
+    transition: all 0.3s;
+}
+
+.inputWrapper input:focus {
+    border-color: #60a5fa;
+    box-shadow: 0 0 0 4px rgba(96, 165, 250, 0.1);
+}
+
+.togglePass {
+    position: absolute;
+    right: 1rem;
+    background: none;
+    border: none;
+    color: #64748b;
+    cursor: pointer;
+    font-size: 1.1rem;
+}
+
+.submitBtn {
+    margin-top: 1rem;
+    background-color: #F90334;
+    color: white;
+    border: none;
+    padding: 1.1rem;
+    border-radius: 14px;
+    font-size: 1rem;
+    font-weight: 800;
+    cursor: pointer;
+    transition: all 0.3s;
+    box-shadow: 0 10px 20px rgba(249, 3, 52, 0.3);
+}
+
+.submitBtn:hover {
+    transform: translateY(-2px);
+    background-color: #d1022b;
+    box-shadow: 0 15px 30px rgba(249, 3, 52, 0.4);
+}
+
+.submitBtn:disabled {
+    opacity: 0.7;
+    cursor: not-allowed;
+}
+
+.loginFooter {
+    margin-top: 3rem;
+}
+
+.loginFooter p {
+    color: #64748b;
+    font-size: 0.8rem;
+    margin-bottom: 0.8rem;
+}
+
+.loginFooter a {
+    color: #60a5fa;
+    text-decoration: none;
+    font-size: 0.9rem;
+    font-weight: 700;
+}
+
+.loginFooter a:hover {
+    text-decoration: underline;
+}

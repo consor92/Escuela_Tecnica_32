@@ -1,67 +1,112 @@
 .container {
     display: flex;
     flex-direction: row;
-    height: 80px;
+    height: 110px;
     position: fixed;
     z-index: 999;
     width: 100%;
 }
 .container__EscuelaTecnica {
-    width: 400px;
+    width: 520px;
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 15px;
-    padding: 10px;
+    gap: 20px;
+    padding: 10px 20px;
     background-color: var(--background--blue);
     color: var(--font-color--white);
+    position: relative;
+    overflow: hidden;
 }
 
 .container__EscuelaTecnica_Img {
     display: flex;
     align-items: center;
     justify-content: center;
+    position: relative;
+    z-index: 2;
+    min-width: 100px;
 }
 
-.escuelaTecnica_Img {
-    background-image: url('/images/logoET32.png');
-    background-size: contain;
-    background-position: center;
-    width: 60px;
-    height: 60px;
-    margin-left: 15px;
-    margin-right: 15px;
+.logoMain {
+    filter: drop-shadow(0px 0px 10px rgba(255, 255, 255, 0.5));
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    animation: breathe 4s ease-in-out infinite, glowPulse 3s ease-in-out infinite;
+}
+
+@keyframes breathe {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.08); }
+}
+
+@keyframes glowPulse {
+    0%, 100% { filter: drop-shadow(0px 0px 10px rgba(255, 255, 255, 0.4)); }
+    50% { filter: drop-shadow(0px 0px 22px rgba(255, 255, 255, 0.8)); }
+}
+
+.container__EscuelaTecnica:hover .logoMain {
+    transform: scale(1.15) rotate(5deg);
+    filter: drop-shadow(0px 0px 25px rgba(249, 3, 52, 0.9));
+    animation-play-state: paused;
 }
 
 .escuelaTecnica_info {
     display: flex;
     flex-direction: column;
     margin: auto;
-    /* margin-left: 0; */
+    position: relative;
+    z-index: 2;
 }
 
 .escuelaTecnica_info h2 {
-    font-size: var(--font-size--large);
-    margin-bottom: 10px;
+    font-size: 52px;
+    font-weight: 900;
+    margin: 0;
+    text-transform: uppercase;
+    letter-spacing: -3px;
+    line-height: 0.8;
+    background: linear-gradient(to bottom, #ffffff 50%, #aaaaaa 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-family: var(--font-montserrat), sans-serif;
+    filter: drop-shadow(4px 6px 10px rgba(0, 0, 0, 0.6));
+    position: relative;
+    animation: magicTextPulse 5s ease-in-out infinite;
+}
+
+/* Efecto de Aura Suave en lugar del brillo cuadrado */
+@keyframes magicTextPulse {
+    0%, 100% {
+        filter: drop-shadow(4px 6px 10px rgba(0, 0, 0, 0.6)) brightness(1);
+    }
+    50% {
+        filter: drop-shadow(0px 0px 15px rgba(255, 255, 255, 0.5)) brightness(1.3);
+    }
 }
 
 .escuelaTecnica_info h3 {
-    font-size: var(--font-size--small);
-    font-weight: 200;
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 1.8px;
+    text-transform: uppercase;
+    color: var(--background--redIntense);
+    margin-top: 8px;
+    line-height: 1.1;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.4);
 }
 
 
 .container__navBar {
     display: flex;
     flex-direction: column;
-    width: calc(100% - 350px);
+    width: calc(100% - 520px);
 }
 
 .container__navBarTop {
     display: flex;
     justify-content: flex-end;
     background-color: var(--background--black);
-    height: 30px;
+    height: 40px;
 }
 
 .container__navBarTop nav {
@@ -102,7 +147,7 @@
     justify-content: center;
     align-items: center;
     background-color: var(--background--white);
-    height: 50px;
+    height: 70px;
 }
 
 .container__navBarBottom button {

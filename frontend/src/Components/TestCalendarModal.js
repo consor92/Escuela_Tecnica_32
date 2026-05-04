@@ -46,7 +46,7 @@ const TestCalendarModal = ({ openFromNavBar, onClose }) => {
   return createPortal(
     <div className={styles.modalOverlay}>
       <div className={styles.modalContent}>
-        <h2 className={styles.modalTitle}>Calendario Escolar 2025<span></span></h2>
+        <h2 className={styles.modalTitle}>Calendario Escolar 2026<span></span></h2>
         <div className={styles.calendarContainer}>
           <EventCalendar />
         </div>

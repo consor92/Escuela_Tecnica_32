@@ -3,7 +3,6 @@ import React, { useState, useEffect, useMemo } from 'react';
 import Calendar from 'react-calendar';
 import 'react-calendar/dist/Calendar.css';
 import styles from './EventCalendar.module.css';
-import dataCalendar from '../data/calendar_events.json';
 
 const formatDate = (date) => {
   const year = date.getFullYear();
@@ -16,10 +15,26 @@ const getEventMap = (events) => {
   const eventMap = new Map();
   events.forEach(event => {
     const dateStr = event.date;
-    if (!eventMap.has(dateStr)) {
-      eventMap.set(dateStr, []);
+    if (dateStr.includes('/')) {
+      const [startStr, endStr] = dateStr.split('/');
+      const startDate = new Date(startStr + 'T00:00:00');
+      const endDate = new Date(endStr + 'T00:00:00');
+      
+      let current = new Date(startDate);
+      while (current <= endDate) {
+        const currentStr = formatDate(current);
+        if (!eventMap.has(currentStr)) {
+          eventMap.set(currentStr, []);
+        }
+        eventMap.get(currentStr).push(event);
+        current.setDate(current.getDate() + 1);
+      }
+    } else {
+      if (!eventMap.has(dateStr)) {
+        eventMap.set(dateStr, []);
+      }
+      eventMap.get(dateStr).push(event);
     }
-    eventMap.get(dateStr).push(event);
   });
   return eventMap;
 };
@@ -29,13 +44,18 @@ const EventCalendar = () => {
   const [eventMap, setEventMap] = useState(new Map());
 
   useEffect(() => {
-    if (dataCalendar && Array.isArray(dataCalendar)) {
-      const parsedEvents = dataCalendar.map(event => ({
-        ...event,
-        date: typeof event.date === 'string' ? event.date : formatDate(new Date(event.date))
-      }));
-      setEventMap(getEventMap(parsedEvents));
-    }
+    fetch('/api/calendarData')
+      .then(res => res.json())
+      .then(dataCalendar => {
+        if (dataCalendar && Array.isArray(dataCalendar)) {
+            const parsedEvents = dataCalendar.map(event => ({
+              ...event,
+              date: typeof event.date === 'string' ? event.date : formatDate(new Date(event.date))
+            }));
+            setEventMap(getEventMap(parsedEvents));
+        }
+      })
+      .catch(err => console.error('Error fetching calendar data:', err));
   }, []);
 
   const dateHasEvent = (dateToChecK) => {

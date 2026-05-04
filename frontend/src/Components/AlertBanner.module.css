@@ -31,7 +31,7 @@
 
 .marqueeContent {
   display: flex;
-  animation: marquee 60s linear infinite;
+  animation: marquee 40s linear infinite;
 }
 
 .marqueeContent span {

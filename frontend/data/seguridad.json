@@ -1,0 +1,31 @@
+{
+  "evacuacion": {
+    "titulo": "Información para Evacuación",
+    "descripcion": "Ante una emergencia, nuestra prioridad es que todos sepan hacia dónde dirigirse de forma rápida y segura.",
+    "planos": [
+      {
+        "id": "interno",
+        "titulo": "Plano del Establecimiento",
+        "src": "/images/PuntoEncuentroEvacuacion.png",
+        "referencia": "Muestra las salidas de emergencia y rutas dentro del edificio."
+      }
+    ],
+    "instrucciones": [
+      "Mantener la calma y no correr.",
+      "Seguir las indicaciones del personal a cargo.",
+      "Dirigirse al punto de encuentro exterior sin detenerse.",
+      "Esperar el recuento y nuevas directivas en la zona segura."
+    ]
+  },
+  "seguridad": {
+    "titulo": "Protocolo de Seguridad Escolar",
+    "subtitulo": "Detección de objetos peligrosos",
+    "mensaje": "La escuela cuenta con un protocolo oficial de CABA para actuar ante la presencia de objetos que pongan en riesgo la integridad de la comunidad.",
+    "queHacer": [
+      "Si ves algo sospechoso, avisá inmediatamente a un preceptor o directivo.",
+      "No intentes manipular ningún objeto ni intervenir por tu cuenta.",
+      "La escuela dará aviso inmediato a las autoridades (911) para que intervengan profesionales.",
+      "Se priorizará siempre el cuidado y la privacidad de los involucrados."
+    ]
+  }
+}

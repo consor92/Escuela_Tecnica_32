@@ -1,9 +1,18 @@
+import { useState, useEffect } from 'react'
 import Layout from '@/Components/Layout/Layout'
 import styles from '../Components/Historia.module.css'
-import historiaData from '../data/historia.json'
 
 export default function PaginaHistoria() {
-  const { linea_de_tiempo } = historiaData
+  const [historiaData, setHistoriaData] = useState(null)
+
+  useEffect(() => {
+    fetch('/api/historiaData')
+      .then((res) => res.json())
+      .then((data) => setHistoriaData(data))
+      .catch((err) => console.error('Error fetching historia:', err))
+  }, [])
+
+  const { linea_de_tiempo } = historiaData || {}
   
   // Imágenes genéricas disponibles en el proyecto para ilustrar la historia
   const genericImages = [
@@ -28,7 +37,7 @@ export default function PaginaHistoria() {
         </header>
 
         <main className={styles.timelineContainer}>
-          {linea_de_tiempo && linea_de_tiempo.length > 0 ? (
+          {historiaData && linea_de_tiempo && linea_de_tiempo.length > 0 ? (
             linea_de_tiempo.map((item, index) => {
               const isLeft = item.layout === 'izquierda'
               const imageIndex = index % genericImages.length
@@ -61,7 +70,7 @@ export default function PaginaHistoria() {
               )
             })
           ) : (
-            <p style={{ textAlign: 'center', padding: '50px' }}>No se encontraron datos de la historia.</p>
+            <p style={{ textAlign: 'center', padding: '50px' }}>{historiaData ? 'No se encontraron datos de la historia.' : 'Cargando historia...'}</p>
           )}
         </main>
 

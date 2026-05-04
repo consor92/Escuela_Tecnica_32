@@ -5,7 +5,7 @@ import 'react-alice-carousel/lib/alice-carousel.css';
 
 // Datos experimentales para simular el feed de Instagram
 const experimentalFeed = [
-  { id: 1, image: '/images/feria.jpg', caption: 'Feria de Ciencias 2025' },
+  { id: 1, image: '/images/feria.jpg', caption: 'Feria de Ciencias 2026' },
   { id: 2, image: '/images/tecnicoxundia.jpg', caption: 'Técnico x un día' },
   { id: 3, image: '/images/infra1.png', caption: 'Nuestros Talleres' },
   { id: 4, image: '/images/infra2.png', caption: 'Actividades escolares' },

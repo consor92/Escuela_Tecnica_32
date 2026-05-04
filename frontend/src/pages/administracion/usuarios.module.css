@@ -1,0 +1,305 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.internalTabs {
+    display: flex;
+    gap: 1rem;
+    border-bottom: 2px solid var(--admin-border);
+    padding-bottom: 0.5rem;
+}
+
+.internalTabs button {
+    background: none;
+    border: none;
+    padding: 0.8rem 1.5rem;
+    cursor: pointer;
+    font-weight: 700;
+    color: var(--admin-text-light);
+    border-radius: 12px 12px 0 0;
+}
+
+.activeTab {
+    color: var(--admin-accent) !important;
+    border-bottom: 4px solid var(--admin-accent) !important;
+    background-color: var(--admin-card-bg) !important;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.header h2 { margin: 0; font-weight: 800; color: var(--admin-text); }
+.header p { margin: 0.2rem 0 0; color: var(--admin-text-light); }
+
+.addBtn {
+    background-color: var(--admin-accent);
+    color: white;
+    border: none;
+    padding: 0.8rem 1.5rem;
+    border-radius: 12px;
+    font-weight: 800;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+}
+
+.tableCard {
+    background-color: var(--admin-card-bg);
+    border-radius: 20px;
+    border: 1px solid var(--admin-border);
+    overflow: hidden;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+}
+
+.table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.table th {
+    text-align: left;
+    padding: 1.2rem;
+    background-color: var(--admin-bg);
+    color: var(--admin-text-light);
+    font-size: 0.8rem;
+    text-transform: uppercase;
+}
+
+.table td {
+    padding: 1.2rem;
+    border-bottom: 1px solid var(--admin-border);
+    color: var(--admin-text);
+}
+
+.userNameArea {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.userAvatar {
+    width: 35px;
+    height: 35px;
+    background-color: var(--admin-accent);
+    color: white;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 900;
+}
+
+.roleBadge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 0.7rem;
+    font-weight: 900;
+    text-transform: uppercase;
+}
+
+.roleBadge.superadmin { background-color: #fee2e2; color: #ef4444; }
+.defaultRole { background-color: var(--admin-bg); color: var(--admin-text-light); }
+
+.actions {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.resetBtn {
+    background-color: var(--admin-bg);
+    border: 1px solid var(--admin-border);
+    color: var(--admin-accent);
+    padding: 0.5rem 1rem;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 0.75rem;
+    font-weight: 800;
+    transition: all 0.2s;
+}
+
+.resetBtn:hover {
+    background-color: var(--admin-accent);
+    color: white;
+}
+
+.deleteBtn {
+    background-color: var(--admin-bg);
+    border: 1px solid var(--admin-border);
+    color: #ef4444;
+    padding: 0.5rem 1rem;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 0.75rem;
+    font-weight: 800;
+}
+
+.deleteBtn:hover {
+    background-color: #ef4444;
+    color: white;
+}
+
+/* PRIVILEGIOS */
+.privilegesArea {
+    width: 100%;
+    overflow-x: auto;
+    padding-bottom: 2rem;
+}
+
+.privilegesTable {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+    min-width: 1200px;
+}
+
+.privilegesTable th {
+    padding: 1.5rem 1rem;
+    background-color: var(--admin-bg);
+    color: var(--admin-text-light);
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    text-align: center;
+    border-bottom: 2px solid var(--admin-border);
+}
+
+.privilegesTable th:first-child {
+    text-align: left;
+    position: sticky;
+    left: 0;
+    z-index: 20;
+    background-color: var(--admin-bg);
+    border-right: 2px solid var(--admin-border);
+}
+
+.privilegesTable td {
+    padding: 1rem;
+    border-bottom: 1px solid var(--admin-border);
+    color: var(--admin-text);
+    text-align: center;
+}
+
+.privilegesTable td:first-child {
+    text-align: left;
+    position: sticky;
+    left: 0;
+    z-index: 10;
+    background-color: var(--admin-card-bg);
+    border-right: 2px solid var(--admin-border);
+}
+
+.priv_edit, .priv_view, .priv_edit-parc, .privOff {
+    padding: 0.5rem 1rem;
+    border: none;
+    border-radius: 8px;
+    font-size: 0.75rem;
+    font-weight: 900;
+    cursor: pointer;
+    transition: all 0.2s;
+    min-width: 90px;
+}
+
+.priv_edit { background-color: #dcfce7; color: #10b981; }
+.priv_view { background-color: #fef3c7; color: #d97706; }
+.priv_edit-parc { background-color: #e0e7ff; color: #4f46e5; }
+.privOff { background-color: var(--admin-bg); color: #94a3b8; border: 1px solid var(--admin-border); }
+
+.priv_edit:hover { background-color: #10b981; color: white; }
+.priv_view:hover { background-color: #d97706; color: white; }
+.priv_edit-parc:hover { background-color: #4f46e5; color: white; }
+.privOff:hover { background-color: var(--admin-border); }
+
+@media (max-width: 1024px) {
+    .privilegesTable { display: block; overflow-x: auto; }
+}
+
+/* MODALES */
+.modalOverlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.7);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 9999;
+    backdrop-filter: blur(5px);
+}
+
+.modalContent {
+    background: var(--admin-card-bg);
+    padding: 2.5rem;
+    border-radius: 24px;
+    width: 400px;
+    color: var(--admin-text);
+    border: 1px solid var(--admin-border);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+    animation: scaleIn 0.3s ease;
+}
+
+@keyframes scaleIn {
+    from { transform: scale(0.9); opacity: 0; }
+    to { transform: scale(1); opacity: 1; }
+}
+
+.modalContent header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+}
+
+.modalContent header h3 { margin: 0; font-size: 1.4rem; color: var(--admin-accent); }
+
+.modalContent header button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: var(--admin-text-light);
+    font-size: 1.2rem;
+}
+
+.modalBody {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    margin-bottom: 2.5rem;
+}
+
+.formGroup {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.formGroup label {
+    font-weight: 700;
+    font-size: 0.9rem;
+}
+
+.formGroup input, .formGroup select {
+    padding: 0.9rem;
+    border: 1px solid var(--admin-input-border);
+    background-color: var(--admin-bg);
+    color: var(--admin-text);
+    border-radius: 10px;
+    font-size: 1rem;
+}
+
+.saveBtn {
+    width: 100%;
+    padding: 1rem;
+    background-color: var(--admin-accent);
+    color: white;
+    border: none;
+    border-radius: 12px;
+    font-weight: 800;
+    cursor: pointer;
+}

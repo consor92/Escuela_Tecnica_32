@@ -1,6 +1,7 @@
 import React from 'react'
 import Style from './HomeIndex.module.css'
 import Image from 'next/image'
+import Link from 'next/link'
 
 const homeIndex = () => {
   return (

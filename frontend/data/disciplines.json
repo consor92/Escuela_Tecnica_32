@@ -1,0 +1,2016 @@
+[
+  {
+    "id": "computacion",
+    "title": "Técnico en Computación",
+    "titleUppercase": "TÉCNICO EN COMPUTACIÓN",
+    "bg_image": "/images/bg_page_computacion.jpg",
+    "carousel": [
+      "/images/computacion_1.jpeg",
+      "/images/computacion_2.png",
+      "/uploads/especialidad_computacion_kw94e.webp",
+      "/uploads/especialidad_computacion_91p83.webp",
+      "/uploads/especialidad_computacion_kehww.webp"
+    ],
+    "resolucion": "Resolución N.º 80/MEDGS/26",
+    "perfil_profesional": "El técnico en Computación egresado está capacitado para el desarrollo de software, gestión de redes y ciberseguridad.",
+    "turnos": {
+      "TM": true,
+      "TT": true,
+      "TV": true
+    },
+    "text": "Convertite en el arquitecto del mundo digital. La Tecnicatura en Computación no solo enseña a programar, sino a liderar la transformación tecnológica mediante el diseño de software de alta complejidad, la ciberseguridad y la inteligencia de datos.",
+    "text_about_part1": "Nuestra formación te sumerge en un ecosistema de aprendizaje dinámico donde dominarás lenguajes de última generación, arquitecturas de sistemas y algoritmos avanzados. Desde el primer día, trabajarás en la resolución de problemas reales, pasando de ser un consumidor de tecnología a ser un creador de soluciones escalables que impactan en la sociedad.",
+    "text_about_part2": "Se profundiza en la administración profesional de redes y servidores, bases de datos masivas y el desarrollo de aplicaciones orientadas a objetos. Contamos con laboratorios equipados para que experimentes con infraestructuras críticas, asegurando que cada concepto teórico se traduzca en una competencia técnica tangible y profesional.",
+    "text_future_part1": "El mercado global busca Técnicos en Computación: al egresar, estarás listo para roles de alto impacto como Desarrollador Full-Stack, Arquitecto de Redes, Analista de Sistemas o consultor en seguridad informática. Las empresas líderes del sector tecnológico valoran nuestra formación por su equilibrio entre rigor lógico y capacidad de ejecución técnica.",
+    "text_future_part2": "Esta tecnicatura es la plataforma de lanzamiento perfecta para carreras de grado en Ingeniería o Ciencias de la Computación. La base técnica que adquirirás te permitirá adaptarte a tecnologías que aún no existen, dándote una ventaja competitiva de por vida en la industria mejor remunerada del mundo.",
+    "text_practice_part1": "La experiencia culmina con nuestras Prácticas Profesionalizantes, donde te integrarás en equipos de trabajo reales dentro de empresas del sector. Aquí aplicarás metodologías ágiles y gestión de proyectos, viviendo la experiencia de un entorno laboral profesional antes de recibir tu título.",
+    "subjectPerYear": [
+      {
+        "year": "Primer Año",
+        "subjectName": [
+          {
+            "name": "Lengua y Literatura",
+            "hs": "4 hs",
+            "descripcion": "",
+            "horas_semanales": 4,
+            "es_troncal": true,
+            "departamento": "sociales",
+            "temas_troncales": null,
+            "pdf_link": "#"
+          },
+          {
+            "name": "Inglés",
+            "hs": "3 hs",
+            "descripcion": "",
+            "horas_semanales": 3,
+            "es_troncal": false,
+            "departamento": "sociales",
+            "temas_troncales": null,
+            "pdf_link": "#"
+          },
+          {
+            "name": "Historia",
+            "hs": "3 hs",
+            "descripcion": "",
+            "horas_semanales": 3,
+            "es_troncal": false,
+            "departamento": "sociales",
+            "temas_troncales": null,
+            "pdf_link": "#"
+          },
+          {
+            "name": "Geografía",
+            "hs": "3 hs",
+            "descripcion": "",
+            "horas_semanales": 3,
+            "es_troncal": false,
+            "departamento": "sociales",
+            "temas_troncales": null,
+            "pdf_link": "#"
+          },
+          {
+            "name": "Educación Ciudadana",
+            "hs": "2 hs",
+            "descripcion": "",
+            "horas_semanales": 2,
+            "es_troncal": false,
+            "departamento": "sociales",
+            "temas_troncales": null,
+            "pdf_link": "#"
+          },
+          {
+            "name": "Educación Física",
+            "hs": "3 hs",
+            "descripcion": "",
+            "horas_semanales": 3,
+            "es_troncal": false,
+            "departamento": "sociales",
+            "temas_troncales": null,
+            "pdf_link": "#"
+          },
+          {
+            "name": "Biología",
+            "hs": "2 hs",
+            "descripcion": "",
+            "horas_semanales": 2,
+            "es_troncal": false,
+            "departamento": "exactas",
+            "temas_troncales": null,
+            "pdf_link": "#"
+          },
+          {
+            "name": "Educación Artística",
+            "hs": "2 hs",
+            "descripcion": "",
+            "horas_semanales": 2,
+            "es_troncal": false,
+            "departamento": "sociales",
+            "temas_troncales": null,
+            "pdf_link": "#"
+          },
+          {
+            "name": "Matemática",
+            "hs": "6 hs",
+            "descripcion": "",
+            "horas_semanales": 6,
+            "es_troncal": true,
+            "departamento": "exactas",
+            "temas_troncales": null,
+            "pdf_link": "#"
+          },
+          {
+            "name": "Tecnología de la Representación",
+            "hs": "4 hs",
+            "descripcion": "",
+            "horas_semanales": 4,
+            "es_troncal": true,
+            "departamento": "Representación",
+            "temas_troncales": null,
+            "pdf_link": "#"
+          },
+          {
+            "name": "Taller",
+            "hs": "12 hs",
+            "descripcion": "",
+            "horas_semanales": 12,
+            "es_troncal": true,
+            "departamento": "Taller",
+            "temas_troncales": null,
+            "pdf_link": "#"
+          }
+        ]
+      },
+      {
+        "year": "Segundo Año",
+        "subjectName": [
+          {
+            "name": "Matemática",
+            "hs": "6 hs",
+            "descripcion": "",
+            "horas_semanales": 6,
+            "es_troncal": true,
+            "departamento": "exactas",
+            "temas_troncales": null,
+            "pdf_link": "#"
+          },
+          {
+            "name": "Física",
+            "hs": "4 hs",
+            "descripcion": "",
+            "horas_semanales": 4,
+            "es_troncal": true,
+            "departamento": "exactas",
+            "temas_troncales": null,
+            "pdf_link": "#"
+          },
+          {
+            "name": "Taller",
+            "hs": "12 hs",
+            "descripcion": "",
+            "horas_semanales": 12,
+            "es_troncal": true,
+            "departamento": "Taller",
+            "temas_troncales": null,
+            "pdf_link": "#"
+          },
+          {
+            "name": "Lengua y Literatura",
+            "hs": "4 hs",
+            "descripcion": "",
+            "horas_semanales": 4,
+            "es_troncal": true,
+            "departamento": "sociales",
+            "temas_troncales": null,
+            "pdf_link": "#"
+          },
+          {
+            "name": "Inglés",
+            "hs": "3 hs",
+            "descripcion": "",
+            "horas_semanales": 3,
+            "es_troncal": false,
+            "departamento": "sociales",
+            "temas_troncales": null,
+            "pdf_link": "#"
+          },
+          {
+            "name": "Historia",
+            "hs": "3 hs",
+            "descripcion": "",
+            "horas_semanales": 3,
+            "es_troncal": false,
+            "departamento": "sociales",
+            "temas_troncales": null,
+            "pdf_link": "#"
+          },
+          {
+            "name": "Geografía",
+            "hs": "3 hs",
+            "descripcion": "",
+            "horas_semanales": 3,
+            "es_troncal": false,
+            "departamento": "sociales",
+            "temas_troncales": null,
+            "pdf_link": "#"
+          },
+          {
+            "name": "Educación Ciudadana",
+            "hs": "2 hs",
+            "descripcion": "",
+            "horas_semanales": 2,
+            "es_troncal": false,
+            "departamento": "sociales",
+            "temas_troncales": null,
+            "pdf_link": "#"
+          },
+          {
+            "name": "Educación Física",
+            "hs": "3 hs",
+            "descripcion": "",
+            "horas_semanales": 3,
+            "es_troncal": false,
+            "departamento": "sociales",
+            "temas_troncales": null,
+            "pdf_link": "#"
+          },
+          {
+            "name": "Biología",
+            "hs": "3 hs",
+            "descripcion": "",
+            "horas_semanales": 3,
+            "es_troncal": false,
+            "departamento": "exactas",
+            "temas_troncales": null,
+            "pdf_link": "#"
+          },
+          {
+            "name": "Tecnología de la Representación",
+            "hs": "3 hs",
+            "descripcion": "",
+            "horas_semanales": 3,
+            "es_troncal": false,
+            "departamento": "Representación",
+            "temas_troncales": null,
+            "pdf_link": "#"
+          }
+        ]
+      },
+      {
+        "year": "Tercer Año",
+        "subjectName": [
+          {
+            "name": "Matemática",
+            "hs": "5 hs",
+            "descripcion": "",
+            "horas_semanales": 5,
+            "es_troncal": true,
+            "departamento": "exactas",
+            "temas_troncales": null,
+            "pdf_link": "#"
+          },
+          {
+            "name": "Física",
+            "hs": "4 hs",
+            "descripcion": "",
+            "horas_semanales": 4,
+            "es_troncal": true,
+            "departamento": "exactas",
+            "temas_troncales": null,
+            "pdf_link": "#"
+          },
+          {
+            "name": "Taller",
+            "hs": "8 hs",
+            "descripcion": "",
+            "horas_semanales": 8,
+            "es_troncal": true,
+            "departamento": "Taller",
+            "temas_troncales": null,
+            "pdf_link": "#"
+          },
+          {
+            "name": "Taller de Tecnología y Control",
+            "hs": "4 hs",
+            "descripcion": "",
+            "horas_semanales": 4,
+            "es_troncal": true,
+            "departamento": "Taller",
+            "temas_troncales": null,
+            "pdf_link": "#"
+          },
+          {
+            "name": "Lengua y Literatura",
+            "hs": "4 hs",
+            "descripcion": "",
+            "horas_semanales": 4,
+            "es_troncal": true,
+            "departamento": "sociales",
+            "temas_troncales": null,
+            "pdf_link": "#"
+          },
+          {
+            "name": "Tecnología de la Representación",
+            "hs": "4 hs",
+            "descripcion": "",
+            "horas_semanales": 4,
+            "es_troncal": true,
+            "departamento": "Representación",
+            "temas_troncales": null,
+            "pdf_link": "#"
+          },
+          {
+            "name": "Inglés",
+            "hs": "3 hs",
+            "descripcion": "",
+            "horas_semanales": 3,
+            "es_troncal": false,
+            "departamento": "sociales",
+            "temas_troncales": null,
+            "pdf_link": "#"
+          },
+          {
+            "name": "Historia",
+            "hs": "3 hs",
+            "descripcion": "",
+            "horas_semanales": 3,
+            "es_troncal": false,
+            "departamento": "sociales",
+            "temas_troncales": null,
+            "pdf_link": "#"
+          },
+          {
+            "name": "Geografía",
+            "hs": "3 hs",
+            "descripcion": "",
+            "horas_semanales": 3,
+            "es_troncal": false,
+            "departamento": "sociales",
+            "temas_troncales": null,
+            "pdf_link": "#"
+          },
+          {
+            "name": "Educación Física",
+            "hs": "3 hs",
+            "descripcion": "",
+            "horas_semanales": 3,
+            "es_troncal": false,
+            "departamento": "sociales",
+            "temas_troncales": null,
+            "pdf_link": "#"
+          },
+          {
+            "name": "Química",
+            "hs": "3 hs",
+            "descripcion": "",
+            "horas_semanales": 3,
+            "es_troncal": false,
+            "departamento": "exactas",
+            "temas_troncales": null,
+            "pdf_link": "#"
+          }
+        ]
+      },
+      {
+        "year": "Cuarto Año",
+        "subjectName": [
+          {
+            "name": "Lab. de Algoritmos y Estructura de Datos",
+            "hs": "9 hs",
+            "descripcion": "",
+            "horas_semanales": 9,
+            "es_troncal": true,
+            "departamento": "computación",
+            "temas_troncales": null,
+            "pdf_link": "#"
+          },
+          {
+            "name": "Base de Datos",
+            "hs": "6 hs",
+            "descripcion": "",
+            "horas_semanales": 6,
+            "es_troncal": true,
+            "departamento": "computación",
+            "temas_troncales": null,
+            "pdf_link": "#"
+          },
+          {
+            "name": "Organización de Computadoras",
+            "hs": "7 hs",
+            "descripcion": "",
+            "horas_semanales": 7,
+            "es_troncal": true,
+            "departamento": "computación",
+            "temas_troncales": null,
+            "pdf_link": "#"
+          },
+          {
+            "name": "Proyecto Informático I",
+            "hs": "4 hs",
+            "descripcion": "",
+            "horas_semanales": 4,
+            "es_troncal": true,
+            "departamento": "computación",
+            "temas_troncales": null,
+            "pdf_link": "#"
+          },
+          {
+            "name": "Matemática",
+            "hs": "4 hs",
+            "descripcion": "",
+            "horas_semanales": 4,
+            "es_troncal": true,
+            "departamento": "exactas",
+            "temas_troncales": null,
+            "pdf_link": "#"
+          },
+          {
+            "name": "Lógica Computacional",
+            "hs": "3 hs",
+            "descripcion": "",
+            "horas_semanales": 3,
+            "es_troncal": false,
+            "departamento": "computación",
+            "temas_troncales": null,
+            "pdf_link": "#"
+          },
+          {
+            "name": "Inglés",
+            "hs": "3 hs",
+            "descripcion": "",
+            "horas_semanales": 3,
+            "es_troncal": false,
+            "departamento": "sociales",
+            "temas_troncales": null,
+            "pdf_link": "#"
+          },
+          {
+            "name": "Lengua y Literatura",
+            "hs": "3 hs",
+            "descripcion": "",
+            "horas_semanales": 3,
+            "es_troncal": false,
+            "departamento": "sociales",
+            "temas_troncales": null,
+            "pdf_link": "#"
+          },
+          {
+            "name": "Historia",
+            "hs": "2 hs",
+            "descripcion": "",
+            "horas_semanales": 2,
+            "es_troncal": false,
+            "departamento": "sociales",
+            "temas_troncales": null,
+            "pdf_link": "#"
+          },
+          {
+            "name": "Geografía",
+            "hs": "2 hs",
+            "descripcion": "",
+            "horas_semanales": 2,
+            "es_troncal": false,
+            "departamento": "sociales",
+            "temas_troncales": null,
+            "pdf_link": "#"
+          },
+          {
+            "name": "Educación Física",
+            "hs": "3 hs",
+            "descripcion": "",
+            "horas_semanales": 3,
+            "es_troncal": false,
+            "departamento": "sociales",
+            "temas_troncales": null,
+            "pdf_link": "#"
+          }
+        ]
+      },
+      {
+        "year": "Quinto Año",
+        "subjectName": [
+          {
+            "name": "Lab. de Programación Orientada a Objetos",
+            "hs": "9 hs",
+            "descripcion": "",
+            "horas_semanales": 9,
+            "es_troncal": true,
+            "departamento": "computación",
+            "temas_troncales": null,
+            "pdf_link": "#"
+          },
+          {
+            "name": "Redes",
+            "hs": "7 hs",
+            "descripcion": "",
+            "horas_semanales": 7,
+            "es_troncal": true,
+            "departamento": "computación",
+            "temas_troncales": null,
+            "pdf_link": "#"
+          },
+          {
+            "name": "Administración de Base de Datos",
+            "hs": "6 hs",
+            "descripcion": "",
+            "horas_semanales": 6,
+            "es_troncal": true,
+            "departamento": "computación",
+            "temas_troncales": null,
+            "pdf_link": "#"
+          },
+          {
+            "name": "Análisis de Sistemas",
+            "hs": "4 hs",
+            "descripcion": "",
+            "horas_semanales": 4,
+            "es_troncal": true,
+            "departamento": "computación",
+            "temas_troncales": null,
+            "pdf_link": "#"
+          },
+          {
+            "name": "Proyecto Informático II",
+            "hs": "4 hs",
+            "descripcion": "",
+            "horas_semanales": 4,
+            "es_troncal": true,
+            "departamento": "computación",
+            "temas_troncales": null,
+            "pdf_link": "#"
+          },
+          {
+            "name": "Economía y Gestión",
+            "hs": "3 hs",
+            "descripcion": "",
+            "horas_semanales": 3,
+            "es_troncal": false,
+            "departamento": "sociales",
+            "temas_troncales": null,
+            "pdf_link": "#"
+          },
+          {
+            "name": "Matemática",
+            "hs": "3 hs",
+            "descripcion": "",
+            "horas_semanales": 3,
+            "es_troncal": false,
+            "departamento": "exactas",
+            "temas_troncales": null,
+            "pdf_link": "#"
+          },
+          {
+            "name": "Inglés",
+            "hs": "3 hs",
+            "descripcion": "",
+            "horas_semanales": 3,
+            "es_troncal": false,
+            "departamento": "sociales",
+            "temas_troncales": null,
+            "pdf_link": "#"
+          },
+          {
+            "name": "Lengua y Literatura",
+            "hs": "3 hs",
+            "descripcion": "",
+            "horas_semanales": 3,
+            "es_troncal": false,
+            "departamento": "sociales",
+            "temas_troncales": null,
+            "pdf_link": "#"
+          },
+          {
+            "name": "Educación Física",
+            "hs": "3 hs",
+            "descripcion": "",
+            "horas_semanales": 3,
+            "es_troncal": false,
+            "departamento": "sociales",
+            "temas_troncales": null,
+            "pdf_link": "#"
+          }
+        ]
+      },
+      {
+        "year": "Sexto Año",
+        "subjectName": [
+          {
+            "name": "Prácticas Profesionalizantes",
+            "hs": "9 hs",
+            "descripcion": "",
+            "horas_semanales": 9,
+            "es_troncal": true,
+            "departamento": "computación",
+            "temas_troncales": null,
+            "pdf_link": "#"
+          },
+          {
+            "name": "Administración de Sistemas y Redes",
+            "hs": "7 hs",
+            "descripcion": "",
+            "horas_semanales": 7,
+            "es_troncal": true,
+            "departamento": "computación",
+            "temas_troncales": null,
+            "pdf_link": "#"
+          },
+          {
+            "name": "Desarrollo de Sistemas",
+            "hs": "6 hs",
+            "descripcion": "",
+            "horas_semanales": 6,
+            "es_troncal": true,
+            "departamento": "computación",
+            "temas_troncales": null,
+            "pdf_link": "#"
+          },
+          {
+            "name": "Programación sobre Redes",
+            "hs": "6 hs",
+            "descripcion": "",
+            "horas_semanales": 6,
+            "es_troncal": true,
+            "departamento": "computación",
+            "temas_troncales": null,
+            "pdf_link": "#"
+          },
+          {
+            "name": "Matemática",
+            "hs": "4 hs",
+            "descripcion": "",
+            "horas_semanales": 4,
+            "es_troncal": true,
+            "departamento": "exactas",
+            "temas_troncales": null,
+            "pdf_link": "#"
+          },
+          {
+            "name": "Gestión de los Procesos Productivos",
+            "hs": "4 hs",
+            "descripcion": "",
+            "horas_semanales": 4,
+            "es_troncal": true,
+            "departamento": "sociales",
+            "temas_troncales": null,
+            "pdf_link": "#"
+          },
+          {
+            "name": "Ciudadanía y Trabajo",
+            "hs": "2 hs",
+            "descripcion": "",
+            "horas_semanales": 2,
+            "es_troncal": false,
+            "departamento": "sociales",
+            "temas_troncales": null,
+            "pdf_link": "#"
+          },
+          {
+            "name": "Ciencia y Tecnología",
+            "hs": "2 hs",
+            "descripcion": "",
+            "horas_semanales": 2,
+            "es_troncal": false,
+            "departamento": "exactas",
+            "temas_troncales": null,
+            "pdf_link": "#"
+          },
+          {
+            "name": "Inglés",
+            "hs": "3 hs",
+            "descripcion": "",
+            "horas_semanales": 3,
+            "es_troncal": false,
+            "departamento": "sociales",
+            "temas_troncales": null,
+            "pdf_link": "#"
+          },
+          {
+            "name": "Educación Física",
+            "hs": "3 hs",
+            "descripcion": "",
+            "horas_semanales": 3,
+            "es_troncal": false,
+            "departamento": "sociales",
+            "temas_troncales": null,
+            "pdf_link": "#"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "mecanica",
+    "title": "Técnico Mecánico",
+    "titleUppercase": "TÉCNICO MECÁNICO",
+    "bg_image": "/uploads/especialidad_mecanica_46504.webp",
+    "carousel": [
+      "/uploads/especialidad_mecanica_ns2cb.webp",
+      "/uploads/especialidad_mecanica_9phub.webp",
+      "/uploads/especialidad_mecanica_f5zdz.webp",
+      "/uploads/especialidad_mecanica_9mgxq.webp",
+      "/uploads/especialidad_mecanica_eissu.webp"
+    ],
+    "resolucion": "Resolución N.º 1440/MEDGS/25",
+    "perfil_profesional": "El técnico mecánico egresado es un especialista en procesos de fabricación, diseño industrial y mantenimiento de máquinas.",
+    "turnos": {
+      "TM": true,
+      "TT": true,
+      "TV": false
+    },
+    "text": "Domina la fuerza y la precisión que mueven al mundo. El Técnico Mecánico es el pilar de la industria moderna, capaz de dar vida a máquinas complejas, diseñar sistemas de producción automatizados y liderar plantas industriales de alta tecnología.",
+    "text_about_part1": "A lo largo de la carrera, desarrollarás una mentalidad de ingeniería aplicada. Aprenderás a dominar la ciencia de los materiales, la mecánica técnica y el diseño asistido por computadora (CAD-CAM), permitiéndote proyectar desde piezas de micro-precisión hasta grandes infraestructuras mecánicas con estándares internacionales de calidad.",
+    "text_about_part2": "Nuestros talleres y laboratorios de ensayo te brindan experiencia directa en hidráulica, neumática industrial y electrotecnia. La formación técnica se complementa con el estudio profundo de la termodinámica y los mecanismos, asegurando que comprendas no solo cómo funcionan las máquinas, sino cómo optimizarlas para la máxima eficiencia.",
+    "text_future_part1": "Como egresado, tu campo laboral es ilimitado: desde oficinas técnicas de diseño y desarrollo de productos hasta la supervisión de procesos productivos en plantas automotrices, energéticas o de manufactura. Estarás capacitado para gestionar equipos de mantenimiento industrial y garantizar la seguridad operativa en entornos críticos.",
+    "text_future_part2": "La sólida formación en ciencias exactas y técnicas te posiciona de manera privilegiada para continuar estudios superiores en Ingeniería Mecánica, Industrial o Electromecánica. Serás un profesional versátil, respetado por tu capacidad analítica y tu destreza práctica para resolver desafíos complejos de ingeniería.",
+    "text_practice_part1": "Las Prácticas Profesionalizantes te vinculan con la realidad del sector industrial, participando en procesos de fabricación, control de calidad y gestión de proyectos mecánicos bajo normativas vigentes, preparándote para un liderazgo técnico inmediato.",
+    "subjectPerYear": [
+      {
+        "year": "Primer Año",
+        "subjectName": [
+          {
+            "name": "Taller",
+            "hs": "12 hs",
+            "descripcion": "",
+            "horas_semanales": 12,
+            "es_troncal": true,
+            "departamento": "Taller",
+            "temas_troncales": null,
+            "pdf_link": "#"
+          },
+          {
+            "name": "Matemática",
+            "hs": "6 hs",
+            "descripcion": "",
+            "horas_semanales": 6,
+            "es_troncal": true,
+            "departamento": "exactas",
+            "temas_troncales": null,
+            "pdf_link": "#"
+          },
+          {
+            "name": "Tecnología de la Representación",
+            "hs": "4 hs",
+            "descripcion": "",
+            "horas_semanales": 4,
+            "es_troncal": true,
+            "departamento": "Representación",
+            "temas_troncales": null,
+            "pdf_link": "#"
+          },
+          {
+            "name": "Lengua y Literatura",
+            "hs": "4 hs",
+            "descripcion": "",
+            "horas_semanales": 4,
+            "es_troncal": true,
+            "departamento": "sociales",
+            "temas_troncales": null,
+            "pdf_link": "#"
+          },
+          {
+            "name": "Historia",
+            "hs": "3 hs",
+            "descripcion": "",
+            "horas_semanales": 3,
+            "es_troncal": false,
+            "departamento": "sociales",
+            "temas_troncales": null,
+            "pdf_link": "#"
+          },
+          {
+            "name": "Geografía",
+            "hs": "3 hs",
+            "descripcion": "",
+            "horas_semanales": 3,
+            "es_troncal": false,
+            "departamento": "sociales",
+            "temas_troncales": null,
+            "pdf_link": "#"
+          },
+          {
+            "name": "Educación Física",
+            "hs": "3 hs",
+            "descripcion": "",
+            "horas_semanales": 3,
+            "es_troncal": false,
+            "departamento": "sociales",
+            "temas_troncales": null,
+            "pdf_link": "#"
+          },
+          {
+            "name": "Inglés",
+            "hs": "3 hs",
+            "descripcion": "",
+            "horas_semanales": 3,
+            "es_troncal": false,
+            "departamento": "sociales",
+            "temas_troncales": null,
+            "pdf_link": "#"
+          },
+          {
+            "name": "Biología",
+            "hs": "2 hs",
+            "descripcion": "",
+            "horas_semanales": 2,
+            "es_troncal": false,
+            "departamento": "exactas",
+            "temas_troncales": null,
+            "pdf_link": "#"
+          },
+          {
+            "name": "Educación Ciudadana",
+            "hs": "2 hs",
+            "descripcion": "",
+            "horas_semanales": 2,
+            "es_troncal": false,
+            "departamento": "sociales",
+            "temas_troncales": null,
+            "pdf_link": "#"
+          }
+        ]
+      },
+      {
+        "year": "Segundo Año",
+        "subjectName": [
+          {
+            "name": "Taller",
+            "hs": "12 hs",
+            "descripcion": "",
+            "horas_semanales": 12,
+            "es_troncal": true,
+            "departamento": "Taller",
+            "temas_troncales": null,
+            "pdf_link": "#"
+          },
+          {
+            "name": "Matemática",
+            "hs": "6 hs",
+            "descripcion": "",
+            "horas_semanales": 6,
+            "es_troncal": true,
+            "departamento": "exactas",
+            "temas_troncales": null,
+            "pdf_link": "#"
+          },
+          {
+            "name": "Física",
+            "hs": "4 hs",
+            "descripcion": "",
+            "horas_semanales": 4,
+            "es_troncal": true,
+            "departamento": "exactas",
+            "temas_troncales": null,
+            "pdf_link": "#"
+          },
+          {
+            "name": "Lengua y Literatura",
+            "hs": "4 hs",
+            "descripcion": "",
+            "horas_semanales": 4,
+            "es_troncal": true,
+            "departamento": "sociales",
+            "temas_troncales": null,
+            "pdf_link": "#"
+          },
+          {
+            "name": "Tecnología de la Representación",
+            "hs": "3 hs",
+            "descripcion": "",
+            "horas_semanales": 3,
+            "es_troncal": false,
+            "departamento": "Representación",
+            "temas_troncales": null,
+            "pdf_link": "#"
+          },
+          {
+            "name": "Historia",
+            "hs": "3 hs",
+            "descripcion": "",
+            "horas_semanales": 3,
+            "es_troncal": false,
+            "departamento": "sociales",
+            "temas_troncales": null,
+            "pdf_link": "#"
+          },
+          {
+            "name": "Geografía",
+            "hs": "3 hs",
+            "descripcion": "",
+            "horas_semanales": 3,
+            "es_troncal": false,
+            "departamento": "sociales",
+            "temas_troncales": null,
+            "pdf_link": "#"
+          },
+          {
+            "name": "Educación Física",
+            "hs": "3 hs",
+            "descripcion": "",
+            "horas_semanales": 3,
+            "es_troncal": false,
+            "departamento": "sociales",
+            "temas_troncales": null,
+            "pdf_link": "#"
+          },
+          {
+            "name": "Inglés",
+            "hs": "3 hs",
+            "descripcion": "",
+            "horas_semanales": 3,
+            "es_troncal": false,
+            "departamento": "sociales",
+            "temas_troncales": null,
+            "pdf_link": "#"
+          },
+          {
+            "name": "Biología",
+            "hs": "3 hs",
+            "descripcion": "",
+            "horas_semanales": 3,
+            "es_troncal": false,
+            "departamento": "exactas",
+            "temas_troncales": null,
+            "pdf_link": "#"
+          }
+        ]
+      },
+      {
+        "year": "Tercer Año",
+        "subjectName": [
+          {
+            "name": "Taller",
+            "hs": "8 hs",
+            "descripcion": "",
+            "horas_semanales": 8,
+            "es_troncal": true,
+            "departamento": "Taller",
+            "temas_troncales": null,
+            "pdf_link": "#"
+          },
+          {
+            "name": "Taller de Tecnología y Control",
+            "hs": "4 hs",
+            "descripcion": "",
+            "horas_semanales": 4,
+            "es_troncal": true,
+            "departamento": "Taller",
+            "temas_troncales": null,
+            "pdf_link": "#"
+          },
+          {
+            "name": "Matemática",
+            "hs": "5 hs",
+            "descripcion": "",
+            "horas_semanales": 5,
+            "es_troncal": true,
+            "departamento": "exactas",
+            "temas_troncales": null,
+            "pdf_link": "#"
+          },
+          {
+            "name": "Física",
+            "hs": "4 hs",
+            "descripcion": "",
+            "horas_semanales": 4,
+            "es_troncal": true,
+            "departamento": "exactas",
+            "temas_troncales": null,
+            "pdf_link": "#"
+          },
+          {
+            "name": "Tecnología de la Representación",
+            "hs": "4 hs",
+            "descripcion": "",
+            "horas_semanales": 4,
+            "es_troncal": true,
+            "departamento": "Representación",
+            "temas_troncales": null,
+            "pdf_link": "#"
+          },
+          {
+            "name": "Lengua y Literatura",
+            "hs": "4 hs",
+            "descripcion": "",
+            "horas_semanales": 4,
+            "es_troncal": true,
+            "departamento": "sociales",
+            "temas_troncales": null,
+            "pdf_link": "#"
+          },
+          {
+            "name": "Química",
+            "hs": "3 hs",
+            "descripcion": "",
+            "horas_semanales": 3,
+            "es_troncal": false,
+            "departamento": "exactas",
+            "temas_troncales": null,
+            "pdf_link": "#"
+          },
+          {
+            "name": "Educación Física",
+            "hs": "3 hs",
+            "descripcion": "",
+            "horas_semanales": 3,
+            "es_troncal": false,
+            "departamento": "sociales",
+            "temas_troncales": null,
+            "pdf_link": "#"
+          },
+          {
+            "name": "Inglés",
+            "hs": "3 hs",
+            "descripcion": "",
+            "horas_semanales": 3,
+            "es_troncal": false,
+            "departamento": "sociales",
+            "temas_troncales": null,
+            "pdf_link": "#"
+          },
+          {
+            "name": "Historia",
+            "hs": "3 hs",
+            "descripcion": "",
+            "horas_semanales": 3,
+            "es_troncal": false,
+            "departamento": "sociales",
+            "temas_troncales": null,
+            "pdf_link": "#"
+          }
+        ]
+      },
+      {
+        "year": "Cuarto Año",
+        "subjectName": [
+          {
+            "name": "Taller",
+            "hs": "12 hs",
+            "descripcion": "",
+            "horas_semanales": 12,
+            "es_troncal": true,
+            "departamento": "Taller",
+            "temas_troncales": null,
+            "pdf_link": "#"
+          },
+          {
+            "name": "Hidráulica Industrial",
+            "hs": "4 hs",
+            "descripcion": "",
+            "horas_semanales": 4,
+            "es_troncal": true,
+            "departamento": "mecánica",
+            "temas_troncales": null,
+            "pdf_link": "#"
+          },
+          {
+            "name": "Electrotecnia",
+            "hs": "4 hs",
+            "descripcion": "",
+            "horas_semanales": 4,
+            "es_troncal": true,
+            "departamento": "mecánica",
+            "temas_troncales": null,
+            "pdf_link": "#"
+          },
+          {
+            "name": "Mecánica Técnica",
+            "hs": "4 hs",
+            "descripcion": "",
+            "horas_semanales": 4,
+            "es_troncal": true,
+            "departamento": "mecánica",
+            "temas_troncales": null,
+            "pdf_link": "#"
+          },
+          {
+            "name": "Dibujo Mecánico I",
+            "hs": "4 hs",
+            "descripcion": "",
+            "horas_semanales": 4,
+            "es_troncal": true,
+            "departamento": "Representación",
+            "temas_troncales": null,
+            "pdf_link": "#"
+          },
+          {
+            "name": "Matemática",
+            "hs": "5 hs",
+            "descripcion": "",
+            "horas_semanales": 5,
+            "es_troncal": true,
+            "departamento": "exactas",
+            "temas_troncales": null,
+            "pdf_link": "#"
+          },
+          {
+            "name": "Química Aplicada",
+            "hs": "4 hs",
+            "descripcion": "",
+            "horas_semanales": 4,
+            "es_troncal": true,
+            "departamento": "exactas",
+            "temas_troncales": null,
+            "pdf_link": "#"
+          },
+          {
+            "name": "Tecnología de los Materiales",
+            "hs": "3 hs",
+            "descripcion": "",
+            "horas_semanales": 3,
+            "es_troncal": false,
+            "departamento": "mecánica",
+            "temas_troncales": null,
+            "pdf_link": "#"
+          },
+          {
+            "name": "Educación Física",
+            "hs": "3 hs",
+            "descripcion": "",
+            "horas_semanales": 3,
+            "es_troncal": false,
+            "departamento": "sociales",
+            "temas_troncales": null,
+            "pdf_link": "#"
+          },
+          {
+            "name": "Lengua y Literatura",
+            "hs": "3 hs",
+            "descripcion": "",
+            "horas_semanales": 3,
+            "es_troncal": false,
+            "departamento": "sociales",
+            "temas_troncales": null,
+            "pdf_link": "#"
+          }
+        ]
+      },
+      {
+        "year": "Quinto Año",
+        "subjectName": [
+          {
+            "name": "Taller",
+            "hs": "8 hs",
+            "descripcion": "",
+            "horas_semanales": 8,
+            "es_troncal": true,
+            "departamento": "Taller",
+            "temas_troncales": null,
+            "pdf_link": "#"
+          },
+          {
+            "name": "Resistencia de Materiales",
+            "hs": "6 hs",
+            "descripcion": "",
+            "horas_semanales": 6,
+            "es_troncal": true,
+            "departamento": "mecánica",
+            "temas_troncales": null,
+            "pdf_link": "#"
+          },
+          {
+            "name": "Termodinámica",
+            "hs": "4 hs",
+            "descripcion": "",
+            "horas_semanales": 4,
+            "es_troncal": true,
+            "departamento": "mecánica",
+            "temas_troncales": null,
+            "pdf_link": "#"
+          },
+          {
+            "name": "Mecanismos",
+            "hs": "4 hs",
+            "descripcion": "",
+            "horas_semanales": 4,
+            "es_troncal": true,
+            "departamento": "mecánica",
+            "temas_troncales": null,
+            "pdf_link": "#"
+          },
+          {
+            "name": "Lab. de Ensayo de Materiales",
+            "hs": "4 hs",
+            "descripcion": "",
+            "horas_semanales": 4,
+            "es_troncal": true,
+            "departamento": "Taller",
+            "temas_troncales": null,
+            "pdf_link": "#"
+          },
+          {
+            "name": "Dibujo Mecánico II",
+            "hs": "4 hs",
+            "descripcion": "",
+            "horas_semanales": 4,
+            "es_troncal": true,
+            "departamento": "Representación",
+            "temas_troncales": null,
+            "pdf_link": "#"
+          },
+          {
+            "name": "Prácticas Profesionalizantes",
+            "hs": "4 hs",
+            "descripcion": "",
+            "horas_semanales": 4,
+            "es_troncal": true,
+            "departamento": "mecánica",
+            "temas_troncales": null,
+            "pdf_link": "#"
+          },
+          {
+            "name": "Matemática",
+            "hs": "3 hs",
+            "descripcion": "",
+            "horas_semanales": 3,
+            "es_troncal": false,
+            "departamento": "exactas",
+            "temas_troncales": null,
+            "pdf_link": "#"
+          },
+          {
+            "name": "Lengua y Literatura",
+            "hs": "3 hs",
+            "descripcion": "",
+            "horas_semanales": 3,
+            "es_troncal": false,
+            "departamento": "sociales",
+            "temas_troncales": null,
+            "pdf_link": "#"
+          },
+          {
+            "name": "Educación Física",
+            "hs": "3 hs",
+            "descripcion": "",
+            "horas_semanales": 3,
+            "es_troncal": false,
+            "departamento": "sociales",
+            "temas_troncales": null,
+            "pdf_link": "#"
+          }
+        ]
+      },
+      {
+        "year": "Sexto Año",
+        "subjectName": [
+          {
+            "name": "Prácticas Profesionalizantes",
+            "hs": "5 hs",
+            "descripcion": "",
+            "horas_semanales": 5,
+            "es_troncal": true,
+            "departamento": "mecánica",
+            "temas_troncales": null,
+            "pdf_link": "#"
+          },
+          {
+            "name": "Instalaciones Termomecánicas",
+            "hs": "4 hs",
+            "descripcion": "",
+            "horas_semanales": 4,
+            "es_troncal": true,
+            "departamento": "mecánica",
+            "temas_troncales": null,
+            "pdf_link": "#"
+          },
+          {
+            "name": "Instrumentación y Ensayo",
+            "hs": "4 hs",
+            "descripcion": "",
+            "horas_semanales": 4,
+            "es_troncal": true,
+            "departamento": "mecánica",
+            "temas_troncales": null,
+            "pdf_link": "#"
+          },
+          {
+            "name": "Proyecto Mecánico",
+            "hs": "4 hs",
+            "descripcion": "",
+            "horas_semanales": 4,
+            "es_troncal": true,
+            "departamento": "mecánica",
+            "temas_troncales": null,
+            "pdf_link": "#"
+          },
+          {
+            "name": "Gestión de los Procesos Productivos",
+            "hs": "4 hs",
+            "descripcion": "",
+            "horas_semanales": 4,
+            "es_troncal": true,
+            "departamento": "sociales",
+            "temas_troncales": null,
+            "pdf_link": "#"
+          },
+          {
+            "name": "Taller",
+            "hs": "6 hs",
+            "descripcion": "",
+            "horas_semanales": 6,
+            "es_troncal": true,
+            "departamento": "Taller",
+            "temas_troncales": null,
+            "pdf_link": "#"
+          },
+          {
+            "name": "Economía y Gestión",
+            "hs": "3 hs",
+            "descripcion": "",
+            "horas_semanales": 3,
+            "es_troncal": false,
+            "departamento": "sociales",
+            "temas_troncales": null,
+            "pdf_link": "#"
+          },
+          {
+            "name": "Ciudadanía y Trabajo",
+            "hs": "2 hs",
+            "descripcion": "",
+            "horas_semanales": 2,
+            "es_troncal": false,
+            "departamento": "sociales",
+            "temas_troncales": null,
+            "pdf_link": "#"
+          },
+          {
+            "name": "Ciencia y Tecnología",
+            "hs": "2 hs",
+            "descripcion": "",
+            "horas_semanales": 2,
+            "es_troncal": false,
+            "departamento": "exactas",
+            "temas_troncales": null,
+            "pdf_link": "#"
+          },
+          {
+            "name": "Educación Física",
+            "hs": "3 hs",
+            "descripcion": "",
+            "horas_semanales": 3,
+            "es_troncal": false,
+            "departamento": "sociales",
+            "temas_troncales": null,
+            "pdf_link": "#"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "automotores",
+    "title": "Técnico en Automotores",
+    "titleUppercase": "TÉCNICO EN AUTOMOTORES",
+    "bg_image": "/images/bg_page_automotores.jpg",
+    "carousel": [
+      "/images/automotores_1.jpeg",
+      "/images/automotores_2.jpeg",
+      "/uploads/especialidad_automotores_yn95u.webp",
+      "/uploads/especialidad_automotores_ulto0.webp",
+      "/uploads/especialidad_automotores_h3yvu.webp"
+    ],
+    "perfil_profesional": "Lidera la revolución de la movilidad. Esta tecnicatura te convierte en un experto en la convergencia de la mecánica de precisión y la electrónica avanzada.",
+    "turnos": {
+      "TM": true,
+      "TT": false,
+      "TV": false
+    },
+    "resolucion": "Resolución N.º 659/MEDGS/25",
+    "text": "Lidera la revolución de la movilidad. Esta tecnicatura te convierte en un experto en la convergencia de la mecánica de precisión y la electrónica avanzada, preparándote para diagnosticar, potenciar y gestionar la tecnología automotriz del presente y del futuro.",
+    "text_about_part1": "Nuestra formación va mucho más allá del motor tradicional. Explorarás a fondo la dinámica de los vehículos, los sistemas de inyección electrónica, el confort y la seguridad activa. Aprenderás a interpretar el 'cerebro' de los vehículos modernos utilizando instrumental de diagnóstico computarizado y laboratorios de motores de última generación.",
+    "text_about_part2": "El plan de estudios integra la termodinámica, la fluídica y el cálculo de estructuras, permitiéndote comprender la física detrás de cada componente. Además, te capacitamos en la gestión de vehículos especiales y nuevas energías, asegurando que estés a la vanguardia de las tendencias híbridas y eléctricas que transforman el transporte global.",
+    "text_future_part1": "El perfil del Técnico en Automotores es uno de los más demandados por terminales automotrices, concesionarios oficiales, centros de diagnóstico de alta complejidad y empresas de logística. Estarás listo para dirigir servicios de postventa, realizar peritajes técnicos profesionales o emprender tu propio centro tecnológico especializado.",
+    "text_future_part2": "Esta base técnica excepcional te abre las puertas a especializaciones en ingeniería automotriz y diseño de transporte. Tu capacidad para combinar el diagnóstico electrónico con la reparación mecánica mecánica te define como un profesional de elite en un mercado que exige actualización constante y expertiz técnica.",
+    "text_practice_part1": "A través de nuestras Prácticas Profesionalizantes en talleres y plantas industriales, dominarás los protocolos de seguridad laboral e higiene, aplicando tus conocimientos en situaciones reales de diagnóstico y reparación que exigen soluciones rápidas y precisas.",
+    "subjectPerYear": [
+      {
+        "year": "Primer Año",
+        "subjectName": [
+          {
+            "name": "Taller",
+            "hs": "12 hs",
+            "descripcion": "",
+            "horas_semanales": 12,
+            "es_troncal": true,
+            "departamento": "Taller",
+            "temas_troncales": null,
+            "pdf_link": "#"
+          },
+          {
+            "name": "Matemática",
+            "hs": "6 hs",
+            "descripcion": "",
+            "horas_semanales": 6,
+            "es_troncal": true,
+            "departamento": "exactas",
+            "temas_troncales": null,
+            "pdf_link": "#"
+          },
+          {
+            "name": "Tecnología de la Representación",
+            "hs": "4 hs",
+            "descripcion": "",
+            "horas_semanales": 4,
+            "es_troncal": true,
+            "departamento": "Representación",
+            "temas_troncales": null,
+            "pdf_link": "#"
+          },
+          {
+            "name": "Lengua y Literatura",
+            "hs": "4 hs",
+            "descripcion": "",
+            "horas_semanales": 4,
+            "es_troncal": true,
+            "departamento": "sociales",
+            "temas_troncales": null,
+            "pdf_link": "#"
+          },
+          {
+            "name": "Historia",
+            "hs": "3 hs",
+            "descripcion": "",
+            "horas_semanales": 3,
+            "es_troncal": false,
+            "departamento": "sociales",
+            "temas_troncales": null,
+            "pdf_link": "#"
+          },
+          {
+            "name": "Geografía",
+            "hs": "3 hs",
+            "descripcion": "",
+            "horas_semanales": 3,
+            "es_troncal": false,
+            "departamento": "sociales",
+            "temas_troncales": null,
+            "pdf_link": "#"
+          },
+          {
+            "name": "Educación Física",
+            "hs": "3 hs",
+            "descripcion": "",
+            "horas_semanales": 3,
+            "es_troncal": false,
+            "departamento": "sociales",
+            "temas_troncales": null,
+            "pdf_link": "#"
+          },
+          {
+            "name": "Inglés",
+            "hs": "3 hs",
+            "descripcion": "",
+            "horas_semanales": 3,
+            "es_troncal": false,
+            "departamento": "sociales",
+            "temas_troncales": null,
+            "pdf_link": "#"
+          },
+          {
+            "name": "Biología",
+            "hs": "2 hs",
+            "descripcion": "",
+            "horas_semanales": 2,
+            "es_troncal": false,
+            "departamento": "exactas",
+            "temas_troncales": null,
+            "pdf_link": "#"
+          },
+          {
+            "name": "Educación Ciudadana",
+            "hs": "2 hs",
+            "descripcion": "",
+            "horas_semanales": 2,
+            "es_troncal": false,
+            "departamento": "sociales",
+            "temas_troncales": null,
+            "pdf_link": "#"
+          }
+        ]
+      },
+      {
+        "year": "Segundo Año",
+        "subjectName": [
+          {
+            "name": "Taller",
+            "hs": "12 hs",
+            "descripcion": "",
+            "horas_semanales": 12,
+            "es_troncal": true,
+            "departamento": "Taller",
+            "temas_troncales": null,
+            "pdf_link": "#"
+          },
+          {
+            "name": "Matemática",
+            "hs": "6 hs",
+            "descripcion": "",
+            "horas_semanales": 6,
+            "es_troncal": true,
+            "departamento": "exactas",
+            "temas_troncales": null,
+            "pdf_link": "#"
+          },
+          {
+            "name": "Física",
+            "hs": "4 hs",
+            "descripcion": "",
+            "horas_semanales": 4,
+            "es_troncal": true,
+            "departamento": "exactas",
+            "temas_troncales": null,
+            "pdf_link": "#"
+          },
+          {
+            "name": "Lengua y Literatura",
+            "hs": "4 hs",
+            "descripcion": "",
+            "horas_semanales": 4,
+            "es_troncal": true,
+            "departamento": "sociales",
+            "temas_troncales": null,
+            "pdf_link": "#"
+          },
+          {
+            "name": "Inglés",
+            "hs": "3 hs",
+            "descripcion": "",
+            "horas_semanales": 3,
+            "es_troncal": false,
+            "departamento": "sociales",
+            "temas_troncales": null,
+            "pdf_link": "#"
+          },
+          {
+            "name": "Historia",
+            "hs": "3 hs",
+            "descripcion": "",
+            "horas_semanales": 3,
+            "es_troncal": false,
+            "departamento": "sociales",
+            "temas_troncales": null,
+            "pdf_link": "#"
+          },
+          {
+            "name": "Geografía",
+            "hs": "3 hs",
+            "descripcion": "",
+            "horas_semanales": 3,
+            "es_troncal": false,
+            "departamento": "sociales",
+            "temas_troncales": null,
+            "pdf_link": "#"
+          },
+          {
+            "name": "Biología",
+            "hs": "3 hs",
+            "descripcion": "",
+            "horas_semanales": 3,
+            "es_troncal": false,
+            "departamento": "exactas",
+            "temas_troncales": null,
+            "pdf_link": "#"
+          },
+          {
+            "name": "Educación Física",
+            "hs": "3 hs",
+            "descripcion": "",
+            "horas_semanales": 3,
+            "es_troncal": false,
+            "departamento": "sociales",
+            "temas_troncales": null,
+            "pdf_link": "#"
+          },
+          {
+            "name": "Tecnología de la Representación",
+            "hs": "3 hs",
+            "descripcion": "",
+            "horas_semanales": 3,
+            "es_troncal": false,
+            "departamento": "Representación",
+            "temas_troncales": null,
+            "pdf_link": "#"
+          }
+        ]
+      },
+      {
+        "year": "Tercer Año",
+        "subjectName": [
+          {
+            "name": "Taller",
+            "hs": "8 hs",
+            "descripcion": "",
+            "horas_semanales": 8,
+            "es_troncal": true,
+            "departamento": "Taller",
+            "temas_troncales": null,
+            "pdf_link": "#"
+          },
+          {
+            "name": "Taller de Tecnología y Control",
+            "hs": "4 hs",
+            "descripcion": "",
+            "horas_semanales": 4,
+            "es_troncal": true,
+            "departamento": "Taller",
+            "temas_troncales": null,
+            "pdf_link": "#"
+          },
+          {
+            "name": "Matemática",
+            "hs": "6 hs",
+            "descripcion": "",
+            "horas_semanales": 6,
+            "es_troncal": true,
+            "departamento": "exactas",
+            "temas_troncales": null,
+            "pdf_link": "#"
+          },
+          {
+            "name": "Física",
+            "hs": "4 hs",
+            "descripcion": "",
+            "horas_semanales": 4,
+            "es_troncal": true,
+            "departamento": "exactas",
+            "temas_troncales": null,
+            "pdf_link": "#"
+          },
+          {
+            "name": "Lengua y Literatura",
+            "hs": "4 hs",
+            "descripcion": "",
+            "horas_semanales": 4,
+            "es_troncal": true,
+            "departamento": "sociales",
+            "temas_troncales": null,
+            "pdf_link": "#"
+          },
+          {
+            "name": "Química",
+            "hs": "3 hs",
+            "descripcion": "",
+            "horas_semanales": 3,
+            "es_troncal": false,
+            "departamento": "exactas",
+            "temas_troncales": null,
+            "pdf_link": "#"
+          },
+          {
+            "name": "Inglés",
+            "hs": "3 hs",
+            "descripcion": "",
+            "horas_semanales": 3,
+            "es_troncal": false,
+            "departamento": "sociales",
+            "temas_troncales": null,
+            "pdf_link": "#"
+          },
+          {
+            "name": "Historia",
+            "hs": "3 hs",
+            "descripcion": "",
+            "horas_semanales": 3,
+            "es_troncal": false,
+            "departamento": "sociales",
+            "temas_troncales": null,
+            "pdf_link": "#"
+          },
+          {
+            "name": "Geografía",
+            "hs": "3 hs",
+            "descripcion": "",
+            "horas_semanales": 3,
+            "es_troncal": false,
+            "departamento": "sociales",
+            "temas_troncales": null,
+            "pdf_link": "#"
+          },
+          {
+            "name": "Educación Física",
+            "hs": "3 hs",
+            "descripcion": "",
+            "horas_semanales": 3,
+            "es_troncal": false,
+            "departamento": "sociales",
+            "temas_troncales": null,
+            "pdf_link": "#"
+          }
+        ]
+      },
+      {
+        "year": "Cuarto Año",
+        "subjectName": [
+          {
+            "name": "Taller de Automotores I",
+            "hs": "12 hs",
+            "descripcion": "",
+            "horas_semanales": 12,
+            "es_troncal": true,
+            "departamento": "Taller",
+            "temas_troncales": null,
+            "pdf_link": "#"
+          },
+          {
+            "name": "Estática y Resistencia de Materiales",
+            "hs": "6 hs",
+            "descripcion": "",
+            "horas_semanales": 6,
+            "es_troncal": true,
+            "departamento": "automotores",
+            "temas_troncales": null,
+            "pdf_link": "#"
+          },
+          {
+            "name": "Mecanismos del Automotor y Fluídica",
+            "hs": "5 hs",
+            "descripcion": "",
+            "horas_semanales": 5,
+            "es_troncal": true,
+            "departamento": "automotores",
+            "temas_troncales": null,
+            "pdf_link": "#"
+          },
+          {
+            "name": "Electricidad del Automotor",
+            "hs": "4 hs",
+            "descripcion": "",
+            "horas_semanales": 4,
+            "es_troncal": true,
+            "departamento": "automotores",
+            "temas_troncales": null,
+            "pdf_link": "#"
+          },
+          {
+            "name": "Mecánica",
+            "hs": "4 hs",
+            "descripcion": "",
+            "horas_semanales": 4,
+            "es_troncal": true,
+            "departamento": "automotores",
+            "temas_troncales": null,
+            "pdf_link": "#"
+          },
+          {
+            "name": "Matemática",
+            "hs": "4 hs",
+            "descripcion": "",
+            "horas_semanales": 4,
+            "es_troncal": true,
+            "departamento": "exactas",
+            "temas_troncales": null,
+            "pdf_link": "#"
+          },
+          {
+            "name": "Lengua y Literatura",
+            "hs": "3 hs",
+            "descripcion": "",
+            "horas_semanales": 3,
+            "es_troncal": false,
+            "departamento": "sociales",
+            "temas_troncales": null,
+            "pdf_link": "#"
+          },
+          {
+            "name": "Inglés",
+            "hs": "3 hs",
+            "descripcion": "",
+            "horas_semanales": 3,
+            "es_troncal": false,
+            "departamento": "sociales",
+            "temas_troncales": null,
+            "pdf_link": "#"
+          },
+          {
+            "name": "Educación Física",
+            "hs": "3 hs",
+            "descripcion": "",
+            "horas_semanales": 3,
+            "es_troncal": false,
+            "departamento": "sociales",
+            "temas_troncales": null,
+            "pdf_link": "#"
+          },
+          {
+            "name": "Ciudadanía y Trabajo",
+            "hs": "2 hs",
+            "descripcion": "",
+            "horas_semanales": 2,
+            "es_troncal": false,
+            "departamento": "sociales",
+            "temas_troncales": null,
+            "pdf_link": "#"
+          }
+        ]
+      },
+      {
+        "year": "Quinto Año",
+        "subjectName": [
+          {
+            "name": "Taller de Automotores II",
+            "hs": "12 hs",
+            "descripcion": "",
+            "horas_semanales": 12,
+            "es_troncal": true,
+            "departamento": "Taller",
+            "temas_troncales": null,
+            "pdf_link": "#"
+          },
+          {
+            "name": "Motores de Combustión Interna",
+            "hs": "6 hs",
+            "descripcion": "",
+            "horas_semanales": 6,
+            "es_troncal": true,
+            "departamento": "automotores",
+            "temas_troncales": null,
+            "pdf_link": "#"
+          },
+          {
+            "name": "Electrónica del Automotor",
+            "hs": "4 hs",
+            "descripcion": "",
+            "horas_semanales": 4,
+            "es_troncal": true,
+            "departamento": "automotores",
+            "temas_troncales": null,
+            "pdf_link": "#"
+          },
+          {
+            "name": "Termodinámica",
+            "hs": "4 hs",
+            "descripcion": "",
+            "horas_semanales": 4,
+            "es_troncal": true,
+            "departamento": "exactas",
+            "temas_troncales": null,
+            "pdf_link": "#"
+          },
+          {
+            "name": "Elementos de Máquinas",
+            "hs": "4 hs",
+            "descripcion": "",
+            "horas_semanales": 4,
+            "es_troncal": true,
+            "departamento": "automotores",
+            "temas_troncales": null,
+            "pdf_link": "#"
+          },
+          {
+            "name": "Prácticas Profesionalizantes",
+            "hs": "4 hs",
+            "descripcion": "",
+            "horas_semanales": 4,
+            "es_troncal": true,
+            "departamento": "automotores",
+            "temas_troncales": null,
+            "pdf_link": "#"
+          },
+          {
+            "name": "Matemática",
+            "hs": "3 hs",
+            "descripcion": "",
+            "horas_semanales": 3,
+            "es_troncal": false,
+            "departamento": "exactas",
+            "temas_troncales": null,
+            "pdf_link": "#"
+          },
+          {
+            "name": "Inglés",
+            "hs": "3 hs",
+            "descripcion": "",
+            "horas_semanales": 3,
+            "es_troncal": false,
+            "departamento": "sociales",
+            "temas_troncales": null,
+            "pdf_link": "#"
+          },
+          {
+            "name": "Lengua y Literatura",
+            "hs": "3 hs",
+            "descripcion": "",
+            "horas_semanales": 3,
+            "es_troncal": false,
+            "departamento": "sociales",
+            "temas_troncales": null,
+            "pdf_link": "#"
+          },
+          {
+            "name": "Educación Física",
+            "hs": "3 hs",
+            "descripcion": "",
+            "horas_semanales": 3,
+            "es_troncal": false,
+            "departamento": "sociales",
+            "temas_troncales": null,
+            "pdf_link": "#"
+          }
+        ]
+      },
+      {
+        "year": "Sexto Año",
+        "subjectName": [
+          {
+            "name": "Dinámica de los Motores",
+            "hs": "6 hs",
+            "descripcion": "",
+            "horas_semanales": 6,
+            "es_troncal": true,
+            "departamento": "automotores",
+            "temas_troncales": null,
+            "pdf_link": "#"
+          },
+          {
+            "name": "Prácticas Profesionalizantes",
+            "hs": "5 hs",
+            "descripcion": "",
+            "horas_semanales": 5,
+            "es_troncal": true,
+            "departamento": "automotores",
+            "temas_troncales": null,
+            "pdf_link": "#"
+          },
+          {
+            "name": "Diagnóstico de Sistemas",
+            "hs": "4 hs",
+            "descripcion": "",
+            "horas_semanales": 4,
+            "es_troncal": true,
+            "departamento": "automotores",
+            "temas_troncales": null,
+            "pdf_link": "#"
+          },
+          {
+            "name": "Cálculo de Estructura",
+            "hs": "4 hs",
+            "descripcion": "",
+            "horas_semanales": 4,
+            "es_troncal": true,
+            "departamento": "automotores",
+            "temas_troncales": null,
+            "pdf_link": "#"
+          },
+          {
+            "name": "Vehículos Especiales",
+            "hs": "4 hs",
+            "descripcion": "",
+            "horas_semanales": 4,
+            "es_troncal": true,
+            "departamento": "automotores",
+            "temas_troncales": null,
+            "pdf_link": "#"
+          },
+          {
+            "name": "Taller de Automotores III",
+            "hs": "4 hs",
+            "descripcion": "",
+            "horas_semanales": 4,
+            "es_troncal": true,
+            "departamento": "Taller",
+            "temas_troncales": null,
+            "pdf_link": "#"
+          },
+          {
+            "name": "Gestión de los Procesos Productivos",
+            "hs": "4 hs",
+            "descripcion": "",
+            "horas_semanales": 4,
+            "es_troncal": true,
+            "departamento": "sociales",
+            "temas_troncales": null,
+            "pdf_link": "#"
+          },
+          {
+            "name": "Economía y Gestión",
+            "hs": "3 hs",
+            "descripcion": "",
+            "horas_semanales": 3,
+            "es_troncal": false,
+            "departamento": "sociales",
+            "temas_troncales": null,
+            "pdf_link": "#"
+          },
+          {
+            "name": "Ciencia y Tecnología",
+            "hs": "2 hs",
+            "descripcion": "",
+            "horas_semanales": 2,
+            "es_troncal": false,
+            "departamento": "exactas",
+            "temas_troncales": null,
+            "pdf_link": "#"
+          },
+          {
+            "name": "Higiene y Seguridad Laboral",
+            "hs": "2 hs",
+            "descripcion": "",
+            "horas_semanales": 2,
+            "es_troncal": false,
+            "departamento": "sociales",
+            "temas_troncales": null,
+            "pdf_link": "#"
+          }
+        ]
+      }
+    ]
+  }
+]

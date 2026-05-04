@@ -1,0 +1,146 @@
+{
+  "maintenance": false,
+  "sections": {
+    "autoridades": false,
+    "alumnos": true,
+    "profesores": true,
+    "emergencia": true,
+    "novedades": true,
+    "especialidades": true,
+    "inscripciones": true,
+    "infraestructura": true,
+    "cooperadora": true,
+    "contacto": true,
+    "historia": true,
+    "calendario": true,
+    "instagram": false,
+    "proyectos_destacados": false
+  },
+  "contact": {
+    "address": "Teodoro García 3899, C1427ECG CABA",
+    "google_maps_url": "https://www.google.com/maps/search/?api=1&query=Teodoro+Garcia+3899+CABA+Argentina+Chacarita+Escuela+Tecnica+32",
+    "phones": [
+      "4551-9121"
+    ],
+    "emails": [
+      "alumnos.et32@bue.edu.ar",
+      "doe.et32@bue.edu.ar"
+    ],
+    "enable_contact_form": false,
+    "social": {
+      "instagram": "https://www.instagram.com/escuelatecnica32/",
+      "instagram_api_token": "",
+      "facebook": "",
+      "facebook_app_id": "",
+      "facebook_app_secret": ""
+    },
+    "transport": {
+      "colectivos": "19-39-42-44-47-63-65-71-76-87-90-93-108-111-119-127-176",
+      "trenes_subtes": "Línea B Est. Lacroze, Ferrocarril Urquiza Est. Federico Lacroze"
+    }
+  },
+  "alerts": {
+    "active": true,
+    "start_date": "2026-04-27",
+    "end_date": "2026-05-04",
+    "message": "Simulacro de Evacuacion 04/05 T.T: 14:00hs - T.V: 18:00hs",
+    "type": "info"
+  },
+  "seo": {
+    "title": "ET 32 Gral. José de San Martín",
+    "description": "Sitio oficial de la Escuela Técnica N° 32 D.E. 14"
+  },
+  "analytics": "G-XXXXXXXXXX",
+  "roles": {
+    "SuperAdmin": {
+      "noticias": "edit",
+      "especialidades": "edit",
+      "autoridades": "edit",
+      "alumnos": "edit",
+      "profesores": "edit",
+      "multimedia": "edit",
+      "configuracion": "edit",
+      "usuarios": "edit"
+    },
+    "Admin": {
+      "noticias": "view",
+      "especialidades": "view",
+      "autoridades": "view",
+      "alumnos": "view",
+      "profesores": "view",
+      "multimedia": "edit",
+      "configuracion": "view",
+      "usuarios": "view"
+    },
+    "Doe": {
+      "noticias": "view",
+      "especialidades": "view",
+      "autoridades": "view",
+      "alumnos": "view",
+      "profesores": "view",
+      "multimedia": "view",
+      "configuracion": "view",
+      "usuarios": "view"
+    },
+    "Secretaria": {
+      "noticias": "view",
+      "especialidades": "view",
+      "autoridades": "view",
+      "alumnos": "view",
+      "profesores": "view",
+      "multimedia": "view",
+      "configuracion": "view",
+      "usuarios": "view"
+    },
+    "Vice-Rector": {
+      "noticias": "edit",
+      "especialidades": "edit",
+      "autoridades": "edit",
+      "alumnos": "edit",
+      "profesores": "edit",
+      "multimedia": "edit",
+      "configuracion": "view",
+      "usuarios": "view"
+    },
+    "OfAlumnos": {
+      "noticias": "view",
+      "especialidades": "view",
+      "autoridades": "view",
+      "alumnos": "edit",
+      "profesores": "view",
+      "multimedia": "view",
+      "configuracion": "view",
+      "usuarios": "view"
+    },
+    "Coordinacion": {
+      "noticias": "view",
+      "especialidades": "view",
+      "autoridades": "view",
+      "alumnos": "view",
+      "profesores": "view",
+      "multimedia": "view",
+      "configuracion": "view",
+      "usuarios": "view"
+    },
+    "Cooperadora": {
+      "noticias": "view",
+      "especialidades": "view",
+      "autoridades": "view",
+      "alumnos": "view",
+      "profesores": "view",
+      "multimedia": "view",
+      "configuracion": "view",
+      "usuarios": "view"
+    },
+    "Ed.Fisica": {
+      "noticias": "view",
+      "especialidades": "view",
+      "autoridades": "view",
+      "alumnos": "view",
+      "profesores": "view",
+      "multimedia": "view",
+      "configuracion": "view",
+      "usuarios": "view"
+    }
+  }
+}

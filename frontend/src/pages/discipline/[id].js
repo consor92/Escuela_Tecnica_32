@@ -3,6 +3,7 @@ import Layout from "@/Components/Layout/Layout";
 import { getItemData, getPathsFromId } from "@/lib/utils";
 
 export default function DisciplinePage({ item }) {
+    console.log("Datos recibidos en DisciplinePage:", item);
 	return (
 		<>
 			<Layout

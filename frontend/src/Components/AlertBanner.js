@@ -1,63 +1,63 @@
 import React, { useState, useEffect } from 'react';
 import styles from './AlertBanner.module.css';
-import config from '../data/config.json';
 
 const AlertBanner = ({ onVisibilityChange }) => {
-  const { alerts } = config;
-  const [isVisible, setIsVisible] = useState(false);
+  const [config, setConfig] = useState(null);
+  const [activeAlerts, setActiveAlerts] = useState([]);
 
   useEffect(() => {
-    if (alerts && alerts.active) {
-      // Obtenemos la fecha de hoy en formato YYYY-MM-DD
+    fetch('/api/configData')
+      .then(res => res.json())
+      .then(data => setConfig(data))
+      .catch(err => console.error('Error fetching config:', err));
+  }, []);
+
+  useEffect(() => {
+    const alerts = config?.alerts;
+    if (alerts) {
       const todayStr = new Date().toLocaleDateString('sv-SE');
-      
-      // Si existe rango de fechas, validamos si hoy está dentro
-      if (alerts.start_date && alerts.end_date) {
-        if (todayStr >= alerts.start_date && todayStr <= alerts.end_date) {
-          setIsVisible(true);
-          if (onVisibilityChange) onVisibilityChange(true);
-        } else {
-          setIsVisible(false);
-          if (onVisibilityChange) onVisibilityChange(false);
-        }
-      } 
-      // Si solo existe una fecha única (retrocompatibilidad)
-      else if (alerts.date) {
-        if (alerts.date === todayStr) {
-          setIsVisible(true);
-          if (onVisibilityChange) onVisibilityChange(true);
-        } else {
-          setIsVisible(false);
-          if (onVisibilityChange) onVisibilityChange(false);
-        }
+      const allAlerts = [];
+
+      // 1. Añadir alerta principal si es válida y activa
+      if (alerts.active && alerts.start_date && alerts.end_date && todayStr >= alerts.start_date && todayStr <= alerts.end_date) {
+        allAlerts.push({ message: alerts.message });
       }
+
+      // 2. Añadir alertas de la lista si están activas y en rango
+      if (alerts.list) {
+        const activeList = alerts.list.filter(alert => 
+          alert.active &&
+          alert.start_date <= todayStr && 
+          alert.end_date >= todayStr
+        );
+        allAlerts.push(...activeList);
+      }
+
+      setActiveAlerts(allAlerts);
+      if (onVisibilityChange) onVisibilityChange(allAlerts.length > 0);
     } else {
-      setIsVisible(false);
+      setActiveAlerts([]);
       if (onVisibilityChange) onVisibilityChange(false);
     }
-  }, [alerts, onVisibilityChange]);
+  }, [config, onVisibilityChange]);
 
-  const handleClose = () => {
-    setIsVisible(false);
-    if (onVisibilityChange) onVisibilityChange(false);
-  };
+  if (activeAlerts.length === 0 || !config) return null;
 
-  if (!isVisible) return null;
-
-  const separator = '\u00A0'.repeat(20) + ' • ' + '\u00A0'.repeat(20);
-  const marqueeText = Array(3).fill(alerts.message).join(separator) + separator;
+  // Unimos los mensajes de todas las alertas activas
+  const separatorChar = '\u00A0'.repeat(20) + ' • ' + '\u00A0'.repeat(20);
+  const messages = activeAlerts.map(a => a.message).join(separatorChar);
+  
+  const separator = separatorChar;
+  const marqueeText = Array(3).fill(messages).join(separator) + separator;
 
   return (
-    <div className={`${styles.banner} ${styles[alerts.type] || styles.info}`}>
+    <div className={`${styles.banner} ${styles[config.alerts.type] || styles.info}`}>
       <div className={styles.marqueeContainer}>
         <div className={styles.marqueeContent}>
           <span>{marqueeText}</span>
           <span>{marqueeText}</span>
         </div>
       </div>
-      <button className={styles.closeBtn} onClick={handleClose} aria-label="Cerrar alerta">
-        ×
-      </button>
     </div>
   );
 };

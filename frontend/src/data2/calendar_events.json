@@ -1,0 +1,325 @@
+[
+  {
+    "date": "2026-02-09",
+    "title": "Inicio del Período Escolar 2026",
+    "description": "Presentación de todo el personal docente.",
+    "id": 1,
+    "endDate": "2026-02-09"
+  },
+  {
+    "date": "2026-02-13",
+    "title": "Inicio de apoyo a estudiantes",
+    "description": "Acompañamiento para estudiantes con materias pendientes.",
+    "id": 1,
+    "endDate": "2026-02-13"
+  },
+  {
+    "date": "2026-02-23/2026-02-27",
+    "title": "1° Espacio para la Mejora Institucional (EMI)",
+    "description": "Primer espacio institucional de trabajo docente.",
+    "id": 2,
+    "endDate": "2026-02-23/2026-02-27"
+  },
+  {
+    "date": "2026-02-25",
+    "title": "Inicio ciclo lectivo 1° año",
+    "description": "Recibimiento a estudiantes ingresantes.",
+    "id": 3,
+    "endDate": "2026-02-25"
+  },
+  {
+    "date": "2026-02-25",
+    "title": "Fin apoyo a estudiantes",
+    "description": "Cierre del período de acompañamiento a materias pendientes.",
+    "id": 4,
+    "endDate": "2026-02-25"
+  },
+  {
+    "date": "2026-03-02",
+    "title": "Inicio de clases 2026",
+    "description": "Comienzo del ciclo lectivo.",
+    "id": 5,
+    "endDate": "2026-03-02"
+  },
+  {
+    "date": "2026-03-02",
+    "title": "Inicio 1° bimestre",
+    "description": "Inicio del primer bimestre/cuatrimestre.",
+    "id": 6,
+    "endDate": "2026-03-02"
+  },
+  {
+    "date": "2026-03-16/2026-03-20",
+    "title": "Semana del Bienestar Socioemocional",
+    "description": "Actividades enfocadas en el bienestar de estudiantes.",
+    "id": 7,
+    "endDate": "2026-03-16/2026-03-20"
+  },
+  {
+    "date": "2026-03-23",
+    "title": "Inicio Vinculación con el Futuro",
+    "description": "Actividades educativas de orientación vocacional.",
+    "id": 8,
+    "endDate": "2026-03-23"
+  },
+  {
+    "date": "2026-04-06/2026-04-10",
+    "title": "Inscripción Feria de Educación",
+    "description": "Inscripción docente a la feria educativa.",
+    "id": 9,
+    "endDate": "2026-04-06/2026-04-10"
+  },
+  {
+    "date": "2026-04-20/2026-04-24",
+    "title": "Semana de Educación Física",
+    "description": "Promoción de actividad física y salud.",
+    "id": 10,
+    "endDate": "2026-04-20/2026-04-24"
+  },
+  {
+    "date": "2026-04-20/2026-04-24",
+    "title": "Semana de prevención de consumos problemáticos",
+    "description": "Actividades de concientización y prevención.",
+    "id": 11,
+    "endDate": "2026-04-20/2026-04-24"
+  },
+  {
+    "date": "2026-04-25",
+    "title": "Capacitación Feria de Educación",
+    "description": "Primera capacitación para docentes.",
+    "id": 12,
+    "endDate": "2026-04-25"
+  },
+  {
+    "date": "2026-05-02",
+    "title": "Día contra el Acoso Escolar",
+    "description": "Jornada de concientización.",
+    "id": 13,
+    "endDate": "2026-05-02"
+  },
+  {
+    "date": "2026-05-07",
+    "title": "Fin 1° bimestre",
+    "description": "Cierre del primer período evaluativo.",
+    "id": 14,
+    "endDate": "2026-05-07"
+  },
+  {
+    "date": "2026-05-08",
+    "title": "Inicio 2° bimestre",
+    "description": "Comienzo del segundo período.",
+    "id": 15,
+    "endDate": "2026-05-08"
+  },
+  {
+    "date": "2026-05-14",
+    "title": "2° Espacio para la Mejora Institucional (EMI)",
+    "description": "Segundo espacio institucional docente.",
+    "id": 16,
+    "type": "Evento",
+    "endDate": "2026-05-14"
+  },
+  {
+    "date": "2026-05-20",
+    "title": "Expouniversidad",
+    "description": "Evento de orientación académica.",
+    "id": 17,
+    "endDate": "2026-05-20"
+  },
+  {
+    "date": "2026-05-23",
+    "title": "Capacitación Feria de Educación",
+    "description": "Segunda capacitación docente.",
+    "id": 18,
+    "endDate": "2026-05-23"
+  },
+  {
+    "date": "2026-05-25/2026-05-29",
+    "title": "Jornada ESI",
+    "description": "Educación Sexual Integral.",
+    "id": 19,
+    "endDate": "2026-05-25/2026-05-29"
+  },
+  {
+    "date": "2026-06-01/2026-06-05",
+    "title": "Semana de Educación Ambiental",
+    "description": "Actividades por el Día del Ambiente.",
+    "id": 20,
+    "endDate": "2026-06-01/2026-06-05"
+  },
+  {
+    "date": "2026-06-03/2026-06-04",
+    "title": "Expouniversidad",
+    "description": "Evento de orientación vocacional.",
+    "id": 21,
+    "endDate": "2026-06-03/2026-06-04"
+  },
+  {
+    "date": "2026-06-15/2026-06-19",
+    "title": "Semana de prevención de consumos problemáticos",
+    "description": "Actividades de prevención.",
+    "id": 22,
+    "endDate": "2026-06-15/2026-06-19"
+  },
+  {
+    "date": "2026-06-22/2026-06-26",
+    "title": "Feria de Educación - Instancia Regional",
+    "description": "Presentación de proyectos educativos.",
+    "id": 23,
+    "endDate": "2026-06-22/2026-06-26"
+  },
+  {
+    "date": "2026-07-17",
+    "title": "Fin 2° bimestre",
+    "description": "Cierre del primer cuatrimestre.",
+    "id": 24,
+    "endDate": "2026-07-17"
+  },
+  {
+    "date": "2026-07-20/2026-07-31",
+    "title": "Receso escolar",
+    "description": "Vacaciones de invierno.",
+    "id": 25,
+    "endDate": "2026-07-20/2026-07-31"
+  },
+  {
+    "date": "2026-07-20/2026-07-31",
+    "title": "Recuperación de regularidad",
+    "description": "Instancias de recuperación para estudiantes.",
+    "id": 26,
+    "endDate": "2026-07-20/2026-07-31"
+  },
+  {
+    "date": "2026-08-03",
+    "title": "Inicio 3° bimestre",
+    "description": "Inicio del segundo cuatrimestre.",
+    "id": 27,
+    "endDate": "2026-08-03"
+  },
+  {
+    "date": "2026-08-10/2026-08-14",
+    "title": "Inscripción Feria de Educación",
+    "description": "Instancia jurisdiccional.",
+    "id": 28,
+    "endDate": "2026-08-10/2026-08-14"
+  },
+  {
+    "date": "2026-08-12",
+    "title": "3° Espacio para la Mejora Institucional (EMI)",
+    "description": "Tercer espacio institucional docente.",
+    "id": 29,
+    "endDate": "2026-08-12"
+  },
+  {
+    "date": "2026-08-17/2026-08-21",
+    "title": "Semana de prevención de consumos problemáticos",
+    "description": "Actividades institucionales.",
+    "id": 30,
+    "endDate": "2026-08-17/2026-08-21"
+  },
+  {
+    "date": "2026-08-18/2026-08-24",
+    "title": "Semana de las Artes",
+    "description": "Actividades artísticas escolares.",
+    "id": 31,
+    "endDate": "2026-08-18/2026-08-24"
+  },
+  {
+    "date": "2026-08-24/2026-08-28",
+    "title": "Feria de Educación - Instancia Jurisdiccional",
+    "description": "Exposición de proyectos educativos.",
+    "id": 32,
+    "endDate": "2026-08-24/2026-08-28"
+  },
+  {
+    "date": "2026-09-11",
+    "title": "Día del Maestro",
+    "description": "Conmemoración docente.",
+    "id": 33,
+    "endDate": "2026-09-11"
+  },
+  {
+    "date": "2026-09-21",
+    "title": "Día del Estudiante",
+    "description": "Celebración estudiantil.",
+    "id": 34,
+    "endDate": "2026-09-21"
+  },
+  {
+    "date": "2026-09-21/2026-09-25",
+    "title": "Semana de Derechos de Niños y Adolescentes",
+    "description": "Promoción de derechos.",
+    "id": 35,
+    "endDate": "2026-09-21/2026-09-25"
+  },
+  {
+    "date": "2026-10-02",
+    "title": "Fin 3° bimestre",
+    "description": "Cierre del período.",
+    "id": 36,
+    "endDate": "2026-10-02"
+  },
+  {
+    "date": "2026-10-05",
+    "title": "Inicio 4° bimestre",
+    "description": "Inicio del último período.",
+    "id": 37,
+    "endDate": "2026-10-05"
+  },
+  {
+    "date": "2026-10-22",
+    "title": "4° Espacio para la Mejora Institucional (EMI)",
+    "description": "Cuarto espacio institucional docente.",
+    "id": 38,
+    "endDate": "2026-10-22"
+  },
+  {
+    "date": "2026-10-26/2026-10-30",
+    "title": "Jornada ESI",
+    "description": "Educación Sexual Integral.",
+    "id": 39,
+    "endDate": "2026-10-26/2026-10-30"
+  },
+  {
+    "date": "2026-11-02/2026-11-06",
+    "title": "Semana de la Educación Media",
+    "description": "Actividades institucionales.",
+    "id": 40,
+    "endDate": "2026-11-02/2026-11-06"
+  },
+  {
+    "date": "2026-11-12",
+    "title": "Día de la Educación Técnica",
+    "description": "Conmemoración institucional.",
+    "id": 41,
+    "endDate": "2026-11-12"
+  },
+  {
+    "date": "2026-12-03",
+    "title": "Fin del ciclo lectivo",
+    "description": "Finalización de clases 2026.",
+    "id": 42,
+    "endDate": "2026-12-03"
+  },
+  {
+    "date": "2026-12-04/2026-12-18",
+    "title": "Apoyo a estudiantes",
+    "description": "Acompañamiento para materias pendientes.",
+    "id": 43,
+    "endDate": "2026-12-04/2026-12-18"
+  },
+  {
+    "date": "2026-12-17",
+    "title": "5° Espacio para la Mejora Institucional (EMI)",
+    "description": "Último espacio institucional docente.",
+    "id": 44,
+    "endDate": "2026-12-17"
+  },
+  {
+    "date": "2026-12-18",
+    "title": "Fin del período escolar",
+    "description": "Cierre administrativo del ciclo.",
+    "id": 45,
+    "endDate": "2026-12-18"
+  }
+]

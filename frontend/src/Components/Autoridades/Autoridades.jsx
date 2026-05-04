@@ -1,8 +1,8 @@
-import React from 'react'
+"use client"
+import React, { useState, useEffect } from 'react'
 import { motion } from 'framer-motion'
 import { FaLinkedinIn } from 'react-icons/fa'
 import styles from './Autoridades.module.css'
-import orgData from '@/data/autoridades.json'
 
 const AuthorityCard = ({ person, index }) => {
   if (!person) return null;
@@ -63,35 +63,27 @@ const EnergyParticle = ({ delay, duration, pathD, colorType }) => {
 }
 
 const FullConnectorPath = () => {
-  // Red de caminos múltiples y entrelazados
   const paths = [
-    "M 500,0 C 500,100 500,100 500,200", // Central inicial
-    "M 500,200 C 300,250 100,300 150,450", // Rama izquierda principal
-    "M 500,200 C 700,250 900,300 850,450", // Rama derecha principal
-    "M 500,200 C 500,350 500,350 500,450", // Rama central secundaria
-    "M 150,450 C 150,550 300,550 350,750", // Conexión interna izq
-    "M 150,450 C 50,550 50,600 150,750",   // Conexión externa izq
-    "M 850,450 C 850,550 700,550 650,750", // Conexión interna der
-    "M 850,450 C 950,550 950,600 850,750", // Conexión externa der
-    "M 500,450 C 400,600 600,600 500,750", // Bucle central
-    "M 350,750 C 350,900 450,900 500,1100", // Cierre izq
-    "M 650,750 C 650,900 550,900 500,1100", // Cierre der
-    "M 150,750 C 150,950 300,950 500,1100", // Cierre extremo izq
-    "M 850,750 C 850,950 700,950 500,1100"  // Cierre extremo der
+    "M 500,0 C 500,100 500,100 500,200",
+    "M 500,200 C 300,250 100,300 150,450",
+    "M 500,200 C 700,250 900,300 850,450",
+    "M 500,200 C 500,350 500,350 500,450",
+    "M 150,450 C 150,550 300,550 350,750",
+    "M 150,450 C 50,550 50,600 150,750",
+    "M 850,450 C 850,550 700,550 650,750",
+    "M 850,450 C 950,550 950,600 850,750",
+    "M 500,450 C 400,600 600,600 500,750",
+    "M 350,750 C 350,900 450,900 500,1100",
+    "M 650,750 C 650,900 550,900 500,1100",
+    "M 150,750 C 150,950 300,950 500,1100",
+    "M 850,750 C 850,950 700,950 500,1100"
   ];
 
   return (
     <svg viewBox="0 0 1000 1100" preserveAspectRatio="none" className={styles.mainSvgConnector}>
       {paths.map((d, i) => (
-        <path 
-          key={i} 
-          d={d} 
-          className={styles.mainPath} 
-          strokeDasharray="4 12" 
-          opacity={0.25} 
-        />
+        <path key={i} d={d} className={styles.mainPath} strokeDasharray="4 12" opacity={0.25} />
       ))}
-      {/* Lluvia de partículas por diferentes caminos */}
       <EnergyParticle delay={0} duration={8} pathD={paths[1]} colorType="red" />
       <EnergyParticle delay={2} duration={12} pathD={paths[2]} colorType="blue" />
       <EnergyParticle delay={4} duration={10} pathD={paths[3]} colorType="gray" />
@@ -105,6 +97,17 @@ const FullConnectorPath = () => {
 }
 
 export default function Autoridades() {
+  const [orgData, setOrgData] = useState(null);
+
+  useEffect(() => {
+    fetch('/api/autoridadesData')
+      .then(res => res.json())
+      .then(data => setOrgData(data))
+      .catch(err => console.error('Error fetching autoridades:', err));
+  }, []);
+
+  if (!orgData) return <div>Cargando...</div>;
+
   const rectora = orgData
   const vicerrector = orgData.children[0]
   const nivel3 = vicerrector.children

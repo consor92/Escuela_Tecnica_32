@@ -4,12 +4,10 @@ import Link from 'next/link';
 import Image from 'next/image';
 import AliceCarousel from 'react-alice-carousel';
 import { IoChevronForwardSharp } from "react-icons/io5";
-import { Zoom, Fade } from 'react-reveal';
 import { BsFillCircleFill } from "react-icons/bs";
 import { useRouter } from 'next/router';
+import { motion } from 'framer-motion';
 import 'react-alice-carousel/lib/alice-carousel.css';
-
-
 
 const urls = {
   "mecanica": {
@@ -40,30 +38,14 @@ const allDisciplines = [
   { id: 'mecanica', label: 'Mecánica' },
 ];
 
-const educationalImages = {
-  basicCycle: [
-    '/images/educational_1ro.jpeg', // 1° Año
-    '/images/educational_2do.jpeg', // 2° Año
-    '/images/educational_3ro.jpeg', // 3° Año
-  ],
-  specialties: {
-    mecanica: '/images/mecanica_plan.jpeg', // 4° Año - Mecánica
-    automotores: '/images/automotores_plan.jpeg', // 5° Año - Automotores
-    computacion: '/images/computacion_plan.jpeg', // 6° Año - Computación
-  },
-};
-
 const Disciplines = ({ props, showAs }) => {
   const [showText, setShowText] = useState('')
   const [valueSelect, setValueSelect] = useState('')
   const router = useRouter();
-console.log('PROPS DISCIPLINE', props)
-  // Capturar el parámetro de la URL (nombre de la disciplina)
-  const { id: disciplineName } = router.query;
 
-  // Crear dinámicamente el array de items basado en la disciplina seleccionada
+  const { id: disciplineName } = router.query;
   const currentDisciplineUrls = urls[disciplineName] || {};
-  console.log('CURRENT DISCIPLINE', currentDisciplineUrls)
+  
   const items = Object.values(currentDisciplineUrls).map((imageUrl, index) => (
     <div 
       key={index + 1} 
@@ -78,11 +60,10 @@ console.log('PROPS DISCIPLINE', props)
       }}
     ></div>
   ));
-  console.log('ITEMS', items)
+
   const handleMouseEnter = (text) => {
     setShowText(text)
   }
-
 
   const handleMouseLeave = () => {
     setShowText('')
@@ -99,7 +80,6 @@ console.log('PROPS DISCIPLINE', props)
   if (showAs === 'allDisciplines') {
     return (
       <div id='disciplines' className={Style.container}>
-        {/* <h2 className={Style.container__titleVertical}>ESPECIALIDADES</h2> */}
         {props?.map((item, key) =>
           <Link key={key} href={`discipline/${item.id}`} className={Style[`container__${item.id}`]}
             onMouseEnter={() => handleMouseEnter(`${item.titleUppercase}`)}
@@ -115,7 +95,6 @@ console.log('PROPS DISCIPLINE', props)
 
   if (showAs === 'discipline') {
     return (
-
       <div className={Style.containerPage}>
         <div className={Style[`containerPage__${props.id}`]}>
           <h2 className={Style.containerPage_subtitle}>Mira otra especialidades</h2>
@@ -129,13 +108,11 @@ console.log('PROPS DISCIPLINE', props)
           </select>
         </div>
 
-
-            <div  className={Style[`fotoPortada_${props.id}`]}></div>
-       
+        <div className={Style[`fotoPortada_${props.id}`]}></div>
        
         <section className={Style.containerPage__discipline__info}>
           <h2> <IoChevronForwardSharp style={{ color: 'var(--font-color--redIntense)', height: '25', width: '25' }} />Titulo Oficial Tecnico {props.title} (6 años)</h2>
-          <h3>Resolución Nº ${props.resolucion}/SSGECP/2012 - Ministerio de educacion</h3>
+          <h3>Resolución Nº {props.resolucion} - Ministerio de educacion</h3>
         </section>
 
         <section className={Style.containerPage__discipline__about}>
@@ -145,9 +122,15 @@ console.log('PROPS DISCIPLINE', props)
         </section>
 
         <section className={Style.containerPage__discipline__photo}>
-          <Fade left duration={3000}>
+          <motion.div 
+            initial={{ opacity: 0, x: -50 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            transition={{ duration: 3 }}
+            viewport={{ once: true }}
+            style={{ width: '100%' }}
+          >
             <div className={Style[`discipline_${props.id}`]}></div>
-          </Fade>
+          </motion.div>
         </section>
 
         <section className={Style.containerPage__discipline__future}>
@@ -157,7 +140,6 @@ console.log('PROPS DISCIPLINE', props)
         </section>
 
         <section className={Style.containerPage__discipline__photo}>
-
           <AliceCarousel
             autoPlay
             autoPlayControls={false}
@@ -177,24 +159,12 @@ console.log('PROPS DISCIPLINE', props)
             }}
             items={items}
           />
-
         </section>
 
         <section className={Style.containerPage__discipline__practice}>
           <h2> <IoChevronForwardSharp style={{ color: 'var(--font-color--redIntense)', height: '25', width: '25' }} />Practicas Profesionalizantes durante la carrera</h2>
           <p>{props.text_practice_part1}</p>
         </section>
-
-        {/* <section className={Style.containerPage__discipline__workshopStuden}>
-          <h2>Trabajos de nuestros alumnos  <span className={Style.discipline__workshopStuden__line}></span> </h2>
-          <div className={Style.container_discipline}>
-            <Zoom duration={3000}>
-              {props.imagesData?.map((item, key) =>
-                <Image key={key} src={`${item.url}`} width={200} height={300}></Image>
-              )}
-            </Zoom>
-          </div>
-        </section> */}
 
         <section className={Style.containerPage__discipline__study} style={{ paddingBottom: '0', marginBottom: '0' }}>
           <h2> Plan de estudio <span className={Style.discipline__study__line}></span></h2>
@@ -217,13 +187,9 @@ console.log('PROPS DISCIPLINE', props)
             }
           </div>
         </section>
-
       </div>
     )
   }
-
 }
 
-
 export default Disciplines;
-

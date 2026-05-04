@@ -1,0 +1,299 @@
+.container {
+    padding-bottom: 2rem;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+}
+
+.headerActions {
+    display: flex;
+    gap: 1rem;
+}
+
+.newsGrid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 1.5rem;
+}
+
+.newsCard {
+    background-color: var(--admin-card-bg);
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+    position: relative;
+    transition: transform 0.3s ease;
+    border: 1px solid var(--admin-border);
+    color: var(--admin-text);
+}
+
+.newsCard:hover {
+    transform: translateY(-5px);
+}
+
+.cardBadge {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background-color: var(--background--blue);
+    color: white;
+    padding: 4px 10px;
+    border-radius: 20px;
+    font-size: 0.75rem;
+    font-weight: bold;
+    z-index: 10;
+}
+
+.newsCard img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+
+.newsInfo {
+    padding: 1.5rem;
+}
+
+.newsInfo h3 {
+    font-size: 1.2rem;
+    margin-bottom: 0.8rem;
+    color: var(--admin-text);
+    line-height: 1.3;
+}
+
+.newsInfo p {
+    font-size: 0.9rem;
+    color: var(--admin-text-light);
+    margin-bottom: 1.5rem;
+    line-height: 1.5;
+}
+
+.cardActions {
+    display: flex;
+    gap: 0.8rem;
+}
+
+.editorGrid {
+    display: grid;
+    grid-template-columns: 1fr 350px;
+    gap: 2rem;
+}
+
+.editorCard {
+    background-color: var(--admin-card-bg);
+    padding: 2rem;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+    border: 1px solid var(--admin-border);
+    color: var(--admin-text);
+}
+
+.editorCard h3 {
+    margin-bottom: 1.5rem;
+    color: var(--admin-text);
+    font-size: 1.1rem;
+    border-bottom: 2px solid var(--admin-border);
+    padding-bottom: 0.5rem;
+}
+
+.titleInput {
+    font-size: 1.5rem !important;
+    font-weight: bold;
+    color: var(--admin-text);
+    background-color: var(--admin-input-bg) !important;
+}
+
+.formGroup {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.formGroup label {
+    font-weight: bold;
+    color: var(--admin-text);
+    font-size: 0.9rem;
+}
+
+.formGroup input, .formGroup textarea {
+    padding: 0.8rem;
+    border: 1px solid var(--admin-input-border);
+    background-color: var(--admin-input-bg);
+    color: var(--admin-text);
+    border-radius: 6px;
+    font-size: 1rem;
+    transition: border-color 0.3s;
+}
+
+.formGroup input:focus, .formGroup textarea:focus {
+    border-color: var(--background--redIntense);
+    outline: none;
+}
+
+.richTextToolbar {
+    display: flex;
+    gap: 0.5rem;
+    padding: 0.5rem;
+    background-color: var(--admin-bg);
+    border: 1px solid var(--admin-input-border);
+    border-bottom: none;
+    border-radius: 6px 6px 0 0;
+}
+
+.richTextToolbar button {
+    padding: 4px 8px;
+    background: var(--admin-card-bg);
+    color: var(--admin-text);
+    border: 1px solid var(--admin-input-border);
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 0.8rem;
+}
+
+.toolbarDivider {
+    width: 1px;
+    background-color: var(--admin-border);
+    margin: 0 4px;
+}
+
+.richTextArea {
+    border-radius: 0 0 6px 6px !important;
+    min-height: 350px;
+    line-height: 1.6;
+}
+
+.inputWithIcon {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    border: 1px solid var(--admin-input-border);
+    padding-left: 1rem;
+    border-radius: 6px;
+    background-color: var(--admin-input-bg);
+}
+
+.inputWithIcon input {
+    border: none !important;
+    flex: 1;
+}
+
+.mainPreview {
+    position: relative;
+    width: 100%;
+    height: 180px;
+    border-radius: 8px;
+    overflow: hidden;
+    margin-bottom: 1rem;
+    background-color: var(--admin-bg);
+}
+
+.mainPreview img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.uploadOverlay {
+    position: absolute;
+    inset: 0;
+    background-color: rgba(0, 0, 0, 0.4);
+    color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: opacity 0.3s;
+    cursor: pointer;
+}
+
+.mainPreview:hover .uploadOverlay {
+    opacity: 1;
+}
+
+.secImagesGrid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+}
+
+.secPreview {
+    aspect-ratio: 1;
+    border-radius: 8px;
+    overflow: hidden;
+    background-color: var(--admin-bg);
+    border: 1px dashed var(--admin-border);
+    position: relative;
+}
+
+.secPreview img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.addImgLabel {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--admin-text-light);
+    cursor: pointer;
+}
+
+.removeImg {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    background-color: rgba(231, 76, 60, 0.8);
+    color: white;
+    border: none;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.saveBtnTop {
+    padding: 0.6rem 1.5rem;
+    background-color: var(--background--redIntense);
+    color: white;
+    border: none;
+    border-radius: 6px;
+    font-weight: bold;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.editBtn, .deleteBtn, .addBtn, .backBtn {
+    padding: 0.6rem 1.2rem;
+    border-radius: 6px;
+    border: none;
+    cursor: pointer;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.9rem;
+}
+
+.addBtn { background-color: var(--background--blue); color: white; }
+.editBtn { background-color: var(--admin-bg); color: var(--admin-text); border: 1px solid var(--admin-border); }
+.deleteBtn { background-color: transparent; color: #e74c3c; border: 1px solid #e74c3c; }
+.backBtn { background-color: var(--admin-border); color: var(--admin-text); }
+
+@media (max-width: 1024px) {
+    .editorGrid { grid-template-columns: 1fr; }
+}

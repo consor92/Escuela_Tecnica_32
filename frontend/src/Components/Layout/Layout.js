@@ -47,11 +47,11 @@ const Layout = ({ children, title, description, keywords, favicon, page }) => {
         <meta property="twitter:title" content={siteTitle} />
         <meta property="twitter:description" content={description || defaultDescription} />
         
-        <link rel="icon" href={favicon || '/favicon2.ico'} />
+        <link rel="icon" href={favicon || '/logoet32.ico'} />
       </Head>
       <AlertBanner onVisibilityChange={setIsAlertVisible} />
       <NavBar page={page} isAlertVisible={isAlertVisible} />
-      <div className={Style.container} style={{ marginTop: isAlertVisible ? '120px' : '80px' }}>
+      <div className={Style.container} style={{ marginTop: isAlertVisible ? '150px' : '110px' }}>
         {children}
       </div>
 

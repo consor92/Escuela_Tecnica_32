@@ -104,6 +104,35 @@
 
 .tagline:hover .accent::after{ transform: scaleX(1.02); opacity:1 }
 
+.heroActions {
+    margin-top: 40px;
+    display: flex;
+    justify-content: center;
+}
+
+.ctaButton {
+    background: #F90334;
+    color: white !important;
+    padding: 16px 40px;
+    border-radius: 50px;
+    font-weight: 800;
+    text-transform: uppercase;
+    text-decoration: none;
+    font-size: 1.1rem;
+    letter-spacing: 1px;
+    transition: all 0.3s ease;
+    box-shadow: 0 10px 30px rgba(249, 3, 52, 0.4);
+    border: 2px solid transparent;
+}
+
+.ctaButton:hover {
+    transform: translateY(-5px) scale(1.05);
+    background: #ffffff;
+    color: #F90334 !important;
+    border-color: #F90334;
+    box-shadow: 0 15px 40px rgba(249, 3, 52, 0.6);
+}
+
 @media only screen and (max-width:768px) {
     .container {
         background-position: center;

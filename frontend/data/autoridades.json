@@ -1,0 +1,58 @@
+{
+  "role": "Rectora",
+  "name": "Dra. María Pérez",
+  "image": "https://api.dicebear.com/7.x/avataaars/svg?seed=Maria",
+  "description": "",
+  "social": [],
+  "children": [
+    {
+      "role": "Vicerrector",
+      "name": "Prof. Juan Gómez",
+      "image": "https://api.dicebear.com/7.x/avataaars/svg?seed=Juan",
+      "description": "",
+      "social": [],
+      "children": [
+        {
+          "role": "Secretaría",
+          "name": "Lic. Ana Vallejos",
+          "image": "https://api.dicebear.com/7.x/avataaars/svg?seed=Ana",
+          "description": "",
+          "social": [],
+          "children": [{ "role": "Prosecretaría", "name": "Cdor. Luis Mora", "image": "https://api.dicebear.com/7.x/avataaars/svg?seed=Luis", "description": "", "social": [] }]
+        },
+        {
+          "role": "Regente Técnico",
+          "name": "Ing. Carlos Ruiz",
+          "image": "https://api.dicebear.com/7.x/avataaars/svg?seed=Carlos",
+          "description": "",
+          "social": [],
+          "children": [
+            { 
+              "role": "Jefatura de Taller",
+              "name": "Ing. César Luna",
+              "image": "https://api.dicebear.com/7.x/avataaars/svg?seed=Cesar",
+              "description": "",
+              "social": [],
+              "children": [{ "role": "Jefes de Secciones", "name": "Equipo Técnico", "image": "https://api.dicebear.com/7.x/avataaars/svg?seed=Secciones", "description": "", "social": [] }]
+            },
+            { "role": "Jefe de Laboratorio", "name": "Ing. Hugo Méndez", "image": "https://api.dicebear.com/7.x/avataaars/svg?seed=Hugo", "description": "", "social": [] }
+          ]
+        },
+        {
+          "role": "Regente Cultural",
+          "name": "Lic. Silvia Torres",
+          "image": "https://api.dicebear.com/7.x/avataaars/svg?seed=Silvia",
+          "description": "",
+          "social": [],
+          "children": [
+            { "role": "Jefe de ATTP", "name": "Lic. Roberto Paz", "image": "https://api.dicebear.com/7.x/avataaars/svg?seed=Roberto", "description": "", "social": [] },
+            { "role": "Coordinadores de áreas", "name": "Cuerpo Docente", "image": "https://api.dicebear.com/7.x/avataaars/svg?seed=Coordinadores", "description": "", "social": [] },
+            { "role": "Jefes de Preceptores", "name": "Sr. Jorge Rial", "image": "https://api.dicebear.com/7.x/avataaars/svg?seed=Preceptores", "description": "", "social": [] },
+            { "role": "Asesor Pedagógico", "name": "Lic. Marta Lynch", "image": "https://api.dicebear.com/7.x/avataaars/svg?seed=Marta", "description": "", "social": [] }
+          ]
+        },
+        { "role": "Sub-regente", "name": "Prof. Elena Solis", "image": "https://api.dicebear.com/7.x/avataaars/svg?seed=Elena", "description": "", "social": [] }
+      ]
+    }
+  ]
+}

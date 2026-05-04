@@ -165,6 +165,22 @@
     color: var(--font-color--white);
 }
 
+.fileLink {
+    display: inline-block;
+    margin-top: 10px;
+    margin-left: 5%;
+    color: #ffd24d;
+    font-weight: 500;
+    text-decoration: underline;
+    cursor: pointer;
+    font-size: 0.9rem;
+    transition: color 0.3s ease;
+}
+
+.fileLink:hover {
+    color: var(--background--white);
+}
+
 /* Cooperadora intro text styles: ensure all text is white and above overlays */
 .coopIntro {
     width: 84%;

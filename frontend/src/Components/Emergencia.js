@@ -1,13 +1,24 @@
 "use client"
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import { createPortal } from 'react-dom';
 import styles from './Emergencia.module.css';
-import seguridadData from '../data/seguridad.json';
 import Image from 'next/image';
 import { FaExclamationTriangle, FaWalking, FaShieldAlt, FaPhoneAlt, FaTimes, FaCheckCircle } from 'react-icons/fa';
 
 const Emergencia = () => {
     const [fullscreenImage, setFullscreenImage] = useState(null);
+    const [seguridadData, setSeguridadData] = useState(null);
+
+    useEffect(() => {
+        fetch('/api/seguridadData')
+            .then(res => res.json())
+            .then(data => setSeguridadData(data))
+            .catch(err => console.error('Error fetching seguridad:', err));
+    }, []);
+
+    if (!seguridadData) return <div>Cargando protocolos...</div>;
+
     const { evacuacion, seguridad } = seguridadData;
 
     return (
@@ -79,17 +90,11 @@ const Emergencia = () => {
                             </div>
                         ))}
                     </div>
-
-                    <div className={styles.emergencyContact}>
-                        <p>
-                            <FaPhoneAlt /> EN CASO DE RIESGO INMINENTE LLAMAR AL 911
-                        </p>
-                    </div>
                 </div>
             </div>
 
             {/* MODAL FULLSCREEN */}
-            {fullscreenImage && (
+            {fullscreenImage && createPortal(
                 <div className={styles.fullscreenOverlay} onClick={() => setFullscreenImage(null)}>
                     <button className={styles.closeFullscreen} onClick={() => setFullscreenImage(null)}>
                         <FaTimes />
@@ -97,7 +102,8 @@ const Emergencia = () => {
                     <div className={styles.fullscreenImageContainer}>
                         <Image src={fullscreenImage} alt="Fullscreen" fill style={{objectFit: 'contain'}} />
                     </div>
-                </div>
+                </div>,
+                document.body
             )}
         </section>
     );

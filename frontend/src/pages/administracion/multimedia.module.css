@@ -1,0 +1,347 @@
+.container {
+    padding-bottom: 3rem;
+}
+
+.controlsCard {
+    background-color: var(--admin-card-bg);
+    padding: 2rem;
+    border-radius: 20px;
+    border: 1px solid var(--admin-border);
+    margin-bottom: 2.5rem;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+}
+
+.searchRow {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+.searchInput {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    background-color: var(--admin-bg);
+    padding: 0 1.2rem;
+    border-radius: 12px;
+    border: 1px solid var(--admin-input-border);
+    color: var(--admin-text-light);
+}
+
+.searchInput input {
+    background: transparent !important;
+    border: none !important;
+    padding: 0.9rem 0 !important;
+    width: 100%;
+    color: var(--admin-text) !important;
+}
+
+.uploadBtn {
+    background-color: var(--admin-accent);
+    color: white;
+    padding: 0 1.5rem;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    cursor: pointer;
+    font-weight: 800;
+    transition: all 0.3s ease;
+}
+
+.refreshBtn {
+    background-color: var(--admin-bg);
+    color: var(--admin-text);
+    border: 1px solid var(--admin-border);
+    padding: 0 1rem;
+    border-radius: 12px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.1rem;
+}
+
+.spinning {
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+.filterRow {
+    display: flex;
+    gap: 2rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--admin-border);
+}
+
+.filterGroup {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.filterGroup label {
+    font-weight: 800;
+    font-size: 0.85rem;
+    color: var(--admin-text-light);
+    text-transform: uppercase;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+/* GRILLA */
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 2rem;
+}
+
+.fileCard {
+    background-color: var(--admin-card-bg);
+    border-radius: 18px;
+    overflow: hidden;
+    border: 1px solid var(--admin-border);
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.fileCard:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+}
+
+.filePreview {
+    position: relative;
+    height: 160px;
+    background-color: var(--admin-bg);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+.filePreview img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.pdfIconLarge {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    color: #ef4444;
+    font-size: 3rem;
+}
+
+.pdfIconLarge span { font-size: 0.8rem; font-weight: 900; }
+
+.fileOverlay {
+    position: absolute;
+    inset: 0;
+    background-color: rgba(0, 0, 0, 0.6);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.fileCard:hover .fileOverlay { opacity: 1; }
+
+.fileOverlay button {
+    background-color: white;
+    color: var(--background--blue);
+    border: none;
+    width: 40px;
+    height: 40px;
+    border-radius: 12px;
+    cursor: pointer;
+    font-size: 1.1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.fileInfo { padding: 1.2rem; }
+.fileName {
+    font-size: 0.9rem;
+    font-weight: 700;
+    color: var(--admin-text);
+    margin-bottom: 0.8rem;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.fileMeta { display: flex; justify-content: space-between; align-items: center; }
+.sectionTag {
+    font-size: 0.7rem;
+    font-weight: 800;
+    background-color: var(--admin-bg);
+    color: var(--admin-text-light);
+    padding: 2px 8px;
+    border-radius: 6px;
+    text-transform: uppercase;
+}
+.fileSize { font-size: 0.75rem; font-weight: 700; color: var(--admin-accent); }
+
+/* MODAL */
+.modalOverlay {
+    position: fixed;
+    inset: 0;
+    background-color: rgba(0, 0, 0, 0.85);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 2000;
+    padding: 2rem;
+}
+
+.modalContent {
+    background-color: var(--admin-card-bg);
+    width: 100%;
+    max-width: 1000px;
+    height: 90vh;
+    border-radius: 24px;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    border: 1px solid var(--admin-border);
+}
+
+.modalHeader {
+    padding: 1.5rem 2.5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid var(--admin-border);
+}
+
+.modalHeader h3 { margin: 0; color: var(--admin-text); }
+
+.closeBtn {
+    background: none;
+    border: none;
+    color: var(--admin-text-light);
+    font-size: 2rem;
+    cursor: pointer;
+}
+
+.previewContainer {
+    flex: 1;
+    background-color: var(--admin-bg);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+.previewContainer img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+}
+
+.pdfInfoView {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 3rem;
+    text-align: center;
+    color: var(--admin-text);
+}
+
+.bigPdfIcon {
+    font-size: 6rem;
+    color: #ef4444;
+    margin-bottom: 1.5rem;
+    filter: drop-shadow(0 10px 15px rgba(239, 68, 68, 0.2));
+}
+
+.pdfInfoView h4 {
+    font-size: 1.5rem;
+    font-weight: 800;
+    margin-bottom: 1rem;
+}
+
+.pdfInfoView p {
+    color: var(--admin-text-light);
+    max-width: 400px;
+    margin-bottom: 2rem;
+    line-height: 1.6;
+}
+
+.openFullPdfBtn {
+    background-color: var(--admin-accent);
+    color: white;
+    padding: 1rem 2rem;
+    border-radius: 12px;
+    text-decoration: none;
+    font-weight: 800;
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    box-shadow: 0 10px 20px rgba(96, 165, 250, 0.2);
+    transition: transform 0.3s;
+}
+
+.openFullPdfBtn:hover {
+    transform: translateY(-3px);
+}
+
+.modalFooter {
+    padding: 1.5rem 2.5rem;
+    border-top: 1px solid var(--admin-border);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.modalMeta {
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+    color: var(--admin-text-light);
+    font-size: 0.9rem;
+}
+
+.modalActions {
+    display: flex;
+    gap: 1rem;
+}
+
+.modalActions button, .downloadLink {
+    padding: 0.8rem 1.5rem;
+    border-radius: 12px;
+    font-weight: 800;
+    cursor: pointer;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.modalActions button {
+    background-color: var(--admin-bg);
+    color: var(--admin-text);
+    border: 1px solid var(--admin-border);
+}
+
+.downloadLink {
+    background-color: var(--admin-accent);
+    color: white;
+}
+
+@media (max-width: 768px) {
+    .modalContent { height: 100vh; border-radius: 0; }
+    .modalFooter { flex-direction: column; gap: 1.5rem; }
+}

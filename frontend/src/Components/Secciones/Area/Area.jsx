@@ -1,8 +1,7 @@
 import React from 'react';
 import styles from './Area.module.css'
-import itemSeccions from '@/pages/api/itemSeccions';
 
-const Area = ({ areaNum, setArea }) => {
+const Area = ({ areaNum, setArea, itemSeccions }) => {
 
   const resulFilter = itemSeccions.filter(item => item.id === areaNum)
 

@@ -1,13 +1,23 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import Style from './Footer.module.css'
 import Link from 'next/link';
 import ContactModal from './ContactModal';
 import { FaInstagram, FaYoutube, FaFacebook, FaMapMarkerAlt, FaBus, FaTrain, FaPhoneAlt, FaEnvelope, FaShareAlt } from 'react-icons/fa';
-import config from '../../data/config.json';
 
 export const Footer = () => {
-  const { contact } = config;
+  const [config, setConfig] = useState(null);
   const [selectedEmail, setSelectedEmail] = useState(null);
+
+  useEffect(() => {
+    fetch('/api/configData')
+      .then(res => res.json())
+      .then(data => setConfig(data))
+      .catch(err => console.error('Error fetching config:', err));
+  }, []);
+
+  if (!config) return null;
+
+  const { contact } = config;
   const googleMapsUrl = contact.google_maps_url;
 
   return (

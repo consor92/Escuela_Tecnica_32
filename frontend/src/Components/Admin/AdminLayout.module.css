@@ -1,0 +1,224 @@
+.adminContainer {
+    display: flex;
+    min-height: 100vh;
+    background-color: var(--admin-bg);
+    color: var(--admin-text);
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    transition: all 0.3s ease;
+
+    /* PALETA LIGHT */
+    --admin-bg: #f4f6f9;
+    --admin-sidebar-bg: var(--background--blue);
+    --admin-card-bg: #ffffff;
+    --admin-text: var(--background--black);
+    --admin-text-light: #64748b;
+    --admin-border: #e2e8f0;
+    --admin-topbar: #ffffff;
+    --admin-input-bg: #ffffff;
+    --admin-input-border: #dfe6e9;
+    --admin-input-text: #1e293b;
+    --admin-accent: var(--background--blue);
+    --admin-nav-hover: rgba(255, 255, 255, 0.1);
+    --admin-nav-text: rgba(255, 255, 255, 0.8);
+}
+
+.adminContainer.dark {
+    --admin-bg: #0a0c21; 
+    --admin-sidebar-bg: #050614;
+    --admin-card-bg: #141736; 
+    --admin-text: #f8fafc;
+    --admin-text-light: #cbd5e1;
+    --admin-border: #2d346b;
+    --admin-topbar: #0d102b;
+    --admin-input-bg: #0a0c21;
+    --admin-input-border: #3f478a;
+    --admin-input-text: #f8fafc;
+    --admin-accent: #60a5fa;
+    --admin-nav-hover: rgba(255, 255, 255, 0.05);
+    --admin-nav-text: #cbd5e1;
+}
+
+.adminContainer select, .adminContainer input, .adminContainer textarea {
+    appearance: none;
+    background-color: var(--admin-input-bg);
+    border: 1px solid var(--admin-input-border);
+    color: var(--admin-input-text);
+    padding: 0.8rem 1rem;
+    border-radius: 10px;
+    font-size: 0.95rem;
+    font-family: inherit;
+    transition: all 0.3s ease;
+    outline: none;
+}
+
+.adminContainer select {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='%2394a3b8'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M19 9l-7 7-7-7'%3E%3C/path%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 1rem center;
+    background-size: 1.2em;
+    padding-right: 2.5rem;
+    cursor: pointer;
+}
+
+.adminContainer input:focus, .adminContainer select:focus, .adminContainer textarea:focus {
+    border-color: var(--background--redIntense);
+    box-shadow: 0 0 0 3px rgba(249, 3, 52, 0.1);
+}
+
+.sidebar {
+    width: 280px;
+    background-color: var(--admin-sidebar-bg);
+    color: white;
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    height: 100vh;
+    z-index: 100;
+    box-shadow: 4px 0 15px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease;
+}
+
+.logoArea {
+    padding: 2.5rem 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    font-size: 1.3rem;
+    font-weight: 800;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.logo {
+    width: 42px;
+    height: 42px;
+    filter: drop-shadow(0 0 8px rgba(249, 3, 52, 0.3));
+}
+
+.nav { flex: 1; padding: 1.5rem 1rem; display: flex; flex-direction: column; gap: 0.5rem; }
+
+.navItem {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 0.9rem 1rem;
+    color: var(--admin-nav-text);
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+    text-decoration: none;
+    border-radius: 12px;
+    font-weight: 500;
+}
+
+.navItem:hover { background-color: var(--admin-nav-hover); color: white; transform: translateX(5px); }
+.navItem.active { background-color: var(--background--redIntense); color: white; box-shadow: 0 4px 15px rgba(249, 3, 52, 0.4); }
+
+.sidebarFooter { padding: 1.5rem; border-top: 1px solid rgba(255, 255, 255, 0.05); display: flex; flex-direction: column; gap: 1rem; }
+
+.themeToggle {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 0.8rem 1rem;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+    color: white;
+    cursor: pointer;
+    font-weight: 500;
+    transition: all 0.3s ease;
+}
+
+.backButton {
+    display: block;
+    text-align: center;
+    padding: 0.8rem;
+    background-color: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+    color: white;
+    font-size: 0.9rem;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.backButton:hover { background-color: white; color: var(--background--blue); }
+
+.content {
+    flex: 1;
+    margin-left: 280px;
+    display: flex;
+    flex-direction: column;
+    transition: all 0.3s ease;
+}
+
+.topbar {
+    height: 80px;
+    background-color: var(--admin-topbar);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 2.5rem;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+    border-bottom: 1px solid var(--admin-border);
+    position: sticky;
+    top: 0;
+    z-index: 90;
+}
+
+.topbar h1 { font-size: 1.6rem; font-weight: 800; color: var(--admin-text); }
+
+.userProfile {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    padding: 0.5rem 1rem;
+    background: var(--admin-card-bg);
+    border-radius: 16px;
+    border: 2px solid var(--background--redIntense);
+}
+
+.userInfo { display: flex; flex-direction: column; text-align: right; line-height: 1.2; }
+.userName { font-weight: 800; font-size: 0.9rem; color: var(--admin-text); }
+.userRole { font-size: 0.75rem; color: var(--background--redIntense); font-weight: 700; text-transform: uppercase; }
+
+.avatar {
+    width: 40px;
+    height: 40px;
+    background: var(--background--redIntense);
+    color: white;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 800;
+    cursor: pointer;
+    transition: transform 0.2s;
+    box-shadow: 0 4px 10px rgba(249, 3, 52, 0.3);
+}
+
+.avatar:hover { transform: scale(1.05); }
+
+.logoutBtn {
+    background: none;
+    border: 1px solid var(--admin-border);
+    color: #ef4444;
+    width: 40px;
+    height: 40px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-left: 0.5rem;
+}
+
+.logoutBtn:hover { background-color: #ef4444; color: white; border-color: #ef4444; transform: scale(1.05); }
+
+.pageBody { padding: 3rem 4rem; max-width: 1400px; width: 100%; margin: 0 auto; }
+
+@media (max-width: 1024px) {
+    .sidebar { width: 80px; }
+    .logoArea span, .navItem .label, .themeToggle span, .sidebarFooter .backButton, .topbar h1, .userInfo { display: none; }
+    .content { margin-left: 80px; }
+    .navItem { justify-content: center; padding: 1rem; }
+}
