@@ -3,7 +3,6 @@
 import React, { useState, useEffect } from 'react';
 import { createPortal } from 'react-dom';
 import styles from './Emergencia.module.css';
-import Image from 'next/image';
 import { FaExclamationTriangle, FaWalking, FaShieldAlt, FaPhoneAlt, FaTimes, FaCheckCircle } from 'react-icons/fa';
 
 const Emergencia = () => {
@@ -53,11 +52,10 @@ const Emergencia = () => {
                                         className={styles.imageContainer}
                                         onClick={() => setFullscreenImage(plano.src)}
                                     >
-                                        <Image 
+                                        <img 
                                             src={plano.src} 
                                             alt={plano.titulo} 
-                                            fill 
-                                            style={{objectFit: 'cover'}}
+                                            style={{width: '100%', height: '100%', objectFit: 'cover'}}
                                         />
                                         <div className={styles.imageOverlay}>🔍 CLIC PARA AMPLIAR</div>
                                     </div>
@@ -100,7 +98,7 @@ const Emergencia = () => {
                         <FaTimes />
                     </button>
                     <div className={styles.fullscreenImageContainer}>
-                        <Image src={fullscreenImage} alt="Fullscreen" fill style={{objectFit: 'contain'}} />
+                        <img src={fullscreenImage} alt="Fullscreen" style={{width: '100%', height: '100%', objectFit: 'contain'}} />
                     </div>
                 </div>,
                 document.body

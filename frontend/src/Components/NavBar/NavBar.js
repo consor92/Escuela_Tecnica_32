@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import Style from './NavBar.module.css'
 import Link from 'next/link'
-import Image from 'next/image'
 import dynamic from 'next/dynamic';
 import { HiMenu } from 'react-icons/hi'
 import { useRouter } from 'next/router'
@@ -62,13 +61,10 @@ const NavBar = ({ page, isAlertVisible }) => {
       <Link href='/' className={Style.container__EscuelaTecnica}>
         <>
           <div className={Style.container__EscuelaTecnica_Img}>
-             <Image 
+             <img 
                 src="/images/logoET32.png" 
                 alt="Logo ET32" 
-                width={90} 
-                height={90} 
-                priority
-                style={{ objectFit: 'contain' }}
+                style={{ width: '90px', height: '90px', objectFit: 'contain' }}
                 className={Style.logoMain}
              />
           </div>
