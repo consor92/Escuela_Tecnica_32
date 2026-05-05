@@ -123,11 +123,6 @@ services:
     depends_on:
       - frontend
     restart: unless-stopped
-      # - api
-      # - phpmyadmin
-      # - mongo-express
-      # - php
-    restart: unless-stopped
 
 volumes:
   #mongo_data:
