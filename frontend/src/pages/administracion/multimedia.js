@@ -37,8 +37,9 @@ const Multimedia = () => {
 
     const handleDelete = async (url) => {
         if (!confirm('¿Estás seguro de eliminar este archivo permanentemente?')) return;
+        const user = localStorage.getItem('adminUserEmail') || 'Admin';
         try {
-            const res = await fetch(`/api/admin/files?url=${encodeURIComponent(url)}`, { method: 'DELETE' });
+            const res = await fetch(`/api/admin/files?url=${encodeURIComponent(url)}&user=${encodeURIComponent(user)}`, { method: 'DELETE' });
             if (res.ok) {
                 setFiles(files.filter(f => f.url !== url));
             } else {
@@ -53,6 +54,7 @@ const Multimedia = () => {
         const file = e.target.files[0];
         if (!file) return;
         
+        const user = localStorage.getItem('adminUserEmail') || 'Admin';
         const reader = new FileReader();
         reader.readAsDataURL(file);
         reader.onload = async () => {
@@ -63,7 +65,8 @@ const Multimedia = () => {
                     image: reader.result,
                     fileName: file.name,
                     type: 'manual_upload',
-                    fileType: file.name.endsWith('.pdf') ? 'pdf' : 'image'
+                    fileType: file.name.endsWith('.pdf') ? 'pdf' : 'image',
+                    user
                 })
             });
             if (res.ok) fetchFiles();

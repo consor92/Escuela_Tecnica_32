@@ -1,0 +1,121 @@
+[
+  {
+    "id": 17,
+    "user": "gonzalo.consorti@bue.edu.ar",
+    "action": "Actualizó y activó alerta crítica: \"Simulacro de Evacuacion 04/05 ...\"",
+    "type": "system",
+    "date": "2026-05-05T00:09:34.988Z"
+  },
+  {
+    "id": 16,
+    "user": "gonzalo.consorti@bue.edu.ar",
+    "action": "Desactivó el modo mantenimiento",
+    "type": "system",
+    "date": "2026-05-05T00:09:31.092Z"
+  },
+  {
+    "id": 1,
+    "user": "gonzalo.consorti@bue.edu.ar",
+    "action": "Actualizó el listado de noticias",
+    "type": "news",
+    "date": "2026-05-04T23:27:50.968Z"
+  },
+  {
+    "id": 2,
+    "user": "gonzalo.consorti@bue.edu.ar",
+    "action": "Actualizó información de noticias",
+    "type": "news",
+    "date": "2026-05-04T23:28:08.564Z"
+  },
+  {
+    "id": 3,
+    "user": "gonzalo.consorti@bue.edu.ar",
+    "action": "Actualizó información de Especialidades",
+    "type": "doc",
+    "date": "2026-05-04T23:28:46.379Z"
+  },
+  {
+    "id": 4,
+    "user": "gonzalo.consorti@bue.edu.ar",
+    "action": "Actualizó información de Especialidades",
+    "type": "doc",
+    "date": "2026-05-04T23:28:56.481Z"
+  },
+  {
+    "id": 5,
+    "user": "gonzalo.consorti@bue.edu.ar",
+    "action": "Actualizó la configuración global",
+    "type": "system",
+    "date": "2026-05-04T23:30:05.347Z"
+  },
+  {
+    "id": 6,
+    "user": "gonzalo.consorti@bue.edu.ar",
+    "action": "Actualizó la configuración global",
+    "type": "system",
+    "date": "2026-05-04T23:30:13.093Z"
+  },
+  {
+    "id": 7,
+    "user": "gonzalo.consorti@bue.edu.ar",
+    "action": "Gestionó permisos de usuarios",
+    "type": "system",
+    "date": "2026-05-04T23:33:28.385Z"
+  },
+  {
+    "id": 8,
+    "user": "gonzalo.consorti@bue.edu.ar",
+    "action": "Gestionó permisos de usuarios",
+    "type": "system",
+    "date": "2026-05-04T23:33:44.300Z"
+  },
+  {
+    "id": 9,
+    "user": "gonzalo.consorti@bue.edu.ar",
+    "action": "Actualizó lista de accesos",
+    "type": "system",
+    "date": "2026-05-04T23:41:11.126Z"
+  },
+  {
+    "id": 10,
+    "user": "gonzalo.consorti@bue.edu.ar",
+    "action": "Actualizó información en Espacio Profesores",
+    "type": "doc",
+    "date": "2026-05-04T23:43:16.866Z"
+  },
+  {
+    "id": 11,
+    "user": "gonzalo.consorti@bue.edu.ar",
+    "action": "Actualizó información en Espacio Alumnos",
+    "type": "doc",
+    "date": "2026-05-04T23:43:23.271Z"
+  },
+  {
+    "id": 12,
+    "user": "gonzalo.consorti@bue.edu.ar",
+    "action": "Actualizó información de Cooperadora",
+    "type": "system",
+    "date": "2026-05-04T23:43:36.492Z"
+  },
+  {
+    "id": 13,
+    "user": "gonzalo.consorti@bue.edu.ar",
+    "action": "Modificó configuración de alertas",
+    "type": "system",
+    "date": "2026-05-04T23:43:52.743Z"
+  },
+  {
+    "id": 14,
+    "user": "gonzalo.consorti@bue.edu.ar",
+    "action": "Modificó configuración de alertas",
+    "type": "system",
+    "date": "2026-05-04T23:43:59.819Z"
+  },
+  {
+    "id": 15,
+    "user": "gonzalo.consorti@bue.edu.ar",
+    "action": "Actualizó configuración general",
+    "type": "system",
+    "date": "2026-05-04T23:44:07.085Z"
+  }
+]

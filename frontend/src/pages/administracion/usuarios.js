@@ -29,49 +29,43 @@ const UsuariosAdmin = () => {
         ? users 
         : users.filter(u => u.role !== 'SuperAdmin');
 
-    const saveUsers = (newUsers) => {
+    const saveUsers = (newUsers, customDescription) => {
+        const adminEmail = localStorage.getItem('adminUserEmail') || 'Admin';
         setUsers(newUsers);
         fetch('/api/admin/saveData', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ fileName: 'auth.json', data: newUsers })
+            body: JSON.stringify({ 
+                fileName: 'auth.json', 
+                data: newUsers,
+                user: adminEmail,
+                description: customDescription || 'Actualizó la lista de usuarios'
+            })
         });
     };
 
     const [showUserModal, setShowUserModal] = useState(false);
     const [showRoleModal, setShowRoleModal] = useState(false);
 
-    const sections = [
-        { id: 'dashboard', name: 'Dashboard' },
-        { id: 'configuracion', name: 'Configuración & Alertas' },
-        { id: 'noticias', name: 'Noticias' },
-        { id: 'especialidades', name: 'Especialidades' },
-        { id: 'autoridades', name: 'Autoridades' },
-        { id: 'alumnos', name: 'Alumnos' },
-        { id: 'profesores', name: 'Profesores' },
-        { id: 'cooperadora', name: 'Cooperadora' },
-        { id: 'multimedia', name: 'Centro de Medios' },
-        { id: 'calendario', name: 'Calendario Escolar' },
-        { id: 'usuarios', name: 'Gestión de Usuarios' },
-        { id: 'logs', name: 'Registro de Actividad' }
-    ];
-
-    const [activeTab, setActiveTab] = useState('usuarios');
-    const [roles, setRoles] = useState({});
-
-    useEffect(() => {
-        fetch('/api/admin/getData?fileName=config.json')
-            .then(res => res.json())
-            .then(data => {
-                if (data.roles) setRoles(data.roles);
-            })
-            .catch(err => console.error('Error loading roles:', err));
-    }, []);
+    // ... (sections definition)
 
     const deleteUser = (id) => {
-        if(confirm('¿Seguro que querés eliminar este acceso?')) {
-            saveUsers(users.filter(u => u.id !== id));
+        const userToDelete = users.find(u => u.id === id);
+        if(confirm(`¿Seguro que querés eliminar el acceso de ${userToDelete?.email}?`)) {
+            saveUsers(users.filter(u => u.id !== id), `Eliminó el acceso del usuario: ${userToDelete?.email}`);
         }
+    };
+
+    const changeUserRole = (id, newRole) => {
+        const userToUpdate = users.find(u => u.id === id);
+        const updatedUsers = users.map(u => u.id === id ? {...u, role: newRole} : u);
+        saveUsers(updatedUsers, `Cambió el rol de ${userToUpdate.email} a ${newRole}`);
+    };
+
+    const handleCreateUser = (newUser) => {
+        const updated = [...users, { ...newUser, id: Date.now(), lastLogin: 'Nunca', lastIp: 'N/A' }];
+        saveUsers(updated, `Creó el usuario ${newUser.email} con el rol ${newUser.role}`);
+        setShowUserModal(false);
     };
 
     const togglePrivilege = (role, section) => {

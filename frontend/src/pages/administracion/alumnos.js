@@ -37,11 +37,12 @@ const AlumnosAdmin = () => {
     }, []);
 
     const handleSave = async () => {
+        const user = localStorage.getItem('adminUserEmail') || 'Admin';
         try {
             const response = await fetch('/api/admin/saveData', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ fileName: 'alumnos.json', data: { categories, resources, projects } }),
+                body: JSON.stringify({ fileName: 'alumnos.json', data: { categories, resources, projects }, user }),
             });
             if (response.ok) showNotification('¡Cambios en Alumnos guardados!');
             else showNotification('Error al guardar.', 'error');
@@ -68,6 +69,7 @@ const AlumnosAdmin = () => {
         const file = e.target.files[0];
         if (!file) return;
         setIsUploading(true);
+        const user = localStorage.getItem('adminUserEmail') || 'Admin';
         try {
             const reader = new FileReader();
             reader.readAsDataURL(file);
@@ -79,7 +81,8 @@ const AlumnosAdmin = () => {
                         image: reader.result,
                         fileName: file.name,
                         type: type, // 'recurso_pdf' or 'proyecto_imagen'
-                        fileType: file.name.endsWith('.pdf') ? 'pdf' : 'image'
+                        fileType: file.name.endsWith('.pdf') ? 'pdf' : 'image',
+                        user
                     })
                 });
                 const data = await response.json();

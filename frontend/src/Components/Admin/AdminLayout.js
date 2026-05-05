@@ -107,10 +107,6 @@ const AdminLayout = ({ children, title }) => {
                     ))}
                 </nav>
                 <div className={styles.sidebarFooter}>
-                    <button onClick={toggleDarkMode} className={styles.themeToggle}>
-                        {darkMode ? <FaSun /> : <FaMoon />}
-                        <span>{darkMode ? 'Modo Claro' : 'Modo Oscuro'}</span>
-                    </button>
                     <Link href="/" className={styles.backButton}>
                         Volver a la Web
                     </Link>
@@ -119,13 +115,18 @@ const AdminLayout = ({ children, title }) => {
             <main className={styles.content}>
                 <header className={styles.topbar}>
                     <h1>{title || 'Administración ET 32'}</h1>
-                    <div className={styles.userProfile}>
-                        <div className={styles.userInfo}>
-                            <span className={styles.userName}>{userEmail.split('@')[0]}</span>
-                            <span className={styles.userRole}>SuperAdmin</span>
-                        </div>
-                        <div className={styles.avatar} onClick={() => setShowProfile(true)} style={{cursor: 'pointer'}}>
-                            {userEmail ? userEmail[0].toUpperCase() : 'A'}
+                    <div className={styles.topbarActions}>
+                        <button onClick={toggleDarkMode} className={styles.themeToggle} title={darkMode ? 'Modo Claro' : 'Modo Oscuro'}>
+                            {darkMode ? <FaSun /> : <FaMoon />}
+                        </button>
+                        <div className={styles.userProfile}>
+                            <div className={styles.userInfo}>
+                                <span className={styles.userName}>{userEmail.split('@')[0]}</span>
+                                <span className={styles.userRole}>SuperAdmin</span>
+                            </div>
+                            <div className={styles.avatar} onClick={() => setShowProfile(true)} style={{cursor: 'pointer'}}>
+                                {userEmail ? userEmail[0].toUpperCase() : 'A'}
+                            </div>
                         </div>
                     </div>
                 </header>

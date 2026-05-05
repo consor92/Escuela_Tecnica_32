@@ -29,11 +29,18 @@ const Especialidades = () => {
     }, []);
 
     const handleSaveAll = async () => {
+        const user = localStorage.getItem('adminUserEmail') || 'Admin';
+        const activeTitle = (disciplines.especialidades || disciplines).find(d => d.id === activeTab)?.title || 'Especialidades';
         try {
             const response = await fetch('/api/admin/saveData', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ fileName: 'disciplines.json', data: disciplines }),
+                body: JSON.stringify({ 
+                    fileName: 'disciplines.json', 
+                    data: disciplines, 
+                    user,
+                    description: `Actualizó información de la especialidad: ${activeTitle}`
+                }),
             });
             if (response.ok) showNotification('Especialidades guardadas exitosamente.');
             else showNotification('Error al guardar.', 'error');
@@ -116,6 +123,7 @@ const Especialidades = () => {
         const file = e.target.files[0];
         if (!file) return;
         setIsUploading(true);
+        const user = localStorage.getItem('adminUserEmail') || 'Admin';
         try {
             const reader = new FileReader();
             reader.readAsDataURL(file);
@@ -127,7 +135,8 @@ const Especialidades = () => {
                         image: reader.result,
                         fileName: file.name,
                         type: extraInfo?.materia ? `programa_${extraInfo.materia}` : `especialidad_${activeTab}`,
-                        fileType: type === 'pdf' ? 'pdf' : 'image'
+                        fileType: type === 'pdf' ? 'pdf' : 'image',
+                        user
                     })
                 });
                 const data = await response.json();

@@ -32,11 +32,24 @@ const Configuracion = () => {
     }, []);
 
     const handleSave = async () => {
+        const user = localStorage.getItem('adminUserEmail') || 'Admin';
+        
+        // Determinar qué cambió principalmente para la descripción
+        let description = 'Actualizó la configuración general';
+        if (config.alerts?.active) description = `Actualizó y activó alerta crítica: "${config.alerts.message.substring(0, 30)}..."`;
+        else if (config.maintenance) description = 'Activó el modo mantenimiento del sitio';
+        else if (!config.maintenance && config.maintenance !== undefined) description = 'Desactivó el modo mantenimiento';
+
         try {
             const response = await fetch('/api/admin/saveData', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ fileName: 'config.json', data: config }),
+                body: JSON.stringify({ 
+                    fileName: 'config.json', 
+                    data: config,
+                    user,
+                    description
+                }),
             });
             if (response.ok) showNotification('Configuración guardada exitosamente.');
             else showNotification('Error al guardar.', 'error');

@@ -1,15 +1,30 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import AdminLayout from '../../Components/Admin/AdminLayout';
 import styles from './logs.module.css';
 import { FaHistory, FaFilter, FaDownload } from 'react-icons/fa';
 
 const LogsAdmin = () => {
-    const [logs, setLogs] = useState([
-        { id: 1, user: 'Admin Principal', action: 'Editó Especialidad: Computación', date: '2026-04-29 14:30', ip: '192.168.1.15' },
-        { id: 2, user: 'Secretaría', action: 'Subió PDF: Reglamento 2026', date: '2026-04-29 12:15', ip: '192.168.1.20' },
-        { id: 3, user: 'Admin Principal', action: 'Creó usuario: Coordinación', date: '2026-04-28 09:00', ip: '192.168.1.15' },
-        { id: 4, user: 'Coordinación', action: 'Eliminó proyecto: Feria 2024', date: '2026-04-27 18:45', ip: '192.168.1.55' },
-    ]);
+    const [logs, setLogs] = useState([]);
+    const [loading, setLoading] = useState(true);
+
+    useEffect(() => {
+        fetch('/api/admin/logs')
+            .then(res => res.json())
+            .then(data => {
+                setLogs(data);
+                setLoading(false);
+            })
+            .catch(err => {
+                console.error('Error fetching logs:', err);
+                setLoading(false);
+            });
+    }, []);
+
+    const formatTime = (isoString) => {
+        const date = new Date(isoString);
+        return date.toLocaleTimeString('es-AR', { hour: '2-digit', minute: '2-digit', second: '2-digit' }) + ' ' + 
+               date.toLocaleDateString('es-AR', { day: '2-digit', month: '2-digit', year: 'numeric' });
+    };
 
     return (
         <AdminLayout title="Registro de Actividad">
@@ -23,26 +38,36 @@ const LogsAdmin = () => {
                 </div>
 
                 <div className={styles.tableCard}>
-                    <table className={styles.table}>
-                        <thead>
-                            <tr>
-                                <th>Fecha</th>
-                                <th>Usuario</th>
-                                <th>Acción Realizada</th>
-                                <th>Dirección IP</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            {logs.map(log => (
-                                <tr key={log.id}>
-                                    <td className={styles.date}>{log.date}</td>
-                                    <td><strong>{log.user}</strong></td>
-                                    <td>{log.action}</td>
-                                    <td className={styles.ip}>{log.ip}</td>
+                    {loading ? <p style={{padding: '20px'}}>Cargando registros...</p> : (
+                        <table className={styles.table}>
+                            <thead>
+                                <tr>
+                                    <th>Fecha y Hora</th>
+                                    <th>Usuario</th>
+                                    <th>Acción Realizada</th>
+                                    <th>Tipo</th>
                                 </tr>
-                            ))}
-                        </tbody>
-                    </table>
+                            </thead>
+                            <tbody>
+                                {logs.length > 0 ? logs.map(log => (
+                                    <tr key={log.id}>
+                                        <td className={styles.date}>{formatTime(log.date)}</td>
+                                        <td><strong>{log.user}</strong></td>
+                                        <td>{log.action}</td>
+                                        <td className={styles.type}>
+                                            <span className={`${styles.badge} ${styles[log.type]}`}>
+                                                {log.type.toUpperCase()}
+                                            </span>
+                                        </td>
+                                    </tr>
+                                )) : (
+                                    <tr>
+                                        <td colSpan="4" style={{textAlign: 'center', padding: '20px'}}>No hay registros disponibles.</td>
+                                    </tr>
+                                )}
+                            </tbody>
+                        </table>
+                    )}
                 </div>
             </div>
         </AdminLayout>

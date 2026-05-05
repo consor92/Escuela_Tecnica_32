@@ -1,6 +1,7 @@
 import { promises as fs } from 'fs';
 import path from 'path';
 import sharp from 'sharp';
+import { addLog } from '../../../lib/dataLoader';
 
 export const config = {
   api: {
@@ -16,7 +17,7 @@ export default async function handler(req, res) {
   }
 
   try {
-    const { image, fileName, type, fileType } = req.body; // base64 data
+    const { image, fileName, type, fileType, user } = req.body; // base64 data
 
     if (!image) {
       return res.status(400).json({ message: 'No data provided' });
@@ -52,12 +53,14 @@ export default async function handler(req, res) {
       const url = `/${targetSubDir}/${finalFileName}`;
       const newMeta = {
         url: url,
-        uploader: 'Admin',
+        uploader: user || 'Admin',
         uploadDate: new Date().toISOString(),
         section: type,
         isOptimized: false
       };
       await saveMetadata(newMeta);
+      
+      addLog(user, `Subió documento: ${finalFileName}`, 'doc');
       
       return res.status(200).json({ message: 'Documento subido correctamente', url: url });
     } else {
@@ -73,12 +76,14 @@ export default async function handler(req, res) {
       const url = `/${targetSubDir}/${finalFileName}`;
       const newMeta = {
         url: url,
-        uploader: 'Admin',
+        uploader: user || 'Admin',
         uploadDate: new Date().toISOString(),
         section: type,
         isOptimized: true
       };
       await saveMetadata(newMeta);
+
+      addLog(user, `Subió imagen: ${finalFileName}`, 'media');
 
       return res.status(200).json({ message: 'Imagen subida y optimizada', url: url });
     }
@@ -89,7 +94,7 @@ export default async function handler(req, res) {
 }
 
 async function saveMetadata(newMeta) {
-  const metadataPath = path.join(process.cwd(), 'src', 'data', 'file_metadata.json');
+  const metadataPath = path.join(process.cwd(), 'data', 'file_metadata.json');
   let metadata = [];
   try {
     const metaData = await fs.readFile(metadataPath, 'utf8');

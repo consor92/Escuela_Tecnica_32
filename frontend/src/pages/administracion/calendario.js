@@ -59,6 +59,7 @@ const CalendarioAdmin = () => {
     });
 
     const saveEvents = async () => {
+        const user = localStorage.getItem('adminUserEmail') || 'Admin';
         try {
             const eventsToSave = events.map(({ startDate, endDate, ...e }) => ({
                 ...e,
@@ -66,7 +67,7 @@ const CalendarioAdmin = () => {
                 endDate: endDate
             }));
 
-            // Sincronizar alertas importantes
+            // ... (alertas importantes logic se mantiene igual)
             const nuevasAlertas = events
                 .filter(e => e.type === 'Aviso importante')
                 .map(e => ({
@@ -91,17 +92,21 @@ const CalendarioAdmin = () => {
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({
                     fileName: 'calendar_events.json',
-                    data: eventsToSave
+                    data: eventsToSave,
+                    user,
+                    description: `Actualizó la agenda institucional (${eventsToSave.length} eventos registrados)`
                 })
             });
 
-            // Guardar config
+            // Guardar config (si hubo cambios en alertas)
             const resConfig = await fetch('/api/admin/saveData', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({
                     fileName: 'config.json',
-                    data: updatedConfig
+                    data: updatedConfig,
+                    user,
+                    description: 'Sincronizó alertas importantes desde el calendario'
                 })
             });
 

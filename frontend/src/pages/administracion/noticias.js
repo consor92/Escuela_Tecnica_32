@@ -17,11 +17,18 @@ const NoticiasAdmin = () => {
     }, []);
 
     const persistData = async (updatedNews) => {
+        const user = localStorage.getItem('adminUserEmail') || 'Admin';
+        const actionDesc = editingNews ? `Editó la noticia: ${editingNews.titulo}` : 'Actualizó el listado de noticias';
         try {
             await fetch('/api/admin/saveData', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ fileName: 'news.json', data: updatedNews }),
+                body: JSON.stringify({ 
+                    fileName: 'news.json', 
+                    data: updatedNews, 
+                    user,
+                    description: actionDesc
+                }),
             });
         } catch (err) {
             console.error('Error guardando noticias:', err);
@@ -41,7 +48,6 @@ const NoticiasAdmin = () => {
     };
 
     const handleSaveEdit = async () => {
-        // Convertir saltos de línea en <p> si no tienen etiquetas HTML de bloque
         let contenidoProcesado = editingNews.contenido;
         if (!contenidoProcesado.includes('<')) {
             contenidoProcesado = contenidoProcesado
@@ -89,6 +95,7 @@ const NoticiasAdmin = () => {
         if (!file) return;
 
         setIsUploading(true);
+        const user = localStorage.getItem('adminUserEmail') || 'Admin';
         
         try {
             const reader = new FileReader();
@@ -102,7 +109,8 @@ const NoticiasAdmin = () => {
                     body: JSON.stringify({
                         image: base64,
                         fileName: file.name,
-                        type: 'noticia'
+                        type: 'noticia',
+                        user
                     })
                 });
 
