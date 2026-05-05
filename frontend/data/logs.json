@@ -1,5 +1,12 @@
 [
   {
+    "id": 18,
+    "user": "gonzalo.consorti@bue.edu.ar",
+    "action": "Actualizó el listado de noticias",
+    "type": "news",
+    "date": "2026-05-05T00:56:07.904Z"
+  },
+  {
     "id": 17,
     "user": "gonzalo.consorti@bue.edu.ar",
     "action": "Actualizó y activó alerta crítica: \"Simulacro de Evacuacion 04/05 ...\"",

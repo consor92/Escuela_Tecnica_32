@@ -26,9 +26,10 @@ const Multimedia = () => {
         try {
             const res = await fetch('/api/admin/files');
             const data = await res.json();
-            setFiles(data);
+            setFiles(Array.isArray(data) ? data : []);
         } catch (error) {
             console.error("Error fetching files");
+            setFiles([]);
         }
         setLoading(false);
     };

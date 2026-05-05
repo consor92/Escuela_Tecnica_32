@@ -1,14 +1,5 @@
 [
   {
-    "id": 7,
-    "titulo": "Nueva Noticia",
-    "fecha": "2026-05-04",
-    "descripcion": "asdasd",
-    "contenido": "<p>asdasd</p>sfsdfsdf",
-    "imagen_principal": "",
-    "carrusel": []
-  },
-  {
     "id": 5,
     "titulo": "Promoción Acompañada 2026: Inscripciones Abiertas!!",
     "fecha": "2026-04-27",

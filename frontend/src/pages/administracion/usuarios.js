@@ -46,6 +46,17 @@ const UsuariosAdmin = () => {
 
     const [showUserModal, setShowUserModal] = useState(false);
     const [showRoleModal, setShowRoleModal] = useState(false);
+    const [activeTab, setActiveTab] = useState('usuarios');
+    const [roles, setRoles] = useState({});
+
+    useEffect(() => {
+        fetch('/api/admin/getData?fileName=config.json')
+            .then(res => res.json())
+            .then(data => {
+                if (data.roles) setRoles(data.roles);
+            })
+            .catch(err => console.error('Error loading roles:', err));
+    }, []);
 
     // ... (sections definition)
 
