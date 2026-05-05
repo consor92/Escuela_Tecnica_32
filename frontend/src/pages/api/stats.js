@@ -1,6 +1,13 @@
 import { readData, writeData } from '../../lib/dataLoader';
+import fs from 'fs';
+import path from 'path';
 
 export default function handler(req, res) {
+    const filePath = path.resolve(process.cwd(), 'data', 'stats.json');
+    if (!fs.existsSync(filePath)) {
+        fs.writeFileSync(filePath, JSON.stringify({ totalVisits: 0, lastVisits: [] }));
+    }
+
     if (req.method === 'GET') {
         try {
             const stats = readData('stats.json');
@@ -14,10 +21,9 @@ export default function handler(req, res) {
             const stats = readData('stats.json');
             
             if (isNewSession) {
-                stats.totalVisits += 1;
-                
-                // Registrar la hora de la visita para uso interno
+                stats.totalVisits = (stats.totalVisits || 0) + 1;
                 const now = new Date();
+                stats.lastVisits = stats.lastVisits || [];
                 stats.lastVisits.unshift(now.toISOString());
                 if (stats.lastVisits.length > 100) stats.lastVisits.pop();
             }
