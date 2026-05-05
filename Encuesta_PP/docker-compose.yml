@@ -1,0 +1,27 @@
+version: '3.8'
+
+services:
+  web:
+    build: .
+    ports:
+      - "8080:80"
+    volumes:
+      - ./src:/var/www/html
+      - ./users.csv:/var/www/html/public/users.csv
+    environment:
+      - DB_HOST=db
+      - DB_NAME=scrum_eval
+      - DB_USER=admin
+      - DB_PASS=admin123
+    depends_on:
+      - db
+
+  db:
+    image: mariadb:10.6
+    environment:
+      - MYSQL_DATABASE=scrum_eval
+      - MYSQL_USER=admin
+      - MYSQL_PASSWORD=admin123
+      - MYSQL_ROOT_PASSWORD=rootpass
+    volumes:
+      - ./init.sql:/docker-entrypoint-initdb.d/init.sql
