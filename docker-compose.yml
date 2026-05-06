@@ -75,10 +75,10 @@ services:
       - "3000:3000"
     volumes:
       # PERSISTENCIA: Se mapea la carpeta public completa
-      - uploads:/app/public/uploads
-      - docs:/app/public/docs
-      - images:/app/public/images
-      - data:/app/data
+        - ./frontend/public/uploads:/app/public/uploads
+        - ./frontend/public/docs:/app/public/docs
+        - ./frontend/public/images:/app/public/images
+        - ./frontend/data:/app/data
     # depends_on:
     #   - api
     restart: unless-stopped
@@ -128,7 +128,7 @@ services:
 volumes:
   #mongo_data:
   #mysql_data:
-  uploads:
-  images:
-  docs:
-  data:
+  #uploads:
+  #images:
+  #docs:
+  #data:
