@@ -79,7 +79,7 @@ services:
         - ./frontend/public/docs:/app/public/docs
         - ./frontend/public/images:/app/public/images
         - ./frontend/data:/app/data
-    pends_on:
+    #pends_on:
     #   - api
     restart: unless-stopped
 
