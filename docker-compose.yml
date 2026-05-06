@@ -79,7 +79,7 @@ services:
         - ./frontend/public/docs:/app/public/docs
         - ./frontend/public/images:/app/public/images
         - ./frontend/data:/app/data
-    # depends_on:
+    pends_on:
     #   - api
     restart: unless-stopped
 
@@ -125,7 +125,7 @@ services:
 #      - frontend
 #    restart: unless-stopped
 
-volumes:
+#volumes:
   #mongo_data:
   #mysql_data:
   #uploads:
