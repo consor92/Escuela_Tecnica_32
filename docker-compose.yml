@@ -77,6 +77,7 @@ services:
       # PERSISTENCIA: Se mapea la carpeta public completa
       - uploads:/app/public/uploads
       - docs:/app/public/docs
+      - images:/app/public/images
       - data:/app/data
     # depends_on:
     #   - api
@@ -111,22 +112,23 @@ services:
 #      - ./php/php.ini:/usr/local/etc/php/php.ini
 #    restart: unless-stopped
 
-  nginx:
-    image: nginx:latest
-    container_name: nginx_proxy
-    ports:
-      - "80:80"
-    volumes:
-      - ./nginx/default.conf:/etc/nginx/conf.d/default.conf
-      - uploads:/var/www/uploads
-      - docs:/var/www/docs
-    depends_on:
-      - frontend
-    restart: unless-stopped
+#  nginx:
+#    image: nginx:latest
+#    container_name: nginx_proxy
+#    ports:
+#      - "80:80"
+#    volumes:
+#      - ./nginx/default.conf:/etc/nginx/conf.d/default.conf
+#      - uploads:/var/www/uploads
+#      - docs:/var/www/docs
+#    depends_on:
+#      - frontend
+#    restart: unless-stopped
 
 volumes:
   #mongo_data:
   #mysql_data:
   uploads:
+  images:
   docs:
   data:

@@ -50,6 +50,12 @@ export default async function handler(req, res) {
       const filePath = path.join(uploadDir, finalFileName);
       await fs.writeFile(filePath, buffer);
       
+      try {
+        await fs.chmod(filePath, 0o664);
+      } catch (err) {
+        console.error("Error fijando permisos PDF:", err);
+      }
+      
       const url = `/${targetSubDir}/${finalFileName}`;
       const newMeta = {
         url: url,
@@ -72,6 +78,12 @@ export default async function handler(req, res) {
         .resize(1200, null, { withoutEnlargement: true })
         .webp({ quality: 80 })
         .toFile(filePath);
+      
+      try {
+        await fs.chmod(filePath, 0o664);
+      } catch (err) {
+        console.error("Error fijando permisos imagen:", err);
+      }
 
       const url = `/${targetSubDir}/${finalFileName}`;
       const newMeta = {
