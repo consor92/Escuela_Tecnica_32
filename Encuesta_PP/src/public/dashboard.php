@@ -11,10 +11,19 @@ $user_id = $_SESSION['user_id'];
 $success = '';
 $error = '';
 
-$stmt = $pdo->prepare("SELECT * FROM evaluation_periods WHERE CURDATE() BETWEEN start_date AND end_date LIMIT 1");
+// Prioridad: Periodo marcado como is_active = 1
+$stmt = $pdo->prepare("SELECT * FROM evaluation_periods WHERE is_active = 1 LIMIT 1");
 $stmt->execute();
 $current_period = $stmt->fetch();
 
+// Si no hay ninguno activo manualmente, buscar por fecha actual
+if (!$current_period) {
+    $stmt = $pdo->prepare("SELECT * FROM evaluation_periods WHERE CURDATE() BETWEEN start_date AND end_date LIMIT 1");
+    $stmt->execute();
+    $current_period = $stmt->fetch();
+}
+
+// Si sigue sin haber (periodos terminados o no empezados), buscar el más cercano
 if (!$current_period) {
     $stmt = $pdo->query("SELECT * FROM evaluation_periods ORDER BY ABS(DATEDIFF(CURDATE(), start_date)) LIMIT 1");
     $current_period = $stmt->fetch();

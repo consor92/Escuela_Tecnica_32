@@ -1,6 +1,14 @@
 CREATE DATABASE IF NOT EXISTS scrum_eval;
 USE scrum_eval;
 
+CREATE TABLE IF NOT EXISTS settings (
+    id INT PRIMARY KEY,
+    key_name VARCHAR(50) UNIQUE,
+    val TINYINT(1)
+);
+
+INSERT IGNORE INTO settings (id, key_name, val) VALUES (1, 'evaluations_enabled', 1);
+
 -- Tabla de Roles
 CREATE TABLE roles (
     id INT PRIMARY KEY,
