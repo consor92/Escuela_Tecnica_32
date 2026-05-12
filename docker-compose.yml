@@ -59,7 +59,9 @@ services:
       - db_data:/var/lib/mysql
 
   app:
-    build: ./Calificacion_Grupos
+    build: 
+      context: ./Calificacion_Grupos
+      dockerfile: Dockerfile
     container_name: encuesta_app
     restart: always
     ports:
