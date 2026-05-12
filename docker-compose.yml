@@ -55,7 +55,7 @@ services:
     ports:
       - "3307:3306"
     volumes:
-      - -./Calificacion_Grupos/init.sql:/docker-entrypoint-initdb.d/init.sql
+      - ./Calificacion_Grupos/init.sql:/docker-entrypoint-initdb.d/init.sql
       - db_data:/var/lib/mysql
 
   app:
