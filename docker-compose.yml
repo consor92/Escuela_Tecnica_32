@@ -83,6 +83,36 @@ services:
     #   - api
     restart: unless-stopped
 
+  db:
+    image: mysql:8.0
+    container_name: encuesta_db
+    restart: always
+    environment:
+      MYSQL_DATABASE: scrum_eval
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_USER: admin
+      MYSQL_PASSWORD: admin123
+    ports:
+      - "3307:3307"
+    volumes:
+      - init.sql:/docker-entrypoint-initdb.d/init.sql
+      - db_data:/var/lib/mysql
+
+  app:
+    build: .
+    container_name: encuesta_app
+    restart: always
+    ports:
+      - "3001:3001"
+    environment:
+      DB_HOST: db
+      DB_USER: admin
+      DB_PASSWORD: admin123
+      DB_NAME: scrum_eval
+      JWT_SECRET: super-secret-key
+    depends_on:
+      - db
+
 #  backadmin:
 #    build:
 #      context: ./BackAdmin
