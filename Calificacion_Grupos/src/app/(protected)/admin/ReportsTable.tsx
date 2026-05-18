@@ -138,6 +138,9 @@ export default function ReportsTable({ initialReports, teams, unassignedUsers }:
               <th onClick={() => requestSort('avg_teacher_val')} style={{ cursor: 'pointer', position: 'sticky', top: 0, zIndex: 20, background: 'var(--card-bg)' }}>
                 <div style={{ display: 'flex', alignItems: 'center', gap: '4px' }}>Prof <SortIcon column="avg_teacher_val" /></div>
               </th>
+              <th onClick={() => requestSort('pending_count')} style={{ cursor: 'pointer', position: 'sticky', top: 0, zIndex: 20, background: 'var(--card-bg)' }}>
+                <div style={{ display: 'flex', alignItems: 'center', gap: '4px' }}>Pend <SortIcon column="pending_count" /></div>
+              </th>
               <th style={{ position: 'sticky', top: 0, zIndex: 20, background: 'var(--card-bg)' }}>Acciones</th>
             </tr>
           </thead>
@@ -158,9 +161,18 @@ export default function ReportsTable({ initialReports, teams, unassignedUsers }:
                     <td>{tw.toFixed(1)}</td>
                     <td>{dv.toFixed(1)}</td>
                     <td>{cw.toFixed(1)}</td>
-                    <td style={{ background: 'rgba(74,144,226,0.1)', fontWeight: 700 }}>{r.avg_general.toFixed(1)}</td>
+                    <td style={{ background: 'rgba(74,144,226,0.1)', fontWeight: 700 }}>{parseFloat(r.avg_general_bimestral || 0).toFixed(1)}</td>
                     <td style={{ background: 'rgba(80,227,194,0.1)' }}>{smNota ? smNota.toFixed(1) : '-'}</td>
                     <td style={{ background: 'rgba(159,122,234,0.1)', fontWeight: 700 }}>{profNota > 0 ? profNota.toFixed(1) : '-'}</td>
+                    <td style={{ textAlign: 'center' }}>
+                      {r.pending_count > 0 ? (
+                        <span className="tag" style={{ background: '#e53e3e', color: 'white', fontWeight: 800, padding: '4px 8px', borderRadius: '8px' }}>
+                          {r.pending_count}
+                        </span>
+                      ) : (
+                        <span style={{ color: '#38a169' }}><Check size={18} /></span>
+                      )}
+                    </td>
                     <td>
                       {resetUserId === r.id ? (
                         <div style={{ display: 'flex', gap: '4px' }}>

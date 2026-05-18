@@ -52,6 +52,16 @@ export default async function DashboardPage() {
   );
   const doneIds = doneEvals.map((e: any) => e.evaluatee_id);
 
+  // Fetch detailed pending evaluations
+  const [pendingDetailed]: any = await pool.execute(`
+    SELECT ep.label as p_label, u2.first_name, u2.last_name
+    FROM evaluation_periods ep
+    JOIN users u2 ON u2.team_id = ? AND u2.id != ?
+    LEFT JOIN evaluations e2 ON e2.evaluator_id = ? AND e2.evaluatee_id = u2.id AND e2.period_id = ep.id
+    WHERE ep.start_date <= CURDATE() AND e2.id IS NULL
+    ORDER BY ep.start_date ASC
+  `, [user.team_id, userId, userId]);
+
   // Fetch my evolution stats (anonymous)
   const [myStats]: any = await pool.execute(`
     SELECT 
@@ -69,6 +79,19 @@ export default async function DashboardPage() {
         <h2 style={{ margin: 0 }}>Hola, {user.first_name} 👋</h2>
         <p style={{ opacity: 0.9, marginBottom: 0 }}>{user.team_name || 'Sin equipo'} • {user.school_year} - {user.year_div}</p>
       </div>
+
+      {pendingDetailed.length > 0 && (
+        <div className="alert alert-error" style={{ marginTop: '1.5rem', background: '#fff5f5', border: '1px solid #feb2b2', color: '#c53030' }}>
+          <h4 style={{ margin: '0 0 10px 0' }}>⚠️ Tienes evaluaciones pendientes de periodos anteriores:</h4>
+          <ul style={{ margin: 0, paddingLeft: '20px' }}>
+            {pendingDetailed.map((p: any, i: number) => (
+              <li key={i}>
+                <strong>{p.p_label}</strong>: Falta evaluar a <strong>{p.first_name} {p.last_name}</strong>
+              </li>
+            ))}
+          </ul>
+        </div>
+      )}
 
       <div className="grid" style={{ gridTemplateColumns: '1.5fr 1fr', marginTop: '1.5rem' }}>
         {/* Lado Izquierdo: Evaluaciones */}

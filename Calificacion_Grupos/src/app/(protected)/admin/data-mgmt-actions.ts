@@ -4,7 +4,6 @@ import pool from '@/lib/db';
 import md5 from 'md5';
 
 export async function importUsersCSV(records: any[]) {
-    console.log(`[IMPORT] Iniciando procesamiento de ${records?.length} registros.`);
     const results: any[] = [];
     
     if (!records || !Array.isArray(records)) {
@@ -71,8 +70,6 @@ export async function importUsersCSV(records: any[]) {
         const cleanNombre = typeof nombre === 'string' ? nombre.trim() : null;
 
         if (!cleanEmail || !cleanNombre || !cleanEmail.includes('@')) {
-            // No agregamos nada a results aquí para no saturar la tabla, pero logueamos en el servidor
-            console.log(`[IMPORT] Fila omitida: Email=[${email}] Nombre=[${nombre}]`);
             continue;
         }
 
@@ -98,12 +95,10 @@ export async function importUsersCSV(records: any[]) {
                 results.push({ email: cleanEmail, nombre: `${cleanNombre} ${apellido || ''}`, status: 'success', message: 'Agregado' });
             }
         } catch (err: any) {
-            console.error(`[IMPORT] Error en registro ${cleanEmail}:`, err.message);
             results.push({ email: cleanEmail, status: 'error', message: err.message });
         }
     }
 
-    console.log(`[IMPORT] Finalizado. Procesados: ${results.length} de ${records.length}`);
     if (results.length === 0) {
         return [{ email: 'N/A', status: 'error', message: 'No se pudo procesar ninguna fila. Verifique que las columnas coincidan con el formato estándar.' }];
     }

@@ -110,7 +110,40 @@ export default function TeamCard({ team, academicOptions, onOpenChart, onOpenCom
                   <span>{m.last_name}, {m.first_name}</span>
                   <small style={{ color: 'var(--text-muted)', fontSize: '0.75rem' }}>{m.year_div || '-'} • {m.school_year || '-'}</small>
                 </div>
-                <button className="btn-icon" style={{ color: 'var(--text-muted)' }} onClick={() => assignUserToTeam(m.id, null)}><X size={14} /></button>
+                <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+                  {m.pendingCount > 0 && (
+                    <span title={`${m.pendingCount} evaluaciones pendientes`} style={{ 
+                      background: '#feb2b2', color: '#9b2c2c', fontSize: '0.55rem', 
+                      padding: '1px 5px', borderRadius: '4px', fontWeight: 800,
+                      display: 'flex', alignItems: 'center', gap: '2px'
+                    }}>
+                      <AlertTriangle size={8} /> PENDIENTE
+                    </span>
+                  )}
+                  <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-end', gap: '2px' }}>
+                    <div style={{ display: 'flex', gap: '4px', alignItems: 'center' }}>
+                      <small style={{ fontSize: '0.65rem', color: 'var(--text-muted)', fontWeight: 600 }}>COEVAL</small>
+                      <span style={{ 
+                        fontSize: '0.8rem', fontWeight: 800, padding: '1px 6px', borderRadius: '5px',
+                        background: m.bimestralCo >= 7 ? 'rgba(56, 161, 105, 0.15)' : m.bimestralCo >= 4 ? 'rgba(237, 137, 54, 0.15)' : 'rgba(229, 62, 62, 0.15)',
+                        color: m.bimestralCo >= 7 ? '#2f855a' : m.bimestralCo >= 4 ? '#c05621' : '#c53030'
+                      }}>
+                        {m.bimestralCo.toFixed(1)}
+                      </span>
+                    </div>
+                    <div style={{ display: 'flex', gap: '4px', alignItems: 'center' }}>
+                      <small style={{ fontSize: '0.65rem', color: 'var(--text-muted)', fontWeight: 600 }}>DOCENTE</small>
+                      <span style={{ 
+                        fontSize: '0.8rem', fontWeight: 800, padding: '1px 6px', borderRadius: '5px',
+                        background: m.bimestralProf >= 7 ? 'rgba(159, 122, 234, 0.15)' : m.bimestralProf >= 4 ? 'rgba(74, 144, 226, 0.15)' : 'rgba(113, 128, 150, 0.15)',
+                        color: m.bimestralProf >= 7 ? '#805ad5' : m.bimestralProf >= 4 ? '#3182ce' : '#4a5568'
+                      }}>
+                        {m.bimestralProf.toFixed(1)}
+                      </span>
+                    </div>
+                  </div>
+                  <button className="btn-icon" style={{ color: 'var(--text-muted)', marginLeft: '4px' }} onClick={() => assignUserToTeam(m.id, null)}><X size={14} /></button>
+                </div>
               </div>
             ))}
           </div>

@@ -11,8 +11,6 @@ export async function authenticate(prevState: string | undefined, formData: Form
     const password = formData.get('password') as string;
     const password_md5 = md5(password);
 
-    console.log(`Intento de login para: ${email}`);
-
     const [rows]: any = await pool.execute(
       'SELECT * FROM users WHERE email = ? AND (password_md5 = ? OR password_md5 = ?)',
       [email, password_md5, password]
@@ -21,7 +19,6 @@ export async function authenticate(prevState: string | undefined, formData: Form
     const user = rows[0];
 
     if (user) {
-      console.log(`Login exitoso para: ${email}, Rol: ${user.role_id}`);
       await login({
         id: user.id,
         username: user.username,
@@ -45,7 +42,6 @@ export async function authenticate(prevState: string | undefined, formData: Form
     if ((error as any).digest?.startsWith('NEXT_REDIRECT')) {
         throw error;
     }
-    console.error('Login error:', error);
     return 'Ocurrió un error inesperado.';
   }
 }

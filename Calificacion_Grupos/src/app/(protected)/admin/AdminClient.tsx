@@ -12,14 +12,22 @@ export default function AdminClient({
   initialData 
 }: any) {
   const { 
-    evalEnabled, 
-    currentPeriod, 
-    periods, 
-    academicOptions, 
-    unassignedUsers, 
-    teamsData, 
-    reports 
+  evalEnabled, 
+  periods, 
+  academicOptions, 
+  unassignedUsers, 
+  teamsData, 
+  finalReports
   } = initialData;
+
+  // Estados que dependen de initialData y pueden cambiar vía URL/Props
+  const [currentPeriod, setCurrentPeriod] = useState(initialData.currentPeriod);
+  const [reports, setReports] = useState(initialData.finalReports);
+
+  useEffect(() => {
+    setCurrentPeriod(initialData.currentPeriod);
+    setReports(initialData.finalReports);
+    }, [initialData.currentPeriod, initialData.finalReports]);
 
   const [activeModal, setActiveModal] = useState<string | null>(null);
   const [modalData, setModalData] = useState<any>(null);

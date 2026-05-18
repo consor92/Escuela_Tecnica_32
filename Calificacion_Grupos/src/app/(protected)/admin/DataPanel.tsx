@@ -20,11 +20,9 @@ export default function DataPanel() {
             header: false,
             skipEmptyLines: true,
             complete: async (csv) => {
-                console.log("CSV Parseado (crudo):", csv.data);
                 try {
                     let data = csv.data;
                     if (!data || data.length === 0) {
-                        console.warn("CSV vacío");
                         alert("El archivo está vacío");
                         setImporting(false);
                         return;
@@ -33,16 +31,12 @@ export default function DataPanel() {
                     // Detección de cabeceras
                     const firstRowStr = JSON.stringify(data[0]).toLowerCase();
                     if (firstRowStr.includes('email') || firstRowStr.includes('nombre') || firstRowStr.includes('usuario')) {
-                        console.log("Cabecera detectada y omitida");
                         data = data.slice(1);
                     }
 
-                    console.log("Enviando al servidor:", data.length, "filas");
                     const res = await importUsersCSV(data);
-                    console.log("Respuesta del servidor:", res);
                     setResults(res);
                 } catch (error: any) {
-                    console.error("Error importando:", error);
                     alert("Error crítico durante la importación: " + error.message);
                 } finally {
                     setImporting(false);
@@ -51,7 +45,6 @@ export default function DataPanel() {
                 }
             },
             error: (err) => {
-                console.error("Error parseando CSV:", err);
                 alert("Error leyendo el archivo CSV");
                 setImporting(false);
                 e.target.value = '';

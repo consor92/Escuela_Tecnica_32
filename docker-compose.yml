@@ -47,6 +47,7 @@ services:
     image: mysql:8.0
     container_name: encuesta_db
     restart: always
+    command: --innodb_flush_log_at_trx_commit=1 --sync_binlog=1
     environment:
       MYSQL_DATABASE: scrum_eval
       MYSQL_ROOT_PASSWORD: root
@@ -57,7 +58,8 @@ services:
     volumes:
       - ./Calificacion_Grupos/init.sql:/docker-entrypoint-initdb.d/init.sql
       - ./Calificacion_Grupos/users.sql:/docker-entrypoint-initdb.d/users.sql
-      - db_data:/var/lib/mysql
+      - ./mysql_prod_data:/var/lib/mysql
+      #- db_data:/var/lib/mysql
 
   app:
     build: 

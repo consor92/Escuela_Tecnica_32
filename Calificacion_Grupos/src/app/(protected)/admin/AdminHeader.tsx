@@ -1,7 +1,10 @@
 'use client';
 
-import { useState } from 'react';
-import Select from 'react-select';
+import { useState, useEffect } from 'react';
+import dynamic from 'next/dynamic';
+
+const Select = dynamic(() => import('react-select'), { ssr: false });
+import { useRouter } from 'next/navigation';
 import { 
   createTeam, 
   assignUserToTeam, 
@@ -21,11 +24,25 @@ export default function AdminHeader({
   unassignedUsers,
   teams 
 }: any) {
+  const [isMounted, setIsMounted] = useState(false);
+  const selectId = "admin-select-student";
   const [newTeamName, setNewTeamName] = useState('');
   const [selectedUser, setSelectedUser] = useState<any>(null);
   const [selectedTeam, setSelectedTeam] = useState('');
   const [academicType, setAcademicType] = useState('school_year');
   const [academicValue, setAcademicValue] = useState('');
+
+  const router = useRouter();
+
+  useEffect(() => {
+    setIsMounted(true);
+  }, []);
+
+  const handlePeriodChange = (periodId: string) => {
+    const url = new URL(window.location.href);
+    url.searchParams.set('period', periodId);
+    router.push(url.pathname + url.search);
+  };
 
   const handleRestore = async () => {
     if (confirm('¿ATENCIÓN: Esto borrará TODAS las evaluaciones, equipos y calificaciones actuales para restaurar los datos de users.csv?')) {
@@ -139,11 +156,15 @@ export default function AdminHeader({
             <h4 style={{ marginTop: 0 }}>Periodo Activo</h4>
             <select 
               value={currentPeriod?.id || ''} 
-              onChange={(e) => setActivePeriod(parseInt(e.target.value))}
+              onChange={(e) => {
+                const val = e.target.value;
+                setActivePeriod(parseInt(val));
+                handlePeriodChange(val);
+              }}
               style={{ padding: '8px' }}
             >
               {periods.map((p: any) => (
-                <option key={p.id} value={p.id}>{p.label} {p.id === currentPeriod?.id ? '(Actual)' : ''}</option>
+                <option key={p.id} value={p.id}>{p.label}</option>
               ))}
             </select>
           </div>
@@ -178,14 +199,18 @@ export default function AdminHeader({
         <div className="card" style={{ marginBottom: 0 }}>
           <h4 style={{ display: 'flex', alignItems: 'center', gap: '8px', marginTop: 0 }}><Users size={18} /> Asignar Alumno</h4>
           <div style={{ display: 'flex', gap: '5px', flexDirection: 'column' }}>
-            <Select
-              options={studentOptions}
-              value={selectedUser}
-              onChange={setSelectedUser}
-              placeholder="Buscar alumno..."
-              styles={customStyles}
-              isClearable
-            />
+            {isMounted && (
+              <Select
+                id={selectId}
+                instanceId={selectId}
+                options={studentOptions}
+                value={selectedUser}
+                onChange={setSelectedUser}
+                placeholder="Buscar alumno..."
+                styles={customStyles}
+                isClearable
+              />
+            )}
             <div style={{ display: 'flex', gap: '5px', marginTop: '5px' }}>
               <select 
                 value={selectedTeam} 
