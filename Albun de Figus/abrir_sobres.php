@@ -68,8 +68,8 @@ $user = getCurrentUser($pdo);
         .pack-shake { animation: intense-shake 0.8s infinite; }
         @keyframes intense-shake { 0%, 100% { transform: translate(0,0); } 10%, 30%, 50%, 70%, 90% { transform: translate(-8px, 0); } 20%, 40%, 60%, 80% { transform: translate(8px, 0); } }
 
-        /* FIGURITAS PREMIUM */
-        .sticker-card-fixed { width: 230px; height: 320px; perspective: 1000px; flex-shrink: 0; }
+        /* FIGURITAS PREMIUM - Tamaño optimizado para el abanico */
+        .sticker-card-fixed { width: 200px; height: 280px; perspective: 1000px; flex-shrink: 0; }
         .sticker-body { width: 100%; height: 100%; background: white; border-radius: 12px; box-shadow: 0 15px 35px rgba(0,0,0,0.5); position: relative; transform-style: preserve-3d; transition: transform 0.1s ease-out; overflow: hidden; }
         .sticker-content { width: 100%; height: 100%; background: #0f172a; position: relative; overflow: hidden; }
 
@@ -95,11 +95,67 @@ $user = getCurrentUser($pdo);
 
         .rarity-tag { position: absolute; bottom: 40px; left: 10px; z-index: 30; padding: 2px 8px; border-radius: 4px; font-size: 7px; font-weight: 900; text-transform: uppercase; color: white; background: rgba(0,0,0,0.7); }
 
-        /* RESULTADOS */
-        #results-view { width: 100%; display: none; flex-direction: column; align-items: center; padding-top: 20px; }
-        .cards-hand { display: flex; gap: 1rem; padding: 1.5rem 1rem; overflow-x: auto; scroll-snap-type: x mandatory; width: 100%; justify-content: flex-start; scrollbar-width: none; }
-        .cards-hand::-webkit-scrollbar { display: none; }
-        .card-item { scroll-snap-align: center; flex-shrink: 0; }
+        /* RESULTADOS - ABANICO UNIFICADO */
+        #results-view { width: 100%; display: none; flex-direction: column; align-items: center; padding-top: 10px; position: relative; }
+        
+        .cards-hand { 
+            position: relative;
+            display: flex; 
+            justify-content: center; 
+            align-items: center; 
+            width: 100%; 
+            height: 400px; 
+            margin-top: 20px;
+            perspective: 2000px;
+            transition: transform 0.3s ease;
+        }
+        
+        .card-item { 
+            position: absolute;
+            transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1), z-index 0s linear 0.1s;
+            transform-origin: bottom center;
+            cursor: pointer;
+            will-change: transform;
+            transform: translateX(var(--tx)) translateY(var(--ty)) rotate(var(--rot));
+        }
+
+        /* Configuración del Abanico con Variables */
+        .card-item:nth-child(1) { --tx: -160px; --ty: 40px; --rot: -20deg; z-index: 10; }
+        .card-item:nth-child(2) { --tx: -80px;  --ty: 10px; --rot: -10deg; z-index: 20; }
+        .card-item:nth-child(3) { --tx: 0px;    --ty: 0px;  --rot: 0deg;   z-index: 30; }
+        .card-item:nth-child(4) { --tx: 80px;   --ty: 10px; --rot: 10deg;  z-index: 20; }
+        .card-item:nth-child(5) { --tx: 160px;  --ty: 40px; --rot: 20deg;  z-index: 10; }
+
+        /* Efecto de enfoque: cuando pasamos el mouse por el mazo, todas se apagan un poco */
+        .cards-hand:hover .card-item {
+            opacity: 0.6;
+            filter: brightness(0.6) grayscale(0.3);
+        }
+
+        /* Pero la carta que tiene el mouse se ilumina y se viene al frente */
+        .card-item:hover {
+            z-index: 500 !important;
+            opacity: 1 !important;
+            filter: brightness(1.1) grayscale(0) !important;
+            transform: translateX(var(--tx)) translateY(-100px) rotate(0deg) scale(1.2) !important;
+            transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1), z-index 0s, opacity 0.2s;
+        }
+
+        .card-item:active {
+            z-index: 600 !important;
+            transform: translateX(var(--tx)) translateY(-120px) rotate(0deg) scale(1.3) !important;
+        }
+
+        /* Ajuste de escala para Móviles */
+        @media (max-width: 640px) {
+            .cards-hand { transform: scale(0.85); height: 350px; }
+        }
+        @media (max-width: 480px) {
+            .cards-hand { transform: scale(0.72); height: 300px; margin-top: 0; }
+        }
+        @media (max-width: 360px) {
+            .cards-hand { transform: scale(0.65); height: 280px; }
+        }
 
         /* HEADER Y NAVEGACIÓN */
         .top-header { position: fixed; top: 0; left: 0; right: 0; height: 60px; padding: 0 20px; display: flex; align-items: center; justify-content: space-between; z-index: 2000; }
@@ -307,12 +363,6 @@ $user = getCurrentUser($pdo);
                 `;
                 hand.insertAdjacentHTML('beforeend', cardHtml);
             });
-            
-            if (hand.scrollWidth <= hand.clientWidth) {
-                hand.style.justifyContent = 'center';
-            } else {
-                hand.style.justifyContent = 'flex-start';
-            }
         }
     </script>
 </body>

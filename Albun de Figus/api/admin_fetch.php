@@ -11,21 +11,29 @@ $action = $_GET['action'] ?? '';
 // 1. Obtener Lista de Alumnos con Filtros
 if ($action === 'get_alumnos') {
     $order = $_GET['order'] ?? 'completed_at';
+    $dir = $_GET['dir'] ?? 'ASC';
     $search = $_GET['search'] ?? '';
     
-    $allowedOrder = ['completed_at', 'full_name', 'course', 'packs_available'];
+    $allowedOrder = ['completed_at', 'full_name', 'course', 'packs_available', 'stuck_count'];
     if (!in_array($order, $allowedOrder)) $order = 'completed_at';
     
-    $sql = "SELECT id, full_name, username, course, packs_available, album_completed, completed_at FROM users WHERE is_admin = 0";
+    $dir = strtoupper($dir) === 'DESC' ? 'DESC' : 'ASC';
+    
+    $sql = "
+        SELECT 
+            u.id, u.full_name, u.username, u.course, u.packs_available, u.album_completed, u.completed_at,
+            (SELECT COUNT(*) FROM user_inventory ui WHERE ui.user_id = u.id AND ui.is_stuck = 1) as stuck_count
+        FROM users u 
+        WHERE u.is_admin = 0";
     $params = [];
     
     if (!empty($search)) {
-        $sql .= " AND (full_name LIKE ? OR course LIKE ?)";
+        $sql .= " AND (u.full_name LIKE ? OR u.course LIKE ?)";
         $params[] = "%$search%";
         $params[] = "%$search%";
     }
     
-    $sql .= " ORDER BY $order ASC";
+    $sql .= " ORDER BY $order $dir";
     
     $stmt = $pdo->prepare($sql);
     $stmt->execute($params);
@@ -83,6 +91,74 @@ if ($action === 'save_url') {
 if ($action === 'get_url') {
     $stmt = $pdo->query("SELECT `value` FROM settings WHERE `key` = 'qr_base_url'");
     jsonResponse(true, "URL", ['url' => $stmt->fetchColumn()]);
+}
+
+// 6. RAREZAS
+if ($action === 'save_rarities') {
+    $common = intval($_POST['common'] ?? 70);
+    $uncommon = intval($_POST['uncommon'] ?? 18);
+    $rare = intval($_POST['rare'] ?? 8);
+    $holo = intval($_POST['holo'] ?? 3);
+    $gold = intval($_POST['gold'] ?? 1);
+
+    // Validar que sumen 100
+    if (($common + $uncommon + $rare + $holo + $gold) !== 100) {
+        jsonResponse(false, "Las probabilidades deben sumar exactamente 100%");
+    }
+
+    $rarities = json_encode([
+        'common' => $common,
+        'uncommon' => $uncommon,
+        'rare' => $rare,
+        'holo' => $holo,
+        'gold' => $gold
+    ]);
+
+    $stmt = $pdo->prepare("INSERT INTO settings (`key`, `value`) VALUES ('rarity_rates', ?) ON DUPLICATE KEY UPDATE `value` = VALUES(`value`)");
+    $stmt->execute([$rarities]);
+    jsonResponse(true, "Probabilidades actualizadas");
+}
+
+if ($action === 'get_rarities') {
+    $stmt = $pdo->query("SELECT `value` FROM settings WHERE `key` = 'rarity_rates'");
+    $val = $stmt->fetchColumn();
+    $rates = $val ? json_decode($val, true) : [
+        'common' => 70,
+        'uncommon' => 18,
+        'rare' => 8,
+        'holo' => 3,
+        'gold' => 1
+    ];
+    jsonResponse(true, "Rarezas", $rates);
+}
+
+// 7. SIMULADOR (Sin afectar DB)
+if ($action === 'test_open_pack') {
+    $stmt = $pdo->query("SELECT `value` FROM settings WHERE `key` = 'rarity_rates'");
+    $val = $stmt->fetchColumn();
+    $rates = $val ? json_decode($val, true) : ['common'=>70, 'uncommon'=>18, 'rare'=>8, 'holo'=>3, 'gold'=>1];
+
+    $stickersObtained = [];
+    for ($i = 0; $i < 5; $i++) {
+        $rand = rand(1, 100);
+        $acc = 0;
+        $rarity = 'common';
+        
+        if ($rand <= ($acc += $rates['common'])) $rarity = 'common';
+        elseif ($rand <= ($acc += $rates['uncommon'])) $rarity = 'uncommon';
+        elseif ($rand <= ($acc += $rates['rare'])) $rarity = 'rare';
+        elseif ($rand <= ($acc += $rates['holo'])) $rarity = 'holo';
+        else $rarity = 'gold';
+
+        $stmt = $pdo->prepare("SELECT id, number, name, rarity FROM stickers WHERE rarity = ? ORDER BY RAND() LIMIT 1");
+        $stmt->execute([$rarity]);
+        $sticker = $stmt->fetch();
+        if (!$sticker) {
+            $sticker = $pdo->query("SELECT id, number, name, rarity FROM stickers ORDER BY RAND() LIMIT 1")->fetch();
+        }
+        $stickersObtained[] = $sticker;
+    }
+    jsonResponse(true, "Simulación exitosa", ['stickers' => $stickersObtained]);
 }
 
 jsonResponse(false, "Acción no válida");

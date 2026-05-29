@@ -65,3 +65,15 @@
 - **Restricción:** Cooldown de 6 horas entre intentos (independientemente del resultado) para evitar farmeo excesivo.
 - **Interfaz:** Diseño Mobile-First con transiciones fluidas y feedback inmediato.
 
+## 🛡️ Panel de Administración (Finalizado)
+- **UI/UX:** Overhaul visual con sistema de "Toasts" personalizados y botones de acción de alta visibilidad (UI consistente con el resto de la app).
+- **Configuración de Rarezas:** Interfaz para ajustar probabilidades de drop (Común, Poco Común, Rara, Holo, Gold) en tiempo real con validación de suma 100%.
+- **Simulador de Sobres:** Herramienta de auditoría para probar probabilidades sin alterar datos de usuario, con modo ráfaga (x10) y estadísticas de sesión acumuladas.
+- **Gestión de Alumnos:** Tabla interactiva con ordenamiento dinámico (clic en cabeceras), barras de progreso visuales y desglose de datos (progreso de pegado, fecha finalización).
+
+## 🎁 Sistema de Códigos Profe (Actualizado)
+- **Premio Fijo:** Cada código regala exactamente 1 sobre.
+- **Cupos Limitados:** Ahora cada código tiene un límite configurable de alumnos que pueden canjearlo.
+- **Expiración:** Validez extendida a 3 días (72 horas) desde la creación.
+- **Auditoría:** Panel administrativo muestra el uso de cupos en tiempo real y estado (Activo/Vencido).
+

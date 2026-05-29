@@ -8,28 +8,29 @@ $user = getCurrentUser($pdo);
 if (!$user || !$user['is_admin']) jsonResponse(false, "Acceso denegado");
 
 $code = cleanInput($_POST['code'] ?? '');
-$packs = intval($_POST['packs'] ?? 1);
+$max_uses = intval($_POST['max_uses'] ?? 50);
 
 if (empty($code)) {
     jsonResponse(false, "El código no puede estar vacío.");
 }
 
 try {
-    // Definir expiración en 24 horas
-    $expiresAt = date('Y-m-d H:i:s', strtotime('+24 hours'));
+    // Definir expiración en 3 días (72 horas)
+    $expiresAt = date('Y-m-d H:i:s', strtotime('+72 hours'));
 
     $stmt = $pdo->prepare("
-        INSERT INTO promo_codes (code, packs_reward, expires_at) 
-        VALUES (?, ?, ?) 
+        INSERT INTO promo_codes (code, packs_reward, expires_at, max_uses) 
+        VALUES (?, 1, ?, ?) 
         ON DUPLICATE KEY UPDATE 
-            packs_reward = VALUES(packs_reward),
+            packs_reward = 1,
             expires_at = VALUES(expires_at),
+            max_uses = VALUES(max_uses),
             used_by_count = 0
     ");
-    $stmt->execute([strtoupper($code), $packs, $expiresAt]);
+    $stmt->execute([strtoupper($code), $expiresAt, $max_uses]);
     
-    header("Location: ../admin/dashboard.php?success=1&msg=Codigo+generado+por+24hs");
-    exit();
+    jsonResponse(true, "Código generado por 3 días para $max_uses alumnos.");
 } catch (Exception $e) {
     jsonResponse(false, "Error al generar código: " . $e->getMessage());
 }
+?>

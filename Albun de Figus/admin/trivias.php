@@ -57,7 +57,10 @@ $trivias = $pdo->query("SELECT * FROM trivias ORDER BY id DESC")->fetchAll();
                 <h1 class="text-3xl font-black text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-purple-500 uppercase">Gestión de Trivias</h1>
                 <p class="text-gray-500 text-xs font-bold">AGREGA O MODIFICA PREGUNTAS DEL SISTEMA</p>
             </div>
-            <a href="dashboard.php" class="bg-white/10 px-6 py-2 rounded-xl text-xs font-bold">VOLVER AL PANEL</a>
+            <div class="flex gap-3">
+                <a href="test_trivia.php" class="bg-yellow-500/10 border border-yellow-500/20 px-6 py-2 rounded-xl text-xs font-bold text-yellow-500 hover:bg-yellow-500/20 transition-all">🧪 PROBAR TRIVIAS</a>
+                <a href="dashboard.php" class="bg-white/10 px-6 py-2 rounded-xl text-xs font-bold">VOLVER AL PANEL</a>
+            </div>
         </header>
 
         <!-- Formulario Agregar/Editar -->

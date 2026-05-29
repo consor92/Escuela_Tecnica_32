@@ -16,9 +16,9 @@ if (empty($codeStr)) {
 try {
     $pdo->beginTransaction();
 
-    // 1. Buscar el código y verificar si está activo y no expirado
+    // 1. Buscar el código y verificar si está activo, no expirado y tiene usos disponibles
     $stmtCode = $pdo->prepare("
-        SELECT id, packs_reward, expires_at 
+        SELECT id, packs_reward, expires_at, max_uses, used_by_count 
         FROM promo_codes 
         WHERE code = ? AND expires_at > NOW()
     ");
@@ -28,6 +28,11 @@ try {
     if (!$codeData) {
         $pdo->rollBack();
         jsonResponse(false, "Código inválido o expirado.");
+    }
+
+    if ($codeData['used_by_count'] >= $codeData['max_uses']) {
+        $pdo->rollBack();
+        jsonResponse(false, "Este código ya alcanzó su límite de usos.");
     }
 
     $codeId = $codeData['id'];
@@ -63,3 +68,4 @@ try {
     if ($pdo && $pdo->inTransaction()) $pdo->rollBack();
     jsonResponse(false, "Error al procesar el código: " . $e->getMessage());
 }
+?>

@@ -173,9 +173,18 @@ if ($lastTrivia) {
             document.getElementById('question-category').textContent = q.category;
             document.getElementById('current-step').textContent = data.current;
             document.getElementById('question-text').textContent = q.question;
-            document.getElementById('text-a').textContent = q.option_a;
-            document.getElementById('text-b').textContent = q.option_b;
-            document.getElementById('text-c').textContent = q.option_c;
+            
+            // Renderizar opciones mezcladas
+            const options = q.options;
+            
+            document.getElementById('text-a').textContent = options[0].val;
+            document.getElementById('btn-a').onclick = () => submitAnswer(options[0].key);
+            
+            document.getElementById('text-b').textContent = options[1].val;
+            document.getElementById('btn-b').onclick = () => submitAnswer(options[1].key);
+            
+            document.getElementById('text-c').textContent = options[2].val;
+            document.getElementById('btn-c').onclick = () => submitAnswer(options[2].key);
             
             resetTimer();
         }

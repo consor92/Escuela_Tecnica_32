@@ -27,7 +27,7 @@
     - `/admin`: Gestión de trivias y monitoreo.
 
 ## Reglas de Negocio
-- Rarezas: Común (75%), Especial (20%), Holográfica (5%).
+- Rarezas: Común (70%), Poco Común (18%), Rara (8%), Holo (3%), Gold (1%).
 - Cooldown QR: 6 horas por `qr_id` por usuario.
 - Canje: 10 figuritas repetidas netas = 1 sobre.
 - Podio: Basado en `completed_at` (Timestamp más antiguo para completar 50 figus).

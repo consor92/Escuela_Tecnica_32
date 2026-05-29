@@ -4,7 +4,7 @@ require_once '../includes/functions.php';
 
 /**
  * API: Apertura de Sobres (Motor de Gachapon v2)
- * Probabilidades: 45% Common, 30% Uncommon, 15% Rare, 8% Holo, 2% Gold
+ * Probabilidades: 70% Common, 18% Uncommon, 8% Rare, 3% Holo, 1% Gold
  */
 
 if (!isLoggedIn()) {
@@ -24,27 +24,31 @@ try {
     $stmt = $pdo->prepare("UPDATE users SET packs_available = packs_available - 1 WHERE id = ?");
     $stmt->execute([$user['id']]);
 
+    // 2. Obtener probabilidades de configuración
+    $stmtRates = $pdo->query("SELECT `value` FROM settings WHERE `key` = 'rarity_rates'");
+    $ratesJson = $stmtRates->fetchColumn();
+    $rates = $ratesJson ? json_decode($ratesJson, true) : [
+        'common' => 70,
+        'uncommon' => 18,
+        'rare' => 8,
+        'holo' => 3,
+        'gold' => 1
+    ];
+
     $stickersObtained = [];
     $hasHit = false;
     
-    // 2. Generar EXACTAMENTE 5 figuritas
+    // 3. Generar EXACTAMENTE 5 figuritas
     for ($i = 0; $i < 5; $i++) {
         $rand = rand(1, 100);
-        
-        if ($rand <= 45) {
-            $rarity = 'common';
-        } elseif ($rand <= 75) {
-            $rarity = 'uncommon';
-        } elseif ($rand <= 90) {
-            $rarity = 'rare';
-            $hasHit = true;
-        } elseif ($rand <= 98) {
-            $rarity = 'holo';
-            $hasHit = true;
-        } else {
-            $rarity = 'gold';
-            $hasHit = true;
-        }
+        $acc = 0;
+        $rarity = 'common';
+
+        if ($rand <= ($acc += $rates['common'])) $rarity = 'common';
+        elseif ($rand <= ($acc += $rates['uncommon'])) $rarity = 'uncommon';
+        elseif ($rand <= ($acc += $rates['rare'])) { $rarity = 'rare'; $hasHit = true; }
+        elseif ($rand <= ($acc += $rates['holo'])) { $rarity = 'holo'; $hasHit = true; }
+        else { $rarity = 'gold'; $hasHit = true; }
 
         // Obtener una figurita aleatoria de esa rareza
         $stmt = $pdo->prepare("SELECT id, number, name, description, rarity, external_url FROM stickers WHERE rarity = ? ORDER BY RAND() LIMIT 1");

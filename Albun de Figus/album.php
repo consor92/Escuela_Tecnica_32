@@ -59,7 +59,15 @@ $remaining = $others;
 while (!empty($remaining)) {
     $currentPageStickers = [];
     $limit = 4;
-    if (count($remaining) <= 6 && count($remaining) > 4) $limit = 6; 
+    
+    // Balanceo de slots: La hoja 6 toma 6 para que de la 7 a la 12 tengan exactamente 4.
+    $pIdx = count($pages);
+    if ($pIdx == 6) {
+        $limit = 6;
+    } elseif (count($remaining) <= 6 && count($remaining) > 4 && $pIdx != 12) {
+        // Evitamos que la hoja 12 absorba figuritas extra para cumplir el pedido de 4 por hoja.
+        $limit = 6;
+    }
 
     $count = 0;
     while ($count < $limit && !empty($remaining)) {
@@ -118,11 +126,23 @@ $pages[] = ['type' => 'back-cover', 'title' => 'FIN'];
         .page { 
             width: 500px; height: 700px; 
             background-color: var(--paper); 
-            box-shadow: inset 0 0 50px rgba(0,0,0,0.05); 
+            background-image: url("https://www.transparenttextures.com/patterns/natural-paper.png");
+            box-shadow: inset 0 0 50px rgba(0,0,0,0.05), 5px 0 15px rgba(0,0,0,0.1); 
             border: 1px solid rgba(0,0,0,0.1); 
             position: relative;
             overflow: hidden;
-            /* El motor maneja la visibilidad, evitamos conflictos */
+        }
+
+        /* SOMBRA DEL LOMO (SPINE) */
+        .page::after {
+            content: ''; position: absolute; top: 0; width: 40px; height: 100%; z-index: 10;
+            pointer-events: none;
+        }
+        .page:nth-child(odd)::after { /* Páginas derechas */
+            left: 0; background: linear-gradient(to right, rgba(0,0,0,0.15) 0%, transparent 100%);
+        }
+        .page:nth-child(even)::after { /* Páginas izquierdas */
+            right: 0; background: linear-gradient(to left, rgba(0,0,0,0.15) 0%, transparent 100%);
         }
         
         /* Wrapper con espacio para numeración */
@@ -134,6 +154,7 @@ $pages[] = ['type' => 'back-cover', 'title' => 'FIN'];
 
         .page-cover { 
             background: linear-gradient(135deg, var(--leather) 0%, #2d1b0e 100%) !important; 
+            background-image: url("https://www.transparenttextures.com/patterns/leather.png") !important;
             color: var(--gold) !important; border: 10px double #5d3a26 !important;
         }
 
@@ -141,25 +162,50 @@ $pages[] = ['type' => 'back-cover', 'title' => 'FIN'];
         .grid-2x2 { grid-template-columns: repeat(2, 180px); justify-content: center; }
         .grid-3x2 { grid-template-columns: repeat(2, 180px); justify-content: center; }
         
-        .slot { background: rgba(0,0,0,0.03); border: 2px dashed rgba(0,0,0,0.1); border-radius: 8px; position: relative; width: 100%; aspect-ratio: 3/4; display: flex; align-items: center; justify-content: center; max-width: 180px; transition: all 0.3s ease; }
-        .slot span { font-size: 2rem; font-weight: 900; color: #1e293b; opacity: 0.2; font-family: 'Bebas Neue'; pointer-events: none; }
+        .slot { 
+            background: rgba(0,0,0,0.05); 
+            border: 2px dashed rgba(0,0,0,0.15); 
+            box-shadow: inset 2px 2px 8px rgba(0,0,0,0.1);
+            border-radius: 8px; position: relative; width: 100%; aspect-ratio: 3/4; 
+            display: flex; align-items: center; justify-content: center; 
+            max-width: 180px; transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); 
+        }
+        .slot.drag-over { background: rgba(34, 211, 238, 0.1); border-color: #22d3ee; transform: scale(1.02); }
+        .slot span { font-size: 2rem; font-weight: 900; color: #1e293b; opacity: 0.15; font-family: 'Bebas Neue'; pointer-events: none; }
 
-        /* COLORES RAREZA SLOTS */
+        /* ANIMACIÓN DE PEGADO CON ROTACIÓN VARIABLE */
+        @keyframes stick-pop {
+            0% { transform: scale(2) rotate(10deg); opacity: 0; filter: brightness(3) blur(5px); }
+            70% { transform: scale(0.95) rotate(calc(var(--rotation, 0deg) - 2deg)); opacity: 1; filter: brightness(1.2) blur(0); }
+            100% { transform: scale(1) rotate(var(--rotation, 0deg)); filter: brightness(1); }
+        }
+        .animate-stick { animation: stick-pop 0.6s cubic-bezier(0.22, 1, 0.36, 1) forwards; z-index: 100; }
+
+        /* PARALLAX 3D + ROTACIÓN BASE */
+        .sticker-body { 
+            width: 100%; height: 100%; background: white; border-radius: 8px; 
+            box-shadow: 0 10px 25px rgba(0,0,0,0.3); position: relative; 
+            overflow: hidden; cursor: pointer;
+            transition: transform 0.1s ease-out, box-shadow 0.2s;
+            transform-style: preserve-3d;
+            perspective: 1000px;
+            transform: rotateZ(var(--rotation, 0deg));
+        }
+        .sticker-body:hover { box-shadow: 0 20px 40px rgba(0,0,0,0.4); z-index: 100; }
+        .sticker-content { width: 100%; height: 100%; background: #0f172a; position: relative; overflow: hidden; pointer-events: none; transform: translateZ(20px); }
+        
+        .sticker-stuck { width: 100%; height: 100%; object-fit: cover; }
+
         .slot-rarity-common { border-color: rgba(148, 163, 184, 0.3); }
         .slot-rarity-uncommon { border-color: rgba(16, 185, 129, 0.4); background: rgba(16, 185, 129, 0.05); }
         .slot-rarity-rare { border-color: rgba(59, 130, 246, 0.4); background: rgba(59, 130, 246, 0.05); }
         .slot-rarity-holo { border-color: rgba(168, 85, 247, 0.5); background: rgba(168, 85, 247, 0.05); }
         .slot-rarity-gold { border-color: rgba(251, 191, 36, 0.6); background: rgba(251, 191, 36, 0.08); }
 
-        .mosaic-container { display: grid; gap: 4px; grid-column: span 2; width: 100%; max-width: 380px; aspect-ratio: 3/4; border: 2px solid rgba(0,0,0,0.05); border-radius: 6px; overflow: hidden; }
+        .mosaic-container { display: grid; gap: 4px; grid-column: span 2; width: 100%; max-width: 380px; aspect-ratio: 3/4; border: 2px solid rgba(0,0,0,0.05); border-radius: 6px; overflow: visible; }
         .mosaic-2x2 { grid-template-columns: 1fr 1fr; grid-template-rows: 1fr 1fr; }
         .mosaic-1x2 { grid-template-columns: 1fr 1fr; aspect-ratio: 3/2; }
         .mosaic-container .slot { border-width: 1px; border-radius: 0; max-width: none; height: 100%; }
-
-        /* FIGURITAS SINCRO TOTAL SOBRES */
-        .sticker-body { width: 100%; height: 100%; background: white; border-radius: 8px; box-shadow: 0 10px 25px rgba(0,0,0,0.3); position: relative; overflow: hidden; cursor: pointer; }
-        .sticker-content { width: 100%; height: 100%; background: #0f172a; position: relative; overflow: hidden; pointer-events: none; }
-        .sticker-stuck { width: 100%; height: 100%; object-fit: cover; }
 
         .frame-common { border: 4px solid #64748b; }
         .frame-uncommon { border: 5px solid #10b981; }
@@ -177,9 +223,17 @@ $pages[] = ['type' => 'back-cover', 'title' => 'FIN'];
         @keyframes holo-border { 0% { background-position: 0% 50%; } 100% { background-position: 200% 50%; } }
 
         /* EFECTOS SINCRO TOTAL SOBRES */
-        .overlay-holo { position: absolute; inset: 0; z-index: 20; mix-blend-mode: screen; background-image: radial-gradient(circle at 50% 50%, rgba(255,255,255,0.8) 1px, transparent 1px); background-size: 24px 24px; animation: sparkles 4s linear infinite; opacity: 0.6; }
+        .overlay-holo { 
+            position: absolute; inset: 0; z-index: 20; mix-blend-mode: screen; 
+            background-image: radial-gradient(circle at var(--mouse-x, 50%) var(--mouse-y, 50%), rgba(255,255,255,0.8) 0%, transparent 60%); 
+            background-size: 100% 100%; opacity: 0.6; pointer-events: none;
+        }
         .overlay-rare { position: absolute; inset: 0; z-index: 20; mix-blend-mode: overlay; background: linear-gradient(90deg, transparent 0%, rgba(255,255,255,0.4) 50%, transparent 100%); background-size: 200% 100%; animation: sweep-special 2.5s infinite ease-in-out; }
-        .overlay-gold { position: absolute; inset: 0; z-index: 20; mix-blend-mode: overlay; background: linear-gradient(135deg, rgba(255, 215, 0, 0.5) 0%, rgba(255, 255, 255, 0.2) 50%, rgba(255, 215, 0, 0.5) 100%); }
+        .overlay-gold { 
+            position: absolute; inset: 0; z-index: 20; mix-blend-mode: color-dodge; 
+            background: radial-gradient(circle at var(--mouse-x, 50%) var(--mouse-y, 50%), rgba(255, 215, 0, 0.6) 0%, transparent 70%); 
+            opacity: 0.7; pointer-events: none;
+        }
         .gold-sweep { position: absolute; inset: -50%; z-index: 25; mix-blend-mode: color-dodge; background: linear-gradient(110deg, transparent 40%, #fff 50%, transparent 60%); animation: sweep 2s infinite linear; }
         .gold-filter { filter: sepia(1) saturate(5) hue-rotate(10deg) brightness(0.8) contrast(1.2); }
 
@@ -199,7 +253,28 @@ $pages[] = ['type' => 'back-cover', 'title' => 'FIN'];
         .inventory-tray { height: 210px; background: #0f172a; border-top: 4px solid var(--gold); padding: 12px; display: flex; flex-direction: column; flex-shrink: 0; z-index: 1000; }
         .loose-container { flex: 1; display: flex; gap: 15px; overflow-x: auto; padding: 10px; align-items: center; scrollbar-width: none; }
         .loose-container::-webkit-scrollbar { display: none; }
-        .loose-card { flex: 0 0 100px; aspect-ratio: 1/1; cursor: grab; position: relative; }
+        
+        /* CORNER PEEL EFFECT EXAGERADO */
+        .loose-card { 
+            flex: 0 0 100px; aspect-ratio: 1/1; cursor: grab; position: relative; 
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            perspective: 600px;
+        }
+        .loose-card:hover { 
+            transform: translateY(-25px) rotateX(20deg) scale(1.05); 
+            z-index: 100;
+        }
+        .loose-card::before {
+            content: ''; position: absolute; bottom: 0; right: 0; width: 0; height: 0;
+            background: linear-gradient(135deg, transparent 45%, rgba(255,255,255,0.5) 50%, rgba(0,0,0,0.2) 100%);
+            z-index: 60; transition: all 0.3s ease-out; pointer-events: none; 
+            border-radius: 0 0 8px 0;
+            box-shadow: -2px -2px 5px rgba(0,0,0,0.3);
+        }
+        .loose-card:hover::before { 
+            width: 45px; height: 45px; 
+        }
+
         .loose-tag { position: absolute; top: -8px; left: -8px; background: #22d3ee; color: #020617; font-size: 10px; font-weight: 900; width: 22px; height: 22px; border-radius: 50%; display: flex; items-center; justify-content: center; border: 2px solid #020617; z-index: 50; }
 
         /* MODAL */
@@ -234,10 +309,7 @@ $pages[] = ['type' => 'back-cover', 'title' => 'FIN'];
     <header class="p-3 flex items-center justify-between">
         <a href="dashboard.php" class="bg-white/5 px-4 py-2 rounded-lg font-black text-[10px] border border-white/10 tracking-widest uppercase">⬅ VOLVER</a>
         <h1 class="text-xl font-black italic uppercase text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-purple-500">Álbum Premium Técnica 32</h1>
-        <div class="user-info">
-            <span class="user-name"><?php echo htmlspecialchars($user['username']); ?></span>
-            <a href="api/logout.php" class="btn-logout-small">Salir</a>
-        </div>
+        <div class="w-20"></div> <!-- Espaciador para centrar el título -->
     </header>
 
     <div class="album-container">
@@ -273,10 +345,12 @@ $pages[] = ['type' => 'back-cover', 'title' => 'FIN'];
                                     $imgUrl = "https://picsum.photos/seed/STK-".$st['id']."/300/400";
                                     $stData = htmlspecialchars(json_encode($st));
                                     $rarity = $st['rarity']; $isGold = $rarity === 'gold';
-                            ?>
+                                    // Rotación determinista para realismo
+                                    $rot = (($st['id'] * 123) % 7) - 3; // Entre -3 y 3 grados
+                                ?>
                                 <div class="slot <?php echo $isGold ? 'slot-gold-active' : ''; ?> slot-rarity-<?php echo $rarity; ?> !max-w-[300px] !w-full" data-number="<?php echo $st['number']; ?>" ondragover="allowDrop(event)" ondrop="handleDrop(event)">
                                     <?php if($stuck): ?>
-                                        <div class="sticker-body frame-<?php echo $rarity; ?>" onclick='handleCardClick(event, <?php echo $stData; ?>, "<?php echo $imgUrl; ?>")'>
+                                        <div class="sticker-body frame-<?php echo $rarity; ?>" data-rotation="<?php echo $rot; ?>" style="--rotation: <?php echo $rot; ?>deg; transform: rotateZ(<?php echo $rot; ?>deg)" onclick='handleCardClick(event, <?php echo $stData; ?>, "<?php echo $imgUrl; ?>")'>
                                             <div class="sticker-content">
                                                 <div class="overlay-<?php echo $rarity; ?>"></div>
                                                 <?php if($isGold): ?><div class="gold-sweep"></div><?php endif; ?>
@@ -307,10 +381,11 @@ $pages[] = ['type' => 'back-cover', 'title' => 'FIN'];
                                                     $imgUrl = "https://picsum.photos/seed/STK-".$mst['id']."/300/300";
                                                     $mstData = htmlspecialchars(json_encode($mst));
                                                     $rarity = $mst['rarity']; $isGold = $rarity === 'gold';
+                                                    $mrot = (($mst['id'] * 123) % 7) - 3;
                                                 ?>
                                                     <div class="slot <?php echo $isGold ? 'slot-gold-active' : ''; ?> slot-rarity-<?php echo $rarity; ?>" data-number="<?php echo $mst['number']; ?>" ondragover="allowDrop(event)" ondrop="handleDrop(event)">
                                                         <?php if($stuck): ?>
-                                                            <div class="sticker-body frame-<?php echo $rarity; ?>" onclick='handleCardClick(event, <?php echo $mstData; ?>, "<?php echo $imgUrl; ?>")'>
+                                                            <div class="sticker-body frame-<?php echo $rarity; ?>" data-rotation="<?php echo $mrot; ?>" style="--rotation: <?php echo $mrot; ?>deg; transform: rotateZ(<?php echo $mrot; ?>deg)" onclick='handleCardClick(event, <?php echo $mstData; ?>, "<?php echo $imgUrl; ?>")'>
                                                                 <div class="sticker-content">
                                                                     <div class="overlay-<?php echo $rarity; ?>"></div>
                                                                     <?php if($isGold): ?><div class="gold-sweep"></div><?php endif; ?>
@@ -329,10 +404,11 @@ $pages[] = ['type' => 'back-cover', 'title' => 'FIN'];
                                             $imgUrl = "https://picsum.photos/seed/STK-".$st['id']."/300/300";
                                             $stData = htmlspecialchars(json_encode($st));
                                             $rarity = $st['rarity']; $isGold = $rarity === 'gold';
+                                            $srot = (($st['id'] * 123) % 7) - 3;
                                             ?>
                                             <div class="slot <?php echo $isGold ? 'slot-gold-active' : ''; ?> slot-rarity-<?php echo $rarity; ?>" data-number="<?php echo $st['number']; ?>" ondragover="allowDrop(event)" ondrop="handleDrop(event)">
                                                 <?php if($stuck): ?>
-                                                    <div class="sticker-body frame-<?php echo $rarity; ?>" onclick='handleCardClick(event, <?php echo $stData; ?>, "<?php echo $imgUrl; ?>")'>
+                                                    <div class="sticker-body frame-<?php echo $rarity; ?>" data-rotation="<?php echo $srot; ?>" style="--rotation: <?php echo $srot; ?>deg; transform: rotateZ(<?php echo $srot; ?>deg)" onclick='handleCardClick(event, <?php echo $stData; ?>, "<?php echo $imgUrl; ?>")'>
                                                         <div class="sticker-content">
                                                             <div class="overlay-<?php echo $rarity; ?>"></div>
                                                             <?php if($isGold): ?><div class="gold-sweep"></div><?php endif; ?>
@@ -366,7 +442,7 @@ $pages[] = ['type' => 'back-cover', 'title' => 'FIN'];
                 $imgUrl = "https://picsum.photos/seed/STK-".$loose['id']."/300/400";
                 $rarity = $loose['rarity']; $isGold = $rarity === 'gold';
             ?>
-                <div class="loose-card" draggable="true" ondragstart="handleDrag(event, this)" data-id="<?php echo $loose['id']; ?>" data-number="<?php echo $loose['number']; ?>" data-rarity="<?php echo $loose['rarity']; ?>" id="item-<?php echo $loose['id']; ?>">
+                <div class="loose-card" onpointerdown="startCustomDrag(event, this)" data-id="<?php echo $loose['id']; ?>" data-number="<?php echo $loose['number']; ?>" data-rarity="<?php echo $loose['rarity']; ?>" id="item-<?php echo $loose['id']; ?>">
                     <div class="loose-tag"><?php echo $loose['number']; ?></div>
                     <div class="sticker-body frame-<?php echo $rarity; ?>" style="padding:0; width:100%; height:100%;">
                         <div class="sticker-content">
@@ -380,9 +456,21 @@ $pages[] = ['type' => 'back-cover', 'title' => 'FIN'];
         </div>
     </section>
 
+    <!-- FIGURITA FLOTANTE PARA EL DRAG -->
+    <div id="floating-sticker" style="position: fixed; pointer-events: none; z-index: 9999; display: none; transition: transform 0.1s ease-out;"></div>
+
     <script>
         let pageFlip;
         let isModalActive = false;
+
+        // ESTADO DEL DRAG PERSONALIZADO
+        let dragInfo = {
+            active: false,
+            el: null,
+            startX: 0, startY: 0,
+            lastX: 0, velocityX: 0,
+            data: {}
+        };
 
         window.onload = function() {
             const albumEl = document.getElementById('album-book');
@@ -404,7 +492,139 @@ $pages[] = ['type' => 'back-cover', 'title' => 'FIN'];
                     if(modal.contains(e.target)) e.stopPropagation();
                 }
             }, true);
+            
+            // Listeners globales para el drag
+            window.addEventListener('pointermove', handleCustomMove);
+            window.addEventListener('pointerup', handleCustomEnd);
         };
+
+        function startCustomDrag(e, card) {
+            if (isModalActive) return;
+            e.preventDefault();
+            
+            dragInfo.active = true;
+            dragInfo.el = card;
+            dragInfo.data = {
+                id: card.dataset.id,
+                num: card.dataset.number,
+                rarity: card.dataset.rarity,
+                img: card.querySelector('img').src
+            };
+            
+            // Preparar el flotante
+            const floating = document.getElementById('floating-sticker');
+            const isGold = dragInfo.data.rarity === 'gold';
+            
+            floating.innerHTML = `
+                <div class="sticker-body frame-${dragInfo.data.rarity}" style="width:120px; height:160px; box-shadow: 0 30px 60px rgba(0,0,0,0.5);">
+                    <div class="sticker-content">
+                        <div class="overlay-${dragInfo.data.rarity}"></div>
+                        ${isGold ? '<div class="gold-sweep"></div>' : ''}
+                        <img src="${dragInfo.data.img}" style="width:100%; height:100%; object-fit:cover;" class="${isGold ? 'gold-filter' : ''}">
+                    </div>
+                </div>
+            `;
+            
+            floating.style.display = 'block';
+            updateFloatingPos(e.clientX, e.clientY);
+            
+            card.style.opacity = "0.3";
+            card.style.transform = "scale(0.8)";
+        }
+
+        function handleCustomMove(e) {
+            if (!dragInfo.active) return;
+            
+            // Calcular velocidad para el tilt
+            dragInfo.velocityX = e.clientX - dragInfo.lastX;
+            dragInfo.lastX = e.clientX;
+            
+            updateFloatingPos(e.clientX, e.clientY);
+            
+            // Feedback de drop en los slots
+            const target = document.elementFromPoint(e.clientX, e.clientY);
+            const slot = target ? target.closest('.slot') : null;
+            
+            document.querySelectorAll('.slot.drag-over').forEach(s => s.classList.remove('drag-over'));
+            if (slot && slot.dataset.number === dragInfo.data.num) {
+                slot.classList.add('drag-over');
+            }
+        }
+
+        function updateFloatingPos(x, y) {
+            const floating = document.getElementById('floating-sticker');
+            // Tilt dinámico basado en velocidad
+            const tilt = Math.max(Math.min(dragInfo.velocityX * 0.8, 15), -15);
+            floating.style.left = `${x - 60}px`;
+            floating.style.top = `${y - 80}px`;
+            floating.style.transform = `rotate(${tilt}deg) scale(1.1)`;
+        }
+
+        async function handleCustomEnd(e) {
+            if (!dragInfo.active) return;
+            
+            const floating = document.getElementById('floating-sticker');
+            const card = dragInfo.el;
+            
+            const target = document.elementFromPoint(e.clientX, e.clientY);
+            const slot = target ? target.closest('.slot') : null;
+            
+            if (slot && slot.dataset.number === dragInfo.data.num) {
+                // Proceder con el pegado
+                await performStick(slot);
+            } else {
+                // Cancelar
+                if (slot) showToast("❌ LUGAR INCORRECTO");
+                card.style.opacity = "1";
+                card.style.transform = "scale(1)";
+            }
+            
+            dragInfo.active = false;
+            floating.style.display = 'none';
+            document.querySelectorAll('.slot.drag-over').forEach(s => s.classList.remove('drag-over'));
+        }
+
+        async function performStick(slot) {
+            const fd = new FormData(); 
+            fd.append('sticker_id', dragInfo.data.id);
+            
+            try {
+                const res = await fetch('api/stick_sticker.php', { method: 'POST', body: fd });
+                const data = await res.json();
+                
+                if (data.success) {
+                    const rarity = dragInfo.data.rarity;
+                    const isGold = rarity === 'gold';
+                    const num = dragInfo.data.num;
+                    const imgSrc = dragInfo.data.img;
+                    
+                    // Generar rotación aleatoria para el nuevo pegado
+                    const rot = (Math.random() * 6) - 3;
+                    
+                    slot.innerHTML = `
+                        <div class="sticker-body frame-${rarity} animate-stick" data-rotation="${rot}" style="--rotation: ${rot}deg; transform: rotateZ(${rot}deg)" onclick='handleCardClick(event, {name:"Figurita", number:${num}, rarity:"${rarity}"}, "${imgSrc}")'>
+                            <div class="sticker-content">
+                                <div class="overlay-${rarity}"></div>
+                                ${isGold ? '<div class="gold-sweep"></div>' : ''}
+                                <img src="${imgSrc}" class="sticker-stuck ${isGold ? 'gold-filter' : ''}">
+                            </div>
+                        </div>`;
+                    
+                    initParallax(slot.querySelector('.sticker-body'));
+                    dragInfo.el.remove(); 
+                    showToast("✨ ¡PEGADA!");
+                    if(data.data.album_completed) setTimeout(() => location.reload(), 1500);
+                } else { 
+                    showToast("❌ " + data.message); 
+                    dragInfo.el.style.opacity = "1";
+                    dragInfo.el.style.transform = "scale(1)";
+                }
+            } catch (err) { 
+                showToast("❌ ERROR DE RED"); 
+                dragInfo.el.style.opacity = "1";
+                dragInfo.el.style.transform = "scale(1)";
+            }
+        }
 
         function handleCardClick(e, data, url) {
             e.stopPropagation();
@@ -459,54 +679,42 @@ $pages[] = ['type' => 'back-cover', 'title' => 'FIN'];
             setTimeout(() => { isModalActive = false; }, 200);
         }
 
-        function allowDrop(e) { if(isModalActive) return; e.preventDefault(); const s = e.target.closest('.slot'); if(s) s.classList.add('drag-over'); }
-        document.addEventListener('dragleave', (e) => { const s = e.target.closest('.slot'); if(s) s.classList.remove('drag-over'); });
+        // ELIMINAR LOS VIEJOS HANDLERS HTML5
+        function allowDrop(e) { e.preventDefault(); }
 
-        function handleDrag(e, card) {
-            e.dataTransfer.setData("id", card.dataset.id);
-            e.dataTransfer.setData("num", card.dataset.number);
-            e.dataTransfer.setData("rarity", card.dataset.rarity);
-            e.dataTransfer.setData("elId", card.id);
+        // LÓGICA PARALLAX 3D + REFLEJOS DINÁMICOS + ROTACIÓN BASE
+        function initParallax(el) {
+            const baseRot = parseFloat(el.dataset.rotation || 0);
+            
+            el.addEventListener('mousemove', (e) => {
+                const rect = el.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+                const xc = rect.width / 2;
+                const yc = rect.height / 2;
+                const dx = x - xc;
+                const dy = y - yc;
+                
+                // Parallax 3D + Mantener rotación del pegado (Z)
+                el.style.transform = `rotateY(${dx / 10}deg) rotateX(${-dy / 10}deg) rotateZ(${baseRot}deg)`;
+                
+                // Reflejos Dinámicos (CSS Variables)
+                const px = (x / rect.width) * 100;
+                const py = (y / rect.height) * 100;
+                el.style.setProperty('--mouse-x', `${px}%`);
+                el.style.setProperty('--mouse-y', `${py}%`);
+            });
+            el.addEventListener('mouseleave', () => {
+                el.style.transform = `rotateY(0deg) rotateX(0deg) rotateZ(${baseRot}deg)`;
+                el.style.setProperty('--mouse-x', `50%`);
+                el.style.setProperty('--mouse-y', `50%`);
+            });
         }
-        
-        async function handleDrop(e) {
-            e.preventDefault();
-            if(isModalActive) return;
-            const slot = e.target.closest('.slot');
-            if(slot) slot.classList.remove('drag-over');
-            const id = e.dataTransfer.getData("id"), num = e.dataTransfer.getData("num"), rarity = e.dataTransfer.getData("rarity"), elId = e.dataTransfer.getData("elId");
-            if (!slot || slot.dataset.number !== num) { showToast("❌ LUGAR INCORRECTO"); return; }
 
-            const fd = new FormData(); fd.append('sticker_id', id);
-            try {
-                const res = await fetch('api/stick_sticker.php', { method: 'POST', body: fd });
-                const data = await res.json();
-                if (data.success) {
-                    const original = document.getElementById(elId);
-                    const imgSrc = original.querySelector('img').src;
-                    const isGold = rarity === 'gold';
-                    slot.innerHTML = `
-                        <div class="sticker-body frame-${rarity}" onclick='handleCardClick(event, {name:"Figurita", number:${num}, rarity:"${rarity}"}, "${imgSrc}")'>
-                            <div class="sticker-content">
-                                <div class="overlay-${rarity}"></div>
-                                ${isGold ? '<div class="gold-sweep"></div>' : ''}
-                                <img src="${imgSrc}" class="sticker-stuck ${isGold ? 'gold-filter' : ''}">
-                            </div>
-                        </div>`;
-                    original.remove(); showToast("✨ ¡PEGADA!");
-                    if(data.data.album_completed) setTimeout(() => location.reload(), 1500);
-                } else { showToast("❌ " + data.message); }
-            } catch (err) { showToast("❌ ERROR DE RED"); }
-        }
-    </script>
-</body>
-</html>
->`;
-                    original.remove(); showToast("✨ ¡PEGADA!");
-                    if(data.data.album_completed) setTimeout(() => location.reload(), 1500);
-                } else { showToast("❌ " + data.message); }
-            } catch (err) { showToast("❌ ERROR DE RED"); }
-        }
+        // Inicializar todas las pegadas al cargar
+        document.addEventListener('DOMContentLoaded', () => {
+            document.querySelectorAll('.sticker-body').forEach(initParallax);
+        });
     </script>
 </body>
 </html>
