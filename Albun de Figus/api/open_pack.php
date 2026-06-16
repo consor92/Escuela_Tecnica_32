@@ -13,6 +13,12 @@ if (!isLoggedIn()) {
 
 $user = getCurrentUser($pdo);
 
+// Verificar mantenimiento
+$stmtM = $pdo->query("SELECT value FROM settings WHERE `key` = 'maintenance_mode'");
+if ($stmtM->fetchColumn() === '1' && !$user['is_admin']) {
+    jsonResponse(false, "El álbum se encuentra en mantenimiento. No se pueden abrir sobres.");
+}
+
 if ($user['packs_available'] <= 0) {
     jsonResponse(false, 'No tienes sobres disponibles');
 }
@@ -62,16 +68,19 @@ try {
         }
 
         if ($sticker) {
+            // Construir la URL completa
+            $sticker['external_url'] = getDriveUrl($pdo, $sticker['external_url']);
+
             // Verificar si YA la tenía antes de esta apertura
             $stmtCheck = $pdo->prepare("SELECT 1 FROM user_inventory WHERE user_id = ? AND sticker_id = ?");
             $stmtCheck->execute([$user['id'], $sticker['id']]);
             $exists = $stmtCheck->fetch();
-            
+
             $item = $sticker;
             $item['is_new'] = !$exists;
 
             $stickersObtained[] = $item;
-            
+
             // 3. Registrar en inventario
             $stmtInsert = $pdo->prepare("INSERT INTO user_inventory (user_id, sticker_id, quantity, is_stuck) 
                                         VALUES (?, ?, 1, 0) 

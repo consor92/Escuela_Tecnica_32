@@ -14,29 +14,38 @@ $action = $_GET['action'] ?? '';
  */
 if ($action === 'start') {
     // 1. Verificar Cooldown (6 horas)
-    $stmtUser = $pdo->prepare("SELECT last_trivia_at FROM users WHERE id = ?");
+    $stmtUser = $pdo->prepare("SELECT TIMESTAMPDIFF(SECOND, last_trivia_at, NOW()) FROM users WHERE id = ?");
     $stmtUser->execute([$userId]);
-    $lastTrivia = $stmtUser->fetchColumn();
+    $diff = $stmtUser->fetchColumn();
 
-    if ($lastTrivia) {
-        $lastTime = strtotime($lastTrivia);
-        $diff = time() - $lastTime;
-        $cooldown = 6 * 3600;
+    $stmtCooldown = $pdo->query("SELECT `value` FROM settings WHERE `key` = 'trivia_cooldown'");
+    $cooldownHours = (int)($stmtCooldown->fetchColumn() ?: 6);
+    $cooldown = $cooldownHours * 3600;
 
-        if ($diff < $cooldown) {
-            $remaining = $cooldown - $diff;
-            $hours = floor($remaining / 3600);
-            $mins = floor(($remaining % 3600) / 60);
-            jsonResponse(false, "Debes esperar $hours h $mins m.", ['cooldown' => true]);
-        }
+    if ($diff !== null && $diff < $cooldown) {
+        $remaining = $cooldown - $diff;
+        $hours = floor($remaining / 3600);
+        $mins = floor(($remaining % 3600) / 60);
+        jsonResponse(false, "Debes esperar $hours h $mins m.", ['cooldown' => true]);
     }
 
-    // 2. Seleccionar 3 preguntas al azar
-    $stmtTrivias = $pdo->query("SELECT id, question, option_a, option_b, option_c, category, correct_option FROM trivias WHERE is_active = 1 ORDER BY RAND() LIMIT 3");
-    $questions = $stmtTrivias->fetchAll();
+    // 2. Seleccionar preguntas candidatas (tomamos más por seguridad)
+    $stmtTrivias = $pdo->query("SELECT id, question, option_a, option_b, option_c, category, correct_option FROM trivias WHERE is_active = 1 ORDER BY RAND() LIMIT 6");
+    $candidates = $stmtTrivias->fetchAll();
+
+    // Asegurar unicidad total por ID
+    $questions = [];
+    $usedIds = [];
+    foreach($candidates as $q) {
+        if(!in_array($q['id'], $usedIds)) {
+            $questions[] = $q;
+            $usedIds[] = $q['id'];
+        }
+        if(count($questions) === 3) break;
+    }
 
     if (count($questions) < 3) {
-        jsonResponse(false, "No hay suficientes preguntas.");
+        jsonResponse(false, "No hay suficientes preguntas disponibles.");
     }
 
     // 3. Mezclar opciones para cada pregunta
@@ -87,14 +96,19 @@ if ($action === 'submit') {
     }
 
     $correctKey = $session['questions'][$idx]['correct_option'];
-    $isCorrect = ($userAnswer === $correctKey);
+    $isCorrect = (strtolower($userAnswer) === strtolower($correctKey));
 
     if (!$isCorrect) {
         unset($_SESSION['trivia_session']);
         // Marcar cooldown incluso si falla (para evitar spam)
         $stmtUpdate = $pdo->prepare("UPDATE users SET last_trivia_at = NOW() WHERE id = ?");
         $stmtUpdate->execute([$userId]);
-        jsonResponse(true, "Incorrecto", ['correct' => false, 'finished' => true, 'correct_key' => $correctKey]);
+        
+        // Obtener el texto de la respuesta correcta para mejor feedback
+        $q = $session['questions'][$idx];
+        $correctText = $q['option_' . strtolower($correctKey)] ?? 'Desconocida';
+        
+        jsonResponse(true, "Incorrecto. La respuesta era: $correctText", ['correct' => false, 'finished' => true, 'correct_key' => $correctKey]);
     }
 
     $session['current_idx']++;
@@ -103,18 +117,37 @@ if ($action === 'submit') {
         // GANÓ
         $pdo->beginTransaction();
         try {
-            $stmtUpdate = $pdo->prepare("UPDATE users SET last_trivia_at = NOW(), packs_available = packs_available + 1 WHERE id = ?");
-            $stmtUpdate->execute([$userId]);
+            // --- CÁLCULO DE RECOMPENSA VARIABLE (1 a 5 sobres) ---
+            $stmtRates = $pdo->prepare("SELECT `value` FROM settings WHERE `key` = 'promo_reward_rates'");
+            $stmtRates->execute();
+            $ratesJson = $stmtRates->fetchColumn();
+            $rates = $ratesJson ? json_decode($ratesJson, true) : ["1"=>20,"2"=>20,"3"=>20,"4"=>20,"5"=>20];
 
-            $stmtAudit = $pdo->prepare("INSERT INTO audit_packs (user_id, source_type, source_id, amount) VALUES (?, 'trivia', 'Misión Cumplida', 1)");
-            $stmtAudit->execute([$userId]);
+            $rand = mt_rand(1, 100);
+            $acc = 0;
+            $packsGained = 1; // Default
+            foreach ($rates as $amount => $percentage) {
+                $acc += $percentage;
+                if ($rand <= $acc) {
+                    $packsGained = intval($amount);
+                    break;
+                }
+            }
+
+            $stmtUpdate = $pdo->prepare("UPDATE users SET last_trivia_at = NOW(), packs_available = packs_available + ? WHERE id = ?");
+            $stmtUpdate->execute([$packsGained, $userId]);
+
+            $stmtAudit = $pdo->prepare("INSERT INTO audit_packs (user_id, source_type, source_id, amount) VALUES (?, 'trivia', 'Misión Cumplida', ?)");
+            $stmtAudit->execute([$userId, $packsGained]);
 
             $pdo->commit();
             unset($_SESSION['trivia_session']);
-            jsonResponse(true, "¡Ganaste!", ['correct' => true, 'finished' => true, 'won' => true]);
+            
+            $msg = ($packsGained > 1) ? "¡Increíble! Ganaste $packsGained sobres." : "¡Misión cumplida! Ganaste 1 sobre.";
+            jsonResponse(true, $msg, ['correct' => true, 'finished' => true, 'won' => true, 'amount' => $packsGained]);
         } catch (Exception $e) {
-            $pdo->rollBack();
-            jsonResponse(false, "Error");
+            if ($pdo->inTransaction()) $pdo->rollBack();
+            jsonResponse(false, "Error al procesar premio");
         }
     } else {
         $session['question_start_time'] = time();

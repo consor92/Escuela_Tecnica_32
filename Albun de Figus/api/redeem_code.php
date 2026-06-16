@@ -16,9 +16,9 @@ if (empty($codeStr)) {
 try {
     $pdo->beginTransaction();
 
-    // 1. Buscar el código y verificar si está activo, no expirado y tiene usos disponibles
+    // 1. Buscar el código y verificar si está activo, no expirado y no ha sido usado (si es de uso único)
     $stmtCode = $pdo->prepare("
-        SELECT id, packs_reward, expires_at, max_uses, used_by_count 
+        SELECT id, packs_reward, expires_at, max_uses, used_by_count, is_used 
         FROM promo_codes 
         WHERE code = ? AND expires_at > NOW()
     ");
@@ -30,14 +30,21 @@ try {
         jsonResponse(false, "Código inválido o expirado.");
     }
 
-    if ($codeData['used_by_count'] >= $codeData['max_uses']) {
+    // Si el código es de uso único (max_uses = 1) y ya está marcado como usado
+    if ($codeData['is_used'] == 1 || ($codeData['max_uses'] == 1 && $codeData['used_by_count'] >= 1)) {
+        $pdo->rollBack();
+        jsonResponse(false, "Este código ya fue utilizado.");
+    }
+
+    // Para códigos grupales con múltiples cupos
+    if ($codeData['max_uses'] > 1 && $codeData['used_by_count'] >= $codeData['max_uses']) {
         $pdo->rollBack();
         jsonResponse(false, "Este código ya alcanzó su límite de usos.");
     }
 
     $codeId = $codeData['id'];
 
-    // 2. Verificar si el usuario ya usó este código específico
+    // 2. Verificar si el usuario ya usó este código específico (para códigos grupales)
     $stmtCheck = $pdo->prepare("SELECT 1 FROM user_promo_codes WHERE user_id = ? AND code_id = ?");
     $stmtCheck->execute([$userId, $codeId]);
     if ($stmtCheck->fetch()) {
@@ -49,10 +56,27 @@ try {
     $stmtUse = $pdo->prepare("INSERT INTO user_promo_codes (user_id, code_id) VALUES (?, ?)");
     $stmtUse->execute([$userId, $codeId]);
 
-    $stmtUpdateCount = $pdo->prepare("UPDATE promo_codes SET used_by_count = used_by_count + 1 WHERE id = ?");
+    // Marcar como usado e incrementar contador
+    $stmtUpdateCount = $pdo->prepare("UPDATE promo_codes SET used_by_count = used_by_count + 1, is_used = 1 WHERE id = ?");
     $stmtUpdateCount->execute([$codeId]);
 
-    $packsGained = $codeData['packs_reward'];
+    // --- CÁLCULO DE RECOMPENSA VARIABLE (1 a 5 sobres) ---
+    $stmtRates = $pdo->prepare("SELECT `value` FROM settings WHERE `key` = 'promo_reward_rates'");
+    $stmtRates->execute();
+    $ratesJson = $stmtRates->fetchColumn();
+    $rates = $ratesJson ? json_decode($ratesJson, true) : ["1"=>20,"2"=>20,"3"=>20,"4"=>20,"5"=>20];
+
+    $rand = mt_rand(1, 100);
+    $acc = 0;
+    $packsGained = 1; // Default
+    
+    foreach ($rates as $amount => $percentage) {
+        $acc += $percentage;
+        if ($rand <= $acc) {
+            $packsGained = intval($amount);
+            break;
+        }
+    }
     
     // AUDITORÍA DE SOBRES
     $stmtAudit = $pdo->prepare("INSERT INTO audit_packs (user_id, source_type, source_id, amount) VALUES (?, 'promo', ?, ?)");
@@ -62,7 +86,7 @@ try {
     $stmtUser->execute([$packsGained, $userId]);
 
     $pdo->commit();
-    jsonResponse(true, "¡Código canjeado!", ['amount' => $packsGained]);
+    jsonResponse(true, "¡Código canjeado! Ganaste $packsGained " . ($packsGained == 1 ? "sobre" : "sobres") . ".", ['amount' => $packsGained]);
 
 } catch (Exception $e) {
     if ($pdo && $pdo->inTransaction()) $pdo->rollBack();

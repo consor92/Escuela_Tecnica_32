@@ -5,7 +5,7 @@
  */
 
 $host = 'localhost';
-$db   = 'album_32';
+$db   = 'if0_42072556_album_32';
 $user = 'root';
 $pass = '';
 $charset = 'utf8mb4';
@@ -19,9 +19,11 @@ $options = [
 
 try {
      $pdo = new PDO($dsn, $user, $pass, $options);
+     
+
 } catch (\PDOException $e) {
      // En producción, no mostrar el error detallado para evitar fugas de información
      error_log($e->getMessage());
+     
      die("Error de conexión. Por favor, intente más tarde.");
 }
-?>

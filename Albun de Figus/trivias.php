@@ -5,6 +5,10 @@ requireLogin();
 
 $userId = $_SESSION['user_id'];
 
+// Persistencia de vista para admin/docente
+$viewParam = (isset($_GET['view']) && $_GET['view'] === 'student') ? '?view=student' : '';
+$backUrl = "dashboard.php" . $viewParam;
+
 // Consultar cooldown inicial
 $stmt = $pdo->prepare("SELECT last_trivia_at FROM users WHERE id = ?");
 $stmt->execute([$userId]);
@@ -13,15 +17,21 @@ $lastTrivia = $stmt->fetchColumn();
 $cooldownActive = false;
 $remainingText = "";
 
-if ($lastTrivia) {
-    $diff = time() - strtotime($lastTrivia);
-    if ($diff < (6 * 3600)) {
-        $cooldownActive = true;
-        $rem = (6 * 3600) - $diff;
-        $h = floor($rem / 3600);
-        $m = floor(($rem % 3600) / 60);
-        $remainingText = "PRÓXIMA TRIVIA EN: {$h}h {$m}m";
-    }
+// Consultar cooldown dinámico
+$stmtCooldown = $pdo->query("SELECT `value` FROM settings WHERE `key` = 'trivia_cooldown'");
+$cooldownHours = (int)($stmtCooldown->fetchColumn() ?: 6);
+$cooldownSeconds = $cooldownHours * 3600;
+
+$stmtDiff = $pdo->prepare("SELECT TIMESTAMPDIFF(SECOND, last_trivia_at, NOW()) FROM users WHERE id = ?");
+$stmtDiff->execute([$userId]);
+$diff = $stmtDiff->fetchColumn();
+
+if ($diff !== null && $diff < $cooldownSeconds) {
+    $cooldownActive = true;
+    $rem = $cooldownSeconds - $diff;
+    $h = floor($rem / 3600);
+    $m = floor(($rem % 3600) / 60);
+    $remainingText = "PRÓXIMA TRIVIA EN: {$h}h {$m}m";
 }
 ?>
 <!DOCTYPE html>
@@ -30,6 +40,7 @@ if ($lastTrivia) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Trivia Pro - Álbum 32</title>
+    <link rel="icon" type="image/x-icon" href="assets/img/favicon.ico">
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
     <style>
@@ -56,7 +67,7 @@ if ($lastTrivia) {
 
     <header class="mb-10 flex items-center justify-between">
         <div>
-            <a href="dashboard.php" class="text-[10px] font-black text-gray-500 uppercase tracking-widest mb-1 inline-block">⬅ VOLVER</a>
+            <a href="<?php echo $backUrl; ?>" class="text-[10px] font-black text-gray-500 uppercase tracking-widest mb-1 inline-block">⬅ VOLVER</a>
             <h1 class="text-3xl font-black italic uppercase text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-purple-500">Misión Trivia</h1>
         </div>
         <div class="w-12 h-12 rounded-2xl bg-white/5 flex items-center justify-center text-xl border border-white/10">🧠</div>
@@ -86,7 +97,7 @@ if ($lastTrivia) {
                     </button>
                 <?php endif; ?>
             </div>
-            <p class="text-[10px] text-gray-500 uppercase font-bold tracking-[0.3em]">Acceso cada 6 horas</p>
+            <p class="text-[10px] text-gray-500 uppercase font-bold tracking-[0.3em]">Acceso cada <?php echo $cooldownHours; ?> horas</p>
         </div>
 
         <!-- VISTA DE PREGUNTAS (OCULTA AL INICIO) -->
@@ -110,16 +121,16 @@ if ($lastTrivia) {
                 <p id="question-text" class="text-xl font-bold leading-tight mb-8">...</p>
                 
                 <div class="space-y-4">
-                    <button onclick="submitAnswer('a')" id="btn-a" class="option-btn w-full text-left p-5 rounded-2xl flex items-center gap-4 group">
-                        <span class="w-10 h-10 rounded-xl bg-white/5 flex items-center justify-center font-black group-hover:bg-cyan-500 transition-colors">A</span>
+                    <button id="btn-a" class="option-btn w-full text-left p-5 rounded-2xl flex items-center gap-4 group">
+                        <span class="w-10 h-10 rounded-xl bg-white/5 flex items-center justify-center font-black group-hover:bg-cyan-500 transition-colors">1</span>
                         <span id="text-a">...</span>
                     </button>
-                    <button onclick="submitAnswer('b')" id="btn-b" class="option-btn w-full text-left p-5 rounded-2xl flex items-center gap-4 group">
-                        <span class="w-10 h-10 rounded-xl bg-white/5 flex items-center justify-center font-black group-hover:bg-cyan-500 transition-colors">B</span>
+                    <button id="btn-b" class="option-btn w-full text-left p-5 rounded-2xl flex items-center gap-4 group">
+                        <span class="w-10 h-10 rounded-xl bg-white/5 flex items-center justify-center font-black group-hover:bg-cyan-500 transition-colors">2</span>
                         <span id="text-b">...</span>
                     </button>
-                    <button onclick="submitAnswer('c')" id="btn-c" class="option-btn w-full text-left p-5 rounded-2xl flex items-center gap-4 group">
-                        <span class="w-10 h-10 rounded-xl bg-white/5 flex items-center justify-center font-black group-hover:bg-cyan-500 transition-colors">C</span>
+                    <button id="btn-c" class="option-btn w-full text-left p-5 rounded-2xl flex items-center gap-4 group">
+                        <span class="w-10 h-10 rounded-xl bg-white/5 flex items-center justify-center font-black group-hover:bg-cyan-500 transition-colors">3</span>
                         <span id="text-c">...</span>
                     </button>
                 </div>
@@ -132,11 +143,13 @@ if ($lastTrivia) {
              <h2 id="result-title" class="text-3xl font-black uppercase italic">¡Felicidades!</h2>
              <p id="result-desc" class="text-gray-400 text-sm italic px-6"></p>
              <div class="pt-6">
-                <a href="dashboard.php" class="inline-block bg-white text-black px-10 py-4 rounded-2xl font-black uppercase tracking-tighter">Volver al Inicio</a>
+                <a href="<?php echo $backUrl; ?>" class="inline-block bg-white text-black px-10 py-4 rounded-2xl font-black uppercase tracking-tighter">Volver al Inicio</a>
              </div>
         </div>
 
     </main>
+
+    <?php renderGlobalAssets($pdo); ?>
 
     <script>
         let timerInterval;

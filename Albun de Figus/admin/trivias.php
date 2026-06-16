@@ -44,6 +44,7 @@ $trivias = $pdo->query("SELECT * FROM trivias ORDER BY id DESC")->fetchAll();
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Gestión de Trivias - Admin</title>
+    <link rel="icon" type="image/x-icon" href="../assets/img/favicon.ico">
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
         body { background: #020617; color: white; font-family: 'Outfit', sans-serif; }

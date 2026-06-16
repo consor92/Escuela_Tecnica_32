@@ -1,79 +1,43 @@
-# Álbum 32: Especificaciones Técnicas y de Diseño
+# Álbum 32: Camino al 20 de Junio - Registro de Cambios y Arquitectura
 
-## Estado del Proyecto
-- **Fase:** Módulo 5 (Preparación).
-- **Última Actualización:** Módulo 4 (Álbum Virtual 3D Premium) finalizado y pulido.
+## 1. Sistema de Mantenimiento y Control de Acceso
+- **Restricción Horaria Automática:** El sistema bloquea el acceso a alumnos de **22:00 PM a 08:00 AM** (Zona Horaria: America/Argentina/Buenos_Aires).
+- **Modo Mantenimiento Manual:** Activación desde el panel para bloquear el sitio completamente.
+- **Acceso Administrativo (Bypass):** Los administradores pueden saltar el bloqueo usando la URL `index.php?admin_mode=1`, lo que activa un bypass de sesión.
+- **Arquitectura de Redirección:** Se eliminó la lógica de redirección interna de `maintenance.php` para prevenir errores de `ERR_TOO_MANY_REDIRECTS`, centralizando toda la inteligencia en `checkMaintenance($pdo)`.
 
-## 📓 Arquitectura del Álbum (StPageFlip)
-- **Dimensiones:** Libro de 840x550px (Spreads fijos de 2 páginas de 420px).
-- **Física del Libro:** 
-    - Uso de `data-density="hard"` para hojas rígidas (efecto cartón premium).
-    - Tiempo de volteo (`flippingTime`) ajustado a 1000ms para realismo.
-    - Sincronización de Apertura: Tapa (Pág 0), Intro/Propiedad (Pág 1 - Izquierda), Salón de Honor (Pág 2 - Derecha).
-- **Componentes Físicos:**
-    - **Tapa y Contratapa:** Marrón Cuero Noble (`#452c1e`) con bordes dobles dorados.
-    - **Papel:** Textura de fibra natural (`var(--paper)`) con bordes sutiles y sombras de lomo central.
-    - **Lomo Dinámico:** Degradados en la unión central que simulan profundidad tridimensional.
+## 2. Podio y Cuadro de Honor
+- **Lógica de Podio Dinámica:** 
+    - **Modo Global:** Muestra a los 3 alumnos más rápidos en completar el álbum en toda la escuela.
+    - **Modo Turnos (TM, TT, TV):** Muestra al primer alumno de cada turno (Mañana, Tarde, Vespertino), ordenados entre sí por tiempo de finalización.
+- **Gestión de Turnos:** Nueva tabla `course_shifts` para asociar cada curso (ej: 4°3) con su turno correspondiente. Los cambios se sincronizan con todos los alumnos del curso.
+- **Métricas de Rendimiento:** El podio ahora calcula y muestra el **"Tiempo Total"** (duración en horas y minutos desde el registro hasta el completado).
 
-## 📐 Layout y Grillas (Matrices Cuadradas)
-- **Estabilización de Slots:** Forzado de columnas a 180px fijos para mantener proporciones en todas las páginas (especialmente en pág. 1, 4, 8, 13).
-- **Matrices Reales:** Forzado de grillas mediante `!important` y clases específicas para evitar desbordamientos:
-    - **6 Figuritas (3x2):** Matriz de 2 columnas con repetición de filas.
-    - **4 Figuritas (2x2):** Matriz de 2 columnas equilibradas.
-    - **1 Figurita:** Centrado absoluto con tamaño monumental (300px) en Salón de Honor.
-- **Espaciado:** Gap de 20px entre slots estándar para una visualización aireada y profesional.
+## 3. Economía del Juego y Recompensas
+- **Cooldowns Dinámicos:** Los administradores pueden configurar el tiempo de espera para QRs y Trivias directamente desde el panel (en horas).
+- **Premios Variables en QR:** El escaneo de QRs ahora otorga entre **1 y 5 sobres** basándose en las probabilidades configuradas para los códigos de profesores.
+- **Bonus de Canje:** Nueva probabilidad configurable (0-100%) para obtener sobres extra al canjear figuritas repetidas.
+- **Happy Hour:** Alerta visual pulsante en el proceso de escaneo cuando el evento está activo.
 
-## 🖼️ Figuritas y Mosaicos
-- **Diseño del Cromo:** 
-    - **Zero Padding:** La imagen toca físicamente el marco de rareza (sin bordes blancos internos).
-    - **Bordes Externos:** Sombra proyectada de 8px para simular volumen sobre el papel.
-- **Lógica de Mosaicos:**
-    - Paisajes de 2x2 y 1x2 con unión de pixel perfecto (sin gaps ni bordes redondeados internos).
-    - **Etiquetas de Guía:** Cada slot de mosaico muestra "PARTE 1, 2, 3, 4" grabado sutilmente.
-- **Rarezas Premium:**
-    - **Holo:** Marco arcoíris con rotación infinita (`conic-gradient`) y efecto de brillitos (`sparkles`) animados.
-    - **Gold:** Acabado Midas integral con pedestal de energía (aura pulsante dorada) en páginas de Honor.
+## 4. Gestión de Seguridad y Usuarios
+- **Perfil de Alumno:** Botón 👤 en el dashboard que permite ver datos personales y cambiar la contraseña actual.
+- **Reset Administrativo:** Función de reset de clave para el administrador que genera una clave aleatoria de **8 números**, visible una sola vez.
+- **Autogestión Admin:** Botón de llave (🔑) en el Panel Maestro para que el administrador cambie su propia clave.
 
-## 🖱️ Experiencia de Usuario
-- **Interacción:** Volteo de página habilitado solo mediante clics/drag sobre el área física del libro.
-- **Bandeja Inferior:** 
-    - Altura fija (210px) con fondo azul noche profundo.
-    - Scroll horizontal fluido compatible con rueda de ratón.
-    - Visibilidad total de marcos de rareza en figuritas sueltas.
-- **Detalle de Colección:** Modal 3D con desenfoque de fondo y descripción histórica completa al hacer clic en figuritas pegadas.
+## 5. Mejoras en Interfaz de Usuario (UI)
+- **Unificación de Contadores:** Uso de la **Burbuja Dorada Flotante** para los conteos de sobres tanto en el Dashboard como en los resultados de QR.
+- **Sincronización de Animaciones:** El sobre del Dashboard ahora rebota junto con su burbuja de conteo para mayor dinamismo visual.
+- **Apertura Focalizada:** Se eliminó la burbuja de conteo en la vista `abrir_sobres.php` para centrar la atención únicamente en el sobre y su apertura.
+- **Experiencia de Recompensa:** Pantalla de "Botín Logrado" con animaciones de sobres, badges de cantidad y efectos de confeti.
+- **Limpieza de Iconografía:** Eliminación de emojis genéricos (🚀) y del icono de caja (📦) en el botón de apertura para un diseño más sobrio y profesional.
+- **Optimización de Scroll:** Implementación de scroll interno invisible en modales pesados (como el Podio) para mantener la limpieza visual.
 
-## 🔄 Sistema de Canje (Módulo 6)
-- **Valorización por Rareza:**
-    - Común: 1 punto.
-    - Especial: 2 puntos.
-    - Rara: 3 puntos.
-    - Holo: 4 puntos.
-    - Gold: 5 puntos.
-- **Coste de Canje:** 10 puntos por 1 sobre (Opciones de x1, x5 y x10 sobres).
-- **Lógica de Descuento:** El sistema prioriza el descuento de figuritas de menor rareza (Comunes -> Especiales -> etc.) para cubrir los puntos necesarios.
-- **Interfaz:** Modal dinámico en el Dashboard con cálculo de puntos en tiempo real vía API.
-## 🛠️ Pendientes y Bugs Críticos
-- **Layout Mobile-First (Álbum):** El libro 3D (`StPageFlip`) no se escala correctamente en pantallas pequeñas, provocando que se corte o no "entre" en el viewport.
-- **Visualización de Apertura:** Las figuritas obtenidas en `abrir_sobres.php` no son visibles en ciertos dispositivos (posible problema de desbordamiento o z-index en la vista de resultados).
-- **Refactorización de Canje:** Implementado el sistema de probabilidad proporcional (10% por cada sobre) y corrección de reserva de unidad (quantity - 1). Pendiente validar animaciones con múltiples sobres extra.
-- **Sistema QR:** Pendiente implementación de validación de `qr_id` y cooldown de 6 horas.
-
-## 💡 Módulo 7: Trivias e Historia (Finalizado)
-- **Mecánica:** Sesiones rápidas de 3 preguntas aleatorias.
-- **Límite de Tiempo:** 30 segundos por pregunta (con cronómetro visual).
-- **Recompensas:** Solo se otorga 1 sobre si se aciertan las 3 preguntas consecutivamente.
-- **Restricción:** Cooldown de 6 horas entre intentos (independientemente del resultado) para evitar farmeo excesivo.
-- **Interfaz:** Diseño Mobile-First con transiciones fluidas y feedback inmediato.
-
-## 🛡️ Panel de Administración (Finalizado)
-- **UI/UX:** Overhaul visual con sistema de "Toasts" personalizados y botones de acción de alta visibilidad (UI consistente con el resto de la app).
-- **Configuración de Rarezas:** Interfaz para ajustar probabilidades de drop (Común, Poco Común, Rara, Holo, Gold) en tiempo real con validación de suma 100%.
-- **Simulador de Sobres:** Herramienta de auditoría para probar probabilidades sin alterar datos de usuario, con modo ráfaga (x10) y estadísticas de sesión acumuladas.
-- **Gestión de Alumnos:** Tabla interactiva con ordenamiento dinámico (clic en cabeceras), barras de progreso visuales y desglose de datos (progreso de pegado, fecha finalización).
-
-## 🎁 Sistema de Códigos Profe (Actualizado)
-- **Premio Fijo:** Cada código regala exactamente 1 sobre.
-- **Cupos Limitados:** Ahora cada código tiene un límite configurable de alumnos que pueden canjearlo.
-- **Expiración:** Validez extendida a 3 días (72 horas) desde la creación.
-- **Auditoría:** Panel administrativo muestra el uso de cupos en tiempo real y estado (Activo/Vencido).
-
+## 6. Base de Datos (Actualizaciones v7.0)
+- **Tabla `course_shifts`:** Mapeo de cursos a turnos escolares.
+- **Columna `shift` en `users`:** Almacenamiento denormalizado para ## 6. Roles de Usuario y Gestión
+- **Sistema Multirrol:** Soporte para Alumno, Docente y Admin.
+- **Panel Docente:** Vista simplificada para que los profesores puedan:
+    - Ver el historial de códigos promocionales otorgados por el administrador.
+    - Blanquear contraseñas de cualquier alumno (reseteo a '123456') independientemente del curso.
+- **Restricciones de Juego:** Los roles 'Docente' y 'Admin' están restringidos de las mecánicas de juego (apertura de sobres, álbum) para mantener la integridad de la competencia.
+- **Documentación de Base de Datos:** Columna `role` añadida a la tabla `users`.

@@ -68,12 +68,14 @@ if ($action === 'submit') {
     $userAnswer = $_POST['answer'] ?? '';
 
     $correctKey = $session['questions'][$idx]['correct_option'];
-    $isCorrect = ($userAnswer === $correctKey);
+    $isCorrect = (strtolower($userAnswer) === strtolower($correctKey));
 
     if (!$isCorrect) {
         unset($_SESSION['trivia_test_session']);
+        $q = $session['questions'][$idx];
+        $correctText = $q['option_' . strtolower($correctKey)] ?? 'Desconocida';
         header('Content-Type: application/json');
-        echo json_encode(['success' => true, 'message' => "Incorrecto. Era la opción: " . strtoupper($correctKey), 'data' => ['correct' => false, 'finished' => true]]);
+        echo json_encode(['success' => true, 'message' => "Incorrecto. La respuesta era: $correctText", 'data' => ['correct' => false, 'finished' => true]]);
         exit();
     }
 
@@ -112,6 +114,7 @@ if ($action === 'submit') {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Simulador de Trivia - Admin</title>
+    <link rel="icon" type="image/x-icon" href="../assets/img/favicon.ico">
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
     <style>
@@ -161,15 +164,15 @@ if ($action === 'submit') {
                 <p id="question-text" class="text-xl font-bold leading-tight mb-8">...</p>
                 <div class="space-y-4">
                     <button id="btn-a" class="option-btn w-full text-left p-5 rounded-2xl flex items-center gap-4 group">
-                        <span class="w-10 h-10 rounded-xl bg-white/5 flex items-center justify-center font-black group-hover:bg-yellow-500 transition-colors">A</span>
+                        <span class="w-10 h-10 rounded-xl bg-white/5 flex items-center justify-center font-black group-hover:bg-yellow-500 transition-colors">1</span>
                         <span id="text-a">...</span>
                     </button>
                     <button id="btn-b" class="option-btn w-full text-left p-5 rounded-2xl flex items-center gap-4 group">
-                        <span class="w-10 h-10 rounded-xl bg-white/5 flex items-center justify-center font-black group-hover:bg-yellow-500 transition-colors">B</span>
+                        <span class="w-10 h-10 rounded-xl bg-white/5 flex items-center justify-center font-black group-hover:bg-yellow-500 transition-colors">2</span>
                         <span id="text-b">...</span>
                     </button>
                     <button id="btn-c" class="option-btn w-full text-left p-5 rounded-2xl flex items-center gap-4 group">
-                        <span class="w-10 h-10 rounded-xl bg-white/5 flex items-center justify-center font-black group-hover:bg-yellow-500 transition-colors">C</span>
+                        <span class="w-10 h-10 rounded-xl bg-white/5 flex items-center justify-center font-black group-hover:bg-yellow-500 transition-colors">3</span>
                         <span id="text-c">...</span>
                     </button>
                 </div>

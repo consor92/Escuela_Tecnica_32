@@ -1,14 +1,22 @@
 <?php
 require_once 'includes/db.php';
 require_once 'includes/functions.php';
+
+// Verificar mantenimiento
+checkMaintenance($pdo);
+
 if (isLoggedIn()) {
     $user = getCurrentUser($pdo);
-    if ($user && $user['is_admin']) {
-        header("Location: admin/dashboard.php");
-    } else {
-        header("Location: dashboard.php");
+    if ($user) {
+        if ($user['role'] === 'admin') {
+            header("Location: admin/dashboard.php");
+        } elseif ($user['role'] === 'docente') {
+            header("Location: docente/dashboard.php");
+        } else {
+            header("Location: dashboard.php");
+        }
+        exit();
     }
-    exit();
 }
 ?>
 <!DOCTYPE html>
@@ -16,7 +24,9 @@ if (isLoggedIn()) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="referrer" content="no-referrer">
     <title>Álbum 32: Camino al 20 de Junio</title>
+    <link rel="icon" type="image/x-icon" href="assets/img/favicon.ico">
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
     <style>
@@ -75,6 +85,16 @@ if (isLoggedIn()) {
 
     <div id="custom-toast" class="toast"></div>
 
+    <?php 
+    // Mostrar mensaje si viene por error de sesión
+    $error = $_GET['error'] ?? '';
+    if ($error === 'session_expired') {
+        echo '<script>window.onload = () => showNotification("Tu sesión ha caducado por inactividad (15 min)", "error");</script>';
+    } elseif ($error === 'simultaneous_login') {
+        echo '<script>window.onload = () => showNotification("Se ha iniciado sesión desde otro dispositivo", "error");</script>';
+    }
+    ?>
+
     <div class="w-full max-w-md glass rounded-3xl p-8 relative overflow-hidden">
         <!-- Decoración -->
         <div class="absolute -top-10 -right-10 w-32 h-32 bg-purple-600 rounded-full mix-blend-screen filter blur-3xl opacity-20 animate-pulse-slow"></div>
@@ -99,34 +119,62 @@ if (isLoggedIn()) {
             </div>
             <div>
                 <label class="block text-gray-400 text-xs uppercase mb-2 ml-1">Contraseña</label>
-                <input type="password" name="password" required class="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white neon-border-cian transition-all" placeholder="••••••••">
+                <div class="relative">
+                    <input type="password" name="password" id="login-password" required class="w-full bg-white/5 border border-white/10 rounded-xl pl-4 pr-12 py-3 text-white neon-border-cian transition-all" placeholder="••••••••">
+                    <button type="button" onclick="togglePassword('login-password', this)" class="absolute right-4 top-1/2 -translate-y-1/2 text-gray-500 hover:text-white transition-colors">
+                        👁️
+                    </button>
+                </div>
             </div>
             <button type="submit" class="w-full btn-gradient py-4 rounded-xl text-white font-bold text-lg mt-4">ENTRAR AL SISTEMA</button>
         </form>
 
         <!-- Formulario Registro -->
         <form id="form-register" class="space-y-4 hidden">
+            <div class="p-3 bg-cyan-500/10 border border-cyan-500/30 rounded-xl mb-4">
+                <p class="text-cyan-400 text-[10px] uppercase font-bold text-center">Registro solo habilitado de 17:30 a 22:30</p>
+            </div>
+            <div>
+                <label class="block text-gray-400 text-xs uppercase mb-1 ml-1">DNI (Para validación)</label>
+                <input type="text" id="reg-dni" name="dni" required class="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-2 text-white neon-border-cian transition-all" placeholder="Solo números">
+            </div>
             <div>
                 <label class="block text-gray-400 text-xs uppercase mb-1 ml-1">Nombre Completo</label>
-                <input type="text" name="full_name" required class="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-2 text-white neon-border-cian transition-all">
+                <input type="text" id="reg-fullname" name="full_name" required class="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-2 text-white neon-border-cian transition-all">
+            </div>
+            <div>
+                <label class="block text-gray-400 text-xs uppercase mb-1 ml-1">Curso</label>
+                <input type="text" id="reg-course" name="course" readonly class="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-2 text-gray-500 cursor-not-allowed transition-all" placeholder="Se completará al validar DNI">
             </div>
             <div>
                 <label class="block text-gray-400 text-xs uppercase mb-1 ml-1">Usuario</label>
                 <input type="text" name="username" required class="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-2 text-white neon-border-cian transition-all">
             </div>
             <div>
-                <label class="block text-gray-400 text-xs uppercase mb-1 ml-1">Curso (Ej: 4to 1ra)</label>
-                <input type="text" name="course" required class="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-2 text-white neon-border-cian transition-all">
-            </div>
-            <div>
                 <label class="block text-gray-400 text-xs uppercase mb-1 ml-1">Contraseña</label>
-                <input type="password" name="password" required class="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-2 text-white neon-border-cian transition-all" placeholder="••••••••">
+                <div class="relative">
+                    <input type="password" name="password" id="reg-password" required class="w-full bg-white/5 border border-white/10 rounded-xl pl-4 pr-12 py-2 text-white neon-border-cian transition-all" placeholder="••••••••">
+                    <button type="button" onclick="togglePassword('reg-password', this)" class="absolute right-4 top-1/2 -translate-y-1/2 text-gray-500 hover:text-white transition-colors">
+                        👁️
+                    </button>
+                </div>
             </div>
             <button type="submit" class="w-full btn-gradient py-4 rounded-xl text-white font-bold text-lg mt-4">CREAR CUENTA</button>
         </form>
     </div>
 
     <script>
+        function togglePassword(inputId, btn) {
+            const input = document.getElementById(inputId);
+            if (input.type === 'password') {
+                input.type = 'text';
+                btn.textContent = '🙈';
+            } else {
+                input.type = 'password';
+                btn.textContent = '👁️';
+            }
+        }
+
         function showForm(type) {
             const login = document.getElementById('form-login');
             const register = document.getElementById('form-register');
@@ -157,6 +205,31 @@ if (isLoggedIn()) {
             setTimeout(() => toast.classList.remove('show'), 3000);
         }
 
+        // Validación de DNI y Autocompletado
+        const dniInput = document.getElementById('reg-dni');
+        const nameInput = document.getElementById('reg-fullname');
+        const courseInput = document.getElementById('reg-course');
+
+        dniInput.oninput = async () => {
+            if (dniInput.value.length >= 7) {
+                try {
+                    const res = await fetch(`api/check_dni.php?dni=${dniInput.value}`);
+                    const data = await res.json();
+                    if (data.success) {
+                        nameInput.value = data.data.full_name;
+                        courseInput.value = data.data.course;
+                        nameInput.classList.add('text-cyan-400');
+                        courseInput.classList.add('text-cyan-400');
+                    } else {
+                        nameInput.value = "";
+                        courseInput.value = "";
+                        nameInput.classList.remove('text-cyan-400');
+                        courseInput.classList.remove('text-cyan-400');
+                    }
+                } catch (err) { console.error("Error validando DNI"); }
+            }
+        };
+
         // Manejo de Forms con Fetch
         document.querySelectorAll('form').forEach(form => {
             form.onsubmit = async (e) => {
@@ -172,7 +245,7 @@ if (isLoggedIn()) {
                     
                     if(data.success) {
                         if(form.id === 'form-login') {
-                            window.location.href = data.data.is_admin ? 'admin/dashboard.php' : 'dashboard.php';
+                            window.location.href = data.data.redirect;
                         }
                         else setTimeout(() => showForm('login'), 2000);
                     }
