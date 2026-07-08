@@ -1,0 +1,44 @@
+{
+  "name": "encuesta-pp-react",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev --turbo",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
+  },
+  "dependencies": {
+    "@mantine/core": "^7.17.8",
+    "@mantine/dates": "^7.17.8",
+    "@mantine/hooks": "^7.17.8",
+    "@mantine/notifications": "^7.17.8",
+    "@tabler/icons-react": "^3.44.0",
+    "@types/md5": "^2.3.6",
+    "@types/papaparse": "^5.5.2",
+    "chart.js": "^4.5.1",
+    "clsx": "^2.1.1",
+    "csv-parse": "^6.2.1",
+    "jose": "^6.2.3",
+    "md5": "^2.3.0",
+    "mysql2": "^3.22.3",
+    "next": "14.2.35",
+    "papaparse": "^5.5.3",
+    "postcss": "^8.5.16",
+    "postcss-mixins": "^12.1.2",
+    "postcss-preset-mantine": "^1.18.0",
+    "react": "^18",
+    "react-chartjs-2": "^5.3.1",
+    "react-dom": "^18",
+    "react-select": "^5.10.2",
+    "tailwind-merge": "^3.6.0"
+  },
+  "devDependencies": {
+    "@types/node": "^20",
+    "@types/react": "^18",
+    "@types/react-dom": "^18",
+    "eslint": "^8",
+    "eslint-config-next": "14.2.35",
+    "typescript": "^5"
+  }
+}
