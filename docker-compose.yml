@@ -83,13 +83,13 @@ services:
     #   - api
     restart: always
 
-  #jira:
-  #  build:
-  #    context: ./jira
-  #    dockerfile: Dockerfile
-  #  container_name: nextjs_jira
-  #  ports:
-  #    - "3001:3001"
+  jira:
+    build:
+      context: ./jira
+      dockerfile: Dockerfile
+    container_name: nextjs_jira
+    ports:
+      - "3001:3001"
   #  restart: always
 
 #  backadmin:
