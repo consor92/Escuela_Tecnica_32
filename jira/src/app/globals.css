@@ -1,0 +1,142 @@
+﻿@import '@mantine/core/styles.css';
+@import '@mantine/notifications/styles.css';
+@import '@mantine/dates/styles.css';
+
+* { box-sizing: border-box; }
+body { margin: 0; padding: 0; }
+
+@keyframes float {
+  0%, 100% { transform: translateY(0) scale(1); }
+  50% { transform: translateY(-20px) scale(1.02); }
+}
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(12px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.page-gradient {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.page-gradient::before {
+  content: '';
+  position: absolute;
+  width: 500px; height: 500px;
+  background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
+  top: -100px; right: -100px;
+  animation: float 8s ease-in-out infinite;
+  pointer-events: none;
+}
+
+.page-gradient::after {
+  content: '';
+  position: absolute;
+  width: 350px; height: 350px;
+  background: radial-gradient(circle, rgba(255,255,255,0.08) 0%, transparent 70%);
+  bottom: -80px; left: -80px;
+  animation: float 6s ease-in-out infinite reverse;
+  pointer-events: none;
+}
+
+.glass-card {
+  background: var(--mantine-color-body) !important;
+  backdrop-filter: blur(24px) !important;
+  border: 1px solid var(--mantine-color-default-border) !important;
+}
+
+/* Scrollable table wrapper */
+.table-scroll {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+/* Content area scroll */
+.content-scroll {
+  overflow: auto;
+  min-height: 70vh;
+}
+
+/* Legacy class compatibility for scrum-eval and admin panels */
+.card {
+  background: var(--mantine-color-body);
+  border: 1px solid var(--mantine-color-default-border);
+  border-radius: var(--mantine-radius-md);
+  padding: var(--mantine-spacing-md);
+}
+.card > .card { background: var(--mantine-color-body); }
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 16px;
+  border: 1px solid var(--mantine-color-default-border);
+  border-radius: var(--mantine-radius-md);
+  background: var(--mantine-color-body);
+  color: var(--mantine-color-text);
+  cursor: pointer;
+  font-size: 0.875rem;
+  transition: all 0.15s;
+}
+.btn:hover { background: var(--mantine-color-gray-light); }
+.btn-primary {
+  background: var(--mantine-primary-color-filled);
+  color: var(--mantine-primary-color-contrast);
+  border-color: transparent;
+}
+.btn-primary:hover { filter: brightness(1.1); }
+.btn-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 4px;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  border-radius: var(--mantine-radius-sm);
+}
+.badge {
+  display: inline-block;
+  padding: 2px 8px;
+  border-radius: var(--mantine-radius-xl);
+  background: var(--mantine-primary-color-light);
+  color: var(--mantine-primary-color-light-color);
+  font-size: 0.75rem;
+  font-weight: 600;
+}
+.table-container {
+  overflow-x: auto;
+  border: 1px solid var(--mantine-color-default-border);
+  border-radius: var(--mantine-radius-md);
+}
+.tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 2px 8px;
+  border-radius: var(--mantine-radius-xl);
+  background: var(--mantine-color-gray-light);
+  font-size: 0.75rem;
+}
+/* Map legacy CSS variables to Mantine for backward compatibility */
+:root {
+  --primary-color: var(--mantine-primary-color-filled);
+  --card-bg: var(--mantine-color-body);
+  --border-color: var(--mantine-color-default-border);
+  --text-color: var(--mantine-color-text);
+  --text-muted: var(--mantine-color-dimmed);
+  --bg-color: var(--mantine-color-body);
+}
+
+main { padding: 0; margin: 0; max-width: 100%; }
+
+@media (max-width: 768px) {
+  .hide-mobile { display: none !important; }
+}

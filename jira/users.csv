@@ -1,0 +1,68 @@
+id;usuario;password;email;telefono;dni;nombre;apellido;curso;nacimiento;tel_alternativo;rol;direccion2;cuil;nacionalidad
+447;;59d0568c85860fd9b4fe9eb7e8bc0254;leandrom.delgadoet32@gmail.com;5,49113E+12;48591889;Leandro Martín;Delgado Benitez;27;22/4/2008;5,49E+12;0;Bacacay 703;20485918893;Argentina
+448;;f0870c360d8b2e9f8514d273140c6bc3;ixmatt2@gmail.com;1162275685;48244192;Ismael;Gonzalez Merayo;27;29/3/2008;1164329942;0;Libertad 5978;20482441921;Argentina
+449;;a8e7b58c5ec9b10afc3eabbb2469e02c;benjamin.korstanjeet32@gmail.com;+54 911 2727-7391;48315571;Benjamin;Korstanje;27;26/11/2007;+54 911 3255-9544;0;Dorrego 169;23483155719;Argentina
+450;;5d7ed41af601729e5290d9a9cdfb3dec;raulmartinezpersonal0@gmail.com;1140941902;51398854;Raul Luis;Martinez Cretu;27;14/6/2006;1150604216;0;Manco Capac 1693;20513988541;Argentina
+451;;6ad0a31b9c93a5793a266aac94bc3f07;benjamin.ibanezet32@gmail.com;1160592657;47860388;Benjamin;Ibañez Luna;27;18/4/2008;1141666768;0;Catamarca 2014;20478603887;Argentina
+452;;901f36a845b57fdfa14b7b8c9d786f6f;maximocabral2010@gmail.com;1166213324;48503796;Máximo Martin;Cabral Toledo;27;19/2/2008;1153476636;0;Andrade 1850;23485037969;Argentina
+453;;5627e92959094a55e9a46441829ddaee;rosendo.osoreset32@gmail.com;1127510454;48311614;Rosendo Gabriel;Osores Borda;27;15/10/2007;1160461024;0;Av perito moreno C473 ;20483116145;Argentina
+454;;25d55ad283aa400af464c76d713c07ad;gaston.amayaet32@gmail.com;1164788047;48246399;Gastón;Amaya;27;12/11/2007;1155235921;0;Arenales 2539;20482463992;Argentina
+455;;a5854c74ad4dc4490c53143dace20e4c;valentinapalacioset32@gmail.com;1132442885;48041245;Valentina;Palacios;27;8/11/2007;1163757924;0;Av.Forest 664;27480412457;Argentina
+456;;630402cc8ae70bad448291ee1e23321e;martin.lopezschillaciet32@gmail.com;1122733136;48241492;Martin;Lopez Schillaci;27;5/12/2007;1139335680;0;Teodoro Garcia 3145;20482414924;Argentina
+457;;4212bbbce5ccf3a14365fcca29b34112;marcos.torreset32@gmail.com;1154892283;47653211;Marcos;Torres;27;6/2/2007;;0;Miguel Angel 1807;20476532117;Argentina
+458;;33843e985303eb923ac36a4d83057c1e;juanpablollanoset32@gmail.com;1138594930;48116398;Juan Pablo;Llanos;27;26/10/2007;1161510796;0;Sargento Baigorria 1575;20481163987;Argentina
+459;;a6ee124096ebf81edb513b734df44572;ignacio.alvarezet32@gmail.com;1161658830;48044991;Ignacio;Alvarez;27;6/8/2007;1128493994;0;Carranza 1258;20480449917;Argentina
+460;;6a448ac9ca9ee51a5ddcb47bcffb6955;santiago.mamaniet32@gmail.com;1135051200;95123384;Santiago;Mamani ;27;27/7/2007;1158100433;0;Echeandia5874;20951233847;Bolivia
+461;;fed4b0a246fbd886db20dcbf8cbf1714;rodriacevedoet32@gmail.com;+54 9 11 5396-3162;48717177;Rodrigo;Acevedo;27;26/6/2008;+54 9 11 5865-1226;0;Av. Tte. Gral. Donato � lvarez 650;20-48717177-9;Argentina
+462;;373a1ce38b230ade1acf4d66adf78d8d;thiago.casianoet32@gmail.com;1121579576;48384377;Thiago;Casiano;27;29/11/2007;1137966459;0;Avenida Constituyentes 4469;20483843772;Argentina
+463;;de999b3b5f0c25ba0b1d713eaddb1589;martin.romeroket32@gmail.com;11 5801 7156;48803068;Martín;Romero Krawczyk;27;30/6/2008;11 5657 2098;0;Freire, 1041;20488030680;Argentina
+464;;e55bb16dc9b327c7d54ae3433bf9c7fb;Ramiro.averbujet32@gmail.com;11 5035-2296;48242520;Ramiro;Averbuj;27;1/9/2007;11 5957-6324;0;Jose Leon Cabezon 3162;20-48242520-9;Argentina
+465;;47ee2e3168f632309b5c801cca160add;lukas.alexis.gonzalez32@gmail.com;1127619653;48591700;Lukas Alexis;Gonzalez;27;20/3/2008;1133516681;0;Guevara 348;20485917005;Argentina
+466;;92e5449212fef6a6d4cd481d2d386f8a;cristofer.velaet32@gmail.com;1123327994;95230125;Cristofer;Vela;27;9/8/2006;;0;Triunvirato 2376;20952301250;Perú
+467;;0ea7d8ee577ff4c7c5a1a121582976ec;tomas.fleitaset32@gmail.com;11 6164-4967;48591418;Tomás;Fleitas;27;14/4/2008;9 11 3592-5093;0;bucarelli 1008;20485914189;Argentina
+468;;2513869693ea8a37df3d2f8ce2fd1cbe;santiago.pont.indu6@gmail.com;5,49297E+12;48675712;Santiago;Pont;27;21/5/2008;5,49E+12;0;Roseti 1824;20486757125;Argentina
+469;;3bbb328cba16e058b84c5348c88bd0a1;leonel.pedraza.et32@gmail.com;1164053578;48183787;leonel emiliano;pedraza;27;5/11/2007;1157461838;0;bucarelli 1769;20481837872;Argentina
+470;;945221f77f6011df6c319d9dce16d549;Felipekuolee.et32@gmail.com;54 9 3517 88-6950;48461070;Felipe Leonardo;Kuo Lee;27;5/3/2008;54 9 11 4446-2443;0;Condarco 2082;20484610704;Argentina
+471;;ce5ec3f3a3787135cf7724cdbc1a23ee;hidalgonicolasadrian@gmail.com;1121890093;94441521;Adrian;Hidalgo;27;8/10/2007;1133516681;0;Guevara 348;2094441521;Uruguay
+472;;3f501685dc5898920b8fe8ff96b9d19c;lucca.martinez0@gmail.com;1171179287;48357320;Lucca;Martinez;27;9/11/2007;1135753049;0;Forest 536 noveno 45b;20483573201;Argentina
+473;;25d55ad283aa400af464c76d713c07ad;franco.quarembaet32@gmail.com;+54 9 11 4422-2050;48311216;Franco;Quaremba;27;18/12/2007;+54 9 11 4066-5299;0;Antonio Machado 610;20483112166;Argentina
+474;;11b53a6d00784097ba3c298e4d11032f;morena.ferreyraet32@gmail.com;1125486796;48296372;Morena Aylen ;Gonzalez Ferreyra ;27;6/11/2007;1144949864;0;Billinghurst 1466;27-48296372-8;Argentina
+475;;6d828e7627ab7bc5e6d5ec52c9fc9250;brunella.figalloet32@gmail.com;+54 11 2246-6090;48309797;Brunella Mia;Figallo Stroscio;27;2/11/2007;+54 11 3792-0799;0;Av. � lvarez Thomas 2962;27-48309797-8;Argentina
+476;;598ad491789809ea5ff241477201755b;gustavo.creczukaragonet32@gmail.com;5,49114E+12;48464784;Gustavo;Creczuk ;27;12/3/2008;5,49E+12;0;Tres lomas 651;20484647845;Argentina
+477;;ef624eeed1560e18eaabde36cb9eda13;ianpaladea120@gmail.com;1155657972;48588109;Ian;Paladea;27;19/9/2007;3644717211;0;Muñecas 876;20485881094;Argentina
+479;;0e0d4ce86817caca4b891c205e4a4e1b;los.nigrelitos@gmail.com;1173690973;47679949;Alma;Gutierrez;27;23/9/2006;1136559805;0;Marcos Sastre 4659;27476799495;Argentina
+480;;6fbfe57cd6851bc2ba1bdcd547a650c8;sgonzalezvigoet32@gmail.com;1130295196;47172330;Santiago;Gonzalez Vigo;27;22/9/2006;1534126502;0;Mitre1221;20471723305;Argentina
+419;;9c9d3173eeff99b46df31bd87f1d8782;mauricio.arzabeet32@gmail.com;1153691204;48679369;Mauricio;Arzabe;26;10/6/2008;1156098996;0;Castillo 740;20486793695;Argentina
+420;;ff2dc30a9934260f6a87a4e717e60d0e;ignacio.rosaleset32@gmail.com;11 3236-2924;48464651;Ignacio;Rosales Perez;26;13/3/2008;11 3805-8382;0;Gavilan 1823;20484646512;Argentina
+421;;36ef38d0d978879cec1814d378df98cb;julian.albaet32@gmail.com;911 4064-7354;48458545;Julian;Alba;26;4/1/2008;911 6816-1524;0;Fernandez Blanco 2337;20-48458545-9;Argentina
+422;;0290cedf5eea0b29454f69632c12c82a;jonathan.veraet32@gmail.com;1136630021;95470121;Samuel;Vera;26;23/5/2008;1132924038;0;Gustavo Adolfo Becquer 4678;20954701213;Argentina
+423;;230dc12fc8d0abf674003370bf1bea1f;mateo.schinoccaet32@gmail.com;11 6471-3751;48520055;Mateo;Schinocca;26;21/4/2008;11 3004-3750;0;Sarmiento 4044;20-48520055-0;Argentina
+424;;692ffc981653d003de0f7fe32d74ecca;mateovillegas012@gmail.com;1161903922;94671754;Mateo;Villegas;26;12/6/2007;1134255398;0;Morlote771;20946717542;Argentina
+425;;1583b93f7447bb7775143810475a9774;ludmila.rovneret32@gmail.com;54 9 11 3111-4169;48678303;Ludmila;Rovner;26;14/4/2008;1,11531E+11;0;Helguera 2687 ;27486783031;Argentina
+426;;4d10b142ad14b0a94a30c3297426dddf;daiana.riveraet32@gmail.com;1159114112;47754806;Daiana Shantal;Rivera;26;31/1/2007;1139120482;0;Mujeres de fraga 4126;27477548062;Argentina
+427;;c2593e7b10c8546a990c1f29483ac60d;felipe.luchettaet32@gmail.com;1168035847;47029484;Felipe;Luchetta;26;26/5/2006;;0;Juan Ramírez de Velasco 1056, C1414AQV Cdad. Autónoma de Buenos Aires;20470294842;Argentina
+428;;54f70808163dac5a2e9df4f0645f7b51;joaco.bazet32@gmail.com;1178279016;48116272;Joaquín;Baz;26;19/9/2007;;0;av.corrientes 5733;20481162727;Argentina
+429;;d16d7373d37b9161d0e741cbd35ebb7c;lucasa.soliset32@gmail.com;1173626946;48385573;Lucas;Solis;26;25/1/2008;1140733823;0;Darwin 701;20483855738;Argentina
+430;;db7abe813d40697429648a76e7f0d5e8;dayana.vilaet32@gmail.com;1136317460;95004273;Dayana;Vila;26;16/9/2007;1141977633;0;Añasco 3001;27950042732;Perú
+431;;b77435f3c0e27938c865234c65de8aba;alejandro.alarconet32@gmail.com;1138685790;96134934;Alejandro;Alarcon;26;4/1/2007;1125091474;0;Plaza 2476;20961349347;Venezuela
+432;;85cc73f96a03886244610ef7e966fd3d;jimenaaysa@gmail.com;1140349668;94852657;Jimena;Aysana;26;16/9/2007;1131114169;0;Espinosa 2750;27948526579;Perú
+433;;607b3d175c9603dd6d26fcb43565516b;jonaspereyra18@gmail.com;1173638935;48114477;Jonas Daniel ;Pereyra Araya;26;14/8/2007;1136079284;0;Ramon lista 5130;23481144779;Argentina
+434;;6846fc92ff04a3d4243816d15571fff7;leo.stefaniszen@gmail.com;1157457747;95259679;Leonardo Felipe;Stefaniszen Maiczuk;26;5/11/2007;1159440393;0;Avenida Luis Maria Campos 1126, 5c;23952596799;Brasil
+435;;b88f22ec2e5ca67b3cca3a2bbe854752;cordoba.ignacio.et32@gmail.com;1164152047;48702298;Ignacio Agustin;Cordoba;26;30/4/2008;1164152041;0;darragueira 495;20487022986;Argentina
+436;;38799d2d4ebe5c1303825af46ed6e9c8;kiara.hernandezet32@gmail.com;1127744495;48460023;Kiara Agostina;Hernandez Contreras;26;10/11/2007;1134213839;0;Armenia 70;27484600231;Argentina
+437;;734bdf2654a57fd1d07444a4299ef2dc;dante.portilloet32@gmail.com;1169722303;48113683;Dante ;Portillo;26;28/10/2007;1133943222;0;Aritobulo del Valle 6060;20481136831;Argentina
+438;;6f34d30b07871250ff1650e961af4ee5;thiago.ramirezet32@gmail.com;1159426890;48521129;Thiago Mateo;Ramirez Rodriguez;26;1/2/2008;1144131893;0;Ezeiza 2600;20485211293;Argentina
+439;;c11547973827d672ef70b77cd566bbc1;juanmartinromero.et32@gmail.com;91164945221;48112092;Juan Martin;Romero;26;1/8/2007;91140849512;0;JULIO A. ROCA 4158 - FLORIDA OESTE - VICENTE LOPEZ ;20-48112092-7;Argentina
+440;;2252b3d3dd8105f8df39e78140072711;thiagoenriquearellano@gmail.com;1158774997;48425632;thiago;arellano;26;15/1/2008;1168155590;0;av juramento 2806;20484256323;Argentina
+441;;aa7b3b35b54c88a3f940f466b9c4b9fe;brunobautistaet32@gmail.com;1158543567;483889861;Bruno;Bautista;26;13/2/2008;;0;Juana Moro 4632;20483889861;Argentina
+442;;25d55ad283aa400af464c76d713c07ad;edgar.hernandezet32@gmail.com;1130341898;96125883;Edgar;Hernandez;26;16/9/2007;1131263546;0;tomas a lebreton 5008;99961258839;Argentina
+443;;1f9b8f1ac26b43d27b73ab7c58eed04c;Luciano.cadimaet32@gmail.com;1125029128;48112211;Luciano;Cadima;26;22/8/2007;11 5766-4666;0;Guaminí 5511;20481122112;Argentina
+444;;3296243d624edb985823b47db5ab704b;mateo.basualdoet32@gmail.com;1150591448;48522102;Mateo;Basualdo;26;8/2/2008;1134790221;0;Av Corrientes 6465;20485221027;Argentina
+445;;6fb42da0e32e07b61c9f0251fe627a9c;esteban.gonzalez.et32@gmail.com;11 5910-9368;48462171;Tomas;Herrero;26;22/1/2008;11 5910-9368;0;Campillo 2781;20484621714;Argentina
+446;;49bb7736b03fbef93beab252d109d0d1;alexarruaet.32@gmail.com;1168652837;95281676;Kevin Alexander;Arrua Vargas ;26;11/6/2008;11 60585567;0;Av Estado de Israel ;23952816764;Paraguay
+478;;6b293ebd2e6d0f18ad563890dff5afce;nicolasleandro.pazet32@gmail.com;11 23919585;48701829;Nicolas;Paz;26;17/5/2008;11 57078640;0;Ezeiza 2947;20-48701829-6;Argentina
+360;;38bcd1ebd58bd8afc3f9e0d09e01dae1;damian.maldonadoet32@gmail.com;1128610290;96030657;Damian;Maldonado ;25;27/6/2006;;0;Alvarez Thomas 3312;20960306571;Venezuela
+159;;9a01e97606b0790b8d997acdc8e01b18;consor92@gmail.com;;37077942;Gonzalo;Consorti;4;4/7/1994;;1;Monte Castro;20-37077942-4;Argentina
+99;;25d55ad283aa400af464c76d713c07ad;damianarielolaso@gmail.com;1565651414;29115095;Damian;Olaso;2;1/11/1981;21264001;1;Tapalque 5917;27-29115095-1;Argentina
+62;;e93c966569221c6afb2090e981de7f19;nahuelacosta0110@gmail.com;;0;Nahuel;Acosta;0;0000-00-00;;1;;;
+;;;;;;;;;;;;;;

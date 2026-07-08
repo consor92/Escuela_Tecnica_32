@@ -1,0 +1,253 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Consigna Práctica: Configuración de Red con Dos Sucursales</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #f9f9f9;
+            margin: 20px;
+            color: #333;
+        }
+        header {
+            background-color: #004085;
+            color: #fff;
+            padding: 20px 30px;
+            border-radius: 6px;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+        }
+        header h1 {
+            margin: 0;
+            font-size: 1.8rem;
+            font-weight: 700;
+        }
+        main {
+            background: white;
+            padding: 30px;
+            border-radius: 6px;
+            box-shadow: 0 3px 8px rgba(0,0,0,0.1);
+            max-width: 900px;
+            margin: 30px auto;
+        }
+        section {
+            margin-bottom: 30px;
+        }
+        h2 {
+            color: #004085;
+            border-bottom: 2px solid #004085;
+            padding-bottom: 6px;
+            margin-bottom: 15px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 12px;
+            margin-bottom: 20px;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 10px 12px;
+            text-align: center;
+        }
+        th {
+            background-color: #e2e6ea;
+            font-weight: 600;
+            color: #004085;
+        }
+        ul {
+            list-style-type: disc;
+            padding-left: 20px;
+        }
+        ol {
+            padding-left: 20px;
+        }
+        code {
+            background: #e9ecef;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-family: Consolas, monospace;
+        }
+        footer {
+            text-align: center;
+            font-size: 0.9rem;
+            color: #666;
+            margin-top: 40px;
+        }
+        @media (max-width: 600px) {
+            body {
+                margin: 10px;
+            }
+            main {
+                padding: 20px;
+                margin: 10px auto;
+            }
+            th, td {
+                font-size: 0.9rem;
+                padding: 8px 6px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Consigna Examen Tema 1: Configuración de Red con Dos Sucursales</h1>
+    </header>
+    <main>
+        <section>
+            <h2>Objetivo</h2>
+            <p>
+                Diseñar y configurar una red con dos sucursales interconectadas, implementando VLANs, servidores dedicados, enrutamiento estatico y VPN.
+            </p>
+        </section>
+
+        <section>
+            <h2>Requerimientos de Red</h2>
+            <h3>Sucursales</h3>
+            <ul>
+                <li>Cada sucursal (A y B) cuenta con:
+                    <ul>
+                        <li>Un switch principal (PB)</li>
+                        <li>Dos switches seccionales (2° piso)</li>
+                        <li>3 VLANs por sucursal:
+                            <ul>
+                                <li>VLAN Administración (VLAN 10  SW1) (2° piso)</li>
+                                <li>VLAN Usuarios (VLAN 20  SW2)  (2° piso)</li>
+                                <li>VLAN Wifi (VLAN 30  SW1 & SW2) (2° piso)</li>
+                            </ul>
+                        </li>
+			<li>2 PC/Notebook(wifi) max por VLAN</li>
+			<li>PDeben ser distintas city cada sucursal y realizar Capa fisica</li>
+                        <li>VLAN Servidores asignada solo en el switch principal:
+                            <ul>
+                                <li>Sucursal A: VLAN 99</li>
+                                <li>Sucursal B: VLAN 99</li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+                <li>IPs de servidores estáticas.</li>
+				<li>Los Access Point deben cubrir todo el 2do piso pero no pueden tener mas de 50mts de radio de expancion, y deben estar di rack distintos.</li>
+				<li>Los elementos de cada red deben quedar enclustados en la capa logica y encerrado con marcos de colores para conocer su dispocion de la capa fisica.</li>
+                <li>PCs y notebooks usan DHCP (IP dinámica una por Router otra por Server).</li>
+            </ul>
+
+            <h3>Direccionamiento IP</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>VLAN</th>
+                        <th>Sucursal A (VLAN ID)</th>
+                        <th>Sucursal A (Subred IP)</th>
+                        <th>Sucursal B (VLAN ID)</th>
+                        <th>Sucursal B (Subred IP)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Administración</td>
+                        <td>10</td>
+                        <td>192.168.0.0/24</td>
+                        <td>10</td>
+                        <td>172.16.0.0/16</td>
+                    </tr>
+                    <tr>
+                        <td>Usuarios</td>
+                        <td>20</td>
+                        <td>192.168.1.0/24</td>
+                        <td>20</td>
+                        <td>172.17.0.0/16</td>
+                    </tr>
+                    <tr>
+                        <td>Wifi</td>
+                        <td>30</td>
+                        <td>192.168.2.0/24</td>
+                        <td>30</td>
+                        <td>172.18.0.0/16</td>
+                    </tr>
+                    <tr>
+                        <td>Servidores</td>
+                        <td>99</td>
+                        <td>192.168.3.0/24</td>
+                        <td>99</td>
+                        <td>172.19.0.0/16</td>
+                    </tr>
+                    <tr>
+                        <td>Interconexión (Fibra)</td>
+                        <td>-</td>
+                        <td>10.0.0.0/8</td>
+                        <td>-</td>
+                        <td>10.0.0.0/8</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h3>Servidores dedicados</h3>
+            <ul>
+                <li><strong>Sucursal A:</strong>
+                    <ul>
+                        <li>Servidor DNS (accesible por todas las PCs ambas sucursales)</li>
+                        <li>Servidor HTTP (accesible por todas las PCs ambas sucursales)</li>
+                    </ul>
+                </li>
+                <li><strong>Sucursal B:</strong>
+                    <ul>
+                        <li>Servidor DHCP (entrega IPs en Sucursal B)</li>
+                        <li>Servidor SMTP (configurado con usuario y contraseña, para todas las PCs ambas sucursales)</li>
+                    </ul>
+                </li>
+            </ul>
+
+            <h3>Enrutamiento</h3>
+            <ul>
+                <li>Implementar enrutamiento <code>static</code> para la comunicación entre ambas sucursales.</li>
+                <li>Configurar <code>DHCP Helper</code> en router para retransmitir peticiones DHCP de Sucursal B al servidor DHCP.</li>
+            </ul>
+
+            <h3>Seguridad</h3>
+            <ul>
+                <li>Realizar un tunel de comunicacion de datos seguro VPN entre la red de la vlan wifi de ambas sucursales.</li>
+            </ul>
+        </section>
+
+        <section>
+            <h2>Tareas</h2>
+            <ol>
+                <li>Configurar VLANs y asignar puertos en switches (ID, nombres, puertos para PCs y servidores).</li>
+                <li>Configurar direccionamiento IP en PCs (dinámico), servidores (estático), switches y router (incluyendo subinterfaces para VLANs en router si aplica).</li>
+                <li>Configurar servidores con servicios indicados (DNS, HTTP, DHCP, SMTP).</li>
+                <li>Configurar enrutamiento ststic en routers y activar interfaces.</li>
+                <li>Configurar DHCP Helper en el router para retransmitir DHCP.</li>
+                <li>Configurar VPN para controlar accesos peivado entre VLANs. de wifi</li>
+                <li>Realizar cableado físico en racks con patcheres y rosetas y documentación del rack con diagramas organizados.</li>
+                <li>Realizar pruebas de conectividad (ping, acceso web, DHCP, SMTP) y documentar resultados.</li>
+            </ol>
+        </section>
+
+        <section>
+            <h2>Notas adicionales</h2>
+            <ul>
+                <li>Se espera documentación clara con comandos usados y diagramas de red.</li>
+                <li>Puede usarse CLI de Cisco o interfaz gráfica según disponibilidad.</li>
+                <li>La configuración física debe respetar buenas prácticas de cableado (patcheras y rosetas organizadas).</li>
+            </ul>
+        </section>
+		
+        <section>
+            <h2>Entregable</h2>
+            <ul>
+                <li>Entregar archivo de Packet en version 8.2.2 en la tarea del classroom</li>
+                <li>Archivo de texto con todas las intrucciones de comandos utilizadas par ala configuracion</li>
+				<li>Captura de pantalla de las pruebas de consola funcioanndo, ping y tracer desde 1 PC a 1 servidor en la sucursal opuesta</li>
+                <li>La configuración física debe respetar buenas prácticas de cableado (patcheras y rosetas organizadas).</li>
+            </ul>
+        </section>		
+    </main>
+
+    <footer>
+        <p>Diseñado para evaluación práctica en redes LAN-WAN corporativas &copy; 2025</p>
+    </footer>
+</body>
+</html>
