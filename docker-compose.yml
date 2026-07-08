@@ -26,6 +26,46 @@ services:
 #      - mongo
 #    restart: unless-stopped
 
+#  mysql:
+#    image: mariadb:10.6.22
+#    container_name: mysql_db
+#    environment:
+#      MYSQL_ROOT_PASSWORD: rootpass
+#      MYSQL_DATABASE: encuentroTecnologico
+#      MYSQL_USER: administrador
+#      MYSQL_PASSWORD: Esdrujula2022
+#    ports:
+#      - "3306:3306"
+#    volumes:
+#      - mysql_data:/var/lib/mysql
+#    restart: unless-stopped
+
+#  phpmyadmin:
+#    image: phpmyadmin/phpmyadmin
+#    container_name: phpmyadmin
+#    environment:
+#      PMA_HOST: mysql
+#      PMA_USER: root
+#      PMA_PASSWORD: rootpass
+#    ports:
+#      - "8082:80"
+#    depends_on:
+#      - mysql
+#    restart: unless-stopped
+
+#  api:
+#    build:
+#      context: ./API
+#      dockerfile: Dockerfile
+#    container_name: backend_api
+#    ports:
+#      - "5000:5000"
+#    env_file:
+#      - ./API/.env
+#    depends_on:
+#      - mongo
+#    restart: unless-stopped
+
   frontend:
     build:
       context: ./frontend
@@ -35,48 +75,22 @@ services:
       - "3000:3000"
     volumes:
       # PERSISTENCIA: Se mapea la carpeta public completa
-        - ./frontend/public/uploads:/app/public/uploads
-        - ./frontend/public/docs:/app/public/docs
-        - ./frontend/public/images:/app/public/images
-        - ./frontend/data:/app/data
-    #pends_on:
+      - ./frontend/public/uploads:/app/public/uploads
+      - ./frontend/public/docs:/app/public/docs
+      - ./frontend/public/images:/app/public/images
+      - ./frontend/data:/app/data
+    # depends_on:
     #   - api
-    restart: unless-stopped
-
-  db:
-    image: mysql:8.0
-    container_name: encuesta_db
     restart: always
-    command: --innodb_flush_log_at_trx_commit=1 --sync_binlog=1
-    environment:
-      MYSQL_DATABASE: scrum_eval
-      MYSQL_ROOT_PASSWORD: root
-      MYSQL_USER: admin
-      MYSQL_PASSWORD: admin123
-    ports:
-      - "3307:3306"
-    volumes:
-      - ./Calificacion_Grupos/init.sql:/docker-entrypoint-initdb.d/init.sql
-      - ./Calificacion_Grupos/users.sql:/docker-entrypoint-initdb.d/users.sql
-      - ./mysql_prod_data:/var/lib/mysql
-      #- db_data:/var/lib/mysql
 
-  app:
-    build: 
-      context: ./Calificacion_Grupos
+  jira:
+    build:
+      context: ./jira
       dockerfile: Dockerfile
-    container_name: encuesta_app
-    restart: always
+    container_name: nextjs_jira
     ports:
       - "3001:3001"
-    environment:
-      DB_HOST: db
-      DB_USER: admin
-      DB_PASSWORD: admin123
-      DB_NAME: scrum_eval
-      JWT_SECRET: super-secret-key
-    depends_on:
-      - db
+    restart: always
 
 #  backadmin:
 #    build:
@@ -114,17 +128,15 @@ services:
 #      - "80:80"
 #    volumes:
 #      - ./nginx/default.conf:/etc/nginx/conf.d/default.conf
-#      - uploads:/var/www/uploads
-#      - docs:/var/www/docs
 #    depends_on:
 #      - frontend
+#      # - backadmin
+#      # - api
+#      # - phpmyadmin
+#      # - mongo-express
+#      # - php
 #    restart: unless-stopped
 
 volumes:
-  db_data:
-  #mongo_data:
-  #mysql_data:
-  #uploads:
-  #images:
-  #docs:
-  #data:
+   escuela_tecnica_32_db_data:
+       external: true
